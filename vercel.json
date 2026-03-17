@@ -1,1 +1,9 @@
-{"buildCommand": "pnpm build", "installCommand": "pnpm install", "outputDirectory": "artifacts/webadish/dist", "env": {"NODE_ENV": "production"}}
+{
+  "installCommand": "pnpm install --filter @workspace/webadish...",
+  "buildCommand": "pnpm --filter @workspace/webadish build",
+  "outputDirectory": "artifacts/webadish/dist",
+  "env": {
+    "NODE_ENV": "production",
+    "BASE_PATH": "/"
+  }
+}
