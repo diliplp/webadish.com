@@ -1,0 +1,141 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Alata",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#D61A66",
+    "accent": "#1A7EFB",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#314C9D"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Alata",
+      "heading": "Alata"
+    },
+    "fontStacks": {
+      "heading": [
+        "Alata",
+        "sans-serif"
+      ],
+      "body": [
+        "Alata",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Alata",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "60px",
+      "h2": "40px",
+      "body": "25px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "input": {
+      "background": "#FFFFFF",
+      "textColor": "#314C9D",
+      "borderColor": "#F1F4FD",
+      "borderRadius": "5px",
+      "borderRadiusCorners": {
+        "topLeft": "5px",
+        "topRight": "5px",
+        "bottomRight": "5px",
+        "bottomLeft": "5px"
+      },
+      "shadow": "none"
+    },
+    "buttonPrimary": {
+      "background": "#1A7EFB",
+      "textColor": "#FFFFFF",
+      "borderRadius": "7px",
+      "borderRadiusCorners": {
+        "topLeft": "7px",
+        "topRight": "7px",
+        "bottomRight": "7px",
+        "bottomLeft": "7px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#FFFFFF",
+      "borderColor": "#D61A66",
+      "borderRadius": "10px",
+      "borderRadiusCorners": {
+        "topLeft": "10px",
+        "topRight": "10px",
+        "bottomRight": "10px",
+        "bottomLeft": "10px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp",
+    "favicon": "https://webadish.com/wp-content/uploads/2026/03/cropped-favicon-webadish-32x32.png",
+    "ogImage": null,
+    "logoHref": "https://webadish.com",
+    "logoAlt": "logo webadish 2025"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 1,
+    "reasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand name 'WebAdish'.",
+    "confidence": 0.9,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 9,
+      "text": "Submit",
+      "reasoning": "Button #9 has a vibrant blue background (#1A7EFB), which stands out as the primary call-to-action color. The text 'Submit' is action-oriented, making it a strong candidate for the primary CTA."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "Get Started Today",
+      "reasoning": "Button #0 has a transparent background with a border color of #D61A66, making it a suitable secondary button due to its less prominent appearance compared to the vibrant primary button."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "businesses seeking web design and digital marketing services"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand name 'WebAdish'.",
+        "confidence": 0.9
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

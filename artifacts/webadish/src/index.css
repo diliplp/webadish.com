@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: 'Alata', sans-serif;
+  --font-heading: 'Alata', sans-serif;
+
+  /* WebAdish Brand Colors */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(0 0% 0%);
+  
+  /* Primary Pink #D61A66 */
+  --color-primary: hsl(336 78% 47%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  
+  /* Accent Blue #1A7EFB */
+  --color-accent: hsl(213 96% 54%);
+  --color-accent-foreground: hsl(0 0% 100%);
+  
+  /* Link Dark Blue #314C9D */
+  --color-link: hsl(225 53% 40%);
+
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215 16% 47%);
+
+  --color-border: hsl(214 32% 91%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(0 0% 0%);
+
+  /* Custom Animations */
+  --animate-emergency-pulse: emergency-pulse 2s infinite;
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --primary: 336 78% 47%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 213 96% 54%;
+  --accent-foreground: 0 0% 100%;
+  --link: 225 53% 40%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --border: 214 32% 91%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+}
+
+@keyframes emergency-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(214, 26, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(214, 26, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(214, 26, 102, 0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans selection:bg-accent/20 selection:text-accent;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-md border-b border-border/50 shadow-sm;
+  }
+  .hero-gradient {
+    background: radial-gradient(circle at 15% 50%, rgba(26, 126, 251, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(214, 26, 102, 0.08), transparent 25%);
+  }
+  .cta-gradient {
+    background: linear-gradient(135deg, hsl(336 78% 47%) 0%, hsl(213 96% 54%) 100%);
+  }
+}

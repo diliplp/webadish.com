@@ -1,0 +1,65 @@
+import { Switch, Route, Router as WouterRouter } from "wouter";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import Home from "@/pages/Home";
+import Maintenance from "@/pages/Maintenance";
+import Security from "@/pages/Security";
+import HackedSiteRecovery from "@/pages/HackedSiteRecovery";
+import Retainer from "@/pages/Retainer";
+import Pricing from "@/pages/Pricing";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
+import CaseStudies from "@/pages/CaseStudies";
+import Contact from "@/pages/Contact";
+import WebDesign from "@/pages/WebDesign";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import Terms from "@/pages/Terms";
+import RefundPolicy from "@/pages/RefundPolicy";
+import NotFound from "@/pages/not-found";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
+
+function Router() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/maintenance" component={Maintenance} />
+      <Route path="/security" component={Security} />
+      <Route path="/hacked-site-recovery" component={HackedSiteRecovery} />
+      <Route path="/retainer" component={Retainer} />
+      <Route path="/pricing" component={Pricing} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/case-studies" component={CaseStudies} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/web-design" component={WebDesign} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms" component={Terms} />
+      <Route path="/refund-policy" component={RefundPolicy} />
+      <Route component={NotFound} />
+    </Switch>
+  );
+}
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <Router />
+        </WouterRouter>
+        <Toaster />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
+
+export default App;

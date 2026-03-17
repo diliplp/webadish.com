@@ -1,0 +1,11 @@
+packages:
+  "gsap": "For advanced hero entrance animations and scroll triggers"
+  "@gsap/react": "React integration for GSAP"
+  "lucide-react": "Icons for features, services, and UI elements"
+  "clsx": "Utility for constructing className strings"
+  "tailwind-merge": "Utility for merging tailwind classes safely"
+
+notes:
+  - "The application is a single-page marketing site."
+  - "All external links open in a new tab as requested."
+  - "Colors have been strictly mapped to the WebAdish brand requirements."
