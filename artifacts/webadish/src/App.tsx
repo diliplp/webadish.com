@@ -17,6 +17,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Terms from "@/pages/Terms";
 import RefundPolicy from "@/pages/RefundPolicy";
 import NotFound from "@/pages/not-found";
+import SiteSeo from "@/components/SiteSeo";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +28,7 @@ const queryClient = new QueryClient({
   },
 });
 
-function Router() {
+function AppRoutes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -49,12 +50,20 @@ function Router() {
   );
 }
 
-function App() {
+type AppProps = {
+  ssrPath?: string;
+};
+
+function App({ ssrPath }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
+        <WouterRouter
+          base={import.meta.env.BASE_URL.replace(/\/$/, "")}
+          ssrPath={ssrPath}
+        >
+          <SiteSeo />
+          <AppRoutes />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

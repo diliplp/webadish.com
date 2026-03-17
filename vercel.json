@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "pnpm install --filter @workspace/webadish...",
   "buildCommand": "pnpm --filter @workspace/webadish build",
   "outputDirectory": "artifacts/webadish/dist",

@@ -39,12 +39,24 @@ export function Navbar() {
     window.scrollTo(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const isHome = location === "/";
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHome ? "glass-nav py-3" : "bg-transparent py-5"
+        isMobileMenuOpen
+          ? "bg-white py-3 shadow-sm border-b border-border/50"
+          : isScrolled || !isHome
+            ? "glass-nav py-3"
+            : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,28 +110,33 @@ export function Navbar() {
       </div>
 
       <div
-        className={`fixed inset-0 bg-white z-40 transition-transform duration-300 lg:hidden flex flex-col pt-24 px-6 ${
+        className={`fixed inset-0 z-[60] bg-white transition-transform duration-300 lg:hidden ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="flex flex-col gap-6 text-xl">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`font-semibold ${
-                link.highlight ? "text-primary" : "text-foreground"
-              }`}
-            >
-              {link.label}
+        <div className="flex h-full flex-col overflow-y-auto bg-white px-6 pb-8 pt-24">
+          <nav className="flex flex-col gap-5 text-xl">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-semibold ${
+                  link.highlight ? "text-primary" : "text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="mt-8">
+            <Link href="/contact">
+              <Button variant="accent" size="lg" className="w-full">
+                Get Protected
+              </Button>
             </Link>
-          ))}
-          <Link href="/contact">
-            <Button variant="accent" size="lg" className="w-full mt-4">
-              Get Protected
-            </Button>
-          </Link>
-        </nav>
+          </div>
+        </div>
       </div>
     </header>
   );

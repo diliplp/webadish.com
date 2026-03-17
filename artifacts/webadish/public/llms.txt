@@ -1,0 +1,36 @@
+# WebAdish
+
+> WebAdish helps businesses secure, maintain, and recover WordPress websites.
+
+## Primary Services
+
+- WordPress maintenance: https://webadish.com/maintenance
+- WordPress security: https://webadish.com/security
+- Hacked site recovery: https://webadish.com/hacked-site-recovery
+- WordPress security retainers: https://webadish.com/retainer
+- WordPress web design: https://webadish.com/web-design
+
+## Important Pages
+
+- Homepage: https://webadish.com/
+- Pricing: https://webadish.com/pricing
+- Case studies: https://webadish.com/case-studies
+- Contact: https://webadish.com/contact
+- Blog: https://webadish.com/blog
+
+## Business Summary
+
+WebAdish works with businesses that rely on WordPress websites for leads, sales, and reputation. The company offers proactive maintenance, security hardening, malware recovery, incident response, backups, monitoring, and premium support retainers.
+
+## Ideal Customers
+
+- Businesses with revenue-generating WordPress websites
+- WooCommerce and membership sites
+- Agencies that need white-label or specialist WordPress security support
+- Teams recovering from malware, blacklist warnings, or downtime incidents
+
+## Contact
+
+- Website: https://webadish.com/
+- Email: hello@webadish.com
+- Phone: +91 999 875 7045

@@ -2,6 +2,7 @@
 
 # compiled output
 dist
+artifacts/webadish/.ssr
 tmp
 out-tsc
 *.tsbuildinfo
