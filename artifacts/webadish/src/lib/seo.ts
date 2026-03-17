@@ -11,6 +11,10 @@ export const PRERENDER_ROUTES = [
   "/retainer",
   "/pricing",
   "/blog",
+  "/blog/wordpress-security-agency-vs-freelancer",
+  "/blog/hacked-wordpress-site-recovery-cost",
+  "/blog/wordpress-security-retainer-includes",
+  "/blog/woocommerce-maintenance-checklist",
   "/blog/protect-your-digital-assets",
   "/blog/how-hackers-break-into-websites",
   "/blog/wordpress-maintenance-guide",
@@ -387,6 +391,90 @@ const articleSchema = (data: {
 });
 
 const blogPosts: Record<string, SeoData> = {
+  "/blog/wordpress-security-agency-vs-freelancer": {
+    title: "WordPress Security Agency vs Freelancer",
+    description:
+      "A buyer-focused guide to choosing between a freelancer and an agency for WordPress security, maintenance, and incident response.",
+    path: "/blog/wordpress-security-agency-vs-freelancer",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Security Agency vs Freelancer", path: "/blog/wordpress-security-agency-vs-freelancer" },
+    ],
+    schema: [
+      articleSchema({
+        title: "WordPress Security Agency vs Freelancer: Which Is Right for a Revenue-Critical Website?",
+        description:
+          "How to choose the right WordPress support model when your website has commercial, operational, or brand risk.",
+        path: "/blog/wordpress-security-agency-vs-freelancer",
+        published: "2026-03-17",
+      }),
+    ],
+  },
+  "/blog/hacked-wordpress-site-recovery-cost": {
+    title: "How Much Does Hacked WordPress Site Recovery Cost?",
+    description:
+      "A practical buyer guide to the cost of hacked WordPress site recovery, malware cleanup, blacklist removal, and hardening.",
+    path: "/blog/hacked-wordpress-site-recovery-cost",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "Hacked WordPress Site Recovery Cost", path: "/blog/hacked-wordpress-site-recovery-cost" },
+    ],
+    schema: [
+      articleSchema({
+        title: "How Much Does Hacked WordPress Site Recovery Cost?",
+        description:
+          "The real cost drivers behind emergency WordPress recovery and what buyers should expect from a serious provider.",
+        path: "/blog/hacked-wordpress-site-recovery-cost",
+        published: "2026-03-17",
+      }),
+    ],
+  },
+  "/blog/wordpress-security-retainer-includes": {
+    title: "What a WordPress Security Retainer Includes",
+    description:
+      "A decision-stage guide to what buyers should expect from a WordPress security retainer, including audits, monitoring, incident response, and SLAs.",
+    path: "/blog/wordpress-security-retainer-includes",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Security Retainer Includes", path: "/blog/wordpress-security-retainer-includes" },
+    ],
+    schema: [
+      articleSchema({
+        title: "What Does a WordPress Security Retainer Actually Include?",
+        description:
+          "What premium WordPress security retainers usually cover, who they are for, and how to evaluate providers.",
+        path: "/blog/wordpress-security-retainer-includes",
+        published: "2026-03-17",
+      }),
+    ],
+  },
+  "/blog/woocommerce-maintenance-checklist": {
+    title: "WooCommerce Maintenance Checklist for Growing Stores",
+    description:
+      "A buyer-intent guide to WooCommerce maintenance, covering staging, updates, rollback, monitoring, and support expectations for growing stores.",
+    path: "/blog/woocommerce-maintenance-checklist",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WooCommerce Maintenance Checklist", path: "/blog/woocommerce-maintenance-checklist" },
+    ],
+    schema: [
+      articleSchema({
+        title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",
+        description:
+          "A practical checklist for WooCommerce owners evaluating WordPress maintenance partners and support processes.",
+        path: "/blog/woocommerce-maintenance-checklist",
+        published: "2026-03-17",
+      }),
+    ],
+  },
   "/blog/protect-your-digital-assets": {
     title: "Why Cybersecurity Is Critical for Modern Businesses",
     description:
