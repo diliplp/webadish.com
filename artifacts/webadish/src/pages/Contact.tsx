@@ -16,11 +16,36 @@ const services = [
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href='/contact';
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setSubmitted(true);
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+      console.error('Form submission error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -57,9 +82,20 @@ export default function Contact() {
                   <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
                   <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
                   <p className="text-muted-foreground">We'll be in touch within a few hours. For emergencies, call us directly.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-6 text-accent hover:underline text-sm font-medium"
+                  >
+                    Send another message
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
+                      <p className="text-red-600 text-sm">{error}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium mb-2">Full Name *</label>
@@ -90,8 +126,14 @@ export default function Contact() {
                     <textarea required rows={5} placeholder="Tell us about your site, the issue you're facing, or what you need help with..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none" />
                   </div>
-                  <Button type="submit" variant="accent" size="lg" className="w-full text-base">
-                    Send Message <ArrowRight size={18} className="ml-2" />
+                  <Button
+                    type="submit"
+                    variant="accent"
+                    size="lg"
+                    className="w-full text-base"
+                    disabled={loading}
+                  >
+                    {loading ? 'Sending...' : 'Send Message'} {!loading && <ArrowRight size={18} className="ml-2" />}
                   </Button>
                   <p className="text-xs text-muted-foreground text-center">We respond to all enquiries within 4 business hours.</p>
                 </form>
