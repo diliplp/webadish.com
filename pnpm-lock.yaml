@@ -6,6 +6,16 @@ settings:
 
 importers:
 
+  .:
+    dependencies:
+      nodemailer:
+        specifier: ^6.9.7
+        version: 6.10.1
+    devDependencies:
+      '@types/nodemailer':
+        specifier: ^6.4.14
+        version: 6.4.23
+
   artifacts/webadish:
     dependencies:
       '@gsap/react':
