@@ -2,6 +2,7 @@ import { ArrowRight, Clock, Search } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import OptimizedImage from "@/components/OptimizedImage";
 import { useState } from "react";
 
 const posts = [
@@ -224,7 +225,7 @@ export default function Blog() {
                 <Link key={post.title} href={post.href} className="group block">
                   <div className="bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                     <div className="h-52 overflow-hidden relative">
-                      <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <OptimizedImage src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={662} height={413} />
                       <div className={`absolute top-4 left-4 ${post.tagBg} text-xs font-bold px-3 py-1 rounded-full ${post.tagColor}`}>
                         {post.tag}
                       </div>
