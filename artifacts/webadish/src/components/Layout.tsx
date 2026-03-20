@@ -13,6 +13,7 @@ import {
   Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const navLinks = [
   { label: "Maintenance", href: "/maintenance" },
@@ -233,6 +234,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }
