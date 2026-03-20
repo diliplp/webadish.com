@@ -2,6 +2,7 @@ import { ArrowRight, Briefcase, CheckCircle2, Gauge, Shield, TrendingUp } from "
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import OptimizedImage from "@/components/OptimizedImage";
 
 const cases = [
   {
@@ -225,7 +226,7 @@ export default function CaseStudies() {
 
                 <div className={idx % 2 === 1 ? "lg:col-start-1" : ""}>
                   <div className="rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-                    <img src={c.img} alt={c.client} className="w-full h-80 object-cover" />
+                    <OptimizedImage src={c.img} alt={c.client} className="w-full h-80 object-cover" width={560} height={320} />
                   </div>
                 </div>
               </div>

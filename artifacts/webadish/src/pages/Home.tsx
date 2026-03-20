@@ -13,6 +13,7 @@ import {
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import OptimizedImage from "@/components/OptimizedImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -274,7 +275,7 @@ export default function Home() {
                 <Link href="/blog" key={post.title} className="group block reveal-section">
                   <div className="bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
                     <div className="h-48 overflow-hidden relative">
-                      <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <OptimizedImage src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={576} height={380} />
                       <div className={`absolute top-4 left-4 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full ${post.tagColor}`}>{post.tag}</div>
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
