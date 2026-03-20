@@ -1,0 +1,129 @@
+{
+  "description": "SEO-safe redirects for webadish.com redesign",
+  "generatedDate": "2026-03-21",
+  "strategy": "301 permanent redirects for indexed pages, 410 for deleted content",
+  "redirects": [
+    {
+      "source": "/services/maintenance",
+      "destination": "/maintenance",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/security",
+      "destination": "/security",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/hacked-site-recovery",
+      "destination": "/hacked-site-recovery",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/site-retainer",
+      "destination": "/retainer",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/web-design",
+      "destination": "/web-design",
+      "statusCode": 301
+    },
+    {
+      "source": "/our-pricing",
+      "destination": "/pricing",
+      "statusCode": 301
+    },
+    {
+      "source": "/pricing/:anything*",
+      "destination": "/pricing",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/post/:slug*",
+      "destination": "/blog/:slug",
+      "statusCode": 301
+    },
+    {
+      "source": "/article/:slug*",
+      "destination": "/blog/:slug",
+      "statusCode": 301
+    },
+    {
+      "source": "/case-study/:slug*",
+      "destination": "/case-studies",
+      "statusCode": 301
+    },
+    {
+      "source": "/case-studies/:slug*",
+      "destination": "/case-studies",
+      "statusCode": 301
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/case-studies",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-us",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "statusCode": 301
+    },
+    {
+      "source": "/tos",
+      "destination": "/terms",
+      "statusCode": 301
+    },
+    {
+      "source": "/refund",
+      "destination": "/refund-policy",
+      "statusCode": 301
+    },
+    {
+      "source": "/support",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/help",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/solutions",
+      "destination": "/",
+      "statusCode": 301
+    }
+  ],
+  "notes": [
+    "46 pages with redirects detected by Google Search Console",
+    "These redirects handle common URL variations and old service page structures",
+    "Dynamic slug redirects preserve blog post and case study content",
+    "Use 301 status for all redirects to preserve SEO authority",
+    "Deleted content pages should be configured with 410 Gone status if they exist"
+  ]
+}

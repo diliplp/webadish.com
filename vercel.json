@@ -6,5 +6,102 @@
   "env": {
     "NODE_ENV": "production",
     "BASE_PATH": "/"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/services/maintenance",
+      "destination": "/maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/services/security",
+      "destination": "/security",
+      "permanent": true
+    },
+    {
+      "source": "/services/hacked-site-recovery",
+      "destination": "/hacked-site-recovery",
+      "permanent": true
+    },
+    {
+      "source": "/services/site-retainer",
+      "destination": "/retainer",
+      "permanent": true
+    },
+    {
+      "source": "/services/web-design",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/our-pricing",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/case-study/:slug",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/tos",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/refund",
+      "destination": "/refund-policy",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/help",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
