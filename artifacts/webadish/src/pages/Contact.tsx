@@ -23,8 +23,10 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
     setError("");
+    console.log('📝 Submitting form with data:', form);
 
     try {
+      console.log('📤 Sending request to /api/contact...');
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -33,16 +35,22 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
+      console.log('📥 Response status:', response.status);
+
       if (!response.ok) {
         const data = await response.json();
+        console.log('❌ API error response:', data);
         throw new Error(data.error || 'Failed to send message');
       }
 
+      const result = await response.json();
+      console.log('✅ Success response:', result);
       setSubmitted(true);
       setForm({ name: "", email: "", phone: "", service: "", message: "" });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
-      console.error('Form submission error:', err);
+      const errorMsg = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
+      setError(errorMsg);
+      console.error('❌ Form submission error:', err);
     } finally {
       setLoading(false);
     }
