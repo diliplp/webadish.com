@@ -61,7 +61,7 @@ export default function Maintenance() {
               <Link href="/pricing"><Button variant="outline" size="lg" className="text-lg px-8">See All Plans</Button></Link>
             </div>
             <div className="flex flex-wrap gap-6 mt-10 text-sm text-muted-foreground font-medium">
-              {["800+ sites protected", "No lock-in contracts", "99.9% uptime guarantee", "10+ years experience"].map(b => (
+              {["800+ sites protected", "No lock-in contracts", "99.9% uptime guarantee", "20+ years in business"].map(b => (
                 <div key={b} className="flex items-center gap-2"><CheckCircle2 size={16} className="text-green-500" />{b}</div>
               ))}
             </div>

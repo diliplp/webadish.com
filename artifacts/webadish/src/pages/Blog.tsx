@@ -7,6 +7,78 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Security",
+    tagColor: "text-primary",
+    tagBg: "bg-primary/10",
+    title: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026",
+    excerpt:
+      "Payment plugins, customer data, and high traffic make WooCommerce sites the most attacked category of WordPress installations. Here's what that means for store owners.",
+    date: "April 26, 2026",
+    read: "6 min",
+    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/woocommerce-attack-target-2026",
+  },
+  {
+    tag: "Security",
+    tagColor: "text-primary",
+    tagBg: "bg-primary/10",
+    title: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do",
+    excerpt:
+      "Most sites are running risky plugins right now without knowing it. A practical guide to auditing your plugin stack the way security experts do.",
+    date: "April 19, 2026",
+    read: "7 min",
+    img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/wordpress-plugin-audit",
+  },
+  {
+    tag: "Buyer Intent",
+    tagColor: "text-foreground",
+    tagBg: "bg-foreground/10",
+    title: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers",
+    excerpt:
+      "Hosting companies monitor infrastructure. They do not monitor your application layer, your plugins, or your customer data. Here's what that gap looks like in practice.",
+    date: "April 12, 2026",
+    read: "6 min",
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/hosting-vs-managed-security",
+  },
+  {
+    tag: "Buyer Intent",
+    tagColor: "text-foreground",
+    tagBg: "bg-foreground/10",
+    title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
+    excerpt:
+      "There is no universal answer — but there is a framework. Here's how to determine the right audit cadence based on your site's risk profile and business stakes.",
+    date: "April 5, 2026",
+    read: "5 min",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/wordpress-security-audit-frequency",
+  },
+  {
+    tag: "Buyer Intent",
+    tagColor: "text-foreground",
+    tagBg: "bg-foreground/10",
+    title: "WordPress Downtime: What It Really Costs a Revenue-Driven Site — And How to Prevent It",
+    excerpt:
+      "Most businesses underestimate the true cost of WordPress downtime. Here's a clear breakdown of what's at stake and what proactive protection actually buys you.",
+    date: "March 21, 2026",
+    read: "6 min",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/wordpress-downtime-cost",
+  },
+  {
+    tag: "Buyer Intent",
+    tagColor: "text-foreground",
+    tagBg: "bg-foreground/10",
+    title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit",
+    excerpt:
+      "The right provider asks the right questions before taking over your site. Here's what to ask them — and what the answers should tell you.",
+    date: "March 21, 2026",
+    read: "7 min",
+    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/hire-wordpress-security-team",
+  },
+  {
     tag: "Buyer Intent",
     tagColor: "text-foreground",
     tagBg: "bg-foreground/10",

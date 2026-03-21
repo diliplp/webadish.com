@@ -101,8 +101,8 @@ export default function Home() {
             <div className="hero-trust flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm font-medium text-muted-foreground">
               <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-green-500" /> 800+ Sites Protected</div>
               <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-primary" /> &lt;24h Malware Recovery</div>
-              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-accent" /> 99.9% Uptime</div>
-              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-green-500" /> 30-Day Guarantee</div>
+              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-accent" /> 20+ Years in Business</div>
+              <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-green-500" /> Dedicated Security Team</div>
             </div>
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
@@ -134,8 +134,8 @@ export default function Home() {
                 <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Uptime Guarantee</div>
               </div>
               <div className="px-4">
-                <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 flex justify-center"><span className="stat-num" data-target="30">0</span>-Day</div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Re-Infection Guarantee</div>
+                <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 flex justify-center"><span className="stat-num" data-target="20">0</span>+</div>
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Years in Business</div>
               </div>
             </div>
           </div>

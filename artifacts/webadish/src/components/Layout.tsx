@@ -62,11 +62,11 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex-shrink-0 z-50">
+          <Link href="/" className="flex-shrink-0 z-50 flex items-center cursor-pointer select-none">
             <img
               src="/logo.webp"
               alt="WebAdish"
-              className="h-10 w-auto"
+              className="h-10 w-auto block"
             />
           </Link>
 
@@ -149,17 +149,15 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">
-            <Link href="/">
+            <Link href="/" className="inline-flex items-center cursor-pointer select-none mb-6">
               <img
                 src="/logo.webp"
                 alt="WebAdish"
-                className="h-10 w-auto mb-6"
+                className="h-10 w-auto block"
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              WebAdish is a globally trusted WordPress security & maintenance
-              agency. We protect, maintain and recover WordPress sites for
-              agencies, eCommerce stores and high-growth businesses.
+              WebAdish is a globally trusted WordPress security agency with 20+ years in business. Our dedicated team of security experts and WordPress developers protects, maintains, and recovers sites for agencies, eCommerce stores, and high-growth businesses.
             </p>
             <div className="flex flex-col gap-2 mb-6 text-sm text-muted-foreground">
               <a href="tel:+919998757045" className="flex items-center gap-2 hover:text-accent transition-colors">
@@ -220,7 +218,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <CheckCircle2 size={16} className="text-green-500" />
-            Serving clients globally since 2014
+            20+ years protecting WordPress sites globally
           </div>
         </div>
       </div>

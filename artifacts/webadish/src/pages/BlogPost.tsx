@@ -269,6 +269,236 @@ const posts: Record<string, {
       </div>
     ),
   },
+  "woocommerce-attack-target-2026": {
+    tag: "Security", tagColor: "text-primary",
+    title: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026",
+    date: "April 26, 2026", read: "6 min",
+    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">WooCommerce powers over 6 million online stores globally. For attackers, that makes it the most valuable target in the WordPress ecosystem — and the most rewarding to compromise. After 20+ years protecting WordPress sites, our security team sees this pattern clearly: stores are attacked more frequently, more aggressively, and with more sophisticated techniques than any other site type.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What Makes WooCommerce Worth Targeting</h2>
+        <p>Attackers follow value. WooCommerce stores offer three things in one place:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Payment data</strong> — even tokenised payment flows can be intercepted with skimming malware that captures card details at the checkout form level, before the payment processor sees it.</li>
+          <li><strong>Customer PII</strong> — names, addresses, purchase histories, and email addresses are valuable for fraud and resale.</li>
+          <li><strong>Active revenue</strong> — a compromised store can be held hostage, redirected, or silently drained while continuing to appear operational.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Attack Vectors Most Store Owners Overlook</h2>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Checkout skimmers</strong> — malicious JavaScript injected into the checkout page captures payment details in real time. Google and your payment processor won't catch it. Your customers will, when their cards are used fraudulently.</li>
+          <li><strong>WooCommerce plugin vulnerabilities</strong> — extensions for subscriptions, booking, wishlists, and reviews have historically had severe vulnerabilities. Attackers exploit them within hours of public disclosure.</li>
+          <li><strong>Admin credential theft</strong> — phishing, credential stuffing, and brute force attacks target store admin accounts because a compromised admin means full access to orders, customers, and refunds.</li>
+          <li><strong>Supply chain attacks</strong> — compromised plugin update servers push malicious code to thousands of stores simultaneously. These are harder to detect and harder to defend against without file integrity monitoring.</li>
+        </ol>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Signs Your WooCommerce Store May Already Be Compromised</h2>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Unusual refund requests or customer fraud complaints.</li>
+          <li>Strange JavaScript files in your theme or plugin directories.</li>
+          <li>Admin accounts you don't recognise.</li>
+          <li>Performance slowdowns without a clear cause.</li>
+          <li>Google Search Console security alerts.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Protection Stack That WooCommerce Stores Actually Need</h2>
+        <p>Basic hosting security is not enough. WooCommerce stores need application-layer protection:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>A web application firewall (WAF) configured for WooCommerce-specific attack patterns.</li>
+          <li>File integrity monitoring that alerts when core files change unexpectedly.</li>
+          <li>Checkout-specific malware scanning for skimmer scripts.</li>
+          <li>Staging-based plugin update testing before live deployment.</li>
+          <li>Continuous monitoring by engineers who understand the WooCommerce threat landscape.</li>
+        </ul>
+        <p>Our team has recovered hundreds of compromised WooCommerce stores and currently protects stores processing millions in annual revenue. <Link href="/security" className="text-accent hover:underline font-medium">See how our security plans are structured for eCommerce →</Link></p>
+      </div>
+    ),
+  },
+  "wordpress-plugin-audit": {
+    tag: "Security", tagColor: "text-primary",
+    title: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do",
+    date: "April 19, 2026", read: "7 min",
+    img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">The average WordPress site runs 20–30 plugins. Each one is third-party code with full access to your database, your files, and your admin panel. A plugin audit is not a nice-to-have — it is how our security experts start every new client engagement, because what we find is almost always a surprise to the site owner.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a Plugin Audit Actually Involves</h2>
+        <p>This is not just checking if updates are available. A thorough plugin audit covers:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Installed vs. active inventory</strong> — deactivated plugins still run code that can be exploited. We catalogue everything installed, not just what's switched on.</li>
+          <li><strong>CVE and vulnerability database check</strong> — every plugin is checked against known vulnerability databases (WPScan, NVD) to identify whether any version of the installed plugin has a known exploit.</li>
+          <li><strong>Update status and support status</strong> — a plugin that hasn't been updated in 12 months may be abandoned. Abandoned plugins don't receive security patches.</li>
+          <li><strong>Plugin reputation and source</strong> — nulled (pirated) plugins are a direct injection vector. We've removed them from client sites more times than we can count.</li>
+          <li><strong>Permission scope review</strong> — some plugins request database and file access they don't need. Unnecessary permissions increase blast radius if a plugin is compromised.</li>
+        </ol>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Most Common Findings After 20+ Years of Audits</h2>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Deactivated plugins from years ago that contain exploitable vulnerabilities.</li>
+          <li>Plugins running versions 3–5 major releases behind the current stable.</li>
+          <li>Duplicate functionality plugins (three contact form plugins for a site that only uses one).</li>
+          <li>Page builder addons installed as trials and never removed.</li>
+          <li>At least one plugin that has since been removed from the WordPress.org repository (a red flag).</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">How to Run a Basic Audit Yourself</h2>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li>Go to Plugins → Installed Plugins. Sort by "Inactive." Delete everything inactive that you don't intend to reactivate immediately.</li>
+          <li>For each active plugin, check its last update date in the WordPress plugin repository. Flag anything not updated in the past 6 months.</li>
+          <li>Cross-reference active plugins against the WPScan vulnerability database for your specific version numbers.</li>
+          <li>Check for any plugins not sourced from wordpress.org or a reputable commercial vendor.</li>
+        </ol>
+        <h2 className="text-2xl font-bold text-foreground mt-8">When to Bring in Experts</h2>
+        <p>A manual self-audit catches obvious issues. It won't catch malware already embedded in plugin files, obfuscated code injected into legitimate plugins, or supply chain compromises. Our security team runs automated file integrity checks alongside manual review to find what basic audits miss.</p>
+        <p><Link href="/security" className="text-accent hover:underline font-medium">Book a professional security audit →</Link></p>
+      </div>
+    ),
+  },
+  "hosting-vs-managed-security": {
+    tag: "Buyer Intent", tagColor: "text-foreground",
+    title: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers",
+    date: "April 12, 2026", read: "6 min",
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Most hosting providers do an excellent job protecting their infrastructure. Servers, networks, and data centres are generally well-managed. The problem is that infrastructure security and application security are two completely different things — and the gap between them is where most WordPress hacks happen.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What Hosting Providers Actually Cover</h2>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Physical server security and data centre access controls.</li>
+          <li>DDoS protection at the network layer.</li>
+          <li>Operating system patches and server software updates.</li>
+          <li>Basic firewall rules at the server perimeter.</li>
+          <li>Server-level malware scanning (often reactive, not proactive).</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What Hosting Providers Don't Cover</h2>
+        <p>This is the gap. Hosting providers are not responsible for:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>The WordPress application and its plugins — these run in your account, under your control.</li>
+          <li>Malware injected through vulnerable plugins or themes.</li>
+          <li>Compromised admin credentials — that's an application-layer issue.</li>
+          <li>SQL injection or XSS attacks that exploit your code, not their servers.</li>
+          <li>Checkout skimmers on your WooCommerce store.</li>
+          <li>Blacklisting by Google Safe Browsing — that's your domain reputation, not their server.</li>
+        </ul>
+        <p>When your site gets hacked through a plugin vulnerability, your hosting provider didn't fail. Your application-layer security did.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What Managed WordPress Security Adds</h2>
+        <p>A managed security service operates at the application layer — where hosting providers stop:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Web application firewall (WAF)</strong> — rules tuned to WordPress and WooCommerce attack patterns, not just generic server traffic.</li>
+          <li><strong>Plugin vulnerability monitoring</strong> — tracking CVEs and patching before attackers exploit the window.</li>
+          <li><strong>File integrity monitoring</strong> — detecting changes to core files, themes, and plugins that indicate compromise.</li>
+          <li><strong>Malware scanning with expert review</strong> — automated scanning plus human judgment to identify what automated tools miss.</li>
+          <li><strong>Admin access monitoring</strong> — alerting on new admin accounts, failed logins, and suspicious activity.</li>
+          <li><strong>Incident response with application context</strong> — knowing your specific stack means faster recovery when something does go wrong.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Right Question to Ask</h2>
+        <p>Not "does my hosting provider have security?" but "who is responsible for the security of my WordPress application?" If the answer is unclear, that's your gap. Our team fills it — for businesses that can't afford to find out the hard way.</p>
+        <p><Link href="/security" className="text-accent hover:underline font-medium">See what managed WordPress security covers →</Link></p>
+      </div>
+    ),
+  },
+  "wordpress-security-audit-frequency": {
+    tag: "Buyer Intent", tagColor: "text-foreground",
+    title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
+    date: "April 5, 2026", read: "5 min",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">There is no universal audit frequency that suits every WordPress site. What there is, is a risk-based framework — and after two decades working with businesses at every scale, we've seen clearly what happens when the cadence doesn't match the risk profile.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Risk Factors That Should Drive Your Cadence</h2>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Revenue dependency</strong> — if the site directly generates leads, processes payments, or supports sales, the cost of a breach is immediate and measurable.</li>
+          <li><strong>Plugin complexity</strong> — more plugins means more attack surface. Sites with 30+ active plugins need more frequent review than a simple brochure site.</li>
+          <li><strong>Change frequency</strong> — sites that are updated frequently (new plugins, theme changes, content team with admin access) have more opportunities for risk to be introduced.</li>
+          <li><strong>Traffic and visibility</strong> — high-traffic sites and well-known brands are more actively targeted by automated scanners and targeted campaigns.</li>
+          <li><strong>Industry compliance requirements</strong> — some industries have specific security review obligations that determine minimum cadence.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">A Practical Cadence Framework</h2>
+        <p><strong>Monthly</strong> — appropriate for WooCommerce stores, lead-gen sites with active paid campaigns, and any site where downtime or malware directly impacts revenue. Covers plugin vulnerability checks, access review, malware scans, and configuration drift.</p>
+        <p><strong>Quarterly</strong> — suitable for B2B sites, agency client sites, and businesses with moderate but not immediate revenue dependency. Covers full plugin audit, admin account review, WAF rule review, and backup verification.</p>
+        <p><strong>After every major change</strong> — regardless of your standard cadence, any significant site change (new plugin, new team member with admin access, major theme update, hosting migration) should trigger a targeted security review.</p>
+        <p><strong>Immediately after any incident</strong> — a security warning, suspicious traffic spike, or unexplained file change is a signal, not just noise. These should trigger an immediate audit regardless of when the last one was.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a Retainer Solves</h2>
+        <p>For sites that warrant monthly audits, a one-off engagement approach is inefficient and expensive. A security retainer provides systematic, ongoing audit cadence with a team that already knows your site — meaning audits are faster, more accurate, and far more actionable than starting from scratch each time.</p>
+        <p><Link href="/retainer" className="text-accent hover:underline font-medium">See how our security retainer handles ongoing audits →</Link></p>
+      </div>
+    ),
+  },
+  "wordpress-downtime-cost": {
+    tag: "Buyer Intent", tagColor: "text-foreground",
+    title: "WordPress Downtime: What It Really Costs a Revenue-Driven Site — And How to Prevent It",
+    date: "March 21, 2026", read: "6 min",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">For most businesses, WordPress downtime feels like a technical problem. It isn't. It's a revenue problem — and the real cost is almost always higher than the hosting dashboard makes it look.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What "Downtime" Actually Means</h2>
+        <p>Total outages are visible. But downtime also includes:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Partial failure</strong> — checkout works but product images don't load. Customers abandon.</li>
+          <li><strong>Performance degradation</strong> — your site loads in 8 seconds instead of 2. Conversion drops significantly.</li>
+          <li><strong>Security warnings</strong> — Google or antivirus flags your site. Visitors leave immediately and don't return.</li>
+          <li><strong>Invisible infections</strong> — malware is redirecting traffic silently to competitor or spam pages for weeks before you notice.</li>
+        </ul>
+        <p>None of these show up as a clean "site down" alert. All of them cost revenue.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Revenue Math Most Businesses Ignore</h2>
+        <p>If your site generates £50,000/month in revenue, that's roughly £70/hour around the clock. One hour of downtime during a peak traffic window — a campaign launch, a product drop, a seasonal sale — isn't a £70 problem. It's a £70 floor. The actual cost includes:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Lost revenue from visitors who couldn't convert during the window.</li>
+          <li>Ad spend wasted sending paid traffic to a broken or infected site.</li>
+          <li>Customer trust damage — return visitors who saw an error or security warning.</li>
+          <li>SEO impact — Google downgrades sites with repeated crawl errors or security flags.</li>
+          <li>Internal cost — the hours your team spends managing the incident instead of their actual work.</li>
+        </ul>
+        <p>For WooCommerce stores and lead-gen businesses running active campaigns, the multiplier on a single downtime event can be 5x to 20x the surface-level revenue loss.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Most Common Causes of WordPress Downtime</h2>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Plugin update conflicts</strong> — a major plugin update breaks a theme or another plugin. Without staging, this hits live immediately.</li>
+          <li><strong>Malware and hack-driven outages</strong> — hosting providers suspend accounts when malware is detected. You find out when the site goes offline.</li>
+          <li><strong>Resource limits</strong> — a traffic spike or poorly optimised plugin overwhelms a shared hosting plan.</li>
+          <li><strong>Expired credentials</strong> — SSL certificates, domain renewals, and API keys that weren't renewed in time.</li>
+          <li><strong>Bad deployments</strong> — content changes or plugin installs that weren't tested and conflict with existing configuration.</li>
+        </ol>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Prevention vs Remediation: The Cost Comparison</h2>
+        <p>Emergency recovery costs £500–£2,000+. A security breach that leads to blacklisting can cost far more when lost traffic, SEO recovery time, and brand impact are included. A managed protection plan — proactive updates, hardening, monitoring, and backups — typically runs £200–£600/month.</p>
+        <p>The math is straightforward: you're not paying for maintenance. You're paying to avoid incidents that cost 10x the prevention.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What Proactive Protection Buys You</h2>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Plugin updates tested in staging before they touch the live site.</li>
+          <li>24/7 uptime monitoring with immediate alerts.</li>
+          <li>Daily offsite backups with verified restore capability.</li>
+          <li>Malware scanning that catches infections before they become visible.</li>
+          <li>A team that already has context on your site when something does go wrong.</li>
+        </ul>
+        <p>The goal is not zero risk. The goal is making sure incidents are caught early, contained fast, and resolved without turning into a revenue event.</p>
+        <p><Link href="/maintenance" className="text-accent hover:underline font-medium">See how our Business Protection plan works →</Link></p>
+      </div>
+    ),
+  },
+  "hire-wordpress-security-team": {
+    tag: "Buyer Intent", tagColor: "text-foreground",
+    title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit",
+    date: "March 21, 2026", read: "7 min",
+    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Hiring a WordPress security provider is not just a vendor decision. It's a trust decision. The team you choose will have full access to your site, your staging environment, and potentially your customer data. These seven questions will tell you more than any case study page.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">1. What does your incident response process look like?</h2>
+        <p>A good answer is specific: "We triage within X hours, assign a named engineer, document the scope, and give you a timeline before beginning work." A vague answer — "we'll get it sorted" — is a red flag. If a provider can't describe their process before an incident, they don't have one.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">2. How do you handle plugin updates — and what happens if something breaks?</h2>
+        <p>The right answer involves a staging environment. Updates should be tested against a copy of your site before being deployed to live. If they describe applying updates directly to production, your site is a test environment. Ask also: who owns rollback if a plugin update breaks checkout or a key form?</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">3. Who specifically will be working on my site?</h2>
+        <p>This matters for continuity. If the answer is "whoever is available," the person who responds to your incident has no prior context on your site. Retained security relationships should include a named engineer who understands your setup — not a rotating helpdesk.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">4. What does your backup and recovery capability actually look like?</h2>
+        <p>Backups are not a marketing claim. Ask: How often are backups taken? Where are they stored? How long is retention? And critically — when was a restore last tested? A backup that's never been restored is an untested assumption, not a safety net.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">5. How do you monitor for threats between updates?</h2>
+        <p>Security is not an event — it's a continuous posture. Good providers have automated malware scanning, file integrity monitoring, and blacklist monitoring running between manual visits. If monitoring only happens when you ask for it, you're not protected between check-ins.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">6. What is included in recovery if the site is compromised while under your care?</h2>
+        <p>This is the clause most buyers forget to ask about. Some providers treat emergency recovery as a separate billing event — even when the site was supposedly under their protection. Understand upfront whether incident response is covered inside the engagement or billed separately when things go wrong.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">7. Can you give me an example of a security issue you caught proactively — before the client knew?</h2>
+        <p>This question reveals whether a provider is reactive or truly proactive. A strong answer sounds like: "We detected anomalous admin logins via monitoring, blocked the attempt, and notified the client with a full summary." A weak answer is silence or a pivot to what they do after incidents.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What the Right Provider Looks Like</h2>
+        <p>You're not shopping for a plugin subscription. You're looking for a team that takes operational ownership of your site's risk posture — one that has answers to these questions before you ask, not after something goes wrong.</p>
+        <p><Link href="/contact" className="text-accent hover:underline font-medium">Book a security review to see how we approach it →</Link></p>
+      </div>
+    ),
+  },
   "wordpress-security-agency-vs-freelancer": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Security Agency vs Freelancer: Which Is Right for a Revenue-Critical Website?",
