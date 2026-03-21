@@ -68,7 +68,7 @@ const plans = [
 ];
 
 const addons = [
-  { name: "Hacked Site Recovery", price: "From $299", desc: "One-time emergency malware removal + blacklist removal. 30-day guarantee." },
+  { name: "Hacked Site Recovery", price: "Starting from $1,499", desc: "One-time emergency malware removal + blacklist removal. 30-day guarantee." },
   { name: "Security Audit (One-Time)", price: "$149", desc: "Deep scan of your WordPress site for vulnerabilities, malware, and misconfigurations." },
 ];
 
