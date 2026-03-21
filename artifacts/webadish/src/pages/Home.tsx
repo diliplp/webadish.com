@@ -210,7 +210,7 @@ export default function Home() {
                   { label: "Emergency malware cleanup", cost: "$500–$2,000+", icon: "🔴" },
                   { label: "Google blacklist removal & SEO recovery", cost: "Weeks to months", icon: "🔴" },
                   { label: "Lost revenue during downtime", cost: "Ongoing", icon: "🔴" },
-                  { label: "Managed security retainer (prevents all of the above)", cost: "$199–$999/mo", icon: "🟢" },
+                  { label: "Managed security retainer (prevents all of the above)", cost: "From £3,000/yr", icon: "🟢" },
                 ].map((row) => (
                   <div key={row.label} className="flex items-center justify-between bg-white/5 rounded-xl px-5 py-4 border border-white/10">
                     <div className="flex items-center gap-3 text-sm">
@@ -234,17 +234,17 @@ export default function Home() {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
               <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
                 <p className="text-base md:text-lg font-semibold leading-snug">
-                  We don't offer low-cost maintenance.<br />
+                  We don't offer low-value updates.<br />
                   We provide continuous protection for business-critical websites.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
-              {/* Basic Protection */}
+              {/* Security Protection */}
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-1">Basic Protection</h3>
-                <p className="text-sm text-muted-foreground mb-4">For low-risk websites requiring basic protection</p>
-                <div className="mb-6"><span className="text-4xl font-bold">$199</span><span className="text-muted-foreground">/mo</span></div>
+                <h3 className="text-xl font-semibold mb-1">Security Protection</h3>
+                <p className="text-sm text-muted-foreground mb-4">For business-critical websites requiring constant oversight.</p>
+                <div className="mb-6"><span className="text-4xl font-bold">From £3,000/yr</span></div>
                 <ul className="space-y-3 mb-8">
                   {["Core updates & monitoring", "Backup systems", "Baseline security"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
@@ -256,9 +256,9 @@ export default function Home() {
               {/* Recommended */}
               <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform lg:scale-105 z-10 reveal-section">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">⭐ Recommended</div>
-                <h3 className="text-xl font-semibold mb-1">Business Protection</h3>
-                <p className="text-sm text-muted-foreground mb-4">For growing businesses and revenue-generating sites</p>
-                <div className="mb-6"><span className="text-5xl font-bold">$399–$599</span><span className="text-muted-foreground">/mo</span></div>
+                <h3 className="text-xl font-semibold mb-1">Incident Response</h3>
+                <p className="text-sm text-muted-foreground mb-4">Emergency resolution for breached or compromised high-value assets.</p>
+                <div className="mb-6"><span className="text-5xl font-bold">From £5,000</span></div>
                 <ul className="space-y-3 mb-8">
                   {["Advanced monitoring", "Performance optimization", "Priority support", "Enhanced security"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm font-medium"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
@@ -267,11 +267,11 @@ export default function Home() {
                 <Button variant="accent" className="w-full h-12 text-base" onClick={() => window.location.href='/contact'}>Get Started Now</Button>
               </div>
 
-              {/* Full Protection */}
+              {/* Business Continuity */}
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-1">Full Protection</h3>
-                <p className="text-sm text-muted-foreground mb-4">Continuous protection for high-value websites</p>
-                <div className="mb-6"><span className="text-4xl font-bold">$999+</span><span className="text-muted-foreground">/mo</span></div>
+                <h3 className="text-xl font-semibold mb-1">Business Continuity</h3>
+                <p className="text-sm text-muted-foreground mb-4">For enterprise environments demanding maximum resilience.</p>
+                <div className="mb-6"><span className="text-4xl font-bold">Custom Pricing</span></div>
                 <ul className="space-y-3 mb-8">
                   {["Dedicated security oversight", "Threat monitoring", "Monthly security audits", "Priority incident response"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
@@ -348,7 +348,7 @@ export default function Home() {
             <div className="max-w-2xl mx-auto reveal-section">
               <div className="bg-white rounded-xl border border-border/50 p-5 flex items-start gap-3">
                 <AlertTriangle size={18} className="text-amber-500 shrink-0 mt-0.5" />
-                <p className="text-sm text-muted-foreground"><strong className="text-foreground">Not suitable for low-budget or non-critical websites.</strong> Our plans are built for businesses where security and uptime have real operational consequences. If you need basic hosting support, we're not the right fit.</p>
+                <p className="text-sm text-muted-foreground"><strong className="text-foreground">Not suitable for low-budget or hobby sites.</strong> Our plans are built for businesses where security and uptime have real operational consequences. If you need basic hosting support, we're not the right fit.</p>
               </div>
             </div>
           </div>

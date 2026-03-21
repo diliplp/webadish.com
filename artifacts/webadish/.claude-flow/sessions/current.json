@@ -2,11 +2,19 @@
   "id": "session-1774064082332",
   "startedAt": "2026-03-21T03:34:42.332Z",
   "cwd": "/Users/dilipparmar/projects2/webadish-bright/artifacts/webadish",
-  "context": {},
+  "context": {
+    "lastMatchedPatterns": [
+      "mem-MEMORY-key-developer-extension-point",
+      "mem-MEMORY-project",
+      "mem-MEMORY-env-vars-required",
+      "mem-MEMORY-key-patterns"
+    ]
+  },
   "metrics": {
-    "edits": 10,
+    "edits": 19,
     "commands": 0,
     "tasks": 0,
     "errors": 0
-  }
+  },
+  "updatedAt": "2026-03-21T04:58:57.969Z"
 }

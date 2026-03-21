@@ -27,8 +27,8 @@
     "mem-MEMORY-file-structure": {
       "id": "mem-MEMORY-file-structure",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-setup-steps--for-user-": {
@@ -90,8 +90,8 @@
     "mem-MEMORY-admin-pages": {
       "id": "mem-MEMORY-admin-pages",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-client-info": {

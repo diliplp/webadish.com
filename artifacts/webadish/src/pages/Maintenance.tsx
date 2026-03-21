@@ -9,24 +9,24 @@ const features = [
   { icon: <BarChart3 size={24} className="text-accent" />, title: "24/7 Uptime Monitoring", desc: "Continuous monitoring of uptime, performance, and response times. We're alerted to issues before they affect your customers." },
   { icon: <HeadphonesIcon size={24} className="text-accent" />, title: "Priority Response", desc: "Your WordPress engineers are available with guaranteed response times. No queues, no waiting." },
   { icon: <Clock size={24} className="text-accent" />, title: "Monthly Performance Reporting", desc: "Detailed reporting on uptime, security status, performance metrics, and recommendations for reducing risk." },
-  { icon: <Wrench size={24} className="text-accent" />, title: "Small Fixes Included", desc: "Each plan includes a monthly allowance for small fixes — content edits, layout tweaks, link repairs — at no additional cost." },
+  { icon: <Wrench size={24} className="text-accent" />, title: "infrastructure changes Included", desc: "Each plan includes a monthly allowance for infrastructure changes — content edits, layout tweaks, link repairs — at no additional cost." },
 ];
 
 const plans = [
   {
-    name: "Essential Care",
-    price: "$199",
-    desc: "Core maintenance for sites and small businesses that need reliability.",
-    features: ["WordPress core & plugin updates", "Daily cloud backups (30-day retention)", "24/7 uptime monitoring", "Monthly performance reports", "1hr/mo small fixes included"],
-    cta: "Get Started",
+    name: "Security Protection",
+    price: "From £3,000/yr",
+    desc: "For business-critical websites requiring constant oversight.",
+    features: ["Proactive Security Posture Management", "Real-time threat monitoring", "Business Continuity Backups", "Infrastructure-level hardening", "Priority Incident Response SLA"],
+    cta: "Request Assessment",
     highlight: false,
   },
   {
-    name: "Business Protection",
-    price: "$399–$599",
-    desc: "For eCommerce, membership sites, and businesses where uptime directly affects revenue.",
-    features: ["Everything in Essential Care", "Real-time malware scanning", "Enterprise firewall setup", "Security hardening & monthly audits", "3hrs/mo small fixes included", "Speed optimization"],
-    cta: "Get Started",
+    name: "Business Continuity Retainer",
+    price: "Custom",
+    desc: "For enterprise environments demanding maximum resilience.",
+    features: ["Everything in Security Protection", "Dedicated security engineer", "Custom Service Level Agreement", "Direct communication channels", "Monthly audit & strategy"],
+    cta: "Contact Sales",
     highlight: true,
   },
 ];
@@ -35,7 +35,7 @@ const faqs = [
   { q: "How do you handle plugin updates safely?", a: "We test all updates in a staging copy of your site first. Only after verifying no conflicts do we push to live. This means zero surprise breakages." },
   { q: "What if my site breaks after an update?", a: "We restore from the backup we took immediately before the update — your site is back in minutes. This has never been a problem our clients had to worry about." },
   { q: "Do I need to give you admin access?", a: "Yes, we'll need WordPress admin and (if applicable) hosting panel access. All credentials are stored in encrypted vaults." },
-  { q: "Can I cancel anytime?", a: "Yes — our maintenance plans are month-to-month with no lock-in contracts. Cancel with 30 days' notice." },
+  { q: "Can I cancel anytime?", a: "Yes — our protection retainers are month-to-month with no lock-in contracts. Cancel with 30 days' notice." },
 ];
 
 export default function Maintenance() {

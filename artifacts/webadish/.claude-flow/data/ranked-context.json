@@ -7,9 +7,9 @@
       "content": "`admin.php?page=ai-lead-intelligence` (dashboard), `ali-leads` (list + detail), `ali-settings`",
       "summary": "Admin Pages",
       "category": "core",
-      "confidence": 0.5,
+      "confidence": 0.53,
       "pageRank": 0.08397314206506222,
-      "accessCount": 0,
+      "accessCount": 1,
       "words": [
         "admin",
         "php",
@@ -232,9 +232,9 @@
       "content": "```\napp/\n  page.tsx                    — Landing page\n  (auth)/login/page.tsx       — Login\n  (auth)/signup/page.tsx      — Signup with role selector (buyer/seller)\n  listings/page.tsx           — Public browse with filters\n  listings/[id]/page.tsx      — Listing detail + WhatsApp CTA + inquiry\n  seller/listings/page.tsx    — Seller dashboard\n  seller/listings/new/page.tsx\n  seller/listings/[id]/edit/page.tsx\n  admin/page.tsx              — Admin stats + users/listings tables\n  api/auth/profile/",
       "summary": "File Structure",
       "category": "core",
-      "confidence": 0.5,
+      "confidence": 0.53,
       "pageRank": 0.059077420969211585,
-      "accessCount": 0,
+      "accessCount": 1,
       "words": [
         "app",
         "page",
