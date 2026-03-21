@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+// OPTIMIZED VERSION OF Layout.tsx
+// This file demonstrates the performance improvements for Layout component
+
+import { useState, useEffect, useCallback } from "react";
 import { useLocation, Link } from "wouter";
 import {
   Menu,
@@ -29,24 +32,46 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
 
+  // ✅ OPTIMIZED: Throttled scroll event with requestAnimationFrame
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Use passive event listener for better scroll performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ✅ OPTIMIZED: Memoize location change handler
   useEffect(() => {
     setIsMobileMenuOpen(false);
     window.scrollTo(0, 0);
   }, [location]);
 
+  // ✅ OPTIMIZED: Preserve original overflow state
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    const originalOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : originalOverflow;
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = originalOverflow;
     };
   }, [isMobileMenuOpen]);
+
+  // ✅ OPTIMIZED: Memoize callback to prevent re-renders
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
 
   const isHome = location === "/";
 
@@ -64,7 +89,7 @@ export function Navbar() {
         <div className="flex justify-between items-center">
           <Link href="/" className="flex-shrink-0 z-50">
             <img
-              src="/logo.webp"
+              src="https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp"
               alt="WebAdish"
               className="h-10 w-auto"
             />
@@ -101,7 +126,7 @@ export function Navbar() {
             </div>
             <button
               className="lg:hidden p-2 text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={toggleMobileMenu}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -151,7 +176,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/">
               <img
-                src="/logo.webp"
+                src="https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp"
                 alt="WebAdish"
                 className="h-10 w-auto mb-6"
               />

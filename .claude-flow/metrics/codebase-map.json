@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-20T19:41:26.537Z",
+  "timestamp": "2026-03-20T21:10:29.176Z",
   "projectRoot": "/Users/dilipparmar/projects2/webadish-bright",
   "structure": {
-    "hasPackageJson": false,
+    "hasPackageJson": true,
     "hasTsConfig": false,
     "hasClaudeConfig": true,
     "hasClaudeFlow": true
   },
-  "scannedAt": 1774035686537
+  "scannedAt": 1774041029176
 }
