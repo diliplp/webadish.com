@@ -50,11 +50,11 @@ const whyRetainer = [
 
 const retainerTiers = [
   {
-    name: "Business Continuity Retainer",
-    price: "Custom Prices",
-    desc: "For businesses and agencies that need dedicated security oversight, faster incident response, and fewer WordPress surprises.",
+    name: "Security Retainer",
+    price: "$999",
+    desc: "For businesses and agencies that need dedicated security oversight, faster incident response, and recovery coverage inside the engagement.",
     features: [
-      "Everything in Incident Response",
+      "Everything in Business Protection",
       "Dedicated security engineer",
       "Monthly security audit",
       "Emergency recovery included",
@@ -65,17 +65,17 @@ const retainerTiers = [
     cta: "Start Retainer",
   },
   {
-    name: "Enterprise Retainer",
-    price: "$2,000+",
-    desc: "For enterprise teams, multi-site operations, and high-visibility brands with stricter operational requirements.",
+    name: "Agency Portfolio",
+    price: "$150-$200",
+    desc: "Per-site pricing for agencies with 10+ WordPress sites that need white-label reporting and a dependable security partner.",
     features: [
-      "Everything in Business Continuity Retainer",
-      "Multi-site coverage with volume discounts",
-      "1h emergency response SLA",
-      "Weekly security reviews",
-      "Code audit and pen-test coordination",
-      "Custom security policies",
-      "Dedicated Slack or email channel",
+      "10+ site pricing",
+      "White-label security reports",
+      "Bulk monitoring and review cadence",
+      "Shared escalation channel",
+      "Emergency recovery options",
+      "Co-branded case study support",
+      "Agency delivery alignment",
     ],
     cta: "Contact Sales",
   },
@@ -168,11 +168,11 @@ export default function Retainer() {
               { value: "Included", label: "Incident response coverage" },
             ].map((item) => (
               <div key={item.label}>
-                <div className="text-4xl font-bold text-accent mb-2">{item.value}</div>
-                <div className="text-sm text-white/70">{item.label}</div>
-              </div>
-            ))}
-          </div>
+              <div className="text-4xl font-bold text-accent mb-2">{item.value}</div>
+              <div className="text-sm text-white/70">{item.label}</div>
+            </div>
+          ))}
+        </div>
         </div>
       </section>
 
@@ -198,7 +198,7 @@ export default function Retainer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Retainer Plans</h2>
-            <p className="text-lg text-muted-foreground">Custom SLAs available. Enterprise pricing on request.</p>
+          <p className="text-lg text-muted-foreground">Global retainer pricing for dedicated oversight, plus agency portfolio pricing for white-label partners.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {retainerTiers.map((t, idx) => (
@@ -246,7 +246,7 @@ export default function Retainer() {
 
       <section className="py-20 cta-gradient text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Need More Than a Basic Maintenance Plan?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Need More Than a Basic Protection Plan?</h2>
           <p className="text-lg text-white/90 mb-8">
             If your team needs accountability, faster response, and a stronger security operating rhythm, the retainer is where we usually start.
           </p>

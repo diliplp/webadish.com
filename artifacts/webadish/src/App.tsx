@@ -8,6 +8,9 @@ import Security from "@/pages/Security";
 import HackedSiteRecovery from "@/pages/HackedSiteRecovery";
 import Retainer from "@/pages/Retainer";
 import Pricing from "@/pages/Pricing";
+import India from "@/pages/India";
+import SecurityScore from "@/pages/SecurityScore";
+import AgencyPartners from "@/pages/AgencyPartners";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import CaseStudies from "@/pages/CaseStudies";
@@ -37,6 +40,9 @@ function AppRoutes() {
       <Route path="/hacked-site-recovery" component={HackedSiteRecovery} />
       <Route path="/retainer" component={Retainer} />
       <Route path="/pricing" component={Pricing} />
+      <Route path="/india" component={India} />
+      <Route path="/security-score" component={SecurityScore} />
+      <Route path="/agency-partners" component={AgencyPartners} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/case-studies" component={CaseStudies} />

@@ -5,10 +5,12 @@ import Layout from "@/components/Layout";
 import { useState } from "react";
 
 const services = [
-  "WordPress Maintenance Plan",
+  "Protection Plan",
   "WordPress Security",
   "Hacked Site Recovery (Emergency)",
-  "Business Continuity Retainer",
+  "Security Retainer",
+  "Free Security Score",
+  "Agency White-Label Program",
   "Web Design",
   "General Enquiry",
 ];
@@ -154,8 +156,9 @@ export default function Contact() {
                 <h2 className="text-3xl font-bold mb-8">Contact Information</h2>
                 <div className="space-y-5">
                   {[
-                    { icon: <Phone size={20} className="text-accent" />, label: "Emergency / General", value: "+91 999 875 7045", href: "tel:+919998757045" },
+                    { icon: <Phone size={20} className="text-accent" />, label: "Emergency / General", value: "+44 7344 540450", href: "tel:+447344540450" },
                     { icon: <Mail size={20} className="text-accent" />, label: "Email", value: "hello@webadish.com", href: "mailto:hello@webadish.com" },
+                    { icon: <Phone size={20} className="text-accent" />, label: "WhatsApp", value: "+91 999 875 7045", href: "https://wa.me/919998757045" },
                     { icon: <Clock size={20} className="text-accent" />, label: "Emergency Support", value: "24/7 for hacked site recovery" },
                     { icon: <Clock size={20} className="text-accent" />, label: "General Support", value: "Mon–Fri, 9am–6pm IST" },
                     { icon: <MapPin size={20} className="text-accent" />, label: "Registered Office", value: "India (DPIIT Recognized Startup) — Serving clients globally" },
@@ -180,8 +183,9 @@ export default function Contact() {
                 <div className="space-y-3">
                   {[
                     { label: "My site was hacked →", href: "/hacked-site-recovery", color: "text-primary" },
-                    { label: "I need a maintenance plan →", href: "/maintenance", color: "text-accent" },
+                    { label: "I need a protection plan →", href: "/maintenance", color: "text-accent" },
                     { label: "Set up WordPress security →", href: "/security", color: "text-accent" },
+                    { label: "Get a free security score →", href: "/security-score", color: "text-accent" },
                     { label: "View pricing →", href: "/pricing", color: "text-link" },
                   ].map(l => (
                     <Link key={l.label} href={l.href} className={`block text-sm font-medium hover:underline ${l.color}`}>{l.label}</Link>

@@ -92,7 +92,7 @@ export default function HackedSiteRecovery() {
                 </div>
                 <div className="bg-white rounded-xl p-5 border border-border/50">
                   <div className="text-sm font-medium text-muted-foreground mb-1">Emergency Phone</div>
-                  <a href="tel:+919998757045" className="text-accent font-semibold hover:underline">+91 999 875 7045</a>
+                  <a href="tel:+447344540450" className="text-accent font-semibold hover:underline">+44 7344 540450</a>
                 </div>
               </div>
               <Button variant="primary" className="w-full" size="lg" onClick={() => window.location.href='/contact'}>

@@ -6,33 +6,33 @@ import { useState } from "react";
 
 const plans = [
   {
-    name: "Security Protection",
-    monthly: "From $3,000/yr",
-    annual: "From $3,000/yr",
-    desc: "For low-risk websites requiring basic protection.",
+    name: "Essential Care",
+    monthly: "$199/mo",
+    annual: "$1,999/yr",
+    desc: "For business sites that need safe updates, backups, uptime monitoring, and baseline hardening.",
     color: "border-border/50",
     features: [
       { label: "WordPress & plugin updates", included: true },
       { label: "Daily cloud backups (30-day retention)", included: true },
       { label: "24/7 uptime monitoring", included: true },
-      { label: "Monthly performance report", included: true },
+      { label: "Monthly protection report", included: true },
+      { label: "Security hardening baseline", included: true },
       { label: "Priority technical support", included: true },
-      { label: "Security hardening", included: false },
-      { label: "Malware scanning", included: false },
+      { label: "Real-time malware scanning", included: false },
       { label: "Emergency recovery", included: false },
       { label: "Priority support queue", included: false },
       { label: "Dedicated engineer", included: false },
     ],
   },
   {
-    name: "Incident Response",
-    monthly: "From $5,000",
-    annual: "From $5,000",
-    desc: "Recommended for revenue-generating websites.",
+    name: "Business Protection",
+    monthly: "$499/mo",
+    annual: "$4,999/yr",
+    desc: "Recommended for revenue-generating websites that need deeper protection and faster response.",
     color: "border-accent",
     highlight: true,
     features: [
-      { label: "Everything in Security Protection", included: true },
+      { label: "Everything in Essential Care", included: true },
       { label: "Security hardening", included: true },
       { label: "Real-time malware scanning", included: true },
       { label: "Priority support queue", included: true },
@@ -45,13 +45,13 @@ const plans = [
     ],
   },
   {
-    name: "Business Continuity Retainer",
-    monthly: "Custom Prices",
-    annual: "From $10,000/yr",
-    desc: "For high-value websites requiring continuous security oversight.",
+    name: "Security Retainer",
+    monthly: "$999/mo",
+    annual: "$9,999/yr",
+    desc: "For teams that want a dedicated security partner, emergency recovery coverage, and white-label support.",
     color: "border-border/50",
     features: [
-      { label: "Everything in Incident Response", included: true },
+      { label: "Everything in Business Protection", included: true },
       { label: "Dedicated security engineer", included: true },
       { label: "Monthly security audit", included: true },
       { label: "Emergency recovery included", included: true },
@@ -66,8 +66,8 @@ const plans = [
 ];
 
 const addons = [
-  { name: "Hacked Site Recovery", price: "Starting from $2,500", desc: "One-time emergency malware removal + blacklist removal. 30-day guarantee." },
-  { name: "Security Audit (Initial Assessment)", price: "Starting from $3,500", desc: "Includes high-level review of your WordPress site's security posture. Deep forensic audits are part of incident response engagements." },
+  { name: "Hacked Site Recovery", price: "From $1,499", desc: "One-time malware removal, blacklist cleanup, hardening, and a 30-day reinfection guarantee." },
+  { name: "Security Audit", price: "From $499", desc: "High-level security posture review with a clear list of prioritised fixes and upgrade recommendations." },
 ];
 
 const faqs = [
@@ -91,7 +91,7 @@ export default function Pricing() {
             WordPress Protection Plans for<br className="hidden md:block" /> <span className="text-accent">Business-Critical Websites</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-10">
-            Continuous security, monitoring, and expert support — built to prevent costly incidents.
+            USD pricing for global clients who need continuous protection, expert support, and a clear path from prevention to incident response.
           </p>
           <p className="text-sm text-muted-foreground/70 mb-3">Billing preference</p>
           <div className="inline-flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-sm border border-border/50 text-sm">
@@ -152,7 +152,13 @@ export default function Pricing() {
           </div>
           <div className="mt-10 max-w-2xl mx-auto text-center">
             <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">
-              <strong className="text-foreground">⚠️ Note:</strong> Critical incidents are handled separately by our dedicated incident response team.{" "}
+              <strong className="text-foreground">⚠️ Note:</strong> Indian pricing is intentionally separate so global prospects see USD-led protection plans.{" "}
+              <Link href="/india" className="text-accent hover:underline font-medium">View India pricing →</Link>
+            </p>
+          </div>
+          <div className="mt-4 max-w-2xl mx-auto text-center">
+            <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">
+              <strong className="text-foreground">Emergency work:</strong> Critical incidents are handled separately by our dedicated incident response team.{" "}
               <a href="/hacked-site-recovery" className="text-accent hover:underline font-medium">Learn about emergency response →</a>
             </p>
           </div>
@@ -178,6 +184,22 @@ export default function Pricing() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 border border-border/50">
+              <h3 className="text-xl font-bold mb-3">Free Security Score</h3>
+              <p className="text-sm text-muted-foreground mb-6">Give prospects a low-friction entry point with an instant WordPress risk snapshot and clear next steps.</p>
+              <Link href="/security-score">
+                <Button variant="outline" className="w-full">Run Free Security Score</Button>
+              </Link>
+            </div>
+            <div className="bg-white rounded-2xl p-8 border border-border/50">
+              <h3 className="text-xl font-bold mb-3">Agency White-Label</h3>
+              <p className="text-sm text-muted-foreground mb-6">For agencies managing multiple WordPress sites and needing security delivery under their own brand.</p>
+              <Link href="/agency-partners">
+                <Button variant="outline" className="w-full">Explore Agency Program</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

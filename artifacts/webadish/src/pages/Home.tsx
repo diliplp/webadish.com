@@ -54,21 +54,21 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium text-sm mb-8 border border-accent/20">
               <Shield size={16} className="text-accent" />
-              <span>Proactive WordPress Security & Maintenance — 20+ Years Experience</span>
+              <span>WordPress Security, Protection Plans, and Incident Response — 20+ Years Experience</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-tight mb-6 perspective-[1000px]">
               <span className="inline-block hero-title-word origin-bottom">WordPress</span>{" "}
               <span className="inline-block hero-title-word origin-bottom">Security</span>{" "}
               <span className="inline-block hero-title-word origin-bottom">&</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">Maintenance</span>
+              <span className="inline-block hero-title-word origin-bottom">Protection</span>
               <br />
               <span className="inline-block hero-title-word origin-bottom text-accent">for Business-Critical</span>{" "}
               <span className="inline-block hero-title-word origin-bottom text-accent">Websites</span>
             </h1>
 
             <p className="hero-subtitle text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
-              Prevent incidents, protect revenue, and ensure continuous uptime with expert-led security and maintenance.
+              Prevent incidents, protect revenue, and keep WordPress business-critical with expert-led security, protection plans, and emergency response.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -242,11 +242,11 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
               {/* Security Protection */}
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-1">Security Protection</h3>
-                <p className="text-sm text-muted-foreground mb-4">For business-critical websites requiring constant oversight.</p>
-                <div className="mb-6"><span className="text-4xl font-bold">From $3,000/yr</span></div>
+                <h3 className="text-xl font-semibold mb-1">Essential Care</h3>
+                <p className="text-sm text-muted-foreground mb-4">For growing business websites that need reliable updates and baseline protection.</p>
+                <div className="mb-6"><span className="text-4xl font-bold">$199/mo</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Proactive Security Posture Management", "Real-time threat monitoring", "Business Continuity Backups (30-day)", "Infrastructure-level hardening", "Priority Incident Response SLA"].map(f => (
+                  {["Core and plugin updates", "Daily backups (30-day)", "Uptime monitoring", "Monthly protection report", "Security hardening baseline"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -256,11 +256,11 @@ export default function Home() {
               {/* Recommended */}
               <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform lg:scale-105 z-10 reveal-section">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">⭐ Recommended</div>
-                <h3 className="text-xl font-semibold mb-1">Incident Response</h3>
-                <p className="text-sm text-muted-foreground mb-4">Emergency resolution for breached or compromised high-value assets.</p>
-                <div className="mb-6"><span className="text-5xl font-bold">From $5,000</span></div>
+                <h3 className="text-xl font-semibold mb-1">Business Protection</h3>
+                <p className="text-sm text-muted-foreground mb-4">For revenue-generating websites that need stronger monitoring and faster response.</p>
+                <div className="mb-6"><span className="text-5xl font-bold">$499/mo</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Immediate breach containment", "Forensic malware removal", "Blacklist resolution", "Vulnerability patching", "System Recovery"].map(f => (
+                  {["Everything in Essential Care", "Real-time malware scanning", "Priority queue", "Security-focused changes", "24h response SLA"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm font-medium"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -269,11 +269,11 @@ export default function Home() {
 
               {/* Business Continuity */}
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-1">Business Continuity</h3>
-                <p className="text-sm text-muted-foreground mb-4">For enterprise environments demanding maximum resilience.</p>
-                <div className="mb-6"><span className="text-4xl font-bold">Custom Pricing</span></div>
+                <h3 className="text-xl font-semibold mb-1">Security Retainer</h3>
+                <p className="text-sm text-muted-foreground mb-4">For teams that need a named security partner and emergency recovery coverage.</p>
+                <div className="mb-6"><span className="text-4xl font-bold">$999/mo</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Everything in Security Protection", "Dedicated security engineer", "Custom Service Level Agreement", "Direct communication channels", "Monthly audit & strategy"].map(f => (
+                  {["Everything in Business Protection", "Dedicated security engineer", "Monthly audit", "Emergency recovery included", "Quarterly strategy call"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>

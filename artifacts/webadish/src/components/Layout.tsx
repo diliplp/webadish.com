@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const navLinks = [
-  { label: "Maintenance", href: "/maintenance" },
+  { label: "Protection Plans", href: "/maintenance" },
   { label: "Security", href: "/security" },
   { label: "Hacked Site Recovery", href: "/hacked-site-recovery", highlight: true },
   { label: "Retainer", href: "/retainer" },
@@ -157,14 +157,22 @@ export function Footer() {
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              WebAdish is a globally trusted WordPress security agency with 20+ years in business. Our dedicated team of security experts and WordPress developers protects, maintains, and recovers sites for agencies, eCommerce stores, and high-growth businesses.
+              WebAdish is a global WordPress security and protection agency for business-critical websites. We help eCommerce teams, agencies, and growth-stage businesses reduce the cost of downtime, malware, and recurring WordPress risk.
             </p>
             <div className="flex flex-col gap-2 mb-6 text-sm text-muted-foreground">
-              <a href="tel:+919998757045" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Phone size={14} /> +91 999 875 7045
+              <a href="tel:+447344540450" className="flex items-center gap-2 hover:text-accent transition-colors">
+                <Phone size={14} /> +44 7344 540450
               </a>
               <a href="mailto:hello@webadish.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail size={14} /> hello@webadish.com
+              </a>
+              <a
+                href="https://wa.me/919998757045"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                WhatsApp support available on request
               </a>
             </div>
             <div className="flex gap-4">
@@ -178,10 +186,11 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-foreground mb-6 uppercase tracking-wider text-sm">Services</h4>
             <ul className="space-y-3">
-              <li><Link href="/maintenance" className="text-muted-foreground hover:text-accent text-sm transition-colors">WordPress Maintenance</Link></li>
+              <li><Link href="/maintenance" className="text-muted-foreground hover:text-accent text-sm transition-colors">Protection Plans</Link></li>
               <li><Link href="/security" className="text-muted-foreground hover:text-accent text-sm transition-colors">WordPress Security</Link></li>
               <li><Link href="/hacked-site-recovery" className="text-muted-foreground hover:text-primary text-sm transition-colors font-medium">Hacked Site Recovery</Link></li>
-              <li><Link href="/retainer" className="text-muted-foreground hover:text-accent text-sm transition-colors">Business Continuity Retainer</Link></li>
+              <li><Link href="/retainer" className="text-muted-foreground hover:text-accent text-sm transition-colors">Security Retainer</Link></li>
+              <li><Link href="/agency-partners" className="text-muted-foreground hover:text-accent text-sm transition-colors">Agency Partners</Link></li>
               <li><Link href="/web-design" className="text-muted-foreground hover:text-accent text-sm transition-colors">Web Design</Link></li>
             </ul>
           </div>
@@ -192,6 +201,8 @@ export function Footer() {
               <li><Link href="/case-studies" className="text-muted-foreground hover:text-accent text-sm transition-colors">Case Studies</Link></li>
               <li><Link href="/blog" className="text-muted-foreground hover:text-accent text-sm transition-colors">Blog</Link></li>
               <li><Link href="/pricing" className="text-muted-foreground hover:text-accent text-sm transition-colors">Pricing</Link></li>
+              <li><Link href="/security-score" className="text-muted-foreground hover:text-accent text-sm transition-colors">Free Security Score</Link></li>
+              <li><Link href="/india" className="text-muted-foreground hover:text-accent text-sm transition-colors">India Pricing</Link></li>
               <li><Link href="/contact" className="text-muted-foreground hover:text-accent text-sm transition-colors">Contact Us</Link></li>
             </ul>
           </div>
@@ -208,6 +219,14 @@ export function Footer() {
                 <Shield size={14} className="text-accent" />
                 DPIIT Recognized Startup
               </div>
+              <a
+                href="https://www.webadish.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 block text-xs text-muted-foreground hover:text-accent transition-colors"
+              >
+                UK/EU emergency response is handled via webadish.co.uk
+              </a>
             </div>
           </div>
         </div>

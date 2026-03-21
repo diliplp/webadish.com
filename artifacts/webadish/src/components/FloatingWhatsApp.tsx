@@ -13,7 +13,7 @@ export default function FloatingWhatsApp() {
         <MessageCircle size={24} className="md:w-7 md:h-7 text-white" />
       </div>
       <div className="absolute bottom-16 right-0 bg-gray-900 text-white text-sm font-medium px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
-        Chat with us on WhatsApp
+        WhatsApp support
         <div className="absolute top-full right-2 w-2 h-2 bg-gray-900 transform rotate-45" />
       </div>
     </a>

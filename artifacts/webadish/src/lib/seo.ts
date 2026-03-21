@@ -2,7 +2,7 @@ export const SITE_URL = "https://webadish.com";
 export const SITE_NAME = "WebAdish";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 export const DEFAULT_DESCRIPTION =
-  "WebAdish helps growth-focused businesses protect, maintain, and recover WordPress websites with security monitoring, proactive maintenance, and emergency incident response.";
+  "WebAdish helps growth-focused businesses protect and recover WordPress websites with protection plans, security retainers, audits, and emergency incident response.";
 export const PRERENDER_ROUTES = [
   "/",
   "/maintenance",
@@ -10,6 +10,9 @@ export const PRERENDER_ROUTES = [
   "/hacked-site-recovery",
   "/retainer",
   "/pricing",
+  "/india",
+  "/security-score",
+  "/agency-partners",
   "/blog",
   "/blog/wordpress-security-agency-vs-freelancer",
   "/blog/hacked-wordpress-site-recovery-cost",
@@ -47,7 +50,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: "https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp",
   email: "hello@webadish.com",
-  telephone: "+91 999 875 7045",
+  telephone: "+44 7344 540450",
   sameAs: [
     "https://www.linkedin.com/company/webadish",
     "https://www.facebook.com/webadish",
@@ -59,7 +62,7 @@ const organizationSchema = {
       "@type": "ContactPoint",
       contactType: "sales",
       email: "hello@webadish.com",
-      telephone: "+91 999 875 7045",
+      telephone: "+44 7344 540450",
       areaServed: "Worldwide",
       availableLanguage: ["English"],
     },
@@ -126,7 +129,7 @@ const maintenanceFaqs = [
   {
     question: "Can I cancel anytime?",
     answer:
-      "Maintenance plans are month-to-month with no long lock-in contract, subject to the notice terms on the website.",
+      "Protection plans are month-to-month with no long lock-in contract, subject to the notice terms on the website.",
   },
 ];
 
@@ -159,14 +162,14 @@ const breadcrumbs = (name: string, path: string) => [
 
 const pageSeo: Record<string, SeoData> = {
   "/": {
-    title: "WordPress Security & Maintenance Agency",
+    title: "WordPress Security & Protection Agency",
     description:
-      "WebAdish provides WordPress security, maintenance, hacked site recovery, and retainers for businesses that cannot afford downtime, breaches, or slow support.",
+      "WebAdish provides WordPress security, protection plans, hacked site recovery, and retainers for businesses that cannot afford downtime, breaches, or slow support.",
     path: "/",
     type: "website",
     keywords: [
       "wordpress security agency",
-      "wordpress maintenance service",
+      "wordpress protection plans",
       "hacked wordpress site recovery",
       "wordpress support retainer",
     ],
@@ -174,30 +177,30 @@ const pageSeo: Record<string, SeoData> = {
       organizationSchema,
       websiteSchema,
       serviceSchema(
-        "WordPress Security and Maintenance Services",
-        "Managed WordPress security, maintenance, hacked site recovery, and proactive support for business websites.",
+        "WordPress Security and Protection Services",
+        "Managed WordPress security, protection plans, hacked site recovery, and proactive support for business websites.",
         "/",
-        "WordPress security and maintenance",
+        "WordPress security and protection",
       ),
     ],
   },
   "/maintenance": {
-    title: "WordPress Maintenance Services",
+    title: "WordPress Protection Plans",
     description:
-      "Managed WordPress maintenance with safe updates, daily backups, uptime monitoring, reporting, and support for businesses that need a reliable website partner.",
+      "Managed WordPress protection plans with safe updates, daily backups, uptime monitoring, reporting, and support for businesses that need a reliable website partner.",
     path: "/maintenance",
     keywords: [
-      "wordpress maintenance service",
+      "wordpress protection plan",
       "wordpress maintenance agency",
       "wordpress support plan",
     ],
-    breadcrumbs: breadcrumbs("Maintenance", "/maintenance"),
+    breadcrumbs: breadcrumbs("Protection Plans", "/maintenance"),
     schema: [
       serviceSchema(
-        "WordPress Maintenance Services",
-        "Ongoing WordPress maintenance with safe updates, backups, uptime monitoring, and support.",
+        "WordPress Protection Plans",
+        "Ongoing WordPress protection with safe updates, backups, uptime monitoring, and support.",
         "/maintenance",
-        "WordPress maintenance",
+        "WordPress protection plan",
       ),
       faqSchema(maintenanceFaqs),
     ],
@@ -245,7 +248,7 @@ const pageSeo: Record<string, SeoData> = {
   "/retainer": {
     title: "WordPress Business Continuity Retainer",
     description:
-      "Retained WordPress security for agencies, WooCommerce stores, and high-value businesses needing a dedicated expert, response SLAs, and ongoing audits.",
+      "Retained WordPress security for agencies, WooCommerce stores, and high-value businesses needing a dedicated expert, response SLAs, ongoing audits, and white-label support.",
     path: "/retainer",
     keywords: [
       "wordpress security retainer",
@@ -259,6 +262,66 @@ const pageSeo: Record<string, SeoData> = {
         "Dedicated ongoing WordPress security support with audits, SLAs, and incident response.",
         "/retainer",
         "WordPress security retainer",
+      ),
+    ],
+  },
+  "/india": {
+    title: "WordPress Protection Plans for India",
+    description:
+      "Dedicated INR pricing for Indian businesses needing WordPress maintenance, security hardening, audits, and hacked site recovery without mixing local pricing into global plans.",
+    path: "/india",
+    keywords: [
+      "wordpress maintenance india",
+      "wordpress security india",
+      "wordpress hacked site recovery india",
+    ],
+    breadcrumbs: breadcrumbs("India Pricing", "/india"),
+    schema: [
+      serviceSchema(
+        "WordPress Protection Plans India",
+        "INR-priced WordPress security and protection services for Indian businesses.",
+        "/india",
+        "WordPress security India",
+      ),
+    ],
+  },
+  "/security-score": {
+    title: "Free WordPress Security Score",
+    description:
+      "Run a quick WordPress security score for your website and see the immediate risks that should be reviewed before they turn into downtime or incident-response costs.",
+    path: "/security-score",
+    keywords: [
+      "wordpress security score",
+      "wordpress website security check",
+      "wordpress risk assessment",
+    ],
+    breadcrumbs: breadcrumbs("Free Security Score", "/security-score"),
+    schema: [
+      serviceSchema(
+        "Free WordPress Security Score",
+        "A lead-magnet style WordPress security score tool for business websites.",
+        "/security-score",
+        "WordPress security assessment",
+      ),
+    ],
+  },
+  "/agency-partners": {
+    title: "Agency White-Label WordPress Security",
+    description:
+      "White-label WordPress security, monitoring, and incident response for agencies managing multiple client websites worldwide.",
+    path: "/agency-partners",
+    keywords: [
+      "white label wordpress security",
+      "agency wordpress security partner",
+      "wordpress retainer for agencies",
+    ],
+    breadcrumbs: breadcrumbs("Agency Partners", "/agency-partners"),
+    schema: [
+      serviceSchema(
+        "Agency White-Label WordPress Security",
+        "White-label monitoring, audits, and incident response for agencies managing WordPress portfolios.",
+        "/agency-partners",
+        "Agency WordPress security partner",
       ),
     ],
   },

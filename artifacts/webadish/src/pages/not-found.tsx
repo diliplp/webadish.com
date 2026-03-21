@@ -30,7 +30,7 @@ export default function NotFound() {
           </div>
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-xl mx-auto">
             {[
-              { label: "Maintenance", href: "/maintenance" },
+              { label: "Protection Plans", href: "/maintenance" },
               { label: "Security", href: "/security" },
               { label: "Pricing", href: "/pricing" },
               { label: "Contact", href: "/contact" },

@@ -14,19 +14,19 @@ const features = [
 
 const plans = [
   {
-    name: "Security Protection",
-    price: "From $3,000/yr",
-    desc: "For business-critical websites requiring constant oversight.",
-    features: ["Proactive Security Posture Management", "Real-time threat monitoring", "Business Continuity Backups", "Infrastructure-level hardening", "Priority Incident Response SLA"],
+    name: "Essential Care",
+    price: "$199",
+    desc: "For growing business sites that need dependable updates, backups, and day-to-day protection.",
+    features: ["WordPress & plugin updates", "Daily backups (30-day retention)", "Uptime monitoring", "Monthly protection report", "Security hardening baseline"],
     cta: "Request Assessment",
     highlight: false,
   },
   {
-    name: "Business Continuity Retainer",
-    price: "Custom",
-    desc: "For enterprise environments demanding maximum resilience.",
-    features: ["Everything in Security Protection", "Dedicated security engineer", "Custom Service Level Agreement", "Direct communication channels", "Monthly audit & strategy"],
-    cta: "Contact Sales",
+    name: "Business Protection",
+    price: "$399-$599",
+    desc: "For revenue-generating websites that need faster response and deeper security oversight.",
+    features: ["Everything in Essential Care", "Real-time scanning", "Priority queue", "Speed optimisation", "24h response SLA"],
+    cta: "Start Protection",
     highlight: true,
   },
 ];
@@ -46,13 +46,13 @@ export default function Maintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20">
-              <Wrench size={14} /> WordPress Reliability & Uptime
+              <Wrench size={14} /> WordPress Protection Plans
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Protect Your Site's <span className="text-accent">Uptime & Security</span>
+              Protection Plans for <span className="text-accent">Business-Critical WordPress Sites</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Proactive patching, automated backups, real-time monitoring, and security hardening — so your site is always protected, fast, and available. You grow your business. We protect your infrastructure.
+              Safe updates, backups, monitoring, and hardening packaged as continuous protection. This is where global businesses start before moving into higher-touch security retainers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href='/contact'}>
@@ -93,7 +93,7 @@ export default function Maintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Level of Protection</h2>
-            <p className="text-lg text-muted-foreground">Month-to-month plans with no setup fees. Focused on uptime, security, and peace of mind.</p>
+            <p className="text-lg text-muted-foreground">USD pricing for global clients. India-specific pricing lives on a separate page to keep international positioning clear.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {plans.map((plan) => (
@@ -111,6 +111,11 @@ export default function Maintenance() {
                 <Button variant={plan.highlight ? "white" : "outline"} className="w-full" onClick={() => window.location.href='/contact'}>{plan.cta}</Button>
               </div>
             ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link href="/india" className="text-sm font-medium text-accent hover:underline">
+              Indian business pricing is available on the dedicated India page →
+            </Link>
           </div>
         </div>
       </section>
@@ -134,7 +139,7 @@ export default function Maintenance() {
       <section className="py-20 cta-gradient text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Stop Worrying About Your WordPress Site</h2>
-          <p className="text-lg text-white/90 mb-8">We handle the security, updates, backups, and monitoring. You focus on what matters to your business.</p>
+          <p className="text-lg text-white/90 mb-8">We handle the protection stack, and when you need a named expert plus emergency recovery coverage, the security retainer becomes the next step.</p>
           <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
             Start Your Protection Plan <ArrowRight size={18} className="ml-2" />
           </Button>
