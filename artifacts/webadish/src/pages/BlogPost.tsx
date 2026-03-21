@@ -645,6 +645,31 @@ export default function BlogPost() {
     );
   }
 
+  const relatedLinks =
+    post.tag === "Recovery"
+      ? [
+          { href: "/hacked-site-recovery", label: "Emergency recovery service" },
+          { href: "/case-studies", label: "See real recovery case studies" },
+          { href: "/contact", label: "Request urgent help" },
+        ]
+      : post.tag === "Buyer Intent"
+        ? [
+            { href: "/pricing", label: "Compare pricing options" },
+            { href: "/retainer", label: "Explore the security retainer" },
+            { href: "/contact", label: "Book a security review" },
+          ]
+        : post.tag === "Maintenance"
+          ? [
+              { href: "/maintenance", label: "See protection plans" },
+              { href: "/security", label: "Understand security coverage" },
+              { href: "/pricing", label: "View plan pricing" },
+            ]
+          : [
+              { href: "/security", label: "Explore WordPress security services" },
+              { href: "/retainer", label: "See the retainer model" },
+              { href: "/case-studies", label: "Read client case studies" },
+            ];
+
   return (
     <Layout>
       {/* HERO */}
@@ -689,6 +714,24 @@ export default function BlogPost() {
           <div className="text-right">
             <p className="text-sm font-medium text-muted-foreground mb-1">Protect your WordPress site</p>
             <Link href="/contact"><Button variant="accent" size="sm">Get a Security Assessment</Button></Link>
+          </div>
+        </div>
+
+        <div className="mt-10 bg-white rounded-2xl border border-border/50 p-8">
+          <h3 className="text-xl font-bold mb-3">Related resources</h3>
+          <p className="text-sm text-muted-foreground mb-6">
+            Continue with the pages buyers usually visit next after reading this topic.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {relatedLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-xl border border-border/50 bg-gray-50 px-4 py-4 text-sm font-medium text-foreground hover:border-accent hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
 

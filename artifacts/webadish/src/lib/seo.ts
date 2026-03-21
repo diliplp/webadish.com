@@ -110,6 +110,21 @@ const faqSchema = (items: Array<{ question: string; answer: string }>) => ({
   })),
 });
 
+const itemListSchema = (
+  name: string,
+  items: Array<{ name: string; path: string }>,
+) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name,
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `${SITE_URL}${item.path}`,
+    name: item.name,
+  })),
+});
+
 const maintenanceFaqs = [
   {
     question: "How do you handle plugin updates safely?",
@@ -349,6 +364,23 @@ const pageSeo: Record<string, SeoData> = {
       "wordpress recovery guides",
     ],
     breadcrumbs: breadcrumbs("Blog", "/blog"),
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        name: "WebAdish Blog",
+        url: `${SITE_URL}/blog`,
+        description:
+          "WordPress security buying guides, recovery advice, and operational insights for business-critical websites.",
+      },
+      itemListSchema("Featured Blog Posts", [
+        { name: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026", path: "/blog/woocommerce-attack-target-2026" },
+        { name: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do", path: "/blog/wordpress-plugin-audit" },
+        { name: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers", path: "/blog/hosting-vs-managed-security" },
+        { name: "How Often Should a WordPress Site Be Security Audited?", path: "/blog/wordpress-security-audit-frequency" },
+        { name: "WordPress Downtime: What It Really Costs", path: "/blog/wordpress-downtime-cost" },
+      ]),
+    ],
   },
   "/case-studies": {
     title: "WordPress Security Case Studies | Verofax, Shivam Autozone, Crystal Group",
@@ -362,6 +394,21 @@ const pageSeo: Record<string, SeoData> = {
       "shivamautozone wordpress case study",
     ],
     breadcrumbs: breadcrumbs("Case Studies", "/case-studies"),
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "WebAdish Case Studies",
+        url: `${SITE_URL}/case-studies`,
+        description:
+          "Case studies covering WordPress incident response, security hardening, performance improvement, and ongoing protection.",
+      },
+      itemListSchema("Client Case Studies", [
+        { name: "Verofax", path: "/case-studies" },
+        { name: "Shivam Autozone", path: "/case-studies" },
+        { name: "Crystal Group", path: "/case-studies" },
+      ]),
+    ],
   },
   "/contact": {
     title: "Contact WebAdish | WordPress Security & Protection Team",
