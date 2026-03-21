@@ -432,6 +432,9 @@ export default function Home() {
             <p className="text-xl text-white/90 mb-10 text-balance">
               Every day without proper security is a day your site is exposed. Our team handles it so you don't have to.
             </p>
+            <p className="text-base text-white/60 mb-10">
+              We specialize in WordPress security, incident response, and ongoing protection for business-critical websites.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="white" size="lg" className="text-lg px-10 py-7" onClick={() => window.location.href='/contact'}>
                 Get Started <ArrowRight size={20} className="ml-2" />
