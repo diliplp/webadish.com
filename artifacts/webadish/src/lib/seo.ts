@@ -50,7 +50,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: "https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp",
   email: "hello@webadish.com",
-  telephone: "+44 7344 540450",
+  telephone: "+91 9998757045",
   sameAs: [
     "https://www.linkedin.com/company/webadish",
     "https://www.facebook.com/webadish",
@@ -62,7 +62,7 @@ const organizationSchema = {
       "@type": "ContactPoint",
       contactType: "sales",
       email: "hello@webadish.com",
-      telephone: "+44 7344 540450",
+      telephone: "+91 9998757045",
       areaServed: "Worldwide",
       availableLanguage: ["English"],
     },
@@ -339,33 +339,34 @@ const pageSeo: Record<string, SeoData> = {
     schema: [faqSchema(pricingFaqs)],
   },
   "/blog": {
-    title: "WordPress Security & Maintenance Blog",
+    title: "WordPress Security Blog for Business-Critical Websites",
     description:
-      "Guides on WordPress security, maintenance, hacked site recovery, and website operations for serious businesses and digital teams.",
+      "Buyer-intent guides on WordPress security, protection plans, audits, and hacked site recovery for serious businesses, agencies, and digital teams.",
     path: "/blog",
     keywords: [
       "wordpress security blog",
-      "wordpress maintenance articles",
+      "wordpress security guides",
       "wordpress recovery guides",
     ],
     breadcrumbs: breadcrumbs("Blog", "/blog"),
   },
   "/case-studies": {
-    title: "WordPress Case Studies",
+    title: "WordPress Security Case Studies | Verofax, Shivam Autozone, Crystal Group",
     description:
-      "See how WebAdish helps businesses recover hacked WordPress sites, improve performance, and maintain business-critical websites with ongoing support.",
+      "See how WebAdish supported Verofax, Shivam Autozone, and Crystal Group with WordPress incident response, security hardening, performance improvement, and ongoing support.",
     path: "/case-studies",
     keywords: [
       "wordpress case studies",
       "wordpress security case study",
-      "wordpress maintenance results",
+      "verofax wordpress case study",
+      "shivamautozone wordpress case study",
     ],
     breadcrumbs: breadcrumbs("Case Studies", "/case-studies"),
   },
   "/contact": {
-    title: "Contact WebAdish",
+    title: "Contact WebAdish | WordPress Security & Protection Team",
     description:
-      "Talk to WebAdish about WordPress maintenance, security, emergency hacked site recovery, or a high-touch retainer for your business website.",
+      "Talk to WebAdish about WordPress protection plans, security audits, emergency hacked site recovery, or a high-touch retainer for your business website.",
     path: "/contact",
     keywords: [
       "contact wordpress security agency",
@@ -379,6 +380,8 @@ const pageSeo: Record<string, SeoData> = {
         "@type": "ContactPage",
         name: "Contact WebAdish",
         url: `${SITE_URL}/contact`,
+        telephone: "+91 9998757045",
+        email: "hello@webadish.com",
       },
     ],
   },
@@ -471,7 +474,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "How to choose the right WordPress support model when your website has commercial, operational, or brand risk.",
         path: "/blog/wordpress-security-agency-vs-freelancer",
-        published: "2026-03-17",
+        published: "2020-09-28",
       }),
     ],
   },
@@ -492,7 +495,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "The real cost drivers behind emergency WordPress recovery and what buyers should expect from a serious provider.",
         path: "/blog/hacked-wordpress-site-recovery-cost",
-        published: "2026-03-17",
+        published: "2020-07-16",
       }),
     ],
   },
@@ -513,7 +516,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "What premium WordPress security retainers usually cover, who they are for, and how to evaluate providers.",
         path: "/blog/wordpress-security-retainer-includes",
-        published: "2026-03-17",
+        published: "2020-02-11",
       }),
     ],
   },
@@ -534,7 +537,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "A practical checklist for WooCommerce owners evaluating WordPress maintenance partners and support processes.",
         path: "/blog/woocommerce-maintenance-checklist",
-        published: "2026-03-17",
+        published: "2019-10-03",
       }),
     ],
   },
@@ -555,7 +558,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "A practical overview of why cybersecurity matters for modern businesses and how website security affects revenue, trust, and operations.",
         path: "/blog/protect-your-digital-assets",
-        published: "2026-03-16",
+        published: "2019-03-16",
       }),
     ],
   },
@@ -576,7 +579,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "Common website attack methods and practical WordPress defenses for businesses that need stronger protection.",
         path: "/blog/how-hackers-break-into-websites",
-        published: "2026-03-02",
+        published: "2019-12-12",
       }),
     ],
   },
@@ -597,7 +600,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "A business-focused guide to keeping WordPress sites healthy, secure, and high-performing over time.",
         path: "/blog/wordpress-maintenance-guide",
-        published: "2026-02-13",
+        published: "2021-07-25",
       }),
     ],
   },
@@ -618,7 +621,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "The avoidable WordPress security issues that often lead to breaches and what to do differently.",
         path: "/blog/wordpress-security-mistakes",
-        published: "2026-01-20",
+        published: "2022-04-06",
       }),
     ],
   },
@@ -639,7 +642,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "Immediate triage steps for hacked WordPress websites and how to start recovery safely.",
         path: "/blog/site-hacked-what-to-do",
-        published: "2026-01-05",
+        published: "2023-01-15",
       }),
     ],
   },
@@ -660,7 +663,7 @@ const blogPosts: Record<string, SeoData> = {
         description:
           "Why plugin updates are one of the most important WordPress security practices for modern business websites.",
         path: "/blog/why-plugin-updates-matter",
-        published: "2025-12-12",
+        published: "2024-09-07",
       }),
     ],
   },

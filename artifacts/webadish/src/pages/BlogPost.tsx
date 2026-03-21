@@ -11,7 +11,7 @@ const posts: Record<string, {
   "protect-your-digital-assets": {
     tag: "Security", tagColor: "text-primary",
     title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses",
-    date: "March 16, 2026", read: "5 min",
+    date: "March 16, 2019", read: "5 min",
     img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -58,7 +58,7 @@ const posts: Record<string, {
   "how-hackers-break-into-websites": {
     tag: "Security", tagColor: "text-primary",
     title: "How Hackers Break Into Websites – And How to Stop Them",
-    date: "March 2, 2026", read: "7 min",
+    date: "December 12, 2019", read: "7 min",
     img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -89,7 +89,7 @@ const posts: Record<string, {
   "wordpress-maintenance-guide": {
     tag: "Maintenance", tagColor: "text-accent",
     title: "The Ultimate Guide to WordPress Maintenance for Australian Businesses",
-    date: "February 13, 2026", read: "8 min",
+    date: "July 25, 2021", read: "8 min",
     img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -156,7 +156,7 @@ const posts: Record<string, {
   "wordpress-security-mistakes": {
     tag: "Security", tagColor: "text-primary",
     title: "The Most Common WordPress Security Mistakes (And How to Fix Them)",
-    date: "January 20, 2026", read: "6 min",
+    date: "April 6, 2022", read: "6 min",
     img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -188,7 +188,7 @@ const posts: Record<string, {
   "site-hacked-what-to-do": {
     tag: "Recovery", tagColor: "text-red-600",
     title: "My WordPress Site Got Hacked: What To Do Right Now",
-    date: "January 5, 2026", read: "5 min",
+    date: "January 15, 2023", read: "5 min",
     img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -230,7 +230,7 @@ const posts: Record<string, {
   "why-plugin-updates-matter": {
     tag: "Maintenance", tagColor: "text-accent",
     title: "Why WordPress Plugin Updates Matter More Than You Think",
-    date: "December 12, 2025", read: "4 min",
+    date: "September 7, 2024", read: "4 min",
     img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -315,7 +315,7 @@ const posts: Record<string, {
   "wordpress-plugin-audit": {
     tag: "Security", tagColor: "text-primary",
     title: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do",
-    date: "April 19, 2026", read: "7 min",
+    date: "October 14, 2025", read: "7 min",
     img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -353,7 +353,7 @@ const posts: Record<string, {
   "hosting-vs-managed-security": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers",
-    date: "April 12, 2026", read: "6 min",
+    date: "June 9, 2024", read: "6 min",
     img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -396,7 +396,7 @@ const posts: Record<string, {
   "wordpress-security-audit-frequency": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
-    date: "April 5, 2026", read: "5 min",
+    date: "November 21, 2023", read: "5 min",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -423,7 +423,7 @@ const posts: Record<string, {
   "wordpress-downtime-cost": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Downtime: What It Really Costs a Revenue-Driven Site — And How to Prevent It",
-    date: "March 21, 2026", read: "6 min",
+    date: "August 18, 2022", read: "6 min",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -474,7 +474,7 @@ const posts: Record<string, {
   "hire-wordpress-security-team": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit",
-    date: "March 21, 2026", read: "7 min",
+    date: "May 4, 2021", read: "7 min",
     img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -502,7 +502,7 @@ const posts: Record<string, {
   "wordpress-security-agency-vs-freelancer": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Security Agency vs Freelancer: Which Is Right for a Revenue-Critical Website?",
-    date: "March 17, 2026", read: "7 min",
+    date: "September 28, 2020", read: "7 min",
     img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -536,7 +536,7 @@ const posts: Record<string, {
   "hacked-wordpress-site-recovery-cost": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "How Much Does Hacked WordPress Site Recovery Cost?",
-    date: "March 17, 2026", read: "6 min",
+    date: "July 16, 2020", read: "6 min",
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -565,7 +565,7 @@ const posts: Record<string, {
   "wordpress-security-retainer-includes": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "What Does a WordPress Business Continuity Retainer Actually Include?",
-    date: "March 17, 2026", read: "6 min",
+    date: "February 11, 2020", read: "6 min",
     img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -599,7 +599,7 @@ const posts: Record<string, {
   "woocommerce-maintenance-checklist": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",
-    date: "March 17, 2026", read: "7 min",
+    date: "October 3, 2019", read: "7 min",
     img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">

@@ -77,7 +77,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`rounded-sm px-0.5 text-sm font-medium transition-colors outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
                     link.highlight
                       ? isActive
                         ? "text-primary font-semibold"
@@ -121,7 +121,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-semibold ${
+                className={`rounded-sm font-semibold outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 ${
                   link.highlight ? "text-primary" : "text-foreground"
                 }`}
               >
@@ -160,8 +160,8 @@ export function Footer() {
               WebAdish is a global WordPress security and protection agency for business-critical websites. We help eCommerce teams, agencies, and growth-stage businesses reduce the cost of downtime, malware, and recurring WordPress risk.
             </p>
             <div className="flex flex-col gap-2 mb-6 text-sm text-muted-foreground">
-              <a href="tel:+447344540450" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Phone size={14} /> +44 7344 540450
+              <a href="tel:+919998757045" className="flex items-center gap-2 hover:text-accent transition-colors">
+                <Phone size={14} /> +91 9998757045
               </a>
               <a href="mailto:hello@webadish.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail size={14} /> hello@webadish.com

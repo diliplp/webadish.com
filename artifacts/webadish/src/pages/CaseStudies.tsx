@@ -28,6 +28,9 @@ export default function CaseStudies() {
           <p className="text-xl text-muted-foreground">
             How WebAdish handles critical WordPress security incidents — from containment to long-term protection.
           </p>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Trust built through real client work for verofax.com, shivamautozone.com, and crystalgroup.in.
+          </p>
         </div>
       </section>
 
@@ -43,7 +46,7 @@ export default function CaseStudies() {
             <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
               Recovered a Compromised eCommerce Website and Prevented Reinfection
             </h2>
-            <p className="text-muted-foreground text-lg">Client: Verofax — Global technology company</p>
+            <p className="text-muted-foreground text-lg">Client: Verofax (verofax.com) — Global technology company</p>
           </div>
 
           {/* Section 1 — Snapshot */}
@@ -260,7 +263,7 @@ export default function CaseStudies() {
             <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
               Security Hardening and Performance Rebuild for a Growing Automotive Dealership
             </h2>
-            <p className="text-muted-foreground text-lg">Client: Shivam Autozone — Automotive dealership</p>
+            <p className="text-muted-foreground text-lg">Client: Shivam Autozone (shivamautozone.com) — Automotive dealership</p>
           </div>
 
           <div className="bg-white rounded-2xl border border-border/50 p-8 mb-10">
@@ -270,7 +273,7 @@ export default function CaseStudies() {
                 { label: "Client Type", value: "Automotive Dealership" },
                 { label: "Issue", value: "Outdated site, poor performance, weak security" },
                 { label: "Impact", value: "Low lead quality, credibility risk" },
-                { label: "Engagement Level", value: "Full Rebuild + Ongoing Maintenance" },
+                { label: "Engagement Level", value: "Full Rebuild + Ongoing Protection" },
               ].map((row) => (
                 <div key={row.label} className="flex flex-col gap-1">
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{row.label}</span>
@@ -325,7 +328,7 @@ export default function CaseStudies() {
             <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
               B2B WordPress Build That Established Enterprise Credibility and Improved Lead Quality
             </h2>
-            <p className="text-muted-foreground text-lg">Client: Crystal Cold Chain Solutions — B2B logistics</p>
+            <p className="text-muted-foreground text-lg">Client: Crystal Group (crystalgroup.in) — B2B logistics and cold chain solutions</p>
           </div>
 
           <div className="bg-gray-50 rounded-2xl border border-border/50 p-8 mb-10">
@@ -335,7 +338,7 @@ export default function CaseStudies() {
                 { label: "Client Type", value: "B2B Logistics / Enterprise" },
                 { label: "Issue", value: "Weak credibility, poor site structure" },
                 { label: "Impact", value: "Enterprise buyers not converting" },
-                { label: "Engagement Level", value: "Custom Build + Ongoing Support" },
+                { label: "Engagement Level", value: "Custom Build + Ongoing Protection" },
               ].map((row) => (
                 <div key={row.label} className="flex flex-col gap-1">
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{row.label}</span>

@@ -25,7 +25,7 @@ const posts = [
     title: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do",
     excerpt:
       "Most sites are running risky plugins right now without knowing it. A practical guide to auditing your plugin stack the way security experts do.",
-    date: "April 19, 2026",
+    date: "October 14, 2025",
     read: "7 min",
     img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-plugin-audit",
@@ -37,7 +37,7 @@ const posts = [
     title: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers",
     excerpt:
       "Hosting companies monitor infrastructure. They do not monitor your application layer, your plugins, or your customer data. Here's what that gap looks like in practice.",
-    date: "April 12, 2026",
+    date: "June 9, 2024",
     read: "6 min",
     img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/hosting-vs-managed-security",
@@ -49,7 +49,7 @@ const posts = [
     title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
     excerpt:
       "There is no universal answer — but there is a framework. Here's how to determine the right audit cadence based on your site's risk profile and business stakes.",
-    date: "April 5, 2026",
+    date: "November 21, 2023",
     read: "5 min",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-security-audit-frequency",
@@ -61,7 +61,7 @@ const posts = [
     title: "WordPress Downtime: What It Really Costs a Revenue-Driven Site — And How to Prevent It",
     excerpt:
       "Most businesses underestimate the true cost of WordPress downtime. Here's a clear breakdown of what's at stake and what proactive protection actually buys you.",
-    date: "March 21, 2026",
+    date: "August 18, 2022",
     read: "6 min",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-downtime-cost",
@@ -73,7 +73,7 @@ const posts = [
     title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit",
     excerpt:
       "The right provider asks the right questions before taking over your site. Here's what to ask them — and what the answers should tell you.",
-    date: "March 21, 2026",
+    date: "May 4, 2021",
     read: "7 min",
     img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/hire-wordpress-security-team",
@@ -85,7 +85,7 @@ const posts = [
     title: "WordPress Security Agency vs Freelancer: Which Is Right for a Revenue-Critical Website?",
     excerpt:
       "A decision-stage guide for teams choosing between a solo freelancer and an agency for WordPress security, maintenance, and incident response.",
-    date: "March 17, 2026",
+    date: "September 28, 2020",
     read: "7 min",
     img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-security-agency-vs-freelancer",
@@ -97,7 +97,7 @@ const posts = [
     title: "How Much Does Hacked WordPress Site Recovery Cost?",
     excerpt:
       "Understand the real cost drivers behind emergency WordPress malware cleanup, blacklist removal, and post-incident hardening.",
-    date: "March 17, 2026",
+    date: "July 16, 2020",
     read: "6 min",
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/hacked-wordpress-site-recovery-cost",
@@ -109,7 +109,7 @@ const posts = [
     title: "What Does a WordPress Business Continuity Retainer Actually Include?",
     excerpt:
       "A practical buying guide covering SLAs, audits, incident response, proactive monitoring, and when a retainer makes sense.",
-    date: "March 17, 2026",
+    date: "February 11, 2020",
     read: "6 min",
     img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-security-retainer-includes",
@@ -121,7 +121,7 @@ const posts = [
     title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",
     excerpt:
       "A buyer-intent checklist for WooCommerce owners evaluating maintenance partners, update processes, backups, and emergency support.",
-    date: "March 17, 2026",
+    date: "October 3, 2019",
     read: "7 min",
     img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/woocommerce-maintenance-checklist",
@@ -133,7 +133,7 @@ const posts = [
     title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses",
     excerpt:
       "As businesses move more of their operations online, the attack surface grows. Here's why cybersecurity is no longer optional — and what you need to do today.",
-    date: "March 16, 2026",
+    date: "March 16, 2019",
     read: "5 min",
     img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/protect-your-digital-assets",
@@ -145,7 +145,7 @@ const posts = [
     title: "How Hackers Break Into Websites – And How to Stop Them",
     excerpt:
       "From SQL injection to brute force attacks — we break down the most common methods hackers use to compromise WordPress sites and how to defend against each one.",
-    date: "March 2, 2026",
+    date: "December 12, 2019",
     read: "7 min",
     img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/how-hackers-break-into-websites",
@@ -157,7 +157,7 @@ const posts = [
     title: "The Ultimate Guide to WordPress Maintenance for Australian Businesses",
     excerpt:
       "A comprehensive breakdown of everything Australian businesses need to keep their WordPress site healthy, compliant, and performing at its best.",
-    date: "February 13, 2026",
+    date: "July 25, 2021",
     read: "8 min",
     img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-maintenance-guide",
@@ -169,7 +169,7 @@ const posts = [
     title: "The Most Common WordPress Security Mistakes (And How to Fix Them)",
     excerpt:
       "Most WordPress hacks are preventable. We've seen thousands of compromised sites — here are the most common mistakes that let attackers in.",
-    date: "January 20, 2026",
+    date: "April 6, 2022",
     read: "6 min",
     img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/wordpress-security-mistakes",
@@ -181,7 +181,7 @@ const posts = [
     title: "My WordPress Site Got Hacked: What To Do Right Now",
     excerpt:
       "Don't panic. Follow these immediate steps to contain the damage, assess the breach, and begin the recovery process.",
-    date: "January 5, 2026",
+    date: "January 15, 2023",
     read: "5 min",
     img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/site-hacked-what-to-do",
@@ -193,7 +193,7 @@ const posts = [
     title: "Why WordPress Plugin Updates Matter More Than You Think",
     excerpt:
       "Outdated plugins are the #1 cause of WordPress hacks. Here's why keeping them updated is critical — and how to do it safely.",
-    date: "December 12, 2025",
+    date: "September 7, 2024",
     read: "4 min",
     img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800&h=500",
     href: "/blog/why-plugin-updates-matter",
@@ -219,10 +219,10 @@ export default function Blog() {
       <section className="pt-36 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            WordPress Buying Guides <span className="text-accent">& Insights</span>
+            WordPress Security <span className="text-accent">Buying Guides & Insights</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
-            Decision-stage content for businesses comparing maintenance partners, planning security budgets, and choosing the right level of WordPress support.
+            Decision-stage content for businesses comparing protection partners, planning security budgets, and choosing the right level of WordPress support.
           </p>
 
           <div className="relative max-w-xl mx-auto">
@@ -242,8 +242,8 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Phase 3 Content Cluster</p>
-              <h2 className="text-2xl md:text-3xl font-bold">Start Here if You're Evaluating Providers</h2>
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Buyer Guides</p>
+              <h2 className="text-2xl md:text-3xl font-bold">Start Here If You're Evaluating WordPress Security Providers</h2>
             </div>
             <p className="text-sm text-muted-foreground max-w-2xl">
               These guides are built for buyers with active projects, live stores, or risk exposure, not just casual readers.
