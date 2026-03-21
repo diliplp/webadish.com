@@ -246,7 +246,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground mb-4">For business-critical websites requiring constant oversight.</p>
                 <div className="mb-6"><span className="text-4xl font-bold">From $3,000/yr</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Core updates & monitoring", "Backup systems", "Baseline security"].map(f => (
+                  {["Proactive Security Posture Management", "Real-time threat monitoring", "Business Continuity Backups (30-day)", "Infrastructure-level hardening", "Priority Incident Response SLA"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -260,7 +260,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground mb-4">Emergency resolution for breached or compromised high-value assets.</p>
                 <div className="mb-6"><span className="text-5xl font-bold">From $5,000</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Advanced monitoring", "Performance optimization", "Priority support", "Enhanced security"].map(f => (
+                  {["Immediate breach containment", "Forensic malware removal", "Blacklist resolution", "Vulnerability patching", "System Recovery"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm font-medium"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -273,7 +273,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground mb-4">For enterprise environments demanding maximum resilience.</p>
                 <div className="mb-6"><span className="text-4xl font-bold">Custom Pricing</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Dedicated security oversight", "Threat monitoring", "Monthly security audits", "Priority incident response"].map(f => (
+                  {["Everything in Security Protection", "Dedicated security engineer", "Custom Service Level Agreement", "Direct communication channels", "Monthly audit & strategy"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
