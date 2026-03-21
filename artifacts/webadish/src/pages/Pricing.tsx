@@ -27,9 +27,7 @@ const plans = [
   {
     name: "Incident Response",
     monthly: "From $5,000",
-    ,
     annual: "From $5,000",
-    ,
     desc: "Recommended for revenue-generating websites.",
     color: "border-accent",
     highlight: true,
@@ -126,15 +124,10 @@ export default function Pricing() {
                 )}
                 <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
                 <div className="mb-2">
-                  <span className="text-5xl font-bold">
-                    {annual
-                      ? plan.annualMax ? `${plan.annual}–${plan.annualMax}` : plan.annual
-                      : plan.monthlyMax ? `${plan.monthly}–${plan.monthlyMax}` : plan.monthly
-                    }
+                  <span className="text-4xl font-bold">
+                    {annual ? plan.annual : plan.monthly}
                   </span>
-                  <span className="text-muted-foreground">/mo</span>
                 </div>
-                {annual && <p className="text-xs text-green-600 font-medium mb-3">Billed annually</p>}
                 <p className="text-sm text-muted-foreground mb-8">{plan.desc}</p>
                 <ul className="space-y-3 mb-10">
                   {plan.features.map(f => (
