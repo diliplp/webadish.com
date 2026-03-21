@@ -362,14 +362,14 @@ export default function Home() {
         </section>
 
         {/* BLOG PREVIEW */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 reveal-section">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-10 reveal-section">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">WordPress Security Insights</h2>
-                <p className="text-lg text-muted-foreground">The latest from our security and WordPress experts.</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-2">From Our Security Team</p>
+                <h2 className="text-2xl font-bold">WordPress Security Insights</h2>
               </div>
-              <Link href="/blog" className="hidden md:flex items-center text-link font-medium hover:text-accent transition-colors">View all articles <ArrowRight size={18} className="ml-2" /></Link>
+              <Link href="/blog" className="hidden md:flex items-center text-sm text-muted-foreground hover:text-accent transition-colors mt-2 md:mt-0">View all articles <ArrowRight size={15} className="ml-1" /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
@@ -398,24 +398,28 @@ export default function Home() {
           </div>
         </section>
 
-        {/* BRIDGE — EMERGENCY */}
-        <section className="py-16 bg-white border-t border-border/50 reveal-section">
-          <div className="max-w-3xl mx-auto px-4 text-center">
-            <div className="inline-flex items-center gap-2 text-primary font-semibold text-sm mb-4">
-              <Ambulance size={16} /> Emergency Recovery
+        {/* BRIDGE — EMERGENCY ESCALATION */}
+        <section className="py-24 bg-primary text-white reveal-section">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold mb-8">
+              <Ambulance size={16} /> Already Under Attack?
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Need emergency recovery?</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              If your site is already compromised, our incident response team is available 24/7. We recover WordPress sites in under 24 hours with a 30-day re-infection guarantee.
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Website already<br className="hidden md:block" /> compromised?
+            </h2>
+            <p className="text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Every hour your site is infected, Google is recording it, customers are being warned away, and the damage compounds. Our incident response team is available now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/hacked-site-recovery">
-                <Button variant="primary" size="lg">
-                  Visit our incident response team <ArrowRight size={18} className="ml-2" />
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg px-10 py-6">
+                  Get Expert Incident Response Now <ArrowRight size={20} className="ml-2" />
                 </Button>
               </Link>
               <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg">UK-Based Emergency Service</Button>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6">
+                  UK Emergency Service →
+                </Button>
               </a>
             </div>
           </div>
