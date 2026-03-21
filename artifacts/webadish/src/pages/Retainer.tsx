@@ -50,26 +50,27 @@ const whyRetainer = [
 
 const retainerTiers = [
   {
-    name: "Agency Retainer",
-    price: "$799",
-    desc: "For agencies and mid-size businesses that need dependable specialist support without adding full-time headcount.",
+    name: "Security Retainer",
+    price: "$999",
+    desc: "For businesses and agencies that need dedicated security oversight, faster incident response, and fewer WordPress surprises.",
     features: [
-      "Everything in Pro Maintenance",
+      "Everything in Business Protection",
       "Dedicated security engineer",
       "Monthly security audit",
       "Emergency recovery included",
       "4h emergency response SLA",
       "Quarterly strategy call",
+      "Custom SLA available",
     ],
     cta: "Start Retainer",
   },
   {
     name: "Enterprise Retainer",
-    price: "Custom",
-    desc: "For enterprise, high-traffic WooCommerce, or high-visibility sites with stricter operational requirements.",
+    price: "$2,000+",
+    desc: "For enterprise teams, multi-site operations, and high-visibility brands with stricter operational requirements.",
     features: [
-      "Everything in Agency Retainer",
-      "Multi-site coverage",
+      "Everything in Security Retainer",
+      "Multi-site coverage with volume discounts",
       "1h emergency response SLA",
       "Weekly security reviews",
       "Code audit and pen-test coordination",

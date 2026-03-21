@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "updatedAt": 1774064082342,
+  "nodeCount": 19,
+  "nodes": {
+    "mem-MEMORY-project-overview": {
+      "id": "mem-MEMORY-project-overview",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-stack": {
+      "id": "mem-MEMORY-stack",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-key-patterns": {
+      "id": "mem-MEMORY-key-patterns",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-file-structure": {
+      "id": "mem-MEMORY-file-structure",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-setup-steps--for-user-": {
+      "id": "mem-MEMORY-setup-steps--for-user-",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-env-vars-required": {
+      "id": "mem-MEMORY-env-vars-required",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-project": {
+      "id": "mem-MEMORY-project",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-architecture": {
+      "id": "mem-MEMORY-architecture",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-form-integrations": {
+      "id": "mem-MEMORY-form-integrations",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-processing-flow": {
+      "id": "mem-MEMORY-processing-flow",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-crm-integrations": {
+      "id": "mem-MEMORY-crm-integrations",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-key-developer-extension-point": {
+      "id": "mem-MEMORY-key-developer-extension-point",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-admin-pages": {
+      "id": "mem-MEMORY-admin-pages",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082337
+    },
+    "mem-MEMORY-client-info": {
+      "id": "mem-MEMORY-client-info",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082338
+    },
+    "mem-MEMORY-brand-colors": {
+      "id": "mem-MEMORY-brand-colors",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082338
+    },
+    "mem-MEMORY-brand-fonts": {
+      "id": "mem-MEMORY-brand-fonts",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082338
+    },
+    "mem-MEMORY-social-media": {
+      "id": "mem-MEMORY-social-media",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082338
+    },
+    "mem-MEMORY-logo-url": {
+      "id": "mem-MEMORY-logo-url",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082338
+    },
+    "mem-MEMORY-dev-server": {
+      "id": "mem-MEMORY-dev-server",
+      "category": "core",
+      "confidence": 0.5,
+      "accessCount": 0,
+      "createdAt": 1774064082338
+    }
+  },
+  "edges": [
+    {
+      "sourceId": "mem-MEMORY-project-overview",
+      "targetId": "mem-MEMORY-stack",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-stack",
+      "targetId": "mem-MEMORY-key-patterns",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-key-patterns",
+      "targetId": "mem-MEMORY-file-structure",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-file-structure",
+      "targetId": "mem-MEMORY-setup-steps--for-user-",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-setup-steps--for-user-",
+      "targetId": "mem-MEMORY-env-vars-required",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-project",
+      "targetId": "mem-MEMORY-architecture",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-architecture",
+      "targetId": "mem-MEMORY-form-integrations",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-form-integrations",
+      "targetId": "mem-MEMORY-processing-flow",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-processing-flow",
+      "targetId": "mem-MEMORY-crm-integrations",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-crm-integrations",
+      "targetId": "mem-MEMORY-key-developer-extension-point",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-key-developer-extension-point",
+      "targetId": "mem-MEMORY-admin-pages",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-client-info",
+      "targetId": "mem-MEMORY-brand-colors",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-brand-colors",
+      "targetId": "mem-MEMORY-brand-fonts",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-brand-fonts",
+      "targetId": "mem-MEMORY-social-media",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-social-media",
+      "targetId": "mem-MEMORY-logo-url",
+      "type": "temporal",
+      "weight": 0.5
+    },
+    {
+      "sourceId": "mem-MEMORY-logo-url",
+      "targetId": "mem-MEMORY-dev-server",
+      "type": "temporal",
+      "weight": 0.5
+    }
+  ],
+  "pageRanks": {
+    "mem-MEMORY-project-overview": 0.01853920690633193,
+    "mem-MEMORY-stack": 0.0342975122467544,
+    "mem-MEMORY-key-patterns": 0.047692050387530306,
+    "mem-MEMORY-file-structure": 0.059077420969211585,
+    "mem-MEMORY-setup-steps--for-user-": 0.06875503801905426,
+    "mem-MEMORY-env-vars-required": 0.07698105744943012,
+    "mem-MEMORY-project": 0.01853920690633193,
+    "mem-MEMORY-architecture": 0.0342975122467544,
+    "mem-MEMORY-form-integrations": 0.047692050387530306,
+    "mem-MEMORY-processing-flow": 0.059077420969211585,
+    "mem-MEMORY-crm-integrations": 0.06875503801905426,
+    "mem-MEMORY-key-developer-extension-point": 0.07698105744943012,
+    "mem-MEMORY-admin-pages": 0.08397314206506222,
+    "mem-MEMORY-client-info": 0.01853920690633193,
+    "mem-MEMORY-brand-colors": 0.0342975122467544,
+    "mem-MEMORY-brand-fonts": 0.047692050387530306,
+    "mem-MEMORY-social-media": 0.059077420969211585,
+    "mem-MEMORY-logo-url": 0.06875503801905426,
+    "mem-MEMORY-dev-server": 0.07698105744943012
+  }
+}

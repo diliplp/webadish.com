@@ -213,9 +213,9 @@ export default function Security() {
             <Button variant="white" size="lg" onClick={() => window.location.href = "/contact"}>
               Book a Security Consultation <ArrowRight size={18} className="ml-2" />
             </Button>
-            <Link href="/pricing">
+            <Link href="/hacked-site-recovery">
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
-                View Security Plans
+                Site Already Hacked?
               </Button>
             </Link>
           </div>

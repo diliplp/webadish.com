@@ -4,28 +4,28 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 
 const features = [
-  { icon: <RefreshCw size={24} className="text-accent" />, title: "Core & Plugin Updates", desc: "We update WordPress core, themes, and all plugins in a safe staging environment before deploying to live — zero downtime, zero broken sites." },
-  { icon: <Shield size={24} className="text-accent" />, title: "Daily Cloud Backups", desc: "Automated daily offsite backups with 30-day retention. One-click restore if anything ever goes wrong." },
-  { icon: <BarChart3 size={24} className="text-accent" />, title: "Performance Monitoring", desc: "Real-time uptime and performance monitoring. You're alerted the moment anything is slow or down — before your customers notice." },
-  { icon: <HeadphonesIcon size={24} className="text-accent" />, title: "Priority Support", desc: "Skip the queue. Our WordPress engineers are available for direct support with a guaranteed response time." },
-  { icon: <Clock size={24} className="text-accent" />, title: "Monthly Reports", desc: "Detailed monthly reports covering updates applied, uptime stats, security scans, and performance metrics." },
-  { icon: <Wrench size={24} className="text-accent" />, title: "Small Fix Included", desc: "Each plan includes a monthly allowance of small fixes — content edits, broken links, layout tweaks — at no extra cost." },
+  { icon: <RefreshCw size={24} className="text-accent" />, title: "Proactive Core & Plugin Updates", desc: "We patch WordPress core, themes, and all plugins in a safe staging environment before deploying to production — zero downtime, zero broken sites." },
+  { icon: <Shield size={24} className="text-accent" />, title: "Daily Offsite Backups", desc: "Automated daily backups with 30-day retention stored offsite. One-click restore if something goes wrong, and tested monthly." },
+  { icon: <BarChart3 size={24} className="text-accent" />, title: "24/7 Uptime Monitoring", desc: "Continuous monitoring of uptime, performance, and response times. We're alerted to issues before they affect your customers." },
+  { icon: <HeadphonesIcon size={24} className="text-accent" />, title: "Priority Response", desc: "Your WordPress engineers are available with guaranteed response times. No queues, no waiting." },
+  { icon: <Clock size={24} className="text-accent" />, title: "Monthly Performance Reporting", desc: "Detailed reporting on uptime, security status, performance metrics, and recommendations for reducing risk." },
+  { icon: <Wrench size={24} className="text-accent" />, title: "Small Fixes Included", desc: "Each plan includes a monthly allowance for small fixes — content edits, layout tweaks, link repairs — at no additional cost." },
 ];
 
 const plans = [
   {
-    name: "Standard Maintenance",
-    price: "$99",
-    desc: "Perfect for blogs, brochure sites, and small businesses.",
-    features: ["Monthly WP core & plugin updates", "Daily cloud backups (30-day retention)", "24/7 uptime monitoring", "Monthly performance report", "1hr/mo small fixes included"],
+    name: "Essential Care",
+    price: "$199",
+    desc: "Core maintenance for sites and small businesses that need reliability.",
+    features: ["WordPress core & plugin updates", "Daily cloud backups (30-day retention)", "24/7 uptime monitoring", "Monthly performance reports", "1hr/mo small fixes included"],
     cta: "Get Started",
     highlight: false,
   },
   {
-    name: "Pro Maintenance",
-    price: "$199",
-    desc: "For eCommerce and business sites that need more.",
-    features: ["Everything in Standard", "Weekly plugin updates", "Security hardening & malware scans", "Priority support queue", "3hrs/mo small fixes included", "Speed optimization"],
+    name: "Business Protection",
+    price: "$399–$599",
+    desc: "For eCommerce, membership sites, and businesses where uptime directly affects revenue.",
+    features: ["Everything in Essential Care", "Real-time malware scanning", "Enterprise firewall setup", "Security hardening & monthly audits", "3hrs/mo small fixes included", "Speed optimization"],
     cta: "Get Started",
     highlight: true,
   },
@@ -46,22 +46,22 @@ export default function Maintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20">
-              <Wrench size={14} /> WordPress Maintenance
+              <Wrench size={14} /> WordPress Reliability & Uptime
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Keep Your WordPress Site <span className="text-accent">Running Perfectly</span>
+              Protect Your Site's <span className="text-accent">Uptime & Security</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Proactive updates, daily backups, and real-time monitoring — so your site is always fast, secure, and up-to-date. You run your business. We run your website.
+              Proactive patching, automated backups, real-time monitoring, and security hardening — so your site is always protected, fast, and available. You grow your business. We protect your infrastructure.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href='/contact'}>
-                Start a Maintenance Plan <ArrowRight size={18} className="ml-2" />
+                Schedule a Protection Review <ArrowRight size={18} className="ml-2" />
               </Button>
-              <Link href="/pricing"><Button variant="outline" size="lg" className="text-lg px-8">See Pricing</Button></Link>
+              <Link href="/pricing"><Button variant="outline" size="lg" className="text-lg px-8">See All Plans</Button></Link>
             </div>
             <div className="flex flex-wrap gap-6 mt-10 text-sm text-muted-foreground font-medium">
-              {["800+ sites maintained", "No contracts", "Cancel anytime", "10+ years experience"].map(b => (
+              {["800+ sites protected", "No lock-in contracts", "99.9% uptime guarantee", "10+ years experience"].map(b => (
                 <div key={b} className="flex items-center gap-2"><CheckCircle2 size={16} className="text-green-500" />{b}</div>
               ))}
             </div>
@@ -73,8 +73,8 @@ export default function Maintenance() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything Your Site Needs to Thrive</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Our maintenance plans are proactive, not reactive — we prevent problems before they happen.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Protection Built Into Your Operations</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">We prevent security incidents, maintain uptime, and reduce operational risk — so your team can focus on growth instead of firefighting WordPress issues.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((f) => (
@@ -92,8 +92,8 @@ export default function Maintenance() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Maintenance Plans</h2>
-            <p className="text-lg text-muted-foreground">All plans are month-to-month. No setup fees.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Level of Protection</h2>
+            <p className="text-lg text-muted-foreground">Month-to-month plans with no setup fees. Focused on uptime, security, and peace of mind.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {plans.map((plan) => (
@@ -133,10 +133,10 @@ export default function Maintenance() {
       {/* CTA */}
       <section className="py-20 cta-gradient text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready for Worry-Free WordPress?</h2>
-          <p className="text-lg text-white/90 mb-8">Let us handle the maintenance while you focus on growing your business.</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Stop Worrying About Your WordPress Site</h2>
+          <p className="text-lg text-white/90 mb-8">We handle the security, updates, backups, and monitoring. You focus on what matters to your business.</p>
           <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-            Get Your Maintenance Plan <ArrowRight size={18} className="ml-2" />
+            Start Your Protection Plan <ArrowRight size={18} className="ml-2" />
           </Button>
         </div>
       </section>

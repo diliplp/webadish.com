@@ -142,12 +142,15 @@ export default function HackedSiteRecovery() {
       </section>
 
       {/* UPSELL TO RETAINER */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white border-t border-border/50">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">After Recovery</p>
-          <h3 className="text-2xl font-bold mb-4">Prevent the Next Hack with a Security Retainer</h3>
-          <p className="text-muted-foreground mb-6">Most recovered sites get hacked again within 6 months. Our Security Retainer provides ongoing protection so it never happens again.</p>
-          <Link href="/retainer"><Button variant="accent">Learn About Security Retainers <ArrowRight size={16} className="ml-2" /></Button></Link>
+          <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">Next Steps</p>
+          <h3 className="text-2xl font-bold mb-4">Prevent the Next Hack with Our Security Retainer</h3>
+          <p className="text-muted-foreground mb-6">Most recovered sites are hacked again within 6 months if left unprotected. Our Security Retainer provides ongoing monitoring, hardening, and dedicated incident response — so this never happens again.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/retainer"><Button variant="accent">Learn About Security Retainers <ArrowRight size={16} className="ml-2" /></Button></Link>
+            <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer"><Button variant="outline">UK-Based Recovery Service</Button></a>
+          </div>
         </div>
       </section>
     </Layout>

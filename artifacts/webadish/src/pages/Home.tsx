@@ -84,7 +84,7 @@ export default function Home() {
             </h1>
 
             <p className="hero-subtitle text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
-              High-ticket WordPress maintenance & security retainers for agencies, eCommerce, and serious businesses. We guard your site around the clock.
+              Enterprise-grade WordPress security, reliability, and incident response for businesses where uptime, trust, and compliance matter. Trusted by 800+ revenue-critical sites.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -109,13 +109,13 @@ export default function Home() {
         </section>
 
         {/* EMERGENCY BANNER */}
-        <Link href="/hacked-site-recovery" className="block w-full bg-primary text-primary-foreground py-4 px-4 text-center font-medium hover:bg-primary/90 transition-colors z-20 relative group">
+        <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer" className="block w-full bg-primary text-primary-foreground py-4 px-4 text-center font-medium hover:bg-primary/90 transition-colors z-20 relative group">
           <div className="flex items-center justify-center gap-2 max-w-7xl mx-auto">
             <span className="text-xl">🚨</span>
-            <span className="text-sm md:text-base">Site Hacked? We recover WordPress sites in under 24 hours</span>
+            <span className="text-sm md:text-base">Site Hacked? Get emergency incident response with our dedicated security team</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </div>
-        </Link>
+        </a>
 
         {/* STATS */}
         <section ref={statsRef} className="py-16 bg-white border-b border-border/50">
@@ -219,10 +219,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-2">Standard</h3>
-                <div className="mb-6"><span className="text-4xl font-bold">$99</span><span className="text-muted-foreground">/mo</span></div>
+                <h3 className="text-xl font-semibold mb-2">Essential Care</h3>
+                <div className="mb-6"><span className="text-4xl font-bold">$199</span><span className="text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["WP & Plugin Updates", "Daily Cloud Backups", "Uptime Monitoring", "Monthly Report"].map(f => (
+                  {["Core Updates & Backups", "Uptime Monitoring", "Daily Backups", "Monthly Reports"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -230,10 +230,10 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform lg:scale-105 z-10 reveal-section">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Most Popular</div>
-                <h3 className="text-xl font-semibold mb-2">Pro</h3>
-                <div className="mb-6"><span className="text-5xl font-bold">$199</span><span className="text-muted-foreground">/mo</span></div>
+                <h3 className="text-xl font-semibold mb-2">Business Protection</h3>
+                <div className="mb-6"><span className="text-5xl font-bold">$399–$599</span><span className="text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-8 font-medium">
-                  {["Everything in Standard", "Security Hardening", "Malware Scanning", "Priority Support", "24h Response"].map(f => (
+                  {["Everything in Essential Care", "Real-time Malware Scanning", "Enterprise Firewall", "Security Audits", "24h SLA"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -241,9 +241,9 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
                 <h3 className="text-xl font-semibold mb-2">Security Retainer</h3>
-                <div className="mb-6"><span className="text-4xl font-bold">$799</span><span className="text-muted-foreground">/mo</span></div>
+                <div className="mb-6"><span className="text-4xl font-bold">$999+</span><span className="text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-8">
-                  {["Everything in Pro", "Dedicated Security Eng.", "Monthly Audit", "Emergency Recovery", "Custom SLA"].map(f => (
+                  {["Dedicated Engineer", "Monthly Audits", "Emergency Recovery", "4h Response SLA", "Custom SLA"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
@@ -296,10 +296,10 @@ export default function Home() {
         {/* CTA */}
         <section className="py-24 cta-gradient text-white text-center reveal-section">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Is Your WordPress Site One Hack Away from Disaster?</h2>
-            <p className="text-xl text-white/90 mb-10 text-balance">Join 800+ businesses that trust WebAdish for 24/7 WordPress protection.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Protect Your WordPress Site Before Risk Becomes Incident</h2>
+            <p className="text-xl text-white/90 mb-10 text-balance">Enterprise teams trust WebAdish to prevent security incidents, maintain uptime, and respond to emergencies with dedicated expertise.</p>
             <Button variant="white" size="lg" className="text-lg px-10 py-7" onClick={() => window.location.href='/contact'}>
-              Get Protected Now <ArrowRight size={20} className="ml-2" />
+              Schedule a Security Review <ArrowRight size={20} className="ml-2" />
             </Button>
           </div>
         </section>
