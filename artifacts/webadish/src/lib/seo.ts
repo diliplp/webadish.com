@@ -243,7 +243,7 @@ const pageSeo: Record<string, SeoData> = {
     ],
   },
   "/retainer": {
-    title: "WordPress Security Retainer",
+    title: "WordPress Business Continuity Retainer",
     description:
       "Retained WordPress security for agencies, WooCommerce stores, and high-value businesses needing a dedicated expert, response SLAs, and ongoing audits.",
     path: "/retainer",
@@ -255,7 +255,7 @@ const pageSeo: Record<string, SeoData> = {
     breadcrumbs: breadcrumbs("Retainer", "/retainer"),
     schema: [
       serviceSchema(
-        "WordPress Security Retainer",
+        "WordPress Business Continuity Retainer",
         "Dedicated ongoing WordPress security support with audits, SLAs, and incident response.",
         "/retainer",
         "WordPress security retainer",
@@ -434,7 +434,7 @@ const blogPosts: Record<string, SeoData> = {
     ],
   },
   "/blog/wordpress-security-retainer-includes": {
-    title: "What a WordPress Security Retainer Includes",
+    title: "What a WordPress Business Continuity Retainer Includes",
     description:
       "A decision-stage guide to what buyers should expect from a WordPress security retainer, including audits, monitoring, incident response, and SLAs.",
     path: "/blog/wordpress-security-retainer-includes",
@@ -442,11 +442,11 @@ const blogPosts: Record<string, SeoData> = {
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Blog", path: "/blog" },
-      { name: "WordPress Security Retainer Includes", path: "/blog/wordpress-security-retainer-includes" },
+      { name: "WordPress Business Continuity Retainer Includes", path: "/blog/wordpress-security-retainer-includes" },
     ],
     schema: [
       articleSchema({
-        title: "What Does a WordPress Security Retainer Actually Include?",
+        title: "What Does a WordPress Business Continuity Retainer Actually Include?",
         description:
           "What premium WordPress security retainers usually cover, who they are for, and how to evaluate providers.",
         path: "/blog/wordpress-security-retainer-includes",

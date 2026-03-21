@@ -8,7 +8,7 @@ const services = [
   "WordPress Maintenance Plan",
   "WordPress Security",
   "Hacked Site Recovery (Emergency)",
-  "Security Retainer",
+  "Business Continuity Retainer",
   "Web Design",
   "General Enquiry",
 ];

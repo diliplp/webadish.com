@@ -467,7 +467,7 @@ const posts: Record<string, {
           <li>A team that already has context on your site when something does go wrong.</li>
         </ul>
         <p>The goal is not zero risk. The goal is making sure incidents are caught early, contained fast, and resolved without turning into a revenue event.</p>
-        <p><Link href="/maintenance" className="text-accent hover:underline font-medium">See how our Business Protection plan works →</Link></p>
+        <p><Link href="/maintenance" className="text-accent hover:underline font-medium">See how our Incident Response plan works →</Link></p>
       </div>
     ),
   },
@@ -564,7 +564,7 @@ const posts: Record<string, {
   },
   "wordpress-security-retainer-includes": {
     tag: "Buyer Intent", tagColor: "text-foreground",
-    title: "What Does a WordPress Security Retainer Actually Include?",
+    title: "What Does a WordPress Business Continuity Retainer Actually Include?",
     date: "March 17, 2026", read: "6 min",
     img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (

@@ -181,7 +181,7 @@ export function Footer() {
               <li><Link href="/maintenance" className="text-muted-foreground hover:text-accent text-sm transition-colors">WordPress Maintenance</Link></li>
               <li><Link href="/security" className="text-muted-foreground hover:text-accent text-sm transition-colors">WordPress Security</Link></li>
               <li><Link href="/hacked-site-recovery" className="text-muted-foreground hover:text-primary text-sm transition-colors font-medium">Hacked Site Recovery</Link></li>
-              <li><Link href="/retainer" className="text-muted-foreground hover:text-accent text-sm transition-colors">Security Retainer</Link></li>
+              <li><Link href="/retainer" className="text-muted-foreground hover:text-accent text-sm transition-colors">Business Continuity Retainer</Link></li>
               <li><Link href="/web-design" className="text-muted-foreground hover:text-accent text-sm transition-colors">Web Design</Link></li>
             </ul>
           </div>

@@ -50,11 +50,11 @@ const whyRetainer = [
 
 const retainerTiers = [
   {
-    name: "Security Retainer",
-    price: "$999",
+    name: "Business Continuity Retainer",
+    price: "Custom Prices",
     desc: "For businesses and agencies that need dedicated security oversight, faster incident response, and fewer WordPress surprises.",
     features: [
-      "Everything in Business Protection",
+      "Everything in Incident Response",
       "Dedicated security engineer",
       "Monthly security audit",
       "Emergency recovery included",
@@ -69,7 +69,7 @@ const retainerTiers = [
     price: "$2,000+",
     desc: "For enterprise teams, multi-site operations, and high-visibility brands with stricter operational requirements.",
     features: [
-      "Everything in Security Retainer",
+      "Everything in Business Continuity Retainer",
       "Multi-site coverage with volume discounts",
       "1h emergency response SLA",
       "Weekly security reviews",
@@ -101,7 +101,7 @@ export default function Retainer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20">
-              <Lock size={14} /> Security Retainer
+              <Lock size={14} /> Business Continuity Retainer
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
               WordPress Security Support <span className="text-accent">for Higher-Stakes Teams</span>

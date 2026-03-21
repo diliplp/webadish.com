@@ -147,7 +147,7 @@ export default function Security() {
                 desc: "Best for growing businesses that need updates, monitoring, backups, and practical day-to-day WordPress protection.",
               },
               {
-                title: "Dedicated Security Retainer",
+                title: "Dedicated Business Continuity Retainer",
                 desc: "For high-value sites that need a named expert, response SLAs, monthly audits, and stronger operational coverage.",
               },
             ].map((offer) => (

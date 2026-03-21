@@ -210,7 +210,7 @@ export default function Home() {
                   { label: "Emergency malware cleanup", cost: "$500–$2,000+", icon: "🔴" },
                   { label: "Google blacklist removal & SEO recovery", cost: "Weeks to months", icon: "🔴" },
                   { label: "Lost revenue during downtime", cost: "Ongoing", icon: "🔴" },
-                  { label: "Managed security retainer (prevents all of the above)", cost: "From £3,000/yr", icon: "🟢" },
+                  { label: "Managed security retainer (prevents all of the above)", cost: "From $3,000/yr", icon: "🟢" },
                 ].map((row) => (
                   <div key={row.label} className="flex items-center justify-between bg-white/5 rounded-xl px-5 py-4 border border-white/10">
                     <div className="flex items-center gap-3 text-sm">
@@ -244,7 +244,7 @@ export default function Home() {
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
                 <h3 className="text-xl font-semibold mb-1">Security Protection</h3>
                 <p className="text-sm text-muted-foreground mb-4">For business-critical websites requiring constant oversight.</p>
-                <div className="mb-6"><span className="text-4xl font-bold">From £3,000/yr</span></div>
+                <div className="mb-6"><span className="text-4xl font-bold">From $3,000/yr</span></div>
                 <ul className="space-y-3 mb-8">
                   {["Core updates & monitoring", "Backup systems", "Baseline security"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
@@ -258,7 +258,7 @@ export default function Home() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">⭐ Recommended</div>
                 <h3 className="text-xl font-semibold mb-1">Incident Response</h3>
                 <p className="text-sm text-muted-foreground mb-4">Emergency resolution for breached or compromised high-value assets.</p>
-                <div className="mb-6"><span className="text-5xl font-bold">From £5,000</span></div>
+                <div className="mb-6"><span className="text-5xl font-bold">From $5,000</span></div>
                 <ul className="space-y-3 mb-8">
                   {["Advanced monitoring", "Performance optimization", "Priority support", "Enhanced security"].map(f => (
                     <li key={f} className="flex items-center gap-3 text-sm font-medium"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>

@@ -106,7 +106,7 @@ const posts = [
     tag: "Buyer Intent",
     tagColor: "text-foreground",
     tagBg: "bg-foreground/10",
-    title: "What Does a WordPress Security Retainer Actually Include?",
+    title: "What Does a WordPress Business Continuity Retainer Actually Include?",
     excerpt:
       "A practical buying guide covering SLAs, audits, incident response, proactive monitoring, and when a retainer makes sense.",
     date: "March 17, 2026",

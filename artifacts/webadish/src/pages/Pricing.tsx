@@ -6,9 +6,9 @@ import { useState } from "react";
 
 const plans = [
   {
-    name: "Essential Care",
-    monthly: "$199",
-    annual: "$159",
+    name: "Security Protection",
+    monthly: "From $3,000/yr",
+    annual: "From $3,000/yr",
     desc: "For low-risk websites requiring basic protection.",
     color: "border-border/50",
     features: [
@@ -25,16 +25,16 @@ const plans = [
     ],
   },
   {
-    name: "Business Protection",
-    monthly: "$399",
-    monthlyMax: "$599",
-    annual: "$319",
-    annualMax: "$479",
+    name: "Incident Response",
+    monthly: "From $5,000",
+    ,
+    annual: "From $5,000",
+    ,
     desc: "Recommended for revenue-generating websites.",
     color: "border-accent",
     highlight: true,
     features: [
-      { label: "Everything in Essential Care", included: true },
+      { label: "Everything in Security Protection", included: true },
       { label: "Security hardening", included: true },
       { label: "Real-time malware scanning", included: true },
       { label: "Priority support queue", included: true },
@@ -47,13 +47,13 @@ const plans = [
     ],
   },
   {
-    name: "Security Retainer",
-    monthly: "$999",
-    annual: "$799",
+    name: "Business Continuity Retainer",
+    monthly: "Custom Prices",
+    annual: "From $10,000/yr",
     desc: "For high-value websites requiring continuous security oversight.",
     color: "border-border/50",
     features: [
-      { label: "Everything in Business Protection", included: true },
+      { label: "Everything in Incident Response", included: true },
       { label: "Dedicated security engineer", included: true },
       { label: "Monthly security audit", included: true },
       { label: "Emergency recovery included", included: true },
@@ -68,8 +68,8 @@ const plans = [
 ];
 
 const addons = [
-  { name: "Hacked Site Recovery", price: "Starting from $1,499", desc: "One-time emergency malware removal + blacklist removal. 30-day guarantee." },
-  { name: "Security Audit (Initial Assessment)", price: "Starting from $499", desc: "Includes high-level review of your WordPress site's security posture. Deep forensic audits are part of incident response engagements." },
+  { name: "Hacked Site Recovery", price: "Starting from $2,500", desc: "One-time emergency malware removal + blacklist removal. 30-day guarantee." },
+  { name: "Security Audit (Initial Assessment)", price: "Starting from $3,500", desc: "Includes high-level review of your WordPress site's security posture. Deep forensic audits are part of incident response engagements." },
 ];
 
 const faqs = [

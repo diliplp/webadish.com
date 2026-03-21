@@ -15,7 +15,7 @@ const features = [
 const plans = [
   {
     name: "Security Protection",
-    price: "From £3,000/yr",
+    price: "From $3,000/yr",
     desc: "For business-critical websites requiring constant oversight.",
     features: ["Proactive Security Posture Management", "Real-time threat monitoring", "Business Continuity Backups", "Infrastructure-level hardening", "Priority Incident Response SLA"],
     cta: "Request Assessment",
