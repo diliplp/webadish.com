@@ -68,7 +68,7 @@ export default function Home() {
             </h1>
 
             <p className="hero-subtitle text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
-              Prevent incidents, protect revenue, and ensure continuous uptime with expert-led security. Trusted by 800+ businesses, eCommerce stores, and agencies worldwide.
+              Prevent incidents, protect revenue, and ensure continuous uptime with expert-led security and maintenance.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -105,7 +105,7 @@ export default function Home() {
         <section className="py-10 bg-white border-b border-border/50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-xl md:text-2xl font-semibold text-foreground">
-              Built on 20+ years of infrastructure and security experience.
+              Built on 20+ years of infrastructure, security, and enterprise system experience.
             </p>
           </div>
         </section>
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 reveal-section">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Most websites fail not because of poor design — but because of weak security and lack of proper maintenance.
+                Most websites fail not due to design — but due to weak security and poor maintenance practices.
               </h2>
               <p className="text-lg text-muted-foreground">We exist to fix that. Our team of security experts and WordPress developers ensures your site stays operational, protected, and performing — so you never have to deal with a preventable crisis.</p>
             </div>
@@ -155,7 +155,10 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-sm font-medium mb-6">
                   <AlertTriangle size={14} /> Prevention vs Recovery
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Prevention is always cheaper than recovery.</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">Prevention is significantly cheaper than incident recovery.</h2>
+                <p className="text-white/70 text-base mb-4">
+                  Even well-maintained websites can be compromised if security is not handled properly.
+                </p>
                 <p className="text-white/80 text-lg leading-relaxed mb-8">
                   Most hacked websites were "maintained" — but not properly secured. A plugin update schedule is not a security strategy. We implement defence-in-depth so problems are caught and contained before they escalate into emergencies.
                 </p>
@@ -195,7 +198,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal-section">
               <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">Protection Plans</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Choose Your Level of Protection</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Continuous Protection for Different Levels of Business Risk</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
               <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
                 <p className="text-base md:text-lg font-semibold leading-snug">
@@ -205,9 +208,9 @@ export default function Home() {
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
-              {/* Essential Care */}
+              {/* Basic Protection */}
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-1">Essential Care</h3>
+                <h3 className="text-xl font-semibold mb-1">Basic Protection</h3>
                 <p className="text-sm text-muted-foreground mb-4">For low-risk websites requiring basic protection</p>
                 <div className="mb-6"><span className="text-4xl font-bold">$199</span><span className="text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-8">
@@ -218,9 +221,9 @@ export default function Home() {
                 <Link href="/pricing"><Button variant="outline" className="w-full">Get Started</Button></Link>
               </div>
 
-              {/* Business Protection */}
+              {/* Recommended */}
               <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform lg:scale-105 z-10 reveal-section">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Most Popular</div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">⭐ Recommended</div>
                 <h3 className="text-xl font-semibold mb-1">Business Protection</h3>
                 <p className="text-sm text-muted-foreground mb-4">For growing businesses and revenue-generating sites</p>
                 <div className="mb-6"><span className="text-5xl font-bold">$399–$599</span><span className="text-muted-foreground">/mo</span></div>
@@ -232,9 +235,9 @@ export default function Home() {
                 <Button variant="accent" className="w-full h-12 text-base" onClick={() => window.location.href='/contact'}>Get Started Now</Button>
               </div>
 
-              {/* Advanced Security */}
+              {/* Full Protection */}
               <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-1">Advanced Security</h3>
+                <h3 className="text-xl font-semibold mb-1">Full Protection</h3>
                 <p className="text-sm text-muted-foreground mb-4">Continuous protection for high-value websites</p>
                 <div className="mb-6"><span className="text-4xl font-bold">$999+</span><span className="text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-8">
@@ -250,7 +253,7 @@ export default function Home() {
             <div className="mt-10 max-w-2xl mx-auto reveal-section">
               <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center">
                 <p className="text-sm text-amber-800 mb-3">
-                  <strong>⚠️ Important:</strong> Critical security incidents may require dedicated incident response services not included in standard plans.
+                  <strong>⚠️ Important:</strong> Critical security incidents are handled separately by our dedicated incident response team.
                 </p>
                 <Link href="/hacked-site-recovery">
                   <Button variant="outline" size="sm" className="border-amber-400 text-amber-800 hover:bg-amber-100">
@@ -313,7 +316,7 @@ export default function Home() {
             <div className="max-w-2xl mx-auto reveal-section">
               <div className="bg-white rounded-xl border border-border/50 p-5 flex items-start gap-3">
                 <AlertTriangle size={18} className="text-amber-500 shrink-0 mt-0.5" />
-                <p className="text-sm text-muted-foreground"><strong className="text-foreground">Not designed for low-budget or hobby projects.</strong> Our plans are built for businesses where security and uptime have real operational consequences. If you need basic hosting support, we're not the right fit.</p>
+                <p className="text-sm text-muted-foreground"><strong className="text-foreground">Not suitable for low-budget or non-critical websites.</strong> Our plans are built for businesses where security and uptime have real operational consequences. If you need basic hosting support, we're not the right fit.</p>
               </div>
             </div>
           </div>
@@ -323,7 +326,7 @@ export default function Home() {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal-section">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted by Businesses Worldwide</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted by businesses where uptime and security are critical</h2>
               <p className="text-lg text-muted-foreground">Real results for agencies, eCommerce stores, and high-growth brands.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -404,16 +407,19 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold mb-8">
               <Ambulance size={16} /> Already Under Attack?
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
               Website already<br className="hidden md:block" /> compromised?
             </h2>
-            <p className="text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl font-semibold text-white/90 mb-6">
+              Get expert incident response — not just a quick fix.
+            </p>
+            <p className="text-lg text-white/75 mb-10 max-w-2xl mx-auto leading-relaxed">
               Every hour your site is infected, Google is recording it, customers are being warned away, and the damage compounds. Our incident response team is available now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/hacked-site-recovery">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg px-10 py-6">
-                  Get Expert Incident Response Now <ArrowRight size={20} className="ml-2" />
+                  Get Emergency Help Now <ArrowRight size={20} className="ml-2" />
                 </Button>
               </Link>
               <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
