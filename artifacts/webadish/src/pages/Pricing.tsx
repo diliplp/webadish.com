@@ -9,18 +9,18 @@ const plans = [
     name: "Essential Care",
     monthly: "$199",
     annual: "$159",
-    desc: "Core maintenance for sites & small businesses.",
+    desc: "For low-risk websites requiring basic protection.",
     color: "border-border/50",
     features: [
       { label: "WordPress & plugin updates", included: true },
       { label: "Daily cloud backups (30-day retention)", included: true },
       { label: "24/7 uptime monitoring", included: true },
       { label: "Monthly performance report", included: true },
-      { label: "1hr/mo small fixes", included: true },
+      { label: "Priority technical support", included: true },
       { label: "Security hardening", included: false },
       { label: "Malware scanning", included: false },
       { label: "Emergency recovery", included: false },
-      { label: "Priority support", included: false },
+      { label: "Priority support queue", included: false },
       { label: "Dedicated engineer", included: false },
     ],
   },
@@ -30,7 +30,7 @@ const plans = [
     monthlyMax: "$599",
     annual: "$319",
     annualMax: "$479",
-    desc: "For eCommerce, membership sites & serious businesses.",
+    desc: "Recommended for revenue-generating websites.",
     color: "border-accent",
     highlight: true,
     features: [
@@ -38,7 +38,7 @@ const plans = [
       { label: "Security hardening", included: true },
       { label: "Real-time malware scanning", included: true },
       { label: "Priority support queue", included: true },
-      { label: "3hrs/mo small fixes", included: true },
+      { label: "Security-focused changes", included: true },
       { label: "Speed optimization", included: true },
       { label: "24h response SLA", included: true },
       { label: "Emergency recovery", included: false },
@@ -50,7 +50,7 @@ const plans = [
     name: "Security Retainer",
     monthly: "$999",
     annual: "$799",
-    desc: "Dedicated security for agencies, eCommerce & enterprises.",
+    desc: "For high-value websites requiring continuous security oversight.",
     color: "border-border/50",
     features: [
       { label: "Everything in Business Protection", included: true },
@@ -70,8 +70,6 @@ const plans = [
 const addons = [
   { name: "Hacked Site Recovery", price: "From $299", desc: "One-time emergency malware removal + blacklist removal. 30-day guarantee." },
   { name: "Security Audit (One-Time)", price: "$149", desc: "Deep scan of your WordPress site for vulnerabilities, malware, and misconfigurations." },
-  { name: "Web Design", price: "From $999", desc: "Custom WordPress website design and development for your brand." },
-  { name: "Extra Dev Hours", price: "$75/hr", desc: "Need more than your plan's monthly fix allowance? Add hourly dev time." },
 ];
 
 const faqs = [
@@ -91,16 +89,16 @@ export default function Pricing() {
       {/* HERO */}
       <section className="pt-36 pb-20 hero-gradient text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Simple, <span className="text-accent">Transparent</span> Pricing
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            WordPress Protection Plans for<br className="hidden md:block" /> <span className="text-accent">Business-Critical Websites</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-10">
-            No surprises. No lock-in contracts. Premium WordPress protection at prices that make sense.
+            Continuous security, monitoring, and expert support — built to prevent costly incidents.
           </p>
-          {/* Toggle */}
-          <div className="inline-flex items-center gap-4 bg-white rounded-full px-6 py-3 shadow-sm border border-border/50">
-            <button onClick={() => setAnnual(false)} className={`text-sm font-semibold px-4 py-2 rounded-full transition-all ${!annual ? "bg-accent text-white" : "text-muted-foreground"}`}>Monthly</button>
-            <button onClick={() => setAnnual(true)} className={`text-sm font-semibold px-4 py-2 rounded-full transition-all ${annual ? "bg-accent text-white" : "text-muted-foreground"}`}>
+          <p className="text-sm text-muted-foreground/70 mb-3">Billing preference</p>
+          <div className="inline-flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-sm border border-border/50 text-sm">
+            <button onClick={() => setAnnual(false)} className={`font-medium px-3 py-1.5 rounded-full transition-all ${!annual ? "bg-accent text-white" : "text-muted-foreground"}`}>Monthly</button>
+            <button onClick={() => setAnnual(true)} className={`font-medium px-3 py-1.5 rounded-full transition-all ${annual ? "bg-accent text-white" : "text-muted-foreground"}`}>
               Annual <span className="text-xs ml-1 text-green-600 font-bold">Save 20%</span>
             </button>
           </div>
@@ -110,6 +108,14 @@ export default function Pricing() {
       {/* PLANS */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
+              <p className="text-base md:text-lg font-semibold leading-snug">
+                This is not generic maintenance.<br />
+                These plans are designed to continuously protect business-critical websites.
+              </p>
+            </div>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {plans.map((plan) => (
               <div key={plan.name} className={`rounded-3xl p-10 border-2 ${plan.color} ${plan.highlight ? "shadow-2xl shadow-accent/10" : "shadow-sm"} bg-white relative`}>
@@ -150,6 +156,12 @@ export default function Pricing() {
                 </Button>
               </div>
             ))}
+          </div>
+          <div className="mt-10 max-w-2xl mx-auto text-center">
+            <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">
+              <strong className="text-foreground">⚠️ Note:</strong> Critical incidents are handled separately by our dedicated incident response team.{" "}
+              <a href="/hacked-site-recovery" className="text-accent hover:underline font-medium">Learn about emergency response →</a>
+            </p>
           </div>
         </div>
       </section>
@@ -196,9 +208,9 @@ export default function Pricing() {
       <section className="py-20 cta-gradient text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Not Sure Which Plan Is Right?</h2>
-          <p className="text-lg text-white/90 mb-8">Book a free 15-minute consultation. We'll review your site and recommend the best fit.</p>
+          <p className="text-lg text-white/90 mb-8">We'll review your site and recommend the appropriate level of protection based on your situation.</p>
           <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-            Book Free Consultation <ArrowRight size={18} className="ml-2" />
+            Request Security Assessment <ArrowRight size={18} className="ml-2" />
           </Button>
         </div>
       </section>
