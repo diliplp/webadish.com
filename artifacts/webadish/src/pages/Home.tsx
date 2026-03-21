@@ -214,8 +214,8 @@ export default function Home() {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
               <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
                 <p className="text-base md:text-lg font-semibold leading-snug">
-                  This is not generic maintenance.<br />
-                  This is continuous protection for business-critical websites.
+                  We don't offer low-cost maintenance.<br />
+                  We provide continuous protection for business-critical websites.
                 </p>
               </div>
             </div>
@@ -416,22 +416,22 @@ export default function Home() {
         {/* BRIDGE — EMERGENCY ESCALATION */}
         <section className="py-24 bg-primary text-white reveal-section">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold mb-8">
-              <Ambulance size={16} /> Already Under Attack?
+            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold mb-8 uppercase tracking-widest">
+              <Ambulance size={16} /> Emergency Response
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-              Website already<br className="hidden md:block" /> compromised?
+              Website already compromised?
             </h2>
-            <p className="text-xl font-semibold text-white/90 mb-6">
-              Get expert incident response — not just a quick fix.
+            <p className="text-2xl font-bold text-white mb-6">
+              Do not rely on basic fixes.
             </p>
             <p className="text-lg text-white/75 mb-10 max-w-2xl mx-auto leading-relaxed">
               Every hour your site is infected, Google is recording it, customers are being warned away, and the damage compounds. Our incident response team is available now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/hacked-site-recovery">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg px-10 py-6">
-                  Get Emergency Help Now <ArrowRight size={20} className="ml-2" />
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-7">
+                  → Get expert incident response immediately
                 </Button>
               </Link>
               <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
