@@ -80,17 +80,17 @@ export default function Home() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-tight mb-6 perspective-[1000px]">
-              <span className="inline-block hero-title-word origin-bottom">Prevent</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">Downtime,</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom">WordPress</span>{" "}
               <span className="inline-block hero-title-word origin-bottom">Security</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">Breaches,</span>
+              <span className="inline-block hero-title-word origin-bottom">&</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom">Maintenance</span>
               <br />
-              <span className="inline-block hero-title-word origin-bottom text-accent">and Costly</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom text-accent">Emergencies</span>
+              <span className="inline-block hero-title-word origin-bottom text-accent">for Business-Critical</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom text-accent">Websites</span>
             </h1>
 
             <p className="hero-subtitle text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
-              Proactive WordPress security and maintenance for business-critical websites. Trusted by 800+ businesses, eCommerce stores, and agencies worldwide.
+              Prevent incidents, protect revenue, and ensure continuous uptime with expert-led security. Trusted by 800+ businesses, eCommerce stores, and agencies worldwide.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
