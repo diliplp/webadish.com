@@ -92,6 +92,18 @@ export default function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
         </section>
 
+        {/* SECURITY PHILOSOPHY STRIP */}
+        <section className="py-8 bg-foreground text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-lg md:text-xl font-semibold leading-snug">
+              Security is not a plugin or a checklist.
+            </p>
+            <p className="text-base md:text-lg text-white/75 mt-1">
+              It requires continuous oversight, monitoring, and expert handling.
+            </p>
+          </div>
+        </section>
+
         {/* EMERGENCY BANNER */}
         <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer" className="block w-full bg-primary text-primary-foreground py-4 px-4 text-center font-medium hover:bg-primary/90 transition-colors z-20 relative group">
           <div className="flex items-center justify-center gap-2 max-w-7xl mx-auto">
