@@ -28,7 +28,6 @@ if (typeof window !== "undefined") {
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -37,27 +36,6 @@ export default function Home() {
       .fromTo(".hero-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
       .fromTo(".hero-cta", { opacity: 0, y: 20, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1, ease: "back.out(1.5)" }, "-=0.2")
       .fromTo(".hero-trust", { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.2");
-
-    const statNumbers = gsap.utils.toArray<HTMLElement>(".stat-num");
-    ScrollTrigger.create({
-      trigger: statsRef.current,
-      start: "top 80%",
-      onEnter: () => {
-        statNumbers.forEach((stat) => {
-          const target = parseFloat(stat.getAttribute("data-target") || "0");
-          const isDecimal = target % 1 !== 0;
-          gsap.to(stat, {
-            innerHTML: target,
-            duration: 2,
-            ease: "power2.out",
-            snap: { innerHTML: isDecimal ? 0.1 : 1 },
-            onUpdate: function () {
-              if (isDecimal) stat.innerHTML = Number(this.targets()[0].innerHTML).toFixed(1);
-            },
-          });
-        });
-      },
-    });
 
     gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
       gsap.fromTo(section, { opacity: 0, y: 40 }, {
@@ -123,27 +101,12 @@ export default function Home() {
           </div>
         </a>
 
-        {/* STATS */}
-        <section ref={statsRef} className="py-16 bg-white border-b border-border/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-border/50 text-center">
-              <div className="px-4">
-                <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 flex justify-center"><span className="stat-num" data-target="800">0</span>+</div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Sites Protected</div>
-              </div>
-              <div className="px-4">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 flex justify-center">&lt;<span className="stat-num" data-target="24">0</span>h</div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Malware Recovery</div>
-              </div>
-              <div className="px-4">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2 flex justify-center"><span className="stat-num" data-target="99.9">0</span>%</div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Uptime Guarantee</div>
-              </div>
-              <div className="px-4">
-                <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 flex justify-center"><span className="stat-num" data-target="20">0</span>+</div>
-                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Years in Business</div>
-              </div>
-            </div>
+        {/* AUTHORITY STRIP */}
+        <section className="py-10 bg-white border-b border-border/50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-xl md:text-2xl font-semibold text-foreground">
+              Built on 20+ years of infrastructure and security experience.
+            </p>
           </div>
         </section>
 
