@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   Shield,
   Wrench,
@@ -9,6 +9,10 @@ import {
   ArrowRight,
   Lock,
   ChevronRight,
+  TrendingUp,
+  AlertTriangle,
+  Users,
+  Activity,
 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -66,25 +70,27 @@ export default function Home() {
   return (
     <Layout>
       <div ref={heroRef}>
+
         {/* HERO */}
         <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 hero-gradient relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium text-sm mb-8 border border-accent/20">
               <Shield size={16} className="text-accent" />
-              <span>Global WordPress Security Experts</span>
+              <span>Proactive WordPress Security & Maintenance — 20+ Years Experience</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-4xl mx-auto leading-tight mb-6 perspective-[1000px]">
-              <span className="inline-block hero-title-word origin-bottom">Your</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">WordPress</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">Site,</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-tight mb-6 perspective-[1000px]">
+              <span className="inline-block hero-title-word origin-bottom">Prevent</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom">Downtime,</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom">Security</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom">Breaches,</span>
               <br />
-              <span className="inline-block hero-title-word origin-bottom text-accent">Protected</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom text-accent">24/7</span>
+              <span className="inline-block hero-title-word origin-bottom text-accent">and Costly</span>{" "}
+              <span className="inline-block hero-title-word origin-bottom text-accent">Emergencies</span>
             </h1>
 
             <p className="hero-subtitle text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
-              Enterprise-grade WordPress security, reliability, and incident response for businesses where uptime, trust, and compliance matter. Trusted by 800+ revenue-critical sites.
+              Proactive WordPress security and maintenance for business-critical websites. Trusted by 800+ businesses, eCommerce stores, and agencies worldwide.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -93,7 +99,7 @@ export default function Home() {
               </Button>
               <Link href="/hacked-site-recovery">
                 <Button variant="outline-primary" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8 bg-white">
-                  <Ambulance size={18} className="mr-2" /> Emergency Recovery
+                  <Ambulance size={18} className="mr-2" /> Already Hacked? Emergency Help
                 </Button>
               </Link>
             </div>
@@ -141,29 +147,204 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SERVICES GRID */}
-        <section id="services" className="py-24 bg-gray-50">
+        {/* POSITIONING */}
+        <section className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 reveal-section">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Comprehensive WordPress Protection</h2>
-              <p className="text-lg text-muted-foreground">We handle the technical heavy lifting so you can focus on growing your business.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Most websites fail not because of poor design — but because of weak security and lack of proper maintenance.
+              </h2>
+              <p className="text-lg text-muted-foreground">We exist to fix that. Our team of security experts and WordPress developers ensures your site stays operational, protected, and performing — so you never have to deal with a preventable crisis.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { icon: <Wrench size={28} className="text-accent group-hover:text-white" />, iconBg: "bg-accent/10 group-hover:bg-accent", title: "WordPress Maintenance", desc: "Monthly updates, daily cloud backups, performance monitoring & priority support.", href: "/maintenance", border: "hover:border-t-accent" },
-                { icon: <Shield size={28} className="text-accent group-hover:text-white" />, iconBg: "bg-accent/10 group-hover:bg-accent", title: "WordPress Security", desc: "Enterprise-grade firewall setup, active malware scanning, vulnerability patching & hardening.", href: "/security", border: "hover:border-t-accent" },
-                { icon: <Ambulance size={28} className="text-primary group-hover:text-white" />, iconBg: "bg-primary/10 group-hover:bg-primary", title: "Hacked Site Recovery", desc: "Emergency malware removal, Google blacklist removal & complete site restoration in under 24 hours.", href: "/hacked-site-recovery", border: "hover:border-t-primary" },
-                { icon: <Lock size={28} className="text-foreground group-hover:text-white" />, iconBg: "bg-gray-100 group-hover:bg-foreground", title: "Security Retainer", desc: "Ongoing dedicated security monitoring, monthly in-depth audits & instant incident response.", href: "/retainer", border: "hover:border-t-foreground" },
-              ].map((s) => (
-                <Link key={s.href} href={s.href} className="group block reveal-section">
-                  <div className={`bg-white rounded-2xl p-8 shadow-sm border border-border/50 hover:-translate-y-2 hover:shadow-xl hover:border-t-4 ${s.border} transition-all duration-300 h-full`}>
-                    <div className={`h-14 w-14 rounded-xl ${s.iconBg} flex items-center justify-center mb-6 transition-colors`}>{s.icon}</div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">{s.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">{s.desc}</p>
-                    <div className="flex items-center text-sm font-medium text-accent">Learn more <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" /></div>
-                  </div>
-                </Link>
+                {
+                  icon: <Activity size={28} className="text-accent" />,
+                  title: "Continuous Uptime",
+                  desc: "24/7 monitoring with immediate alerts. Your site stays up so your business stays running.",
+                },
+                {
+                  icon: <Shield size={28} className="text-accent" />,
+                  title: "Security Protection",
+                  desc: "Firewall management, malware scanning, vulnerability patching, and hardening — applied before threats become incidents.",
+                },
+                {
+                  icon: <TrendingUp size={28} className="text-accent" />,
+                  title: "Performance Stability",
+                  desc: "Safe updates, staging-tested deployments, and expert oversight that keeps your site fast and reliable.",
+                },
+              ].map((item) => (
+                <div key={item.title} className="bg-white rounded-2xl p-8 border border-border/50 hover:shadow-md hover:-translate-y-1 transition-all reveal-section">
+                  <div className="h-14 w-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">{item.icon}</div>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PREVENTION ANGLE */}
+        <section className="py-20 bg-foreground text-white reveal-section">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-sm font-medium mb-6">
+                  <AlertTriangle size={14} /> Prevention vs Recovery
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Prevention is always cheaper than recovery.</h2>
+                <p className="text-white/80 text-lg leading-relaxed mb-8">
+                  Most hacked websites were "maintained" — but not properly secured. A plugin update schedule is not a security strategy. We implement defence-in-depth so problems are caught and contained before they escalate into emergencies.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
+                    Get Protected <ArrowRight size={18} className="ml-2" />
+                  </Button>
+                  <Link href="/hacked-site-recovery">
+                    <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
+                      Already Compromised? →
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { label: "Emergency malware cleanup", cost: "$500–$2,000+", icon: "🔴" },
+                  { label: "Google blacklist removal & SEO recovery", cost: "Weeks to months", icon: "🔴" },
+                  { label: "Lost revenue during downtime", cost: "Ongoing", icon: "🔴" },
+                  { label: "Managed security retainer (prevents all of the above)", cost: "$199–$999/mo", icon: "🟢" },
+                ].map((row) => (
+                  <div key={row.label} className="flex items-center justify-between bg-white/5 rounded-xl px-5 py-4 border border-white/10">
+                    <div className="flex items-center gap-3 text-sm">
+                      <span>{row.icon}</span>
+                      <span className="text-white/80">{row.label}</span>
+                    </div>
+                    <span className="text-sm font-semibold text-white shrink-0 ml-4">{row.cost}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PLANS */}
+        <section className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 reveal-section">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Choose Your Level of Protection</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
+              {/* Essential Care */}
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
+                <h3 className="text-xl font-semibold mb-1">Essential Care</h3>
+                <p className="text-sm text-muted-foreground mb-4">For low-risk websites requiring basic protection</p>
+                <div className="mb-6"><span className="text-4xl font-bold">$199</span><span className="text-muted-foreground">/mo</span></div>
+                <ul className="space-y-3 mb-8">
+                  {["Core updates & monitoring", "Backup systems", "Baseline security"].map(f => (
+                    <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
+                  ))}
+                </ul>
+                <Link href="/pricing"><Button variant="outline" className="w-full">Get Started</Button></Link>
+              </div>
+
+              {/* Business Protection */}
+              <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform lg:scale-105 z-10 reveal-section">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Most Popular</div>
+                <h3 className="text-xl font-semibold mb-1">Business Protection</h3>
+                <p className="text-sm text-muted-foreground mb-4">For growing businesses and revenue-generating sites</p>
+                <div className="mb-6"><span className="text-5xl font-bold">$399–$599</span><span className="text-muted-foreground">/mo</span></div>
+                <ul className="space-y-3 mb-8">
+                  {["Advanced monitoring", "Performance optimization", "Priority support", "Enhanced security"].map(f => (
+                    <li key={f} className="flex items-center gap-3 text-sm font-medium"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
+                  ))}
+                </ul>
+                <Button variant="accent" className="w-full h-12 text-base" onClick={() => window.location.href='/contact'}>Get Started Now</Button>
+              </div>
+
+              {/* Advanced Security */}
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
+                <h3 className="text-xl font-semibold mb-1">Advanced Security</h3>
+                <p className="text-sm text-muted-foreground mb-4">Continuous protection for high-value websites</p>
+                <div className="mb-6"><span className="text-4xl font-bold">$999+</span><span className="text-muted-foreground">/mo</span></div>
+                <ul className="space-y-3 mb-8">
+                  {["Dedicated security oversight", "Threat monitoring", "Monthly security audits", "Priority incident response"].map(f => (
+                    <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
+                  ))}
+                </ul>
+                <Link href="/pricing"><Button variant="outline" className="w-full">Contact Sales</Button></Link>
+              </div>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="mt-10 max-w-2xl mx-auto reveal-section">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center">
+                <p className="text-sm text-amber-800 mb-3">
+                  <strong>⚠️ Important:</strong> Critical security incidents may require dedicated incident response services not included in standard plans.
+                </p>
+                <Link href="/hacked-site-recovery">
+                  <Button variant="outline" size="sm" className="border-amber-400 text-amber-800 hover:bg-amber-100">
+                    Get Emergency Help <ArrowRight size={14} className="ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <div className="text-center mt-8 reveal-section">
+              <Link href="/pricing"><Button variant="ghost" className="text-accent">See full pricing breakdown →</Button></Link>
+            </div>
+          </div>
+        </section>
+
+        {/* WHAT YOU GET */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 reveal-section">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What You Get</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Every plan is built around four outcomes your business actually needs.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: <Activity size={24} className="text-accent" />, title: "Continuous Uptime Monitoring", desc: "Real-time checks with immediate alerts so issues are caught before customers notice." },
+                { icon: <Shield size={24} className="text-accent" />, title: "Security Threat Prevention", desc: "Firewall, malware scanning, and vulnerability monitoring running around the clock." },
+                { icon: <Users size={24} className="text-accent" />, title: "Expert Support", desc: "A dedicated team of WordPress security specialists — not a generic helpdesk." },
+                { icon: <TrendingUp size={24} className="text-accent" />, title: "Performance Stability", desc: "Staging-tested updates and optimisation so changes never break what's working." },
+              ].map((item) => (
+                <div key={item.title} className="bg-gray-50 rounded-2xl p-7 border border-border/50 hover:shadow-md hover:-translate-y-1 transition-all reveal-section">
+                  <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">{item.icon}</div>
+                  <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHO THIS IS FOR */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 reveal-section">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Who This Is For</h2>
+              <p className="text-lg text-muted-foreground">We work best with businesses where website performance and security directly impact operations, revenue, or reputation.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { icon: <Lock size={20} className="text-accent" />, title: "Business Websites", desc: "Lead-gen sites, B2B platforms, and brand websites where downtime or a security warning costs you deals." },
+                { icon: <Wrench size={20} className="text-accent" />, title: "eCommerce Platforms", desc: "WooCommerce stores where checkout failures, malware, or slow performance directly cut revenue." },
+                { icon: <Users size={20} className="text-accent" />, title: "Agencies Managing Multiple Sites", desc: "Digital agencies that need a reliable security and maintenance partner for client portfolios." },
+              ].map((item) => (
+                <div key={item.title} className="bg-white rounded-2xl p-7 border border-border/50 reveal-section">
+                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-accent/10">{item.icon}</div>
+                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="max-w-2xl mx-auto reveal-section">
+              <div className="bg-white rounded-xl border border-border/50 p-5 flex items-start gap-3">
+                <AlertTriangle size={18} className="text-amber-500 shrink-0 mt-0.5" />
+                <p className="text-sm text-muted-foreground"><strong className="text-foreground">Not designed for low-budget or hobby projects.</strong> Our plans are built for businesses where security and uptime have real operational consequences. If you need basic hosting support, we're not the right fit.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -210,59 +391,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PRICING PREVIEW */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 reveal-section">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Transparent Pricing</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">No hidden fees. Choose the level of protection your business needs.</p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
-              <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-2">Essential Care</h3>
-                <div className="mb-6"><span className="text-4xl font-bold">$199</span><span className="text-muted-foreground">/mo</span></div>
-                <ul className="space-y-3 mb-8">
-                  {["Core Updates & Backups", "Uptime Monitoring", "Daily Backups", "Monthly Reports"].map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
-                  ))}
-                </ul>
-                <Link href="/pricing"><Button variant="outline" className="w-full">Get Started</Button></Link>
-              </div>
-              <div className="bg-white rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform lg:scale-105 z-10 reveal-section">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Most Popular</div>
-                <h3 className="text-xl font-semibold mb-2">Business Protection</h3>
-                <div className="mb-6"><span className="text-5xl font-bold">$399–$599</span><span className="text-muted-foreground">/mo</span></div>
-                <ul className="space-y-3 mb-8 font-medium">
-                  {["Everything in Essential Care", "Real-time Malware Scanning", "Enterprise Firewall", "Security Audits", "24h SLA"].map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
-                  ))}
-                </ul>
-                <Button variant="accent" className="w-full h-12 text-base" onClick={() => window.location.href='/contact'}>Get Started Now</Button>
-              </div>
-              <div className="bg-white rounded-3xl p-8 shadow-sm border border-border/50 reveal-section">
-                <h3 className="text-xl font-semibold mb-2">Security Retainer</h3>
-                <div className="mb-6"><span className="text-4xl font-bold">$999+</span><span className="text-muted-foreground">/mo</span></div>
-                <ul className="space-y-3 mb-8">
-                  {["Dedicated Engineer", "Monthly Audits", "Emergency Recovery", "4h Response SLA", "Custom SLA"].map(f => (
-                    <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
-                  ))}
-                </ul>
-                <Link href="/pricing"><Button variant="outline" className="w-full">Contact Sales</Button></Link>
-              </div>
-            </div>
-            <div className="text-center mt-10 reveal-section">
-              <Link href="/pricing"><Button variant="ghost" className="text-accent">See full pricing breakdown →</Button></Link>
-            </div>
-          </div>
-        </section>
-
         {/* BLOG PREVIEW */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 reveal-section">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">WordPress Security Insights</h2>
-                <p className="text-lg text-muted-foreground">The latest strategies from our cybersecurity desk.</p>
+                <p className="text-lg text-muted-foreground">The latest from our security and WordPress experts.</p>
               </div>
               <Link href="/blog" className="hidden md:flex items-center text-link font-medium hover:text-accent transition-colors">View all articles <ArrowRight size={18} className="ml-2" /></Link>
             </div>
@@ -270,7 +405,7 @@ export default function Home() {
               {[
                 { tag: "Security", tagColor: "text-primary", title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses", date: "March 16, 2026", read: "5 min", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=500" },
                 { tag: "Security", tagColor: "text-primary", title: "How Hackers Break Into Websites – And How to Stop Them", date: "March 2, 2026", read: "7 min", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800&h=500" },
-                { tag: "Maintenance", tagColor: "text-accent", title: "The Ultimate Guide to WordPress Maintenance for Australian Businesses", date: "February 13, 2026", read: "8 min", img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=800&h=500" },
+                { tag: "Buyer Intent", tagColor: "text-foreground", title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit", date: "March 21, 2026", read: "7 min", img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800&h=500" },
               ].map((post) => (
                 <Link href="/blog" key={post.title} className="group block reveal-section">
                   <div className="bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
@@ -293,16 +428,49 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 cta-gradient text-white text-center reveal-section">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Protect Your WordPress Site Before Risk Becomes Incident</h2>
-            <p className="text-xl text-white/90 mb-10 text-balance">Enterprise teams trust WebAdish to prevent security incidents, maintain uptime, and respond to emergencies with dedicated expertise.</p>
-            <Button variant="white" size="lg" className="text-lg px-10 py-7" onClick={() => window.location.href='/contact'}>
-              Schedule a Security Review <ArrowRight size={20} className="ml-2" />
-            </Button>
+        {/* BRIDGE — EMERGENCY */}
+        <section className="py-16 bg-white border-t border-border/50 reveal-section">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <div className="inline-flex items-center gap-2 text-primary font-semibold text-sm mb-4">
+              <Ambulance size={16} /> Emergency Recovery
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Need emergency recovery?</h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              If your site is already compromised, our incident response team is available 24/7. We recover WordPress sites in under 24 hours with a 30-day re-infection guarantee.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/hacked-site-recovery">
+                <Button variant="primary" size="lg">
+                  Visit our incident response team <ArrowRight size={18} className="ml-2" />
+                </Button>
+              </Link>
+              <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="lg">UK-Based Emergency Service</Button>
+              </a>
+            </div>
           </div>
         </section>
+
+        {/* FINAL CTA */}
+        <section className="py-24 cta-gradient text-white text-center reveal-section">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Protect your website before problems occur.</h2>
+            <p className="text-xl text-white/90 mb-10 text-balance">
+              Every day without proper security is a day your site is exposed. Our team handles it so you don't have to.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="white" size="lg" className="text-lg px-10 py-7" onClick={() => window.location.href='/contact'}>
+                Get Started <ArrowRight size={20} className="ml-2" />
+              </Button>
+              <Link href="/pricing">
+                <Button variant="outline" size="lg" className="text-lg px-10 py-7 border-white text-white hover:bg-white hover:text-foreground">
+                  View Plans
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </div>
     </Layout>
   );
