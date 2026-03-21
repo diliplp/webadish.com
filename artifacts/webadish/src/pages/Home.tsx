@@ -417,7 +417,7 @@ export default function Home() {
                 </Button>
               </Link>
               <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6">
+                <Button variant="outline" size="lg" className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-6">
                   UK Emergency Service →
                 </Button>
               </a>
