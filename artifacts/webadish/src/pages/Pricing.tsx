@@ -6,10 +6,10 @@ import { useState } from "react";
 
 const plans = [
   {
-    name: "Standard",
-    monthly: "$99",
-    annual: "$79",
-    desc: "Core maintenance for blogs, brochure sites & small businesses.",
+    name: "Essential Care",
+    monthly: "$199",
+    annual: "$159",
+    desc: "Core maintenance for sites & small businesses.",
     color: "border-border/50",
     features: [
       { label: "WordPress & plugin updates", included: true },
@@ -25,14 +25,16 @@ const plans = [
     ],
   },
   {
-    name: "Pro",
-    monthly: "$199",
-    annual: "$159",
+    name: "Business Protection",
+    monthly: "$399",
+    monthlyMax: "$599",
+    annual: "$319",
+    annualMax: "$479",
     desc: "For eCommerce, membership sites & serious businesses.",
     color: "border-accent",
     highlight: true,
     features: [
-      { label: "Everything in Standard", included: true },
+      { label: "Everything in Essential Care", included: true },
       { label: "Security hardening", included: true },
       { label: "Real-time malware scanning", included: true },
       { label: "Priority support queue", included: true },
@@ -46,12 +48,12 @@ const plans = [
   },
   {
     name: "Security Retainer",
-    monthly: "$799",
-    annual: "$649",
+    monthly: "$999",
+    annual: "$799",
     desc: "Dedicated security for agencies, eCommerce & enterprises.",
     color: "border-border/50",
     features: [
-      { label: "Everything in Pro", included: true },
+      { label: "Everything in Business Protection", included: true },
       { label: "Dedicated security engineer", included: true },
       { label: "Monthly security audit", included: true },
       { label: "Emergency recovery included", included: true },
@@ -118,7 +120,12 @@ export default function Pricing() {
                 )}
                 <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
                 <div className="mb-2">
-                  <span className="text-5xl font-bold">{annual ? plan.annual : plan.monthly}</span>
+                  <span className="text-5xl font-bold">
+                    {annual
+                      ? plan.annualMax ? `${plan.annual}–${plan.annualMax}` : plan.annual
+                      : plan.monthlyMax ? `${plan.monthly}–${plan.monthlyMax}` : plan.monthly
+                    }
+                  </span>
                   <span className="text-muted-foreground">/mo</span>
                 </div>
                 {annual && <p className="text-xs text-green-600 font-medium mb-3">Billed annually</p>}
