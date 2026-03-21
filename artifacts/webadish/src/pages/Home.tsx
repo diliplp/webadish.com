@@ -199,7 +199,7 @@ export default function Home() {
                     Get Protected <ArrowRight size={18} className="ml-2" />
                   </Button>
                   <Link href="/hacked-site-recovery">
-                    <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
+                    <Button variant="outline" size="lg" className="border-white text-white bg-transparent hover:bg-white hover:text-foreground">
                       Already Compromised? →
                     </Button>
                   </Link>
@@ -478,7 +478,7 @@ export default function Home() {
                 Get Started <ArrowRight size={20} className="ml-2" />
               </Button>
               <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-lg px-10 py-7 border-white text-white hover:bg-white hover:text-foreground">
+                <Button variant="outline" size="lg" className="text-lg px-10 py-7 border-white text-white bg-transparent hover:bg-white hover:text-foreground">
                   View Plans
                 </Button>
               </Link>
