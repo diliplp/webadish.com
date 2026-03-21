@@ -194,8 +194,15 @@ export default function Home() {
         <section className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal-section">
+              <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">Protection Plans</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Choose Your Level of Protection</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
+              <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
+                <p className="text-base md:text-lg font-semibold leading-snug">
+                  This is not generic maintenance.<br />
+                  This is continuous protection for business-critical websites.
+                </p>
+              </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
               {/* Essential Care */}
