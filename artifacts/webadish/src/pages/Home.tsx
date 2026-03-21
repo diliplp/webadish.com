@@ -122,6 +122,26 @@ export default function Home() {
           </div>
         </section>
 
+        {/* WHY TRUST */}
+        <section className="py-14 bg-gray-50 border-b border-border/50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-xl font-bold text-foreground text-center mb-8 uppercase tracking-wider">Why Businesses Trust WebAdish</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                "20+ years in infrastructure & security",
+                "Experience handling critical website incidents",
+                "Focused on business-critical systems",
+                "Not a generic WordPress service provider",
+              ].map((point) => (
+                <div key={point} className="flex items-start gap-3 bg-white rounded-xl px-5 py-4 border border-border/50">
+                  <CheckCircle2 size={18} className="text-accent shrink-0 mt-0.5" />
+                  <p className="text-sm font-medium text-foreground leading-snug">{point}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* POSITIONING */}
         <section className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
