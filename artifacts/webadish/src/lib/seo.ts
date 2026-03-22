@@ -14,6 +14,12 @@ export const PRERENDER_ROUTES = [
   "/security-score",
   "/agency-partners",
   "/blog",
+  "/blog/woocommerce-attack-target-2026",
+  "/blog/wordpress-plugin-audit",
+  "/blog/hosting-vs-managed-security",
+  "/blog/wordpress-security-audit-frequency",
+  "/blog/wordpress-downtime-cost",
+  "/blog/hire-wordpress-security-team",
   "/blog/wordpress-security-agency-vs-freelancer",
   "/blog/hacked-wordpress-site-recovery-cost",
   "/blog/wordpress-security-retainer-includes",
@@ -379,6 +385,7 @@ const pageSeo: Record<string, SeoData> = {
         { name: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers", path: "/blog/hosting-vs-managed-security" },
         { name: "How Often Should a WordPress Site Be Security Audited?", path: "/blog/wordpress-security-audit-frequency" },
         { name: "WordPress Downtime: What It Really Costs", path: "/blog/wordpress-downtime-cost" },
+        { name: "Before You Hire a WordPress Security Team", path: "/blog/hire-wordpress-security-team" },
       ]),
     ],
   },
@@ -504,6 +511,132 @@ const articleSchema = (data: {
 });
 
 const blogPosts: Record<string, SeoData> = {
+  "/blog/woocommerce-attack-target-2026": {
+    title: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026",
+    description:
+      "Why WooCommerce stores are attacked more aggressively than standard WordPress sites and what revenue-focused teams should do to reduce risk.",
+    path: "/blog/woocommerce-attack-target-2026",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WooCommerce Attacks in 2026", path: "/blog/woocommerce-attack-target-2026" },
+    ],
+    schema: [
+      articleSchema({
+        title: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026",
+        description:
+          "Payment plugins, customer data, and high traffic make WooCommerce sites a prime WordPress target. This guide explains what to protect first.",
+        path: "/blog/woocommerce-attack-target-2026",
+        published: "2026-04-26",
+      }),
+    ],
+  },
+  "/blog/wordpress-plugin-audit": {
+    title: "The WordPress Plugin Audit Guide",
+    description:
+      "A practical framework for auditing WordPress plugins, reducing vulnerability exposure, and closing risky attack paths before they are exploited.",
+    path: "/blog/wordpress-plugin-audit",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Plugin Audit", path: "/blog/wordpress-plugin-audit" },
+    ],
+    schema: [
+      articleSchema({
+        title: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do",
+        description:
+          "How to audit your plugin stack the way security specialists do and reduce avoidable WordPress risk.",
+        path: "/blog/wordpress-plugin-audit",
+        published: "2025-10-14",
+      }),
+    ],
+  },
+  "/blog/hosting-vs-managed-security": {
+    title: "When Hosting Is Not Enough for WordPress Security",
+    description:
+      "Understand the gap between hosting-layer monitoring and true managed WordPress security before you assume your infrastructure provider has you covered.",
+    path: "/blog/hosting-vs-managed-security",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "Hosting vs Managed Security", path: "/blog/hosting-vs-managed-security" },
+    ],
+    schema: [
+      articleSchema({
+        title: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers",
+        description:
+          "Where hosting stops, where application-layer risk begins, and how serious WordPress security coverage differs.",
+        path: "/blog/hosting-vs-managed-security",
+        published: "2024-06-09",
+      }),
+    ],
+  },
+  "/blog/wordpress-security-audit-frequency": {
+    title: "How Often Should a WordPress Site Be Security Audited?",
+    description:
+      "A business-focused framework for choosing the right WordPress security audit cadence based on revenue risk, change frequency, and operational exposure.",
+    path: "/blog/wordpress-security-audit-frequency",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Security Audit Frequency", path: "/blog/wordpress-security-audit-frequency" },
+    ],
+    schema: [
+      articleSchema({
+        title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
+        description:
+          "How to set the right audit schedule for WordPress websites that matter commercially.",
+        path: "/blog/wordpress-security-audit-frequency",
+        published: "2023-11-21",
+      }),
+    ],
+  },
+  "/blog/wordpress-downtime-cost": {
+    title: "WordPress Downtime Cost Guide",
+    description:
+      "A clear breakdown of the commercial cost of WordPress downtime and the protection investments that reduce revenue, trust, and SEO loss.",
+    path: "/blog/wordpress-downtime-cost",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Downtime Cost", path: "/blog/wordpress-downtime-cost" },
+    ],
+    schema: [
+      articleSchema({
+        title: "WordPress Downtime: What It Really Costs a Revenue-Driven Site — And How to Prevent It",
+        description:
+          "What downtime really costs and how proactive WordPress protection reduces business exposure.",
+        path: "/blog/wordpress-downtime-cost",
+        published: "2022-08-18",
+      }),
+    ],
+  },
+  "/blog/hire-wordpress-security-team": {
+    title: "Questions to Ask Before Hiring a WordPress Security Team",
+    description:
+      "Use these seven questions to evaluate WordPress security providers, separate serious operators from generic maintenance vendors, and choose the right fit.",
+    path: "/blog/hire-wordpress-security-team",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "Hiring a WordPress Security Team", path: "/blog/hire-wordpress-security-team" },
+    ],
+    schema: [
+      articleSchema({
+        title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit",
+        description:
+          "A buyer-focused checklist for evaluating WordPress security partners before you hand over operational responsibility.",
+        path: "/blog/hire-wordpress-security-team",
+        published: "2021-05-04",
+      }),
+    ],
+  },
   "/blog/wordpress-security-agency-vs-freelancer": {
     title: "WordPress Security Agency vs Freelancer",
     description:

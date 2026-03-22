@@ -21,6 +21,7 @@ import Terms from "@/pages/Terms";
 import RefundPolicy from "@/pages/RefundPolicy";
 import NotFound from "@/pages/not-found";
 import SiteSeo from "@/components/SiteSeo";
+import TrackingManager from "@/components/TrackingManager";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -69,6 +70,7 @@ function App({ ssrPath }: AppProps) {
           ssrPath={ssrPath}
         >
           <SiteSeo />
+          <TrackingManager />
           <AppRoutes />
         </WouterRouter>
         <Toaster />

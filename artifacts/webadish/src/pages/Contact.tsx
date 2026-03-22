@@ -2,7 +2,8 @@ import { Phone, Mail, Clock, MapPin, CheckCircle2, ArrowRight, Ambulance } from 
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { trackEvent } from "@/lib/tracking";
 
 const services = [
   "Protection Plan",
@@ -20,15 +21,24 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const hasTrackedStart = useRef(false);
+
+  const trackFormStart = () => {
+    if (hasTrackedStart.current) return;
+    hasTrackedStart.current = true;
+    trackEvent("form_start", {
+      form_name: "global_contact",
+      page_path: "/contact",
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    console.log('📝 Submitting form with data:', form);
+    trackFormStart();
 
     try {
-      console.log('📤 Sending request to /api/contact...');
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -37,22 +47,28 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      console.log('📥 Response status:', response.status);
-
       if (!response.ok) {
         const data = await response.json();
-        console.log('❌ API error response:', data);
         throw new Error(data.error || 'Failed to send message');
       }
 
-      const result = await response.json();
-      console.log('✅ Success response:', result);
+      await response.json();
+      trackEvent("form_submit_success", {
+        form_name: "global_contact",
+        service: form.service || "unspecified",
+        page_path: "/contact",
+      });
       setSubmitted(true);
       setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      hasTrackedStart.current = false;
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
       setError(errorMsg);
-      console.error('❌ Form submission error:', err);
+      trackEvent("form_submit_error", {
+        form_name: "global_contact",
+        page_path: "/contact",
+        error_message: errorMsg,
+      });
     } finally {
       setLoading(false);
     }
@@ -109,23 +125,23 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium mb-2">Full Name *</label>
-                      <input required type="text" placeholder="John Smith" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
+                      <input required type="text" placeholder="John Smith" value={form.name} onFocus={trackFormStart} onChange={e => setForm({ ...form, name: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Email Address *</label>
-                      <input required type="email" placeholder="john@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
+                      <input required type="email" placeholder="john@company.com" value={form.email} onFocus={trackFormStart} onChange={e => setForm({ ...form, email: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Phone Number</label>
-                    <input type="tel" placeholder="+1 234 567 8900" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
+                    <input type="tel" placeholder="+1 234 567 8900" value={form.phone} onFocus={trackFormStart} onChange={e => setForm({ ...form, phone: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}
+                    <select value={form.service} onFocus={trackFormStart} onChange={e => setForm({ ...form, service: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all">
                       <option value="">Select a service...</option>
                       {services.map(s => <option key={s} value={s}>{s}</option>)}
@@ -133,7 +149,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Message *</label>
-                    <textarea required rows={5} placeholder="Tell us about your site, the issue you're facing, or what you need help with..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
+                    <textarea required rows={5} placeholder="Tell us about your site, the issue you're facing, or what you need help with..." value={form.message} onFocus={trackFormStart} onChange={e => setForm({ ...form, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none" />
                   </div>
                   <Button
