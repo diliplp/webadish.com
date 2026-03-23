@@ -9,6 +9,11 @@
   },
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/services/maintenance",
       "destination": "/maintenance",
       "permanent": true
@@ -29,7 +34,22 @@
       "permanent": true
     },
     {
+      "source": "/services/design",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
       "source": "/services/web-design",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/development",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/design",
       "destination": "/web-design",
       "permanent": true
     },
@@ -44,6 +64,11 @@
       "permanent": true
     },
     {
+      "source": "/case-study-crystal-cold-chain-solutions",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
       "source": "/case-study/:slug",
       "destination": "/case-studies",
       "permanent": true
@@ -54,12 +79,27 @@
       "permanent": true
     },
     {
+      "source": "/radhagovind",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/radhagovind/about",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/about-us",
       "destination": "/",
       "permanent": true
     },
     {
       "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/radhagovind/contact",
       "destination": "/contact",
       "permanent": true
     },
@@ -89,6 +129,11 @@
       "permanent": true
     },
     {
+      "source": "/offer-page",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
       "source": "/faq",
       "destination": "/",
       "permanent": true
@@ -101,6 +146,86 @@
     {
       "source": "/solutions",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/branding",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-marketing-seo",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/support-hosting",
+      "destination": "/maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/hosting-email-maintanance",
+      "destination": "/maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:slug",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/category/:slug",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/author/:slug",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/2024/02/09/does-my-business-need-a-website-why",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/2024/02/07/hello-world",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/2023/06/08/how-to-clean-your-home-faster-more-efficiently",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/test",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/slider-test",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/vlf",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/locations.kml",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/shivamnexa/:slug*",
+      "destination": "/case-studies",
       "permanent": true
     }
   ]
