@@ -6,7 +6,7 @@ import Layout from "@/components/Layout";
 
 const posts: Record<string, {
   tag: string; tagColor: string; title: string; date: string; read: string;
-  img: string; content: React.ReactNode;
+  img: string; imgPosition?: string; content: React.ReactNode;
 }> = {
   "10-website-hacking-methods-that-put-your-site-at-risk-in-2025": {
     tag: "Security", tagColor: "text-primary",
@@ -446,6 +446,7 @@ const posts: Record<string, {
     title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
     date: "November 21, 2023", read: "5 min",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200&h=600",
+    imgPosition: "center 22%",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">There is no universal audit frequency that suits every WordPress site. What there is, is a risk-based framework — and after two decades working with businesses at every scale, we've seen clearly what happens when the cadence doesn't match the risk profile.</p>
@@ -742,7 +743,12 @@ export default function BlogPost() {
       {/* FEATURED IMAGE */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-12">
         <div className="rounded-2xl overflow-hidden shadow-xl">
-          <img src={post.img} alt={post.title} className="w-full h-80 object-cover" />
+          <img
+            src={post.img}
+            alt={post.title}
+            className="w-full h-80 object-cover"
+            style={{ objectPosition: post.imgPosition ?? "center" }}
+          />
         </div>
       </div>
 
