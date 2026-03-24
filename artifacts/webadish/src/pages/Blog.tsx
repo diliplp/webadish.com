@@ -51,7 +51,7 @@ const posts = [
       "There is no universal answer — but there is a framework. Here's how to determine the right audit cadence based on your site's risk profile and business stakes.",
     date: "November 21, 2023",
     read: "5 min",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/wordpress-security-audit-frequency-banner.svg",
     href: "/blog/wordpress-security-audit-frequency",
   },
   {
