@@ -71,9 +71,19 @@ export default function Home() {
               Prevent incidents, protect revenue, and keep WordPress business-critical with expert-led security, protection plans, and emergency response.
             </p>
 
+            <div className="max-w-3xl mx-auto mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Start Here</p>
+              <p className="text-base md:text-lg text-foreground font-medium">
+                Free Security Audit for WordPress business sites.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                We review visible risk, plugin exposure, backups, and obvious weak points, then recommend the right next step.
+              </p>
+            </div>
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Button variant="accent" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8" onClick={() => window.location.href='/contact'}>
-                Get Protected <ArrowRight size={18} className="ml-2" />
+                Request Free Security Audit <ArrowRight size={18} className="ml-2" />
               </Button>
               <Link href="/hacked-site-recovery">
                 <Button variant="outline-primary" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8 bg-white">
@@ -126,6 +136,15 @@ export default function Home() {
         <section className="py-14 bg-gray-50 border-b border-border/50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-xl font-bold text-foreground text-center mb-8 uppercase tracking-wider">Why Businesses Trust WebAdish</h2>
+            <div className="mb-8 rounded-2xl border border-border/50 bg-white p-6 text-center">
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Real Client Trust</p>
+              <p className="text-base md:text-lg text-foreground">
+                Client work includes <strong>verofax.com</strong>, <strong>shivamautozone.com</strong>, and <strong>crystalgroup.in</strong>.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Real-world WordPress delivery, recovery, and ongoing protection work across business-critical sites.
+              </p>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 "20+ years in infrastructure & security",
@@ -232,6 +251,16 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">Protection Plans</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Continuous Protection for Different Levels of Business Risk</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+                <Button variant="accent" onClick={() => window.location.href='/contact'}>
+                  Get Free Audit First <ArrowRight size={16} className="ml-2" />
+                </Button>
+                <Link href="/pricing">
+                  <Button variant="outline-primary" className="bg-white">
+                    Compare Pricing
+                  </Button>
+                </Link>
+              </div>
               <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
                 <p className="text-base md:text-lg font-semibold leading-snug">
                   We don't offer low-value updates.<br />

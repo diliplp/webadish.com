@@ -109,6 +109,10 @@ export default function Retainer() {
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
               A dedicated WordPress security partner for teams that need faster response, stronger oversight, and less risk around revenue-critical websites, campaigns, and client commitments.
             </p>
+            <div className="mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Good Fit Check</p>
+              <p className="text-base text-foreground font-medium">If you are not sure whether you need a retainer, start with a free security audit first.</p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href = "/contact"}>
                 Book a Retainer Call <ArrowRight size={18} className="ml-2" />
@@ -199,6 +203,7 @@ export default function Retainer() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Retainer Plans</h2>
           <p className="text-lg text-muted-foreground">Global retainer pricing for dedicated oversight, plus agency portfolio pricing for white-label partners.</p>
+          <p className="text-sm text-muted-foreground mt-3">Real client work includes verofax.com, shivamautozone.com, and crystalgroup.in.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {retainerTiers.map((t, idx) => (
@@ -251,7 +256,7 @@ export default function Retainer() {
             If your team needs accountability, faster response, and a stronger security operating rhythm, the retainer is where we usually start.
           </p>
           <Button variant="white" size="lg" onClick={() => window.location.href = "/contact"}>
-            Book a Retainer Consultation <ArrowRight size={18} className="ml-2" />
+            Request Free Security Audit <ArrowRight size={18} className="ml-2" />
           </Button>
         </div>
       </section>

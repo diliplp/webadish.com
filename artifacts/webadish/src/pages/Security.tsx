@@ -69,13 +69,18 @@ export default function Security() {
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
               Firewall management, malware scanning, hardening, and 24/7 monitoring for businesses that cannot afford breach-driven revenue loss, brand damage, or emergency cleanup during key campaigns.
             </p>
+            <div className="mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Recommended First Step</p>
+              <p className="text-base text-foreground font-medium">Request a free security audit before choosing a monthly plan.</p>
+              <p className="text-sm text-muted-foreground mt-2">We will identify the obvious risks first, then recommend hardening, a protection plan, or emergency recovery.</p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href = "/contact"}>
-                Book a Security Review <ArrowRight size={18} className="ml-2" />
+                Request Free Security Audit <ArrowRight size={18} className="ml-2" />
               </Button>
-              <Link href="/hacked-site-recovery">
+              <Link href="/pricing">
                 <Button variant="outline-primary" size="lg" className="text-lg px-8">
-                  Site Already Hacked?
+                  Compare Protection Plans
                 </Button>
               </Link>
             </div>
@@ -211,11 +216,11 @@ export default function Security() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="white" size="lg" onClick={() => window.location.href = "/contact"}>
-              Book a Security Consultation <ArrowRight size={18} className="ml-2" />
+              Request Free Security Audit <ArrowRight size={18} className="ml-2" />
             </Button>
-            <Link href="/hacked-site-recovery">
+            <Link href="/pricing">
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
-                Site Already Hacked?
+                View Protection Pricing
               </Button>
             </Link>
           </div>

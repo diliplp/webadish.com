@@ -93,6 +93,10 @@ export default function Pricing() {
           <p className="text-xl text-muted-foreground mb-10">
             USD pricing for global clients who need continuous protection, expert support, and a clear path from prevention to incident response.
           </p>
+          <div className="max-w-2xl mx-auto mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Not Ready to Choose a Plan?</p>
+            <p className="text-base text-foreground font-medium">Start with a free security audit and we will recommend the right level of protection.</p>
+          </div>
           <p className="text-sm text-muted-foreground/70 mb-3">Billing preference</p>
           <div className="inline-flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-sm border border-border/50 text-sm">
             <button onClick={() => setAnnual(false)} className={`font-medium px-3 py-1.5 rounded-full transition-all ${!annual ? "bg-accent text-white" : "text-muted-foreground"}`}>Monthly</button>
@@ -145,7 +149,7 @@ export default function Pricing() {
                   className="w-full h-12"
                   onClick={() => window.location.href='/contact'}
                 >
-                  Get Started <ArrowRight size={16} className="ml-2" />
+                  Request This Plan <ArrowRight size={16} className="ml-2" />
                 </Button>
               </div>
             ))}
@@ -160,6 +164,11 @@ export default function Pricing() {
             <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">
               <strong className="text-foreground">Emergency work:</strong> Critical incidents are handled separately by our dedicated incident response team.{" "}
               <a href="/hacked-site-recovery" className="text-accent hover:underline font-medium">Learn about emergency response →</a>
+            </p>
+          </div>
+          <div className="mt-4 max-w-2xl mx-auto text-center">
+            <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">
+              <strong className="text-foreground">Trust signal:</strong> Real client work includes <strong>verofax.com</strong>, <strong>shivamautozone.com</strong>, and <strong>crystalgroup.in</strong>.
             </p>
           </div>
         </div>
@@ -225,7 +234,7 @@ export default function Pricing() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Not Sure Which Plan Is Right?</h2>
           <p className="text-lg text-white/90 mb-8">We'll review your site and recommend the appropriate level of protection based on your situation.</p>
           <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-            Request Security Assessment <ArrowRight size={18} className="ml-2" />
+            Request Free Security Audit <ArrowRight size={18} className="ml-2" />
           </Button>
         </div>
       </section>
