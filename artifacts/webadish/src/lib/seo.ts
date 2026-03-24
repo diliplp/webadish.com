@@ -983,7 +983,7 @@ export function renderSeoHead(pathname: string): string {
   const schemaTags = schemaNodes
     .map(
       (schema) =>
-        `<script type="application/ld+json">${JSON.stringify(schema).replaceAll(
+        `<script type="application/ld+json" data-seo-schema="true">${JSON.stringify(schema).replaceAll(
           "</script",
           "<\\/script",
         )}</script>`,
