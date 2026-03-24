@@ -445,8 +445,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "How Often Should a WordPress Site Be Security Audited? A Framework for Revenue-Critical Businesses",
     date: "November 21, 2023", read: "5 min",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200&h=600",
-    imgPosition: "center 22%",
+    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200&h=600",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">There is no universal audit frequency that suits every WordPress site. What there is, is a risk-based framework — and after two decades working with businesses at every scale, we've seen clearly what happens when the cadence doesn't match the risk profile.</p>
