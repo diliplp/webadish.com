@@ -39,7 +39,7 @@ const posts = [
       "Hosting companies monitor infrastructure. They do not monitor your application layer, your plugins, or your customer data. Here's what that gap looks like in practice.",
     date: "June 9, 2024",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
     href: "/blog/hosting-vs-managed-security",
   },
   {
@@ -63,7 +63,7 @@ const posts = [
       "Most businesses underestimate the true cost of WordPress downtime. Here's a clear breakdown of what's at stake and what proactive protection actually buys you.",
     date: "August 18, 2022",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/wordpress-downtime-cost-banner.svg",
     href: "/blog/wordpress-downtime-cost",
   },
   {
@@ -75,7 +75,7 @@ const posts = [
       "The right provider asks the right questions before taking over your site. Here's what to ask them — and what the answers should tell you.",
     date: "May 4, 2021",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/hire-wordpress-security-team-banner.svg",
     href: "/blog/hire-wordpress-security-team",
   },
   {
@@ -87,7 +87,7 @@ const posts = [
       "A decision-stage guide for teams choosing between a solo freelancer and an agency for WordPress security, maintenance, and incident response.",
     date: "September 28, 2020",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/wordpress-security-agency-vs-freelancer-banner.svg",
     href: "/blog/wordpress-security-agency-vs-freelancer",
   },
   {
@@ -99,7 +99,7 @@ const posts = [
       "Understand the real cost drivers behind emergency WordPress malware cleanup, blacklist removal, and post-incident hardening.",
     date: "July 16, 2020",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/hacked-wordpress-site-recovery-cost-banner.svg",
     href: "/blog/hacked-wordpress-site-recovery-cost",
   },
   {
@@ -111,7 +111,7 @@ const posts = [
       "A practical buying guide covering SLAs, audits, incident response, proactive monitoring, and when a retainer makes sense.",
     date: "February 11, 2020",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/wordpress-security-retainer-includes-banner.svg",
     href: "/blog/wordpress-security-retainer-includes",
   },
   {
@@ -123,7 +123,7 @@ const posts = [
       "A buyer-intent checklist for WooCommerce owners evaluating maintenance partners, update processes, backups, and emergency support.",
     date: "October 3, 2019",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/woocommerce-maintenance-checklist-banner.svg",
     href: "/blog/woocommerce-maintenance-checklist",
   },
   {

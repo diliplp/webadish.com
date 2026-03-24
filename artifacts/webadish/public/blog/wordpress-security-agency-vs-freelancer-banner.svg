@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#08111C"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1000" cy="128" r="212" fill="#2563EB" fill-opacity="0.14"/>
+  <circle cx="182" cy="552" r="210" fill="#F59E0B" fill-opacity="0.10"/>
+  <rect x="66" y="56" width="1068" height="518" rx="28" fill="#0B1624" fill-opacity="0.86" stroke="#243447"/>
+  <rect x="96" y="92" width="186" height="38" rx="19" fill="#EFF6FF"/>
+  <text x="189" y="117" text-anchor="middle" fill="#1D4ED8" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">BUYER INTENT</text>
+  <text x="96" y="200" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">
+    <tspan x="96" dy="0">Freelancer or Agency?</tspan>
+    <tspan x="96" dy="72">Choose for Risk, Not Price.</tspan>
+  </text>
+  <text x="96" y="392" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
+    <tspan x="96" dy="0">A clearer way to compare coverage, response depth,</tspan>
+    <tspan x="96" dy="40">and accountability for revenue-critical websites.</tspan>
+  </text>
+  <g transform="translate(846 228)">
+    <rect width="226" height="174" rx="24" fill="#111F31" stroke="#334155"/>
+    <rect x="30" y="40" width="68" height="92" rx="16" fill="#1D4ED8" fill-opacity="0.20" stroke="#3B82F6"/>
+    <rect x="128" y="40" width="68" height="92" rx="16" fill="#F59E0B" fill-opacity="0.18" stroke="#FBBF24"/>
+    <text x="64" y="92" text-anchor="middle" fill="#BFDBFE" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">SOLO</text>
+    <text x="162" y="92" text-anchor="middle" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">TEAM</text>
+  </g>
+  <text x="96" y="527" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600">webadish.com</text>
+  <defs>
+    <linearGradient id="bg" x1="86" y1="42" x2="1109" y2="596" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+</svg>

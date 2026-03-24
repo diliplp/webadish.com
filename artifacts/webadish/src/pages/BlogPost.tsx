@@ -402,7 +402,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers",
     date: "June 9, 2024", read: "6 min",
-    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Most hosting providers do an excellent job protecting their infrastructure. Servers, networks, and data centres are generally well-managed. The problem is that infrastructure security and application security are two completely different things — and the gap between them is where most WordPress hacks happen.</p>
@@ -472,7 +472,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Downtime: What It Really Costs a Revenue-Driven Site — And How to Prevent It",
     date: "August 18, 2022", read: "6 min",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/wordpress-downtime-cost-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">For most businesses, WordPress downtime feels like a technical problem. It isn't. It's a revenue problem — and the real cost is almost always higher than the hosting dashboard makes it look.</p>
@@ -523,7 +523,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit",
     date: "May 4, 2021", read: "7 min",
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/hire-wordpress-security-team-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Hiring a WordPress security provider is not just a vendor decision. It's a trust decision. The team you choose will have full access to your site, your staging environment, and potentially your customer data. These seven questions will tell you more than any case study page.</p>
@@ -551,7 +551,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Security Agency vs Freelancer: Which Is Right for a Revenue-Critical Website?",
     date: "September 28, 2020", read: "7 min",
-    img: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/wordpress-security-agency-vs-freelancer-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">If your website supports leads, sales, or client delivery, choosing the wrong support model gets expensive fast. The real question is not simply "agency or freelancer?" It is "what level of redundancy, process, and response does this site actually need?"</p>
@@ -585,7 +585,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "How Much Does Hacked WordPress Site Recovery Cost?",
     date: "July 16, 2020", read: "6 min",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/hacked-wordpress-site-recovery-cost-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">There is no honest flat price for hacked WordPress recovery because the work depends on severity, urgency, and how deep the infection goes. But buyers can still estimate the likely cost range by understanding the real drivers.</p>
@@ -614,7 +614,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "What Does a WordPress Business Continuity Retainer Actually Include?",
     date: "February 11, 2020", read: "6 min",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/wordpress-security-retainer-includes-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">A real security retainer is not a plugin subscription with a fancy label. It is an operating model: proactive oversight, named accountability, and a defined response plan for your WordPress environment.</p>
