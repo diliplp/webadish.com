@@ -6,14 +6,13 @@
   <rect x="66" y="56" width="1068" height="518" rx="28" fill="#0B1624" fill-opacity="0.86" stroke="#243447"/>
   <rect x="96" y="92" width="186" height="38" rx="19" fill="#EFF6FF"/>
   <text x="189" y="117" text-anchor="middle" fill="#1D4ED8" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">BUYER INTENT</text>
-  <text x="96" y="202" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700">
-    <tspan x="96" dy="0">How Often Should</tspan>
-    <tspan x="96" dy="74">a WordPress Site Be</tspan>
-    <tspan x="96" dy="74">Security Audited?</tspan>
+  <text x="96" y="206" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">
+    <tspan x="96" dy="0">Monthly, Quarterly,</tspan>
+    <tspan x="96" dy="72">or Event-Driven?</tspan>
   </text>
-  <text x="96" y="438" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
-    <tspan x="96" dy="0">A practical audit cadence framework for revenue-critical</tspan>
-    <tspan x="96" dy="40">websites, growing plugin stacks, and higher-risk teams.</tspan>
+  <text x="96" y="392" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
+    <tspan x="96" dy="0">A risk-based audit cadence framework for</tspan>
+    <tspan x="96" dy="40">revenue-critical WordPress websites.</tspan>
   </text>
   <g transform="translate(851 236)">
     <rect width="216" height="160" rx="22" fill="#111F31" stroke="#334155"/>
