@@ -45,6 +45,7 @@ function AppRoutes() {
       <Route path="/security-score" component={SecurityScore} />
       <Route path="/agency-partners" component={AgencyPartners} />
       <Route path="/blog" component={Blog} />
+      <Route path="/10-website-hacking-methods-that-put-your-site-at-risk-in-2025" component={BlogPost} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/case-studies" component={CaseStudies} />
       <Route path="/contact" component={Contact} />

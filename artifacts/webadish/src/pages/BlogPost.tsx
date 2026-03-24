@@ -8,6 +8,54 @@ const posts: Record<string, {
   tag: string; tagColor: string; title: string; date: string; read: string;
   img: string; content: React.ReactNode;
 }> = {
+  "10-website-hacking-methods-that-put-your-site-at-risk-in-2025": {
+    tag: "Security", tagColor: "text-primary",
+    title: "10 Website Hacking Methods That Put Your Site at Risk in 2025",
+    date: "March 23, 2025", read: "8 min",
+    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Website attacks are rarely random. Most compromises happen through a small set of known methods that bots and attackers use every day. If you know where the openings usually are, you can close them before they become an emergency.</p>
+        <p>This guide breaks down ten of the most common website hacking methods affecting WordPress and business websites in 2025, along with the practical defenses that matter most.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">1. Vulnerable Plugins and Themes</h2>
+        <p>Outdated plugins and themes remain the biggest entry point for WordPress compromises. Attackers scan the web for known vulnerable versions, then exploit them at scale.</p>
+        <p><strong>Reduce the risk:</strong> remove unused plugins, update actively maintained ones quickly, and test important changes safely before pushing them live.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">2. Brute Force Login Attacks</h2>
+        <p>Automated bots hammer login pages with password attempts until they find a weak credential or reused password.</p>
+        <p><strong>Reduce the risk:</strong> enforce strong passwords, enable two-factor authentication, and rate-limit or firewall login traffic.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">3. Credential Stuffing</h2>
+        <p>Attackers test leaked username and password combinations from other breaches against your website. If someone on your team reused a password, your site can be compromised without any software vulnerability at all.</p>
+        <p><strong>Reduce the risk:</strong> unique passwords for every account, plus two-factor authentication for all admin users.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">4. SQL Injection</h2>
+        <p>Poorly sanitized form fields, query parameters, or plugin inputs can let attackers run malicious database commands.</p>
+        <p><strong>Reduce the risk:</strong> keep plugins updated, remove risky code, and use a web application firewall that blocks common injection patterns.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">5. Cross-Site Scripting (XSS)</h2>
+        <p>XSS attacks inject malicious JavaScript into a page so that it runs in visitors' browsers. That can lead to session theft, redirects, or malicious popups.</p>
+        <p><strong>Reduce the risk:</strong> sanitize inputs and outputs, update plugins quickly, and avoid poorly maintained third-party extensions.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">6. Backdoors Hidden After Initial Access</h2>
+        <p>Many hacks do not stop at the first compromise. Attackers often plant hidden files, rogue users, cron jobs, or database payloads so they can return later.</p>
+        <p><strong>Reduce the risk:</strong> treat malware cleanup as a root-cause investigation, not just a visible file cleanup.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">7. File Upload Abuse</h2>
+        <p>Weakly protected upload forms can allow malicious files to be placed on the server, especially when file validation is poor.</p>
+        <p><strong>Reduce the risk:</strong> restrict file types, scan uploads, and block executable files from upload directories.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">8. Hosting-Level or Account-Level Access</h2>
+        <p>If hosting, FTP, or control panel credentials are compromised, an attacker can bypass WordPress entirely and alter files directly.</p>
+        <p><strong>Reduce the risk:</strong> rotate credentials after any incident, use secure hosting practices, and limit access to only the people who need it.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">9. Misconfigured Permissions and Server Rules</h2>
+        <p>Overly permissive file permissions, unsafe server rules, and weak environment settings can make exploitation easier and cleanup harder.</p>
+        <p><strong>Reduce the risk:</strong> review file permissions, harden configuration, and make sure critical files are not broadly writable.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">10. Delayed Detection</h2>
+        <p>Many websites stay compromised for days or weeks because no one is monitoring them closely enough to spot the warning signs early.</p>
+        <p><strong>Reduce the risk:</strong> use continuous monitoring for uptime, malware indicators, suspicious changes, and blacklist warnings.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Why This Matters in 2025</h2>
+        <p>Attackers are faster, more automated, and more opportunistic than ever. The websites that stay safe are not always the biggest ones. They are the ones with better hygiene, faster patching, stronger monitoring, and a clear plan for recovery.</p>
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-6 my-8">
+          <p className="font-bold text-red-700 text-lg mb-2">Worried your site is already exposed?</p>
+          <p className="text-red-700 text-sm">If your site is showing suspicious behaviour, <Link href="/hacked-site-recovery" className="underline font-semibold">contact our emergency recovery team</Link>. If you want to reduce risk before something breaks, <Link href="/contact" className="underline font-semibold">request a free security audit</Link>.</p>
+        </div>
+      </div>
+    ),
+  },
   "protect-your-digital-assets": {
     tag: "Security", tagColor: "text-primary",
     title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses",

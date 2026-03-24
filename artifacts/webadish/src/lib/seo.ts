@@ -14,6 +14,7 @@ export const PRERENDER_ROUTES = [
   "/security-score",
   "/agency-partners",
   "/blog",
+  "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
   "/blog/woocommerce-attack-target-2026",
   "/blog/wordpress-plugin-audit",
   "/blog/hosting-vs-managed-security",
