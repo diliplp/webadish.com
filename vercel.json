@@ -144,6 +144,11 @@
       "permanent": true
     },
     {
+      "source": "/special-offers/",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
       "source": "/faq",
       "destination": "/",
       "permanent": true
@@ -184,7 +189,17 @@
       "permanent": true
     },
     {
+      "source": "/about-webadish-web-agency/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/why-choose-webadish",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/why-choose-webadish/",
       "destination": "/",
       "permanent": true
     },
@@ -204,7 +219,17 @@
       "permanent": true
     },
     {
+      "source": "/website-maintenance/",
+      "destination": "/maintenance",
+      "permanent": true
+    },
+    {
       "source": "/expert-website-recovery-security-solutions",
+      "destination": "/hacked-site-recovery",
+      "permanent": true
+    },
+    {
+      "source": "/expert-website-recovery-security-solutions/",
       "destination": "/hacked-site-recovery",
       "permanent": true
     },
@@ -214,7 +239,17 @@
       "permanent": true
     },
     {
+      "source": "/web-design-services/",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
       "source": "/branding-services",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/branding-services/",
       "destination": "/web-design",
       "permanent": true
     },
@@ -224,7 +259,17 @@
       "permanent": true
     },
     {
+      "source": "/web-design-development-email-hosting-services/",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
       "source": "/top-10-reasons-why-your-business-needs-a-website-in-2024",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/top-10-reasons-why-your-business-needs-a-website-in-2024/",
       "destination": "/web-design",
       "permanent": true
     },
@@ -234,7 +279,17 @@
       "permanent": true
     },
     {
+      "source": "/80-of-your-visitors-are-on-mobile-is-your-site-ready/",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
       "source": "/how-a-smart-website-strategy-can-double-your-leads-in-2025",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/how-a-smart-website-strategy-can-double-your-leads-in-2025/",
       "destination": "/web-design",
       "permanent": true
     },
@@ -244,7 +299,17 @@
       "permanent": true
     },
     {
+      "source": "/web-design-portfolio/",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
       "source": "/case-study-shivam-autozone",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/case-study-shivam-autozone/",
       "destination": "/case-studies",
       "permanent": true
     },
@@ -254,7 +319,17 @@
       "permanent": true
     },
     {
+      "source": "/erp-data-management-services/",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
       "source": "/web-design-blog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-blog/",
       "destination": "/blog",
       "permanent": true
     },
@@ -264,7 +339,17 @@
       "permanent": true
     },
     {
+      "source": "/openai-ceo-sam-altman-says-ai-is-ready-for-entry/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
       "source": "/ai-in-digital-marketing",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/ai-in-digital-marketing/",
       "destination": "/blog",
       "permanent": true
     },
@@ -274,12 +359,27 @@
       "permanent": true
     },
     {
+      "source": "/qwen-3-the-next-gen-open-source-ai-model-thats-beating-the-best/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
       "source": "/srh-vs-pbks-live-ipl-2025-match-updates-and-score",
       "destination": "/blog",
       "permanent": true
     },
     {
+      "source": "/srh-vs-pbks-live-ipl-2025-match-updates-and-score/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
       "source": "/optimize-website-search-engine-visibility",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/optimize-website-search-engine-visibility/",
       "destination": "/blog",
       "permanent": true
     },
@@ -315,6 +415,11 @@
     },
     {
       "source": "/terms-conditions",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/terms-conditions/",
       "destination": "/terms",
       "permanent": true
     },
