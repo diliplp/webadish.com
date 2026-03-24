@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowLeft, Clock, Calendar, Share2, Shield } from "lucide-react";
-import { Link, useParams } from "wouter";
+import { Link, useLocation, useParams } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 
@@ -676,7 +676,8 @@ const posts: Record<string, {
 
 export default function BlogPost() {
   const params = useParams<{ slug: string }>();
-  const slug = params.slug;
+  const [location] = useLocation();
+  const slug = params.slug || location.replace(/^\/|\/$/g, "");
   const post = posts[slug];
 
   if (!post) {
