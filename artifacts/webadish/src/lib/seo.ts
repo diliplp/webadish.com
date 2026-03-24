@@ -32,6 +32,9 @@ export const PRERENDER_ROUTES = [
   "/blog/site-hacked-what-to-do",
   "/blog/why-plugin-updates-matter",
   "/case-studies",
+  "/case-studies/verofax",
+  "/case-studies/shivamautozone",
+  "/case-studies/crystalgroup",
   "/contact",
   "/web-design",
   "/privacy-policy",
@@ -412,10 +415,58 @@ const pageSeo: Record<string, SeoData> = {
           "Case studies covering WordPress incident response, security hardening, performance improvement, and ongoing protection.",
       },
       itemListSchema("Client Case Studies", [
-        { name: "Verofax", path: "/case-studies" },
-        { name: "Shivam Autozone", path: "/case-studies" },
-        { name: "Crystal Group", path: "/case-studies" },
+        { name: "Verofax", path: "/case-studies/verofax" },
+        { name: "Shivam Autozone", path: "/case-studies/shivamautozone" },
+        { name: "Crystal Group", path: "/case-studies/crystalgroup" },
       ]),
+    ],
+  },
+  "/case-studies/verofax": {
+    title: "Verofax Case Study | WordPress Recovery and Reinfection Prevention",
+    description:
+      "How WebAdish recovered verofax.com after a malware and admin-compromise incident, removed hidden access, and stabilised the site with ongoing protection.",
+    path: "/case-studies/verofax",
+    keywords: [
+      "verofax case study",
+      "wordpress recovery case study",
+      "wordpress malware recovery example",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Case Studies", path: "/case-studies" },
+      { name: "Verofax", path: "/case-studies/verofax" },
+    ],
+  },
+  "/case-studies/shivamautozone": {
+    title: "Shivam Autozone Case Study | Website Rebuild and Security Hardening",
+    description:
+      "How WebAdish improved shivamautozone.com with a WordPress rebuild, stronger security, better performance, and ongoing support.",
+    path: "/case-studies/shivamautozone",
+    keywords: [
+      "shivamautozone case study",
+      "wordpress rebuild case study",
+      "wordpress security hardening example",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Case Studies", path: "/case-studies" },
+      { name: "Shivam Autozone", path: "/case-studies/shivamautozone" },
+    ],
+  },
+  "/case-studies/crystalgroup": {
+    title: "Crystal Group Case Study | Trust, SEO Readiness, and WordPress Support",
+    description:
+      "How WebAdish supported crystalgroup.in with WordPress improvements focused on trust, clarity, SEO readiness, and ongoing reliability.",
+    path: "/case-studies/crystalgroup",
+    keywords: [
+      "crystal group case study",
+      "wordpress support case study",
+      "business website improvement example",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Case Studies", path: "/case-studies" },
+      { name: "Crystal Group", path: "/case-studies/crystalgroup" },
     ],
   },
   "/contact": {

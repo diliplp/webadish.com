@@ -392,9 +392,9 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
               {[
-                { name: "Verofax", desc: "verofax.com — incident response, recovery, and ongoing WordPress protection.", href: "/case-studies" },
-                { name: "Shivam Autozone", desc: "shivamautozone.com — security hardening, rebuild, and ongoing support.", href: "/case-studies" },
-                { name: "Crystal Group", desc: "crystalgroup.in — enterprise trust positioning, SEO readiness, and WordPress support.", href: "/case-studies" },
+                { name: "Verofax", desc: "verofax.com — incident response, recovery, and ongoing WordPress protection.", href: "/case-studies/verofax" },
+                { name: "Shivam Autozone", desc: "shivamautozone.com — security hardening, rebuild, and ongoing support.", href: "/case-studies/shivamautozone" },
+                { name: "Crystal Group", desc: "crystalgroup.in — enterprise trust positioning, SEO readiness, and WordPress support.", href: "/case-studies/crystalgroup" },
               ].map((c) => (
                 <Link key={c.name} href={c.href} className="group block reveal-section">
                   <div className="bg-gray-50 rounded-2xl p-8 h-full border border-border/50 hover:border-accent/50 hover:shadow-lg transition-all">

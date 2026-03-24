@@ -31,6 +31,11 @@ export default function CaseStudies() {
           <p className="mt-4 text-sm text-muted-foreground">
             Trust built through real client work for verofax.com, shivamautozone.com, and crystalgroup.in.
           </p>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <Link href="/case-studies/verofax"><Button variant="accent">View Verofax Case Study</Button></Link>
+            <Link href="/case-studies/shivamautozone"><Button variant="outline-primary" className="bg-white">View Shivam Autozone</Button></Link>
+            <Link href="/case-studies/crystalgroup"><Button variant="outline-primary" className="bg-white">View Crystal Group</Button></Link>
+          </div>
         </div>
       </section>
 

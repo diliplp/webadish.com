@@ -14,6 +14,9 @@ import AgencyPartners from "@/pages/AgencyPartners";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import CaseStudies from "@/pages/CaseStudies";
+import CaseStudyVerofax from "@/pages/CaseStudyVerofax";
+import CaseStudyShivamAutozone from "@/pages/CaseStudyShivamAutozone";
+import CaseStudyCrystalGroup from "@/pages/CaseStudyCrystalGroup";
 import Contact from "@/pages/Contact";
 import WebDesign from "@/pages/WebDesign";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -48,6 +51,9 @@ function AppRoutes() {
       <Route path="/10-website-hacking-methods-that-put-your-site-at-risk-in-2025" component={BlogPost} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/case-studies" component={CaseStudies} />
+      <Route path="/case-studies/verofax" component={CaseStudyVerofax} />
+      <Route path="/case-studies/shivamautozone" component={CaseStudyShivamAutozone} />
+      <Route path="/case-studies/crystalgroup" component={CaseStudyCrystalGroup} />
       <Route path="/contact" component={Contact} />
       <Route path="/web-design" component={WebDesign} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
