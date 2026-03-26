@@ -157,7 +157,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              WebAdish is a global WordPress security and protection agency for business-critical websites. We help eCommerce teams, agencies, and growth-stage businesses reduce the cost of downtime, malware, and recurring WordPress risk.
+              Built for serious WordPress operations. WebAdish is a global WordPress security and protection agency for business-critical websites. We help eCommerce teams, agencies, and growth-stage businesses reduce the cost of downtime, malware, and recurring WordPress risk.
             </p>
             <div className="flex flex-col gap-2 mb-6 text-sm text-muted-foreground">
               <a href="tel:+919998757045" className="flex items-center gap-2 hover:text-accent transition-colors">
