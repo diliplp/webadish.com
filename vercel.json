@@ -69,6 +69,11 @@
       "permanent": true
     },
     {
+      "source": "/case-study-crystal-cold-chain-solutions/",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
       "source": "/case-study/:slug",
       "destination": "/case-studies",
       "permanent": true
@@ -85,6 +90,11 @@
     },
     {
       "source": "/radhagovind/about",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/radhagovind/about/",
       "destination": "/",
       "permanent": true
     },
@@ -256,6 +266,31 @@
     {
       "source": "/web-design-development-email-hosting-services",
       "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/optimize-images-wordpress-website/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/80-of-your-visitors-are-on-mobile-is-your-site-ready-2/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/tag/how-a-smart-website-strategy-can-double-your-leads-in-2025-webadish/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/the-top-web-design-trends-to-watch-in-2024/",
+      "destination": "/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/chatgpt-5-revolutionary-ai-launch-changes-everything-complete-features-guide/",
+      "destination": "/blog",
       "permanent": true
     },
     {
