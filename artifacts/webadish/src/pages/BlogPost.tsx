@@ -56,6 +56,42 @@ const posts: Record<string, {
       </div>
     ),
   },
+  "dpdp-checklist-wordpress-india": {
+    tag: "Guides", tagColor: "text-accent",
+    title: "DPDP Checklist for WordPress Websites in India",
+    date: "March 31, 2026", read: "7 min",
+    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Small and medium businesses in India are increasingly worried about the DPDP Act, but most do not need a legal memo first. They need to know what to fix on the website, in the form stack, and across the WordPress setup so data handling becomes more deliberate and defensible.</p>
+        <p>This checklist focuses on the implementation side of DPDP readiness for WordPress websites. It is not legal advice. It is the practical layer that helps your team move from fear to action.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">1. Map every place your website collects personal data</h2>
+        <p>List all contact forms, enquiry forms, quote forms, newsletter forms, account areas, WooCommerce flows, CRM integrations, sheets automations, and chat widgets. Many WordPress sites collect more personal data than the business realises because multiple plugins are operating at once.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">2. Review consent and privacy language on every capture point</h2>
+        <p>Make sure each form and capture point clearly explains what is being collected, why it is being collected, and where the user can read the privacy notice. If a plugin adds hidden fields or sends data into third-party tools, that should not stay invisible in practice.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">3. Minimise data collection where possible</h2>
+        <p>If a lead form does not need a phone number, job title, or other extra fields, remove them. The easiest way to reduce implementation risk is to collect less unnecessary data in the first place.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">4. Audit plugins and integrations that touch personal data</h2>
+        <p>Form builders, CRM connectors, analytics scripts, chat tools, email tools, Sheets connectors, and custom snippets can all affect where data flows. Review what each one stores locally, where it sends data, and whether your team actually needs it.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">5. Review who has admin and data access</h2>
+        <p>WordPress admin access, plugin admin panels, CRM logins, hosting accounts, and spreadsheet access all matter. DPDP readiness is not only about what the website collects, but who can access and export it once it is collected.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">6. Check where form submissions are stored</h2>
+        <p>Some plugins email submissions only. Others store everything inside the WordPress database. Some do both. Others push data into CRMs, Google Sheets, or external APIs. You should know exactly which path your forms are taking.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">7. Define retention and deletion routines</h2>
+        <p>If contact forms, quote requests, or support submissions sit indefinitely in the database, inboxes, or shared sheets, that creates avoidable exposure. Your implementation plan should include where data lives and when it is cleaned up.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">8. Harden the website and admin surface</h2>
+        <p>DPDP readiness is not only a privacy exercise. If the site is easy to compromise, any personal data collected through it becomes harder to defend. Review plugin hygiene, admin permissions, backups, logging, and incident detection as part of the same workstream.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">9. Prepare for breach-readiness before a breach happens</h2>
+        <p>If the site is compromised, can your team tell what changed, what data may have been touched, and who needs to be involved? Readiness requires evidence-aware backups, logging, access review, and a response plan that starts before panic-driven cleanup begins.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">10. Translate the checklist into an implementation roadmap</h2>
+        <p>A checklist is only useful if it turns into action. Prioritise your fixes across forms, consent flows, plugins, access controls, storage patterns, and security hardening. That is where a technical implementation partner becomes useful.</p>
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Need help turning this into a real action plan?</p>
+          <p className="text-sm">Start with our <Link href="/india/dpdp-compliance-wordpress" className="underline font-semibold">DPDP implementation support page</Link> or <Link href="/contact" className="underline font-semibold">request a DPDP readiness review</Link>.</p>
+        </div>
+      </div>
+    ),
+  },
   "protect-your-digital-assets": {
     tag: "Security", tagColor: "text-primary",
     title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses",

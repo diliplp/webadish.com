@@ -12,9 +12,11 @@ export const PRERENDER_ROUTES = [
   "/pricing",
   "/india",
   "/india/dpdp-compliance-wordpress",
+  "/india/cert-in-incident-readiness",
   "/security-score",
   "/agency-partners",
   "/blog",
+  "/blog/dpdp-checklist-wordpress-india",
   "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
   "/blog/woocommerce-attack-target-2026",
   "/blog/wordpress-plugin-audit",
@@ -352,6 +354,31 @@ const pageSeo: Record<string, SeoData> = {
             "It is suitable for Indian SMEs, lead-generation websites, education brands, dealerships, and WordPress businesses that need practical implementation help across websites, forms, plugins, and workflows.",
         },
       ]),
+    ],
+  },
+  "/india/cert-in-incident-readiness": {
+    title: "CERT-In Incident Readiness for Indian SMEs",
+    description:
+      "Technical incident-readiness support for Indian SMEs using WordPress websites, forms, plugin stacks, and business websites that need better breach-response preparation.",
+    path: "/india/cert-in-incident-readiness",
+    keywords: [
+      "cert-in incident readiness",
+      "cert-in compliance website india",
+      "incident readiness wordpress india",
+      "cert-in reporting readiness sme",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "India", path: "/india" },
+      { name: "CERT-In Readiness", path: "/india/cert-in-incident-readiness" },
+    ],
+    schema: [
+      serviceSchema(
+        "CERT-In Incident Readiness India",
+        "Technical incident-readiness support for Indian SMEs using WordPress websites, plugin stacks, forms, logging, and access controls.",
+        "/india/cert-in-incident-readiness",
+        "Incident readiness support",
+      ),
     ],
   },
   "/security-score": {

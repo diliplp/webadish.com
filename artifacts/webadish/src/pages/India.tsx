@@ -74,6 +74,24 @@ export default function India() {
               </Link>
             </div>
           </div>
+          <div className="rounded-3xl border border-red-500/20 bg-red-500/5 p-8 mb-10">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-red-500 text-xs font-semibold uppercase tracking-[0.12em] border border-red-500/10 mb-4">
+                  CERT-In Readiness
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">Need incident-readiness help before a breach happens?</h2>
+                <p className="text-sm md:text-base text-muted-foreground">
+                  We also offer CERT-In incident-readiness support for WordPress websites, forms, access control, logging, and technical response preparation for Indian SMEs.
+                </p>
+              </div>
+              <Link href="/india/cert-in-incident-readiness">
+                <Button variant="accent" size="lg">
+                  View CERT-In Page <ArrowRight size={18} className="ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {tiers.map((tier) => (
               <div key={tier.name} className="rounded-3xl border border-border/50 bg-gray-50 p-8">

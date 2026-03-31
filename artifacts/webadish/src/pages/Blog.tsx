@@ -7,6 +7,18 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Guides",
+    tagColor: "text-accent",
+    tagBg: "bg-accent/10",
+    title: "DPDP Checklist for WordPress Websites in India",
+    excerpt:
+      "A practical implementation checklist for Indian businesses using WordPress, forms, plugins, analytics, and CRM tools under growing DPDP pressure.",
+    date: "March 31, 2026",
+    read: "7 min",
+    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/dpdp-checklist-wordpress-india",
+  },
+  {
     tag: "Security",
     tagColor: "text-primary",
     tagBg: "bg-primary/10",
@@ -200,7 +212,7 @@ const posts = [
   },
 ];
 
-const categories = ["All", "Buyer Intent", "Security", "Maintenance", "Recovery"];
+const categories = ["All", "Buyer Intent", "Guides", "Security", "Maintenance", "Recovery"];
 
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");

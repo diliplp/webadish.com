@@ -10,6 +10,7 @@ import Retainer from "@/pages/Retainer";
 import Pricing from "@/pages/Pricing";
 import India from "@/pages/India";
 import IndiaDpdp from "@/pages/IndiaDpdp";
+import IndiaCertIn from "@/pages/IndiaCertIn";
 import SecurityScore from "@/pages/SecurityScore";
 import AgencyPartners from "@/pages/AgencyPartners";
 import Blog from "@/pages/Blog";
@@ -47,6 +48,7 @@ function AppRoutes() {
       <Route path="/pricing" component={Pricing} />
       <Route path="/india" component={India} />
       <Route path="/india/dpdp-compliance-wordpress" component={IndiaDpdp} />
+      <Route path="/india/cert-in-incident-readiness" component={IndiaCertIn} />
       <Route path="/security-score" component={SecurityScore} />
       <Route path="/agency-partners" component={AgencyPartners} />
       <Route path="/blog" component={Blog} />
