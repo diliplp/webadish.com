@@ -56,6 +56,24 @@ export default function India() {
 
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 mb-10">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-accent text-xs font-semibold uppercase tracking-[0.12em] border border-accent/10 mb-4">
+                  DPDP Support
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">Need help with DPDP Act website implementation?</h2>
+                <p className="text-sm md:text-base text-muted-foreground">
+                  We now offer India-focused DPDP implementation support for WordPress websites, lead forms, consent journeys, plugin stacks, and technical readiness work for SMEs.
+                </p>
+              </div>
+              <Link href="/india/dpdp-compliance-wordpress">
+                <Button variant="accent" size="lg">
+                  View DPDP Page <ArrowRight size={18} className="ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {tiers.map((tier) => (
               <div key={tier.name} className="rounded-3xl border border-border/50 bg-gray-50 p-8">

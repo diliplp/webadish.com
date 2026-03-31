@@ -11,6 +11,7 @@ export const PRERENDER_ROUTES = [
   "/retainer",
   "/pricing",
   "/india",
+  "/india/dpdp-compliance-wordpress",
   "/security-score",
   "/agency-partners",
   "/blog",
@@ -308,6 +309,49 @@ const pageSeo: Record<string, SeoData> = {
         "/india",
         "WordPress security India",
       ),
+    ],
+  },
+  "/india/dpdp-compliance-wordpress": {
+    title: "DPDP Act Website Implementation Support India",
+    description:
+      "India-focused DPDP Act implementation support for WordPress websites, lead forms, plugin stacks, consent flows, data handling, and technical readiness for SMEs.",
+    path: "/india/dpdp-compliance-wordpress",
+    keywords: [
+      "dpdp act compliance india",
+      "dpdp implementation partner",
+      "wordpress dpdp compliance",
+      "dpdp website implementation india",
+      "dpdp act implementation support",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "India", path: "/india" },
+      { name: "DPDP Implementation", path: "/india/dpdp-compliance-wordpress" },
+    ],
+    schema: [
+      serviceSchema(
+        "DPDP Act Website Implementation Support India",
+        "Technical implementation support for WordPress websites, consent flows, forms, access controls, and data-handling workflows related to DPDP readiness in India.",
+        "/india/dpdp-compliance-wordpress",
+        "DPDP implementation support",
+      ),
+      faqSchema([
+        {
+          question: "Can WebAdish help implement DPDP-related website changes?",
+          answer:
+            "Yes. WebAdish helps with the technical implementation side, including forms, consent journeys, plugin behavior, access controls, storage patterns, and security readiness on WordPress websites.",
+        },
+        {
+          question: "Does WebAdish provide legal certification of DPDP compliance?",
+          answer:
+            "No. WebAdish is not a law firm. The service supports technical implementation and readiness so internal teams and legal advisors can move faster.",
+        },
+        {
+          question: "Who is this service suitable for?",
+          answer:
+            "It is suitable for Indian SMEs, lead-generation websites, education brands, dealerships, and WordPress businesses that need practical implementation help across websites, forms, plugins, and workflows.",
+        },
+      ]),
     ],
   },
   "/security-score": {
