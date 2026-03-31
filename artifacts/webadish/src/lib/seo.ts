@@ -384,18 +384,19 @@ const pageSeo: Record<string, SeoData> = {
   "/security-score": {
     title: "Free WordPress Security Score",
     description:
-      "Run a quick WordPress security score for your website and see the immediate risks that should be reviewed before they turn into downtime or incident-response costs.",
+      "Run a free WordPress security score for your website and get a practical snapshot of plugin risk, backup confidence, audit cadence, and commercial exposure.",
     path: "/security-score",
     keywords: [
       "wordpress security score",
       "wordpress website security check",
       "wordpress risk assessment",
+      "wordpress security audit free",
     ],
     breadcrumbs: breadcrumbs("Free Security Score", "/security-score"),
     schema: [
       serviceSchema(
         "Free WordPress Security Score",
-        "A lead-magnet style WordPress security score tool for business websites.",
+        "A practical WordPress security score and self-assessment page for business websites that need a clearer view of operational risk.",
         "/security-score",
         "WordPress security assessment",
       ),
