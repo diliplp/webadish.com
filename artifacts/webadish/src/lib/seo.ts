@@ -16,6 +16,7 @@ export const PRERENDER_ROUTES = [
   "/security-score",
   "/agency-partners",
   "/blog",
+  "/blog/state-of-wordpress-security-2025-business-takeaways",
   "/blog/dpdp-checklist-wordpress-india",
   "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
   "/blog/woocommerce-attack-target-2026",
@@ -456,6 +457,7 @@ const pageSeo: Record<string, SeoData> = {
           "WordPress security buying guides, recovery advice, and operational insights for business-critical websites.",
       },
       itemListSchema("Featured Blog Posts", [
+        { name: "What the State of WordPress Security in 2025 Means for Business Websites in 2026", path: "/blog/state-of-wordpress-security-2025-business-takeaways" },
         { name: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026", path: "/blog/woocommerce-attack-target-2026" },
         { name: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do", path: "/blog/wordpress-plugin-audit" },
         { name: "When Your Hosting Provider Isn't Enough: What Managed WordPress Security Actually Covers", path: "/blog/hosting-vs-managed-security" },
@@ -635,6 +637,27 @@ const articleSchema = (data: {
 });
 
 const blogPosts: Record<string, SeoData> = {
+  "/blog/state-of-wordpress-security-2025-business-takeaways": {
+    title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
+    description:
+      "Patchstack's latest WordPress ecosystem data explains why plugin sprawl, slow patching, and weak vulnerability prioritisation now create real business risk.",
+    path: "/blog/state-of-wordpress-security-2025-business-takeaways",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "State of WordPress Security 2025", path: "/blog/state-of-wordpress-security-2025-business-takeaways" },
+    ],
+    schema: [
+      articleSchema({
+        title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
+        description:
+          "A practical business take on Patchstack's latest WordPress security report, focused on plugin risk, prioritisation, and operational hardening.",
+        path: "/blog/state-of-wordpress-security-2025-business-takeaways",
+        published: "2026-04-02",
+      }),
+    ],
+  },
   "/blog/woocommerce-attack-target-2026": {
     title: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026",
     description:

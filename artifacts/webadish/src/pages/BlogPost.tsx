@@ -8,6 +8,58 @@ const posts: Record<string, {
   tag: string; tagColor: string; title: string; date: string; read: string;
   img: string; imgPosition?: string; content: React.ReactNode;
 }> = {
+  "state-of-wordpress-security-2025-business-takeaways": {
+    tag: "Security", tagColor: "text-primary",
+    title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
+    date: "April 2, 2026", read: "7 min",
+    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200&h=600",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">The latest WordPress ecosystem numbers should make one thing very clear to business owners: WordPress risk is no longer mainly about whether core is secure. It is about plugin sprawl, weak prioritisation, and slow operational response when new vulnerabilities emerge.</p>
+        <p>That is the practical takeaway from Patchstack's <a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2025/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">State of WordPress Security in 2025</a>. The report is useful not because it tells us WordPress is "unsafe," but because it shows where serious businesses should focus their time and budget.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The headline number is not the only number that matters</h2>
+        <p>Patchstack reported 7,966 new vulnerabilities in the WordPress ecosystem in 2024. That is an attention-grabbing figure, but the deeper lesson is where the risk is concentrated and how teams should respond.</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>96% of vulnerabilities were found in plugins.</strong></li>
+          <li><strong>Only a small fraction were in WordPress core.</strong></li>
+          <li><strong>About 30% had meaningful exploitation risk</strong> under Patchstack's own prioritisation model.</li>
+          <li><strong>43% were classed as unauthenticated from the attacker's side.</strong></li>
+        </ul>
+        <p>For business websites, that means the conversation should shift from "Is WordPress secure?" to "How disciplined is our plugin and response posture?"</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Plugin count is now a business decision, not just a development choice</h2>
+        <p>Many WordPress sites grow by accumulation. A form builder gets added. Then a CRM connector. Then analytics layers, popup tools, page builder add-ons, security tools, backup tools, schema tools, and abandoned experiments that no one deletes.</p>
+        <p>That creates a bigger attack surface, a noisier maintenance process, and more opportunities for one neglected component to become the entry point. Popular plugins are not exempt either. The report makes that point clearly: high install count is not a guarantee of security maturity.</p>
+        <p>If your site is commercially important, plugin inventory should be reviewed the same way you would review vendor access or payment stack changes.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The real operational problem is prioritisation</h2>
+        <p>One of the most useful ideas in the Patchstack report is that raw vulnerability volume creates alert fatigue. When everything looks urgent, teams either overreact to low-impact issues or miss the vulnerabilities that actually matter.</p>
+        <p>That is why a business-grade security process needs more than update notifications. It needs triage:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li>Which plugin or theme is affected?</li>
+          <li>Is the vulnerable component even active?</li>
+          <li>Does the exploit require admin access or can it be hit externally?</li>
+          <li>Is the site storing customer data, leads, or transactions?</li>
+          <li>Is the affected site revenue-critical?</li>
+        </ol>
+        <p>That is the difference between generic maintenance and a proper <Link href="/security" className="text-accent hover:underline font-medium">WordPress security program</Link>.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What business owners should actually do in 2026</h2>
+        <p>You do not need to become a vulnerability analyst. You do need a tighter operating model.</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Reduce plugin sprawl.</strong> Remove inactive, duplicate, or abandoned plugins.</li>
+          <li><strong>Move from reactive updates to audit-led reviews.</strong> Important sites should not rely on ad hoc plugin maintenance.</li>
+          <li><strong>Increase audit cadence when the site changes frequently.</strong> WooCommerce, lead-gen, and agency-managed sites need more frequent review.</li>
+          <li><strong>Treat popular plugins as high-impact dependencies.</strong> Popularity often increases blast radius, not safety.</li>
+          <li><strong>Prepare for post-incident hardening before you need it.</strong> Recovery is cheaper when evidence, backups, access controls, and response steps already exist.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The commercial takeaway for serious WordPress teams</h2>
+        <p>If your site generates leads, sales, bookings, or partner trust, WordPress security is now an operations issue. The cost is no longer just a possible hack. It is also the cost of poor prioritisation, missed patch windows, emergency cleanup, and slow decision-making under pressure.</p>
+        <p>That is why more businesses are moving away from "someone updates plugins when they remember" toward structured audits, tighter hardening, and ongoing retained coverage.</p>
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Need help turning this into action?</p>
+          <p className="text-sm">Start with a <Link href="/security-score" className="underline font-semibold">free security score</Link>, review our <Link href="/retainer" className="underline font-semibold">retainer structure</Link>, or <Link href="/contact" className="underline font-semibold">request a WordPress security review</Link> if your site is commercially important.</p>
+        </div>
+      </div>
+    ),
+  },
   "10-website-hacking-methods-that-put-your-site-at-risk-in-2025": {
     tag: "Security", tagColor: "text-primary",
     title: "10 Website Hacking Methods That Put Your Site at Risk in 2025",

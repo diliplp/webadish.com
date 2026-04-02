@@ -7,6 +7,18 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Security",
+    tagColor: "text-primary",
+    tagBg: "bg-primary/10",
+    title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
+    excerpt:
+      "Patchstack's latest ecosystem data confirms what serious WordPress operators already feel: plugin sprawl, slow patching, and weak prioritisation are now business risks, not just technical debt.",
+    date: "April 2, 2026",
+    read: "7 min",
+    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800&h=500",
+    href: "/blog/state-of-wordpress-security-2025-business-takeaways",
+  },
+  {
     tag: "Guides",
     tagColor: "text-accent",
     tagBg: "bg-accent/10",
