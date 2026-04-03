@@ -130,6 +130,15 @@ export default function Retainer() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gray-50 rounded-3xl p-10 border border-border/50">
+            <div className="mb-8 rounded-2xl border border-primary/15 bg-primary/5 p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary mb-3">Why Retainers Matter More Now</p>
+              <p className="text-base text-foreground leading-relaxed">
+                Patchstack's latest WordPress security data found <strong>7,966 vulnerabilities</strong> in one year, with <strong>96% in plugins</strong>. That volume makes ad hoc updates and occasional reviews a weak operating model for higher-stakes teams. A retainer gives you prioritisation, audit rhythm, and a named response path when the next serious disclosure cycle lands. See our{" "}
+                <Link href="/blog/state-of-wordpress-security-2025-business-takeaways" className="font-semibold text-accent hover:underline">
+                  practical business take on the 2025 WordPress security numbers
+                </Link>.
+              </p>
+            </div>
             <h2 className="text-2xl font-bold mb-8 text-center">Best Fit For</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[

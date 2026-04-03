@@ -90,6 +90,15 @@ export default function Security() {
 
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 rounded-3xl border border-primary/15 bg-primary/5 p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary mb-3">Why This Matters Now</p>
+            <p className="text-base text-foreground leading-relaxed">
+              Patchstack reported <strong>7,966 WordPress ecosystem vulnerabilities</strong> in 2024, with <strong>96% found in plugins</strong>. For business websites, that is why security now depends less on assuming WordPress core is fine and more on tightening plugin discipline, prioritising the right issues, and reviewing risk before attackers do. Read our{" "}
+              <Link href="/blog/state-of-wordpress-security-2025-business-takeaways" className="font-semibold text-accent hover:underline">
+                breakdown of what that means for serious WordPress operators
+              </Link>.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
