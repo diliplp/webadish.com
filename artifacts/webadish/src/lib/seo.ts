@@ -214,11 +214,13 @@ const pageSeo: Record<string, SeoData> = {
     ],
   },
   "/maintenance": {
-    title: "WordPress Protection Plans",
+    title: "WordPress Maintenance Services",
     description:
-      "Managed WordPress protection plans with safe updates, daily backups, uptime monitoring, reporting, and support for businesses that need a reliable website partner.",
+      "Premium WordPress maintenance services with safe updates, daily backups, uptime monitoring, reporting, and hardening for businesses that need a reliable website partner.",
     path: "/maintenance",
     keywords: [
+      "wordpress maintenance services",
+      "wordpress maintenance service",
       "wordpress protection plan",
       "wordpress maintenance agency",
       "wordpress support plan",

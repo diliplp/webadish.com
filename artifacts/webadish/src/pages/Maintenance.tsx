@@ -46,14 +46,19 @@ export default function Maintenance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20">
-              <Wrench size={14} /> WordPress Protection Plans
+              <Wrench size={14} /> WordPress Maintenance Service
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Protection Plans for <span className="text-accent">Business-Critical WordPress Sites</span>
+              WordPress Maintenance Services for <span className="text-accent">Business-Critical Websites</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Safe updates, backups, monitoring, and hardening packaged as continuous protection. This is where global businesses start before moving into higher-touch security retainers.
+              Safe updates, backups, monitoring, and hardening packaged as a premium WordPress maintenance service. Built for global businesses that need more than generic website support and want a stronger operational protection layer.
             </p>
+            <div className="mb-8 rounded-2xl border border-primary/15 bg-primary/5 p-5 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-wide text-primary mb-2">Why This Page Exists</p>
+              <p className="text-base text-foreground font-medium">If you are searching for a WordPress maintenance service, this is our structured global offer.</p>
+              <p className="text-sm text-muted-foreground mt-2">We handle the maintenance layer properly: staged updates, offsite backups, monitoring, hardening, and faster response when something breaks or looks risky.</p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href='/contact'}>
                 Schedule a Protection Review <ArrowRight size={18} className="ml-2" />
@@ -73,8 +78,8 @@ export default function Maintenance() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Protection Built Into Your Operations</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">We prevent security incidents, maintain uptime, and reduce operational risk — so your team can focus on growth instead of firefighting WordPress issues.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our WordPress Maintenance Service Covers</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">We prevent security incidents, maintain uptime, and reduce operational risk so your team can focus on growth instead of firefighting WordPress issues.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((f) => (
@@ -116,6 +121,33 @@ export default function Maintenance() {
             <Link href="/india" className="text-sm font-medium text-accent hover:underline">
               Indian business pricing is available on the dedicated India page →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-primary/15 bg-primary/5 p-10">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary mb-3">WordPress Maintenance Services, But Higher Standard</p>
+              <h2 className="text-3xl font-bold mb-4">How WebAdish differs from generic maintenance vendors</h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Many maintenance providers sell a checklist. We treat maintenance as risk reduction for commercially important WordPress sites. That means staged updates, rollback discipline, plugin hygiene, operational hardening, and a clear path into deeper security support when your website carries real revenue or brand risk.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-muted-foreground">
+                {[
+                  "Staging-first updates instead of risky live changes",
+                  "Backup and restore readiness, not just backup claims",
+                  "Maintenance plus hardening, not maintenance alone",
+                  "Direct path into hacked-site recovery and retainers if needed",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/80 p-4 border border-border/50">
+                    <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
