@@ -186,7 +186,7 @@ export default function Contact() {
                     { icon: <Phone size={20} className="text-accent" />, label: "WhatsApp", value: "+91 9998757045", href: "https://wa.me/919998757045" },
                     { icon: <Clock size={20} className="text-accent" />, label: "Emergency Support", value: "24/7 for hacked site recovery" },
                     { icon: <Clock size={20} className="text-accent" />, label: "General Support", value: "Mon–Fri, 9am–6pm IST" },
-                    { icon: <MapPin size={20} className="text-accent" />, label: "Registered Office", value: "D802, Iscon Habitat, Gotri Sevasi Road, Vadodara, 390021" },
+                    { icon: <MapPin size={20} className="text-accent" />, label: "Registered Office", value: "D802, Iscon Habitat, Gotri Sevasi Road, Vadodara, 390021, India" },
                   ].map(item => (
                     <div key={item.label} className="flex items-start gap-4 bg-gray-50 rounded-2xl p-5 border border-border/50">
                       <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">{item.icon}</div>
