@@ -1,4 +1,5 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import App from "./App";
 import "./index.css";
 
@@ -9,7 +10,17 @@ if (!rootElement) {
 }
 
 if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, <App />);
+  hydrateRoot(rootElement, (
+    <>
+      <App />
+      <SpeedInsights />
+    </>
+  ));
 } else {
-  createRoot(rootElement).render(<App />);
+  createRoot(rootElement).render(
+    <>
+      <App />
+      <SpeedInsights />
+    </>,
+  );
 }
