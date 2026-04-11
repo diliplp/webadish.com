@@ -31,19 +31,19 @@
       function scheduleDeferredThirdParties() {
         const loadAll = function () {
           loadDeferredScript('https://www.googletagmanager.com/gtag/js?id=G-G5KV9ZHEXG');
+        };
+
+        const loadClarity = function () {
           loadDeferredScript('https://www.clarity.ms/tag/vzlgprw0bu');
-          loadDeferredScript('https://js-na2.hs-scripts.com/242393531.js', {
-            id: 'hs-script-loader',
-            defer: 'true',
-          });
         };
 
         if ('requestIdleCallback' in window) {
           window.requestIdleCallback(loadAll, { timeout: 3000 });
-          return;
+          window.setTimeout(loadClarity, 6000);
+        } else {
+          window.setTimeout(loadAll, 2000);
+          window.setTimeout(loadClarity, 6000);
         }
-
-        window.setTimeout(loadAll, 2000);
       }
 
       window.addEventListener('load', scheduleDeferredThirdParties, { once: true });
