@@ -1,9 +1,9 @@
 import { renderToString } from "react-dom/server";
-import App from "./App";
+import AppServer from "./AppServer";
 import { PRERENDER_ROUTES, getFullTitle, renderSeoHead } from "./lib/seo";
 
 export function render(url: string) {
-  return renderToString(<App ssrPath={url} />);
+  return renderToString(<AppServer ssrPath={url} />);
 }
 
 export function renderHead(url: string) {
