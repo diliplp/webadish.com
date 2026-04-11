@@ -1,0 +1,18 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="600" rx="36" fill="#0F172A"/>
+  <circle cx="1085" cy="98" r="205" fill="#7C3AED" fill-opacity="0.18"/>
+  <rect x="800" y="132" width="280" height="292" rx="30" fill="#111827" stroke="#334155" stroke-width="3"/>
+  <rect x="848" y="198" width="184" height="18" rx="9" fill="#334155"/>
+  <rect x="848" y="242" width="152" height="18" rx="9" fill="#334155"/>
+  <rect x="848" y="286" width="168" height="18" rx="9" fill="#334155"/>
+  <path d="M858 160H1022L1000 342H880L858 160Z" stroke="#A78BFA" stroke-width="8" stroke-linejoin="round"/>
+  <circle cx="900" cy="372" r="14" fill="#A78BFA"/>
+  <circle cx="980" cy="372" r="14" fill="#A78BFA"/>
+  <rect x="72" y="72" width="230" height="48" rx="24" fill="#F5F3FF"/>
+  <text x="112" y="103" fill="#7C3AED" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">ECOMMERCE RISK</text>
+  <text x="72" y="210" fill="white" font-family="Inter, Arial, sans-serif" font-size="60" font-weight="800">Why WooCommerce Stores</text>
+  <text x="72" y="286" fill="white" font-family="Inter, Arial, sans-serif" font-size="60" font-weight="800">Are Top Attack Targets</text>
+  <text x="72" y="378" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500">Payments, customer data, plugin complexity,</text>
+  <text x="72" y="422" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500">and higher-stakes uptime all raise the risk.</text>
+  <text x="72" y="520" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">webadish.com</text>
+</svg>

@@ -1,4 +1,5 @@
 packages:
   - 'artifacts/webadish'
+  - 'artifacts/webadish-next'
 onlyBuiltDependencies:
   - esbuild

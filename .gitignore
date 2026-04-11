@@ -2,6 +2,7 @@
 
 # compiled output
 dist
+.next
 artifacts/webadish/.ssr
 tmp
 out-tsc

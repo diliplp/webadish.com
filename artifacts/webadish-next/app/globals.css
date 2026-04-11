@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Alata", "Segoe UI", sans-serif;
+  --font-heading: "Alata", "Segoe UI", sans-serif;
+
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(0 0% 0%);
+  --color-primary: hsl(336 78% 47%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-accent: hsl(213 96% 54%);
+  --color-accent-foreground: hsl(0 0% 100%);
+  --color-link: hsl(225 53% 40%);
+  --color-muted: hsl(210 40% 96%);
+  --color-muted-foreground: hsl(215 16% 47%);
+  --color-border: hsl(214 32% 91%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(0 0% 0%);
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --primary: 336 78% 47%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 213 96% 54%;
+  --accent-foreground: 0 0% 100%;
+  --link: 225 53% 40%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --border: 214 32% 91%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans selection:bg-accent/20 selection:text-accent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+    font-family: "Alata", "Segoe UI", sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-md border-b border-border/50 shadow-sm;
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(circle at 15% 50%, rgba(26, 126, 251, 0.08), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(214, 26, 102, 0.08), transparent 25%);
+  }
+
+  .cta-gradient {
+    background: linear-gradient(135deg, hsl(336 78% 47%) 0%, hsl(213 96% 54%) 100%);
+  }
+}
