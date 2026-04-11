@@ -15,7 +15,7 @@ const posts = [
       "Patchstack's latest ecosystem data confirms what serious WordPress operators already feel: plugin sprawl, slow patching, and weak prioritisation are now business risks, not just technical debt.",
     date: "April 2, 2026",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/state-of-wordpress-security-2025-banner.svg",
     href: "/blog/state-of-wordpress-security-2025-business-takeaways",
   },
   {
@@ -27,7 +27,7 @@ const posts = [
       "A practical implementation checklist for Indian businesses using WordPress, forms, plugins, analytics, and CRM tools under growing DPDP pressure.",
     date: "March 31, 2026",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/dpdp-checklist-india-banner.svg",
     href: "/blog/dpdp-checklist-wordpress-india",
   },
   {
@@ -39,7 +39,7 @@ const posts = [
       "Payment plugins, customer data, and high traffic make WooCommerce sites the most attacked category of WordPress installations. Here's what that means for store owners.",
     date: "April 26, 2026",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/woocommerce-attack-target-banner.svg",
     href: "/blog/woocommerce-attack-target-2026",
   },
   {
@@ -51,7 +51,7 @@ const posts = [
       "Most sites are running risky plugins right now without knowing it. A practical guide to auditing your plugin stack the way security experts do.",
     date: "October 14, 2025",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/plugin-audit-banner.svg",
     href: "/blog/wordpress-plugin-audit",
   },
   {
@@ -159,7 +159,7 @@ const posts = [
       "As businesses move more of their operations online, the attack surface grows. Here's why cybersecurity is no longer optional — and what you need to do today.",
     date: "March 16, 2019",
     read: "5 min",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/legacy-security-awareness-banner.svg",
     href: "/blog/protect-your-digital-assets",
   },
   {
@@ -171,7 +171,7 @@ const posts = [
       "From SQL injection to brute force attacks — we break down the most common methods hackers use to compromise WordPress sites and how to defend against each one.",
     date: "December 12, 2019",
     read: "7 min",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/legacy-security-awareness-banner.svg",
     href: "/blog/how-hackers-break-into-websites",
   },
   {
@@ -183,7 +183,7 @@ const posts = [
       "A comprehensive breakdown of everything Australian businesses need to keep their WordPress site healthy, compliant, and performing at its best.",
     date: "July 25, 2021",
     read: "8 min",
-    img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/maintenance-operations-banner.svg",
     href: "/blog/wordpress-maintenance-guide",
   },
   {
@@ -195,7 +195,7 @@ const posts = [
       "Most WordPress hacks are preventable. We've seen thousands of compromised sites — here are the most common mistakes that let attackers in.",
     date: "April 6, 2022",
     read: "6 min",
-    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/legacy-security-awareness-banner.svg",
     href: "/blog/wordpress-security-mistakes",
   },
   {
@@ -207,7 +207,7 @@ const posts = [
       "Don't panic. Follow these immediate steps to contain the damage, assess the breach, and begin the recovery process.",
     date: "January 15, 2023",
     read: "5 min",
-    img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/incident-recovery-banner.svg",
     href: "/blog/site-hacked-what-to-do",
   },
   {
@@ -219,7 +219,7 @@ const posts = [
       "Outdated plugins are the #1 cause of WordPress hacks. Here's why keeping them updated is critical — and how to do it safely.",
     date: "September 7, 2024",
     read: "4 min",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800&h=500",
+    img: "/blog/maintenance-operations-banner.svg",
     href: "/blog/why-plugin-updates-matter",
   },
 ];

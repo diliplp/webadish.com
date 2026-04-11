@@ -12,7 +12,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
     date: "April 2, 2026", read: "7 min",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/state-of-wordpress-security-2025-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">The latest WordPress ecosystem numbers should make one thing very clear to business owners: WordPress risk is no longer mainly about whether core is secure. It is about plugin sprawl, weak prioritisation, and slow operational response when new vulnerabilities emerge.</p>
@@ -64,7 +64,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "10 Website Hacking Methods That Put Your Site at Risk in 2025",
     date: "March 23, 2025", read: "8 min",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/legacy-security-awareness-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Website attacks are rarely random. Most compromises happen through a small set of known methods that bots and attackers use every day. If you know where the openings usually are, you can close them before they become an emergency.</p>
@@ -112,7 +112,7 @@ const posts: Record<string, {
     tag: "Guides", tagColor: "text-accent",
     title: "DPDP Checklist for WordPress Websites in India",
     date: "March 31, 2026", read: "7 min",
-    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/dpdp-checklist-india-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Small and medium businesses in India are increasingly worried about the DPDP Act, but most do not need a legal memo first. They need to know what to fix on the website, in the form stack, and across the WordPress setup so data handling becomes more deliberate and defensible.</p>
@@ -148,7 +148,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses",
     date: "March 16, 2019", read: "5 min",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/legacy-security-awareness-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">The modern business is a digital business. Your website is your storefront, your brand, your revenue engine — and it's under attack around the clock.</p>
@@ -195,7 +195,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "How Hackers Break Into Websites – And How to Stop Them",
     date: "December 12, 2019", read: "7 min",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/legacy-security-awareness-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Understanding how attackers think is the first step to keeping them out. Here's a breakdown of the most common attack vectors against WordPress sites — and exactly what you can do to stop each one.</p>
@@ -226,7 +226,7 @@ const posts: Record<string, {
     tag: "Maintenance", tagColor: "text-accent",
     title: "The Ultimate Guide to WordPress Maintenance for Australian Businesses",
     date: "July 25, 2021", read: "8 min",
-    img: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/maintenance-operations-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">WordPress maintenance isn't a once-a-year task. It's an ongoing discipline — and for Australian businesses, the stakes are higher than ever given rising cyber threats and increasing regulatory scrutiny.</p>
@@ -293,7 +293,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "The Most Common WordPress Security Mistakes (And How to Fix Them)",
     date: "April 6, 2022", read: "6 min",
-    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/legacy-security-awareness-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">After recovering hundreds of hacked WordPress sites, we see the same security mistakes over and over. Here are the most common — and how to fix each one right now.</p>
@@ -325,7 +325,7 @@ const posts: Record<string, {
     tag: "Recovery", tagColor: "text-red-600",
     title: "My WordPress Site Got Hacked: What To Do Right Now",
     date: "January 15, 2023", read: "5 min",
-    img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/incident-recovery-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Stay calm. A hacked WordPress site is recoverable — but the steps you take in the first hour matter enormously. Here's exactly what to do.</p>
@@ -367,7 +367,7 @@ const posts: Record<string, {
     tag: "Maintenance", tagColor: "text-accent",
     title: "Why WordPress Plugin Updates Matter More Than You Think",
     date: "September 7, 2024", read: "4 min",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/maintenance-operations-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">Plugin updates seem like a minor housekeeping task. They're not. Keeping plugins updated is one of the most important security practices for any WordPress site.</p>
@@ -409,7 +409,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "Why WooCommerce Stores Are the #1 Target for WordPress Attacks in 2026",
     date: "April 26, 2026", read: "6 min",
-    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/woocommerce-attack-target-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">WooCommerce powers over 6 million online stores globally. For attackers, that makes it the most valuable target in the WordPress ecosystem — and the most rewarding to compromise. After 20+ years protecting WordPress sites, our security team sees this pattern clearly: stores are attacked more frequently, more aggressively, and with more sophisticated techniques than any other site type.</p>
@@ -452,7 +452,7 @@ const posts: Record<string, {
     tag: "Security", tagColor: "text-primary",
     title: "The WordPress Plugin Audit: How to Find and Close Vulnerabilities Before Attackers Do",
     date: "October 14, 2025", read: "7 min",
-    img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/plugin-audit-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">The average WordPress site runs 20–30 plugins. Each one is third-party code with full access to your database, your files, and your admin panel. A plugin audit is not a nice-to-have — it is how our security experts start every new client engagement, because what we find is almost always a surprise to the site owner.</p>
@@ -736,7 +736,7 @@ const posts: Record<string, {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",
     date: "October 3, 2019", read: "7 min",
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200&h=600",
+    img: "/blog/woocommerce-maintenance-checklist-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
         <p className="text-xl font-medium text-foreground">WooCommerce maintenance is not the same as maintaining a brochure site. A growing store has payments, checkout flows, customer accounts, plugin complexity, and active revenue at risk every time something changes.</p>

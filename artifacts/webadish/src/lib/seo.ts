@@ -62,7 +62,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "WebAdish LLP",
   url: SITE_URL,
-  logo: "https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp",
+  logo: `${SITE_URL}/logo.webp`,
   email: "hello@webadish.com",
   telephone: "+91 9998757045",
   sameAs: [
@@ -633,7 +633,7 @@ const articleSchema = (data: {
     name: "WebAdish LLP",
     logo: {
       "@type": "ImageObject",
-      url: "https://webadish.com/wp-content/uploads/2025/02/logo-bp-webadish-1.webp",
+      url: `${SITE_URL}/logo.webp`,
     },
   },
 });

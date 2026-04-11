@@ -1,0 +1,18 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="600" rx="36" fill="#0A1020"/>
+  <circle cx="1034" cy="520" r="220" fill="#22C55E" fill-opacity="0.08"/>
+  <rect x="808" y="110" width="260" height="340" rx="28" fill="#111827" stroke="#1F2937" stroke-width="3"/>
+  <rect x="854" y="182" width="168" height="18" rx="9" fill="#334155"/>
+  <rect x="854" y="228" width="150" height="18" rx="9" fill="#334155"/>
+  <rect x="854" y="274" width="186" height="18" rx="9" fill="#334155"/>
+  <rect x="854" y="320" width="132" height="18" rx="9" fill="#334155"/>
+  <path d="M935 375C968.137 375 995 348.137 995 315C995 281.863 968.137 255 935 255C901.863 255 875 281.863 875 315C875 348.137 901.863 375 935 375Z" stroke="#22C55E" stroke-width="10"/>
+  <path d="M980 360L1032 412" stroke="#22C55E" stroke-width="10" stroke-linecap="round"/>
+  <rect x="72" y="72" width="210" height="48" rx="24" fill="#DCFCE7"/>
+  <text x="118" y="103" fill="#15803D" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">AUDIT GUIDE</text>
+  <text x="72" y="205" fill="white" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">The WordPress</text>
+  <text x="72" y="285" fill="white" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800">Plugin Audit</text>
+  <text x="72" y="377" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500">How to find vulnerable plugins and close</text>
+  <text x="72" y="421" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500">exposure before attackers do.</text>
+  <text x="72" y="520" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">webadish.com</text>
+</svg>

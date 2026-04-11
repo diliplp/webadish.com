@@ -412,9 +412,9 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { tag: "Security", tagColor: "text-primary", title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses", date: "March 16, 2026", read: "5 min", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=500" },
-                { tag: "Security", tagColor: "text-primary", title: "How Hackers Break Into Websites – And How to Stop Them", date: "March 2, 2026", read: "7 min", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800&h=500" },
-                { tag: "Buyer Intent", tagColor: "text-foreground", title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit", date: "March 21, 2026", read: "7 min", img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800&h=500" },
+                { tag: "Security", tagColor: "text-primary", title: "Protect Your Digital Assets: Why Cybersecurity Is Critical for Modern Businesses", date: "March 16, 2026", read: "5 min", img: "/blog/legacy-security-awareness-banner.svg" },
+                { tag: "Security", tagColor: "text-primary", title: "How Hackers Break Into Websites – And How to Stop Them", date: "March 2, 2026", read: "7 min", img: "/blog/legacy-security-awareness-banner.svg" },
+                { tag: "Buyer Intent", tagColor: "text-foreground", title: "Before You Hire a WordPress Security Team: 7 Questions That Reveal the Right Fit", date: "March 21, 2026", read: "7 min", img: "/blog/hire-wordpress-security-team-banner.svg" },
               ].map((post) => (
                 <Link href="/blog" key={post.title} className="group block reveal-section">
                   <div className="bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
