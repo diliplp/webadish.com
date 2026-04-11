@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Shield,
   Wrench,
@@ -18,36 +18,11 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import OptimizedImage from "@/components/OptimizedImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.fromTo(".hero-badge", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" })
-      .fromTo(".hero-title-word", { opacity: 0, y: 40, rotateX: -20 }, { opacity: 1, y: 0, rotateX: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.4")
-      .fromTo(".hero-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
-      .fromTo(".hero-cta", { opacity: 0, y: 20, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1, ease: "back.out(1.5)" }, "-=0.2")
-      .fromTo(".hero-trust", { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.2");
-
-    gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
-      gsap.fromTo(section, { opacity: 0, y: 40 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: section, start: "top 85%", toggleActions: "play none none none" },
-      });
-    });
-  }, { scope: heroRef });
-
   return (
     <Layout>
-      <div ref={heroRef}>
+      <div>
 
         {/* HERO */}
         <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 hero-gradient relative overflow-hidden">

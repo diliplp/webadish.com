@@ -67,6 +67,8 @@ export function Navbar() {
             <img
               src="/logo.webp"
               alt="WebAdish"
+              width="180"
+              height="40"
               className="h-10 w-auto block"
             />
           </Link>
@@ -154,6 +156,8 @@ export function Footer() {
               <img
                 src="/logo.webp"
                 alt="WebAdish"
+                width="180"
+                height="40"
                 className="h-10 w-auto block"
               />
             </Link>
