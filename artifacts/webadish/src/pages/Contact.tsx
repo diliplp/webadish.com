@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { useRef, useState } from "react";
 import { trackEvent } from "@/lib/tracking";
+import TurnstileField from "@/components/TurnstileField";
 
 const services = [
   "Protection Plan",
@@ -17,7 +18,17 @@ const services = [
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "Free Security Audit", message: "" });
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "Free Security Audit",
+    message: "",
+    fax_number: "",
+    form_started_at: Date.now(),
+    turnstile_token: "",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -34,6 +45,10 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (turnstileSiteKey && !form.turnstile_token) {
+      setError("Please complete the security check and try again.");
+      return;
+    }
     setLoading(true);
     setError("");
     trackFormStart();
@@ -59,7 +74,16 @@ export default function Contact() {
         page_path: "/contact",
       });
       setSubmitted(true);
-      setForm({ name: "", email: "", phone: "", service: "Free Security Audit", message: "" });
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        service: "Free Security Audit",
+        message: "",
+        fax_number: "",
+        form_started_at: Date.now(),
+        turnstile_token: "",
+      });
       hasTrackedStart.current = false;
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
@@ -131,17 +155,22 @@ export default function Contact() {
                     <div>
                       <label className="block text-sm font-medium mb-2">Full Name *</label>
                       <input required type="text" placeholder="John Smith" value={form.name} onFocus={trackFormStart} onChange={e => setForm({ ...form, name: e.target.value })}
+                        minLength={2}
+                        maxLength={80}
+                        autoComplete="name"
                         className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Email Address *</label>
                       <input required type="email" placeholder="john@company.com" value={form.email} onFocus={trackFormStart} onChange={e => setForm({ ...form, email: e.target.value })}
+                        autoComplete="email"
                         className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Phone Number</label>
                     <input type="tel" placeholder="+1 234 567 8900" value={form.phone} onFocus={trackFormStart} onChange={e => setForm({ ...form, phone: e.target.value })}
+                      autoComplete="tel"
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                   </div>
                   <div>
@@ -154,8 +183,23 @@ export default function Contact() {
                   <div>
                     <label className="block text-sm font-medium mb-2">Message *</label>
                     <textarea required rows={5} placeholder="Website URL, what the site does, what concerns you most, and whether this is urgent..." value={form.message} onFocus={trackFormStart} onChange={e => setForm({ ...form, message: e.target.value })}
+                      minLength={12}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none" />
                   </div>
+                  <div className="hidden" aria-hidden="true">
+                    <input
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={form.fax_number}
+                      onChange={e => setForm({ ...form, fax_number: e.target.value })}
+                    />
+                  </div>
+                  <TurnstileField
+                    siteKey={turnstileSiteKey}
+                    theme="light"
+                    onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
+                  />
                   <div className="rounded-2xl border border-border/50 bg-gray-50 p-4">
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       Helpful details: website URL, recent plugin/theme changes, whether backups exist, whether you have seen malware warnings or suspicious behaviour, and whether this affects sales or leads right now.
@@ -166,7 +210,7 @@ export default function Contact() {
                     variant="accent"
                     size="lg"
                     className="w-full text-base"
-                    disabled={loading}
+                    disabled={loading || (Boolean(turnstileSiteKey) && !form.turnstile_token)}
                   >
                     {loading ? 'Sending...' : 'Request Free Security Audit'} {!loading && <ArrowRight size={18} className="ml-2" />}
                   </Button>
