@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'WebAdish | WordPress Security & Protection Agency',
   description:
     'WebAdish provides WordPress security, protection plans, hacked site recovery, and retainers for businesses that cannot afford downtime, breaches, or slow support.',
-  metadataBase: new URL('https://webadish.com'),
+  metadataBase: new URL('https://www.webadish.com'),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

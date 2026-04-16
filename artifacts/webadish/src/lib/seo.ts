@@ -1,4 +1,4 @@
-export const SITE_URL = "https://webadish.com";
+export const SITE_URL = "https://www.webadish.com";
 export const SITE_NAME = "WebAdish";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 export const DEFAULT_DESCRIPTION =

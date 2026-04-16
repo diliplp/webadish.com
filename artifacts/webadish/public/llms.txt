@@ -4,19 +4,19 @@
 
 ## Primary Services
 
-- WordPress maintenance: https://webadish.com/maintenance
-- WordPress security: https://webadish.com/security
-- Hacked site recovery: https://webadish.com/hacked-site-recovery
-- WordPress security retainers: https://webadish.com/retainer
-- WordPress web design: https://webadish.com/web-design
+- WordPress maintenance: https://www.webadish.com/maintenance
+- WordPress security: https://www.webadish.com/security
+- Hacked site recovery: https://www.webadish.com/hacked-site-recovery
+- WordPress security retainers: https://www.webadish.com/retainer
+- WordPress web design: https://www.webadish.com/web-design
 
 ## Important Pages
 
-- Homepage: https://webadish.com/
-- Pricing: https://webadish.com/pricing
-- Case studies: https://webadish.com/case-studies
-- Contact: https://webadish.com/contact
-- Blog: https://webadish.com/blog
+- Homepage: https://www.webadish.com/
+- Pricing: https://www.webadish.com/pricing
+- Case studies: https://www.webadish.com/case-studies
+- Contact: https://www.webadish.com/contact
+- Blog: https://www.webadish.com/blog
 
 ## Business Summary
 
@@ -31,6 +31,6 @@ WebAdish works with businesses that rely on WordPress websites for leads, sales,
 
 ## Contact
 
-- Website: https://webadish.com/
+- Website: https://www.webadish.com/
 - Email: hello@webadish.com
 - Phone: +91 999 875 7045
