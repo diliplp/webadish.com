@@ -16,6 +16,8 @@ export const PRERENDER_ROUTES = [
   "/security-score",
   "/agency-partners",
   "/blog",
+  "/blog/wordpress-hacked-india-what-to-do",
+  "/blog/dpdp-act-wordpress-website-guide",
   "/blog/state-of-wordpress-security-2025-business-takeaways",
   "/blog/dpdp-checklist-wordpress-india",
   "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
