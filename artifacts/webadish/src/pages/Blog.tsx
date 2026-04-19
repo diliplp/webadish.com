@@ -7,6 +7,30 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Recovery",
+    tagColor: "text-destructive",
+    tagBg: "bg-destructive/10",
+    title: "WordPress Hacked? What Indian Businesses Should Do Right Now",
+    excerpt:
+      "The right sequence when your WordPress site is hacked — contain first, assess CERT-In and DPDP obligations second, clean third. Acting in the wrong order makes the situation worse.",
+    date: "April 19, 2026",
+    read: "8 min",
+    img: "/blog/wordpress-hacked-india-banner.svg",
+    href: "/blog/wordpress-hacked-india-what-to-do",
+  },
+  {
+    tag: "Guides",
+    tagColor: "text-accent",
+    tagBg: "bg-accent/10",
+    title: "The DPDP Act and Your WordPress Website: What Indian Businesses Need to Do",
+    excerpt:
+      "Your WordPress website is your biggest DPDP compliance exposure — every form, analytics tool, and plugin is a data collection point. Five specific changes most sites need to make.",
+    date: "April 19, 2026",
+    read: "7 min",
+    img: "/blog/dpdp-act-wordpress-guide-banner.svg",
+    href: "/blog/dpdp-act-wordpress-website-guide",
+  },
+  {
     tag: "Security",
     tagColor: "text-primary",
     tagBg: "bg-primary/10",

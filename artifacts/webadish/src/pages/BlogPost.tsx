@@ -732,6 +732,135 @@ const posts: Record<string, {
       </div>
     ),
   },
+  "wordpress-hacked-india-what-to-do": {
+    tag: "Recovery", tagColor: "text-destructive",
+    title: "WordPress Hacked? What Indian Businesses Should Do Right Now",
+    date: "April 19, 2026", read: "8 min",
+    img: "/blog/wordpress-hacked-india-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Discovering your WordPress site has been hacked is a serious moment — and the next 60 minutes matter more than most people realise. Acting in the wrong order destroys evidence, prolongs the damage, and in some cases creates additional legal exposure under India's DPDP Act and CERT-In reporting rules.</p>
+        <p>This guide covers the right sequence for Indian businesses: contain first, assess second, clean third.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 1: Confirm the hack before doing anything else</h2>
+        <p>Before taking drastic action, confirm you are dealing with a genuine compromise and not a plugin conflict, a hosting error, or a browser cache issue.</p>
+        <p>Reliable signs your WordPress site has been hacked:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Visitors are redirected</strong> to spam, pharma, or adult content — especially users arriving from Google.</li>
+          <li><strong>Google Search Console shows warnings</strong> — "This site may be hacked" or "Deceptive site ahead" browser alerts.</li>
+          <li><strong>Your hosting provider suspended the account</strong> citing malware or abuse complaints.</li>
+          <li><strong>Unfamiliar admin users</strong> have appeared in WordPress that you did not create.</li>
+          <li><strong>Your site loads slowly or shows unusual content</strong> injected into pages.</li>
+        </ul>
+        <p>If two or more of these apply, treat it as confirmed and move to containment immediately.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 2: Contain immediately — do not start cleaning yet</h2>
+        <p>The instinct is to start deleting suspicious files. Resist it. Cleaning before containing means attackers may still have live access, and cleaning before investigating destroys the forensic trail you will need to understand how they got in.</p>
+        <p>Contain first:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Take the site offline or enable maintenance mode</strong> — this protects visitors from malware exposure and stops the hack from damaging your Google rankings further.</li>
+          <li><strong>Change all credentials immediately</strong> — WordPress admin passwords, hosting control panel, FTP/SFTP, database password, and any connected email accounts. Use unique, strong passwords for each.</li>
+          <li><strong>Revoke unknown admin users</strong> — log into WordPress and remove any user accounts you did not create.</li>
+          <li><strong>Preserve a copy of the current state</strong> — before cleaning anything, take a backup of the compromised site. This is your forensic record.</li>
+        </ol>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 3: Understand your CERT-In reporting obligation</h2>
+        <p>For Indian businesses, a hacked website is not just a technical problem — it may trigger regulatory obligations.</p>
+        <p>Under CERT-In's 2022 directions, organisations are required to report cybersecurity incidents to CERT-In within <strong>6 hours</strong> of becoming aware of them. Reportable incidents include:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Unauthorised access to IT systems or data</li>
+          <li>Website defacement</li>
+          <li>Malware infections affecting business systems</li>
+          <li>Data breaches involving personal information</li>
+        </ul>
+        <p>The threshold is intentionally broad. When in doubt, report. Non-reporting carries penalties and is harder to defend than a prompt disclosure. Report via the CERT-In portal or by email to <strong>incident@cert-in.org.in</strong>.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 4: Assess your DPDP exposure</h2>
+        <p>If your WordPress site collects any personal data — contact form submissions, customer accounts, WooCommerce orders, email sign-ups — the hack may have DPDP Act implications.</p>
+        <p>Under the Digital Personal Data Protection Act 2023, data fiduciaries (organisations that process personal data) are required to notify the Data Protection Board and affected individuals when a personal data breach occurs. The notification timeline and format are still being defined in rules, but the obligation to act is live.</p>
+        <p>Practically, this means:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Document the incident: when you discovered it, what data may have been accessible, and what actions you took.</li>
+          <li>Do not delete logs or database records before a forensic review — these are your evidence of scope.</li>
+          <li>Assess whether customer email addresses, phone numbers, payment data, or health information was stored on the site.</li>
+          <li>Seek legal guidance if customer data was likely accessed — voluntary early disclosure is almost always better than being found to have concealed a breach.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 5: Clean properly — or hire someone who will</h2>
+        <p>The most common mistake after a hack is surface cleaning: removing visible malware files while leaving backdoors, rogue database entries, and compromised user sessions in place.</p>
+        <p>A surface-cleaned site is typically re-hacked within days or weeks because the root access method was never closed.</p>
+        <p>Proper cleanup requires:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Full file-level scan for known malware signatures and anomalous code</li>
+          <li>Database scan for injected content, rogue users, and malicious options</li>
+          <li>Root cause identification — which plugin, theme, or credential was the entry point</li>
+          <li>Backdoor removal — not just the visible payload but every persistence mechanism</li>
+          <li>Hardening — changes to prevent the same entry point being used again</li>
+          <li>Blacklist removal requests to Google, Bing, and hosting providers once clean</li>
+        </ul>
+        <p>If your site processes customer orders, membership accounts, or business-critical data, professional recovery is almost always the right call. The risk of an incomplete DIY cleanup — especially with CERT-In and DPDP obligations in play — is higher than the cost of getting it done properly.</p>
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-6 my-8">
+          <p className="font-bold text-red-700 text-lg mb-2">Need urgent help?</p>
+          <p className="text-red-700 text-sm">WebAdish provides emergency hacked site recovery for Indian businesses. We remove malware, close backdoors, and handle blacklist removal — with a 30-day re-infection guarantee. <Link href="/hacked-site-recovery" className="underline font-semibold">Contact our recovery team now</Link> or WhatsApp +91 9998757045.</p>
+        </div>
+      </div>
+    ),
+  },
+  "dpdp-act-wordpress-website-guide": {
+    tag: "Guides", tagColor: "text-accent",
+    title: "The DPDP Act and Your WordPress Website: What Indian Businesses Need to Do",
+    date: "April 19, 2026", read: "7 min",
+    img: "/blog/dpdp-act-wordpress-guide-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">The Digital Personal Data Protection Act 2023 is live, and your WordPress website is almost certainly your biggest compliance exposure. Most Indian businesses have focused on internal data handling policies — but the website is where personal data collection actually happens, and it is the layer most often overlooked in compliance reviews.</p>
+        <p>This guide explains what the DPDP Act requires, why your website is the primary risk surface, and the five specific changes most WordPress sites need to make.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What the DPDP Act actually requires of businesses</h2>
+        <p>The DPDP Act creates obligations for any organisation — referred to as a "data fiduciary" — that collects and processes personal data of individuals in India. Key obligations include:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Consent before collection</strong> — personal data can only be collected with free, specific, informed, and unambiguous consent. Pre-ticked boxes and buried consent are not compliant.</li>
+          <li><strong>Purpose limitation</strong> — data can only be used for the purpose it was collected for. Collecting an email for a newsletter and then using it for sales outreach without separate consent is a violation.</li>
+          <li><strong>Data minimisation</strong> — you should only collect the data you actually need for the stated purpose.</li>
+          <li><strong>Security safeguards</strong> — you must implement reasonable security measures to protect personal data from unauthorised access, breaches, and loss.</li>
+          <li><strong>Breach notification</strong> — significant personal data breaches must be reported to the Data Protection Board and, in some cases, to affected individuals.</li>
+          <li><strong>Data principal rights</strong> — individuals have the right to access their data, correct it, and request erasure in certain circumstances.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Why your WordPress website is the biggest risk</h2>
+        <p>Your website is where personal data collection starts. Every contact form, newsletter sign-up, WooCommerce checkout, comment box, login form, and analytics tool is a data collection point — and most of them were set up without DPDP-compliant consent flows.</p>
+        <p>Common website-level problems that create DPDP exposure:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Contact forms that collect name, email, and phone with no consent checkbox or privacy notice link.</li>
+          <li>Analytics tools (Google Analytics, Meta Pixel, Hotjar) loading before the user has given consent.</li>
+          <li>WooCommerce storing customer data without a clear data retention policy or erasure mechanism.</li>
+          <li>Email marketing integrations that automatically add form submitters to mailing lists without explicit opt-in.</li>
+          <li>Outdated or insecure plugins that create avoidable breach risk — a breach is not just a security problem under DPDP, it is a legal event.</li>
+        </ul>
+        <h2 className="text-2xl font-bold text-foreground mt-8">Five changes most WordPress sites need to make</h2>
+        <ol className="list-decimal list-inside space-y-4 pl-4">
+          <li>
+            <strong>Implement a consent management system.</strong> A proper cookie consent banner that distinguishes between necessary, analytics, and marketing cookies — and that blocks non-essential scripts until consent is given. Pre-bundled WordPress themes typically do not include this. You need a DPDP-aware consent plugin configured correctly.
+          </li>
+          <li>
+            <strong>Update every form with a proper consent mechanism.</strong> Each form collecting personal data should include a clearly worded consent checkbox (not pre-ticked), a link to your privacy policy, and a statement of purpose. "I agree to be contacted" is not sufficient — the purpose must be specific.
+          </li>
+          <li>
+            <strong>Audit your plugin stack for data exposure.</strong> Every plugin that sends data to a third party — CRM connectors, live chat tools, analytics integrations, payment gateways — is a data processor relationship. You need to know what data each plugin shares, with whom, and under what terms.
+          </li>
+          <li>
+            <strong>Establish a data retention and erasure process.</strong> If a customer requests deletion of their data, can your WordPress setup actually carry that out? WooCommerce has built-in tools for this, but they need to be configured. Custom databases, form submission logs, and email platform data all need separate processes.
+          </li>
+          <li>
+            <strong>Harden the site against breach risk.</strong> Under DPDP, a breach is not just a security failure — it triggers legal obligations. Proactive security measures (firewall, malware scanning, access controls, two-factor authentication) directly reduce the risk of a reportable incident. A site running outdated plugins with no firewall is both a security and compliance liability.
+          </li>
+        </ol>
+        <h2 className="text-2xl font-bold text-foreground mt-8">What the penalties look like</h2>
+        <p>The DPDP Act provides for financial penalties up to ₹250 crore per instance for significant violations — including failure to implement adequate security safeguards and failure to notify the Data Protection Board of a breach. Penalties for smaller violations start from ₹10,000.</p>
+        <p>More practically: the reputational damage of a publicised breach or regulatory investigation almost always exceeds the financial penalty. Indian consumers are increasingly aware of data rights, and DPDP gives them formal mechanisms to raise complaints.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8">The right approach is website-first, not policy-first</h2>
+        <p>Many businesses have invested in privacy policies and internal data governance documents while leaving their website — the actual point of data collection — largely unchanged. That creates a compliance gap that is both real and visible to anyone who looks.</p>
+        <p>Getting your WordPress site DPDP-compliant is a concrete, achievable project. It does not require becoming a legal expert. It requires a systematic review of data collection points, consent flows, plugin data sharing, and site security.</p>
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Need help with DPDP compliance for your WordPress site?</p>
+          <p className="text-sm">WebAdish provides DPDP Act compliance reviews and implementation for Indian businesses — covering consent management, plugin audit, data handling, and security hardening. <Link href="/india" className="underline font-semibold">See our India services</Link> or <Link href="/contact" className="underline font-semibold">request a compliance review</Link>.</p>
+        </div>
+      </div>
+    ),
+  },
   "woocommerce-maintenance-checklist": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",
