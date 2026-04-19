@@ -87,7 +87,6 @@ export default function Home() {
               <div className="flex items-center gap-2"><CheckCircle2 size={18} className="text-green-500" /> Dedicated Security Team</div>
             </div>
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
         </section>
 
         {/* SECURITY PHILOSOPHY STRIP */}
