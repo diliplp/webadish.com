@@ -19,6 +19,17 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import OptimizedImage from "@/components/OptimizedImage";
 
+function getImageTagClass(tag: string) {
+  switch (tag) {
+    case "Security":
+      return "bg-rose-50/95 text-rose-700 ring-rose-200/80";
+    case "Buyer Intent":
+      return "bg-slate-100/95 text-slate-900 ring-slate-300/80";
+    default:
+      return "bg-white/95 text-slate-900 ring-slate-200/80";
+  }
+}
+
 export default function Home() {
   return (
     <Layout>
@@ -57,14 +68,16 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Button variant="accent" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8" onClick={() => window.location.href='/contact'}>
-                Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+              <Button asChild variant="accent" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8">
+                <Link href="/contact">
+                  Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+                </Link>
               </Button>
-              <Link href="/hacked-site-recovery">
-                <Button variant="outline-primary" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8 bg-white">
+              <Button asChild variant="outline-primary" size="lg" className="hero-cta w-full sm:w-auto text-lg px-8 bg-white">
+                <Link href="/hacked-site-recovery">
                   <Ambulance size={18} className="mr-2" /> Already Hacked? Emergency Help
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
 
             <div className="hero-trust flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm font-medium text-muted-foreground">
@@ -189,14 +202,14 @@ export default function Home() {
                   Most hacked websites were "maintained" — but not properly secured. A plugin update schedule is not a security strategy. We implement defence-in-depth so problems are caught and contained before they escalate into emergencies.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-                    Get Protected <ArrowRight size={18} className="ml-2" />
+                  <Button asChild variant="white" size="lg">
+                    <Link href="/contact">
+                      Get Protected <ArrowRight size={18} className="ml-2" />
+                    </Link>
                   </Button>
-                  <Link href="/hacked-site-recovery">
-                    <Button variant="outline" size="lg" className="border-white text-white bg-transparent hover:bg-white hover:text-foreground">
-                      Already Compromised? →
-                    </Button>
-                  </Link>
+                  <Button asChild variant="outline" size="lg" className="border-white text-white bg-transparent hover:bg-white hover:text-foreground">
+                    <Link href="/hacked-site-recovery">Already Compromised? →</Link>
+                  </Button>
                 </div>
               </div>
               <div className="space-y-4">
@@ -227,14 +240,14 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Continuous Protection for Different Levels of Business Risk</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">No hidden fees. No lock-in contracts. Built for businesses that need real protection, not just a maintenance checkbox.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-                <Button variant="accent" onClick={() => window.location.href='/contact'}>
-                  Get Free Audit First <ArrowRight size={16} className="ml-2" />
+                <Button asChild variant="accent">
+                  <Link href="/contact">
+                    Get Free Audit First <ArrowRight size={16} className="ml-2" />
+                  </Link>
                 </Button>
-                <Link href="/pricing">
-                  <Button variant="outline-primary" className="bg-white">
-                    Compare Pricing
-                  </Button>
-                </Link>
+                <Button asChild variant="outline-primary" className="bg-white">
+                  <Link href="/pricing">Compare Pricing</Link>
+                </Button>
               </div>
               <div className="inline-block bg-foreground text-white px-6 py-4 rounded-2xl">
                 <p className="text-base md:text-lg font-semibold leading-snug">
@@ -254,7 +267,9 @@ export default function Home() {
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
-                <Link href="/pricing"><Button variant="outline" className="w-full">Get Started</Button></Link>
+                <Button asChild variant="outline" className="w-full">
+                  <Link href="/pricing">Get Started</Link>
+                </Button>
               </div>
 
               {/* Recommended */}
@@ -268,7 +283,9 @@ export default function Home() {
                     <li key={f} className="flex items-center gap-3 text-sm font-medium"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
-                <Button variant="accent" className="w-full h-12 text-base" onClick={() => window.location.href='/contact'}>Get Started Now</Button>
+                <Button asChild variant="accent" className="w-full h-12 text-base">
+                  <Link href="/contact">Get Started Now</Link>
+                </Button>
               </div>
 
               {/* Business Continuity */}
@@ -281,7 +298,9 @@ export default function Home() {
                     <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle2 size={16} className="text-accent shrink-0" />{f}</li>
                   ))}
                 </ul>
-                <Link href="/pricing"><Button variant="outline" className="w-full">Contact Sales</Button></Link>
+                <Button asChild variant="outline" className="w-full">
+                  <Link href="/pricing">Contact Sales</Link>
+                </Button>
               </div>
             </div>
 
@@ -291,16 +310,18 @@ export default function Home() {
                 <p className="text-sm text-amber-800 mb-3">
                   <strong>⚠️ Important:</strong> Critical security incidents are handled separately by our dedicated incident response team.
                 </p>
-                <Link href="/hacked-site-recovery">
-                  <Button variant="outline" size="sm" className="border-amber-400 text-amber-800 hover:bg-amber-100">
+                <Button asChild variant="outline" size="sm" className="border-amber-400 text-amber-800 hover:bg-amber-100">
+                  <Link href="/hacked-site-recovery">
                     Get Emergency Help <ArrowRight size={14} className="ml-1" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
 
             <div className="text-center mt-8 reveal-section">
-              <Link href="/pricing"><Button variant="ghost" className="text-accent">See full pricing breakdown →</Button></Link>
+              <Button asChild variant="ghost" className="text-accent">
+                <Link href="/pricing">See full pricing breakdown →</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -418,9 +439,17 @@ export default function Home() {
               ].map((post) => (
                 <Link href="/blog" key={post.title} className="group block reveal-section">
                   <div className="bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                    <div className="h-48 overflow-hidden relative">
-                      <OptimizedImage src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={576} height={380} />
-                      <div className={`absolute top-4 left-4 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full ${post.tagColor}`}>{post.tag}</div>
+                    <div className="relative overflow-hidden border-b border-border/40 bg-[radial-gradient(circle_at_top_right,_rgba(99,102,241,0.16),_transparent_38%),linear-gradient(180deg,_#0f172a_0%,_#111827_100%)] p-2.5 sm:p-3">
+                      <div className="aspect-[1200/630] overflow-hidden rounded-[1.1rem] ring-1 ring-white/10">
+                        <OptimizedImage
+                          src={post.img}
+                          alt={post.title}
+                          className="w-full h-full object-contain object-center group-hover:scale-[1.02] transition-transform duration-500"
+                          width={576}
+                          height={302}
+                        />
+                      </div>
+                      <div className={`absolute top-5 left-5 rounded-full px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur ring-1 ${getImageTagClass(post.tag)}`}>{post.tag}</div>
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
                       <div className="flex items-center text-xs text-muted-foreground mb-3 gap-4">
@@ -453,16 +482,16 @@ export default function Home() {
               Every hour your site is infected, Google is recording it, customers are being warned away, and the damage compounds. Our incident response team is available now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/hacked-site-recovery">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-7">
+              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-xl px-12 py-7">
+                <Link href="/hacked-site-recovery">
                   → Get expert incident response immediately
-                </Button>
-              </Link>
-              <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg" className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-6">
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-6">
+                <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">
                   UK Emergency Service →
-                </Button>
-              </a>
+                </a>
+              </Button>
             </div>
           </div>
         </section>
@@ -478,14 +507,14 @@ export default function Home() {
               We specialize in WordPress security, incident response, and ongoing protection for business-critical websites.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="white" size="lg" className="text-lg px-10 py-7" onClick={() => window.location.href='/contact'}>
-                Get Started <ArrowRight size={20} className="ml-2" />
+              <Button asChild variant="white" size="lg" className="text-lg px-10 py-7">
+                <Link href="/contact">
+                  Get Started <ArrowRight size={20} className="ml-2" />
+                </Link>
               </Button>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-lg px-10 py-7 border-white text-white bg-transparent hover:bg-white hover:text-foreground">
-                  View Plans
-                </Button>
-              </Link>
+              <Button asChild variant="outline" size="lg" className="text-lg px-10 py-7 border-white text-white bg-transparent hover:bg-white hover:text-foreground">
+                <Link href="/pricing">View Plans</Link>
+              </Button>
             </div>
           </div>
         </section>

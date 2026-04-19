@@ -9,7 +9,21 @@ if (!rootElement) {
   throw new Error("Root element #root was not found.");
 }
 
-if (rootElement.hasChildNodes()) {
+function hasRenderableServerMarkup(element: HTMLElement) {
+  return Array.from(element.childNodes).some((node) => {
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      return true;
+    }
+
+    if (node.nodeType === Node.TEXT_NODE) {
+      return node.textContent?.trim().length;
+    }
+
+    return false;
+  });
+}
+
+if (hasRenderableServerMarkup(rootElement)) {
   hydrateRoot(rootElement, (
     <>
       <App />

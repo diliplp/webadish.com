@@ -250,6 +250,23 @@ const posts = [
 
 const categories = ["All", "Buyer Intent", "Guides", "Security", "Maintenance", "Recovery"];
 
+function getImageTagClass(tag: string) {
+  switch (tag) {
+    case "Guides":
+      return "bg-cyan-50/95 text-cyan-800 ring-cyan-200/80";
+    case "Security":
+      return "bg-rose-50/95 text-rose-700 ring-rose-200/80";
+    case "Recovery":
+      return "bg-orange-50/95 text-orange-800 ring-orange-200/80";
+    case "Maintenance":
+      return "bg-emerald-50/95 text-emerald-800 ring-emerald-200/80";
+    case "Buyer Intent":
+      return "bg-slate-100/95 text-slate-900 ring-slate-300/80";
+    default:
+      return "bg-white/95 text-slate-900 ring-slate-200/80";
+  }
+}
+
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
@@ -344,9 +361,17 @@ export default function Blog() {
               {filtered.map((post) => (
                 <Link key={post.title} href={post.href} className="group block">
                   <div className="bg-white rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                    <div className="h-52 overflow-hidden relative">
-                      <OptimizedImage src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width={662} height={413} />
-                      <div className={`absolute top-4 left-4 ${post.tagBg} text-xs font-bold px-3 py-1 rounded-full ${post.tagColor}`}>
+                    <div className="relative overflow-hidden border-b border-border/40 bg-[radial-gradient(circle_at_top_right,_rgba(99,102,241,0.16),_transparent_38%),linear-gradient(180deg,_#0f172a_0%,_#111827_100%)] p-2.5 sm:p-3">
+                      <div className="aspect-[1200/630] overflow-hidden rounded-[1.1rem] ring-1 ring-white/10">
+                        <OptimizedImage
+                          src={post.img}
+                          alt={post.title}
+                          className="w-full h-full object-contain object-center group-hover:scale-[1.02] transition-transform duration-500"
+                          width={662}
+                          height={347}
+                        />
+                      </div>
+                      <div className={`absolute left-5 top-5 rounded-full px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur ring-1 ${getImageTagClass(post.tag)}`}>
                         {post.tag}
                       </div>
                     </div>

@@ -119,9 +119,9 @@ export function Navbar() {
 
           <div className="flex items-center gap-4 z-50">
             <div className="hidden md:block">
-              <Link href="/contact">
-                <Button variant="accent">Get Protected</Button>
-              </Link>
+              <Button asChild variant="accent">
+                <Link href="/contact">Get Protected</Link>
+              </Button>
             </div>
             <button
               className="lg:hidden p-2 text-foreground"
@@ -155,11 +155,9 @@ export function Navbar() {
           </nav>
 
           <div className="mt-8">
-            <Link href="/contact">
-              <Button variant="accent" size="lg" className="w-full">
-                Get Protected
-              </Button>
-            </Link>
+            <Button asChild variant="accent" size="lg" className="w-full">
+              <Link href="/contact">Get Protected</Link>
+            </Button>
           </div>
         </div>
       </div>
