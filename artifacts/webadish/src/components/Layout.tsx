@@ -21,7 +21,7 @@ const navLinks = [
   { label: "Hacked Site Recovery", href: "/hacked-site-recovery", highlight: true },
   { label: "Retainer", href: "/retainer" },
   { label: "Pricing", href: "/pricing" },
-  { label: "India", href: "/india" },
+  { label: "India Services", href: "/india" },
   { label: "Blog", href: "/blog" },
 ];
 
