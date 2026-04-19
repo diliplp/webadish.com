@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0B1F17"/>
+  <rect x="40" y="40" width="1120" height="550" rx="32" fill="url(#bg)"/>
+  <circle cx="1004" cy="188" r="134" fill="#34D399" fill-opacity="0.16"/>
+  <circle cx="1088" cy="120" r="60" fill="#A7F3D0" fill-opacity="0.26"/>
+  <rect x="888" y="172" width="206" height="290" rx="26" fill="#081812" fill-opacity="0.72" stroke="#6EE7B7" stroke-width="2"/>
+  <rect x="924" y="212" width="134" height="26" rx="10" fill="#ECFDF5"/>
+  <rect x="924" y="256" width="96" height="14" rx="7" fill="#6EE7B7"/>
+  <rect x="924" y="290" width="134" height="14" rx="7" fill="#6EE7B7"/>
+  <rect x="924" y="324" width="110" height="14" rx="7" fill="#6EE7B7"/>
+  <rect x="924" y="372" width="22" height="22" rx="6" fill="#10B981"/>
+  <path d="M929 382.5L936.5 390L945 378" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="958" y="372" width="100" height="22" rx="7" fill="#D1FAE5"/>
+  <text fill="#A7F3D0" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="0.16em"><tspan x="96" y="148.736">DPDP COMPLIANCE</tspan></text>
+  <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="-0.03em"><tspan x="96" y="240.736">The DPDP Act and</tspan><tspan x="96" y="312.736">Your WordPress Website</tspan></text>
+  <text fill="#DCFCE7" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="30" font-weight="400"><tspan x="96" y="396.798">Five practical changes Indian businesses</tspan><tspan x="96" y="438.798">should make to forms, consent, plugins,</tspan><tspan x="96" y="480.798">data handling, and breach readiness.</tspan></text>
+  <defs>
+    <linearGradient id="bg" x1="40" y1="40" x2="1160" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123225"/>
+      <stop offset="1" stop-color="#164634"/>
+    </linearGradient>
+  </defs>
+</svg>
