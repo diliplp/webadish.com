@@ -4,16 +4,15 @@
   "cwd": "/Users/dilipparmar/projects2/webadish-bright/artifacts/webadish",
   "context": {
     "lastMatchedPatterns": [
-      "mem-MEMORY-env-vars-required",
-      "mem-MEMORY-admin-pages",
+      "mem-MEMORY-setup-steps--for-user-",
       "mem-MEMORY-crm-integrations"
     ]
   },
   "metrics": {
-    "edits": 29,
+    "edits": 31,
     "commands": 0,
     "tasks": 0,
     "errors": 0
   },
-  "updatedAt": "2026-04-21T18:11:10.566Z"
+  "updatedAt": "2026-04-21T18:19:32.834Z"
 }

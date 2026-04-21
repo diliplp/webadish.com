@@ -7,9 +7,9 @@
       "content": "`admin.php?page=ai-lead-intelligence` (dashboard), `ali-leads` (list + detail), `ali-settings`",
       "summary": "Admin Pages",
       "category": "core",
-      "confidence": 0.53,
+      "confidence": 0.56,
       "pageRank": 0.08397314206506222,
-      "accessCount": 1,
+      "accessCount": 2,
       "words": [
         "admin",
         "php",
@@ -29,9 +29,9 @@
       "content": "- NEXT_PUBLIC_SUPABASE_URL\n- NEXT_PUBLIC_SUPABASE_ANON_KEY\n- DATABASE_URL (Supabase direct connection with ?pgbouncer=true for serverless)\n- RESEND_API_KEY\n- ADMIN_EMAIL",
       "summary": "Env Vars Required",
       "category": "core",
-      "confidence": 0.5800000000000001,
+      "confidence": 0.6100000000000001,
       "pageRank": 0.07698105744943012,
-      "accessCount": 2,
+      "accessCount": 3,
       "words": [
         "next",
         "public",

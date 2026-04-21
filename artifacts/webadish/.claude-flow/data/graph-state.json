@@ -41,8 +41,8 @@
     "mem-MEMORY-env-vars-required": {
       "id": "mem-MEMORY-env-vars-required",
       "category": "core",
-      "confidence": 0.5800000000000001,
-      "accessCount": 2,
+      "confidence": 0.6100000000000001,
+      "accessCount": 3,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-project": {
@@ -90,8 +90,8 @@
     "mem-MEMORY-admin-pages": {
       "id": "mem-MEMORY-admin-pages",
       "category": "core",
-      "confidence": 0.53,
-      "accessCount": 1,
+      "confidence": 0.56,
+      "accessCount": 2,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-client-info": {

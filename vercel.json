@@ -13,10 +13,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.webadish.com"
+          "value": "webadish.com"
         }
       ],
-      "destination": "https://webadish.com/:path*",
+      "destination": "https://www.webadish.com/:path*",
       "permanent": true
     },
     {
