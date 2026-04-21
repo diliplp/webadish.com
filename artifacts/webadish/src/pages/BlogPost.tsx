@@ -67,43 +67,95 @@ const posts: Record<string, {
     img: "/blog/legacy-security-awareness-banner.svg",
     content: (
       <div className="space-y-6 text-muted-foreground leading-relaxed">
-        <p className="text-xl font-medium text-foreground">Website attacks are rarely random. Most compromises happen through a small set of known methods that bots and attackers use every day. If you know where the openings usually are, you can close them before they become an emergency.</p>
-        <p>This guide breaks down ten of the most common website hacking methods affecting WordPress and business websites in 2025, along with the practical defenses that matter most.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">1. Vulnerable Plugins and Themes</h2>
-        <p>Outdated plugins and themes remain the biggest entry point for WordPress compromises. Attackers scan the web for known vulnerable versions, then exploit them at scale.</p>
-        <p><strong>Reduce the risk:</strong> remove unused plugins, update actively maintained ones quickly, and test important changes safely before pushing them live.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">2. Brute Force Login Attacks</h2>
-        <p>Automated bots hammer login pages with password attempts until they find a weak credential or reused password.</p>
-        <p><strong>Reduce the risk:</strong> enforce strong passwords, enable two-factor authentication, and rate-limit or firewall login traffic.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">3. Credential Stuffing</h2>
-        <p>Attackers test leaked username and password combinations from other breaches against your website. If someone on your team reused a password, your site can be compromised without any software vulnerability at all.</p>
-        <p><strong>Reduce the risk:</strong> unique passwords for every account, plus two-factor authentication for all admin users.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">4. SQL Injection</h2>
-        <p>Poorly sanitized form fields, query parameters, or plugin inputs can let attackers run malicious database commands.</p>
-        <p><strong>Reduce the risk:</strong> keep plugins updated, remove risky code, and use a web application firewall that blocks common injection patterns.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">5. Cross-Site Scripting (XSS)</h2>
-        <p>XSS attacks inject malicious JavaScript into a page so that it runs in visitors' browsers. That can lead to session theft, redirects, or malicious popups.</p>
-        <p><strong>Reduce the risk:</strong> sanitize inputs and outputs, update plugins quickly, and avoid poorly maintained third-party extensions.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">6. Backdoors Hidden After Initial Access</h2>
-        <p>Many hacks do not stop at the first compromise. Attackers often plant hidden files, rogue users, cron jobs, or database payloads so they can return later.</p>
-        <p><strong>Reduce the risk:</strong> treat malware cleanup as a root-cause investigation, not just a visible file cleanup.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">7. File Upload Abuse</h2>
-        <p>Weakly protected upload forms can allow malicious files to be placed on the server, especially when file validation is poor.</p>
-        <p><strong>Reduce the risk:</strong> restrict file types, scan uploads, and block executable files from upload directories.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">8. Hosting-Level or Account-Level Access</h2>
-        <p>If hosting, FTP, or control panel credentials are compromised, an attacker can bypass WordPress entirely and alter files directly.</p>
-        <p><strong>Reduce the risk:</strong> rotate credentials after any incident, use secure hosting practices, and limit access to only the people who need it.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">9. Misconfigured Permissions and Server Rules</h2>
-        <p>Overly permissive file permissions, unsafe server rules, and weak environment settings can make exploitation easier and cleanup harder.</p>
-        <p><strong>Reduce the risk:</strong> review file permissions, harden configuration, and make sure critical files are not broadly writable.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">10. Delayed Detection</h2>
-        <p>Many websites stay compromised for days or weeks because no one is monitoring them closely enough to spot the warning signs early.</p>
-        <p><strong>Reduce the risk:</strong> use continuous monitoring for uptime, malware indicators, suspicious changes, and blacklist warnings.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8">Why This Matters in 2025</h2>
-        <p>Attackers are faster, more automated, and more opportunistic than ever. The websites that stay safe are not always the biggest ones. They are the ones with better hygiene, faster patching, stronger monitoring, and a clear plan for recovery.</p>
+        <p className="text-xl font-medium text-foreground">Website attacks are rarely random. Most compromises happen through a small set of known methods that bots and attackers use every day. Understanding where the openings are — and how attackers find them — is the first step to closing them before they become an emergency.</p>
+        <p>According to Patchstack's 2025 WordPress security report, over 7,900 new vulnerabilities were disclosed in the WordPress ecosystem in 2024 alone. The vast majority were in plugins. But the attack methods themselves are remarkably consistent year to year. This guide breaks down the ten most common website hacking methods affecting WordPress businesses in 2025, what they look like in practice, and the specific defences that matter most.</p>
+
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 my-6">
+          <p className="text-sm font-bold text-foreground mb-3">What you will learn in this guide</p>
+          <ul className="text-sm space-y-1.5 list-disc list-inside">
+            <li>The 10 most common attack methods against WordPress sites in 2025</li>
+            <li>What each attack looks like from the attacker's perspective</li>
+            <li>Specific, actionable defences for each method</li>
+            <li>What typically happens after a site is compromised</li>
+            <li>How to tell if your site has already been targeted</li>
+          </ul>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">1. Vulnerable Plugins and Themes</h2>
+        <p>Outdated plugins and themes are the single biggest entry point for WordPress compromises. Patchstack's data shows that 96% of reported WordPress vulnerabilities in 2024 were found in plugins — not WordPress core. Attackers do not manually search for vulnerable sites. They run automated scans across millions of URLs, matching version numbers against public vulnerability databases. When they find a match, exploitation can happen within hours of a CVE being published.</p>
+        <p>The risk is not limited to obscure plugins. Some of the most exploited vulnerabilities in recent years have been in widely used plugins with hundreds of thousands of active installs — precisely because their popularity makes mass exploitation more rewarding.</p>
+        <p><strong>Reduce the risk:</strong> Remove plugins you are not actively using. Update maintained plugins quickly — ideally within 48 hours of a security release. Test updates in staging before pushing to production. Prioritise plugins based on install count, public vulnerability history, and how much privileged access they have.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">2. Brute Force Login Attacks</h2>
+        <p>Automated bots continuously hammer WordPress login pages — <code className="text-sm bg-slate-100 px-1 rounded">/wp-login.php</code> and <code className="text-sm bg-slate-100 px-1 rounded">xmlrpc.php</code> — trying thousands of username and password combinations per hour. Most of these attacks are not targeted at a specific site. They run against any WordPress URL they find, probing for weak credentials like <em>admin / password123</em> or common combinations scraped from previous breaches.</p>
+        <p>A successful brute force attack gives the attacker full admin access — no plugin vulnerability required. From there, they can install malicious plugins, create backdoor admin users, inject code into theme files, or redirect visitors to phishing pages.</p>
+        <p><strong>Reduce the risk:</strong> Enforce strong, unique passwords for all user accounts. Enable two-factor authentication for admin and editor roles. Rate-limit or block repeated failed login attempts using a security plugin or server-level firewall. Consider moving or hiding the default login URL. Block XML-RPC if you are not using it.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">3. Credential Stuffing</h2>
+        <p>Credential stuffing is different from brute force. Instead of guessing passwords, attackers use leaked username and password pairs from previous data breaches — billions of which are available on dark web markets and paste sites. They test these known credentials against your WordPress login. If any member of your team reused a password from a breached service, your site can be compromised without any software vulnerability at all.</p>
+        <p>This attack is particularly dangerous because standard security tools do not always catch it. The login attempt uses a real, valid-looking credential. It does not trigger brute force limits. The access looks legitimate until the attacker acts.</p>
+        <p><strong>Reduce the risk:</strong> Unique passwords for every account — especially admin users — is the primary defence. Two-factor authentication makes credential stuffing nearly impossible even with a valid password. Have-I-Been-Pwned integration or tools that flag known-compromised passwords at login can add a further layer.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">4. SQL Injection</h2>
+        <p>SQL injection exploits poorly sanitised form inputs, URL parameters, or plugin functions to run malicious commands directly against your database. An attacker who can inject SQL commands can extract all stored data — user records, customer data, order history, credentials — or modify database contents entirely.</p>
+        <p>WordPress itself handles database interaction safely in most cases. But plugins and themes that use custom queries without proper sanitisation create the opening. Contact forms, search fields, booking systems, and custom post types built with insufficiently validated inputs are the most common targets.</p>
+        <p><strong>Reduce the risk:</strong> Keep plugins updated — most SQL injection vulnerabilities in WordPress are patched in newer versions. Use a web application firewall (WAF) that blocks common injection signatures at the network level. Remove or replace plugins with known injection vulnerabilities. If your business requires custom WordPress development, require proper use of WordPress's prepared statement functions.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">5. Cross-Site Scripting (XSS)</h2>
+        <p>XSS attacks inject malicious JavaScript into a page so that it executes in visitors' browsers rather than on the server. Stored XSS (the most dangerous variant) persists in the database and runs every time the affected page loads. Reflected XSS requires a crafted URL to trigger. Both can lead to session cookie theft, visitor redirection to phishing pages, malicious popup overlays, or silent form-jacking that captures what users type — including payment details.</p>
+        <p>For WooCommerce stores in particular, XSS vulnerabilities that reach checkout pages represent a direct payment security risk. Attackers have used this vector to skim card numbers at scale from vulnerable stores.</p>
+        <p><strong>Reduce the risk:</strong> Update plugins that handle user input or display dynamic content. Apply a strong Content Security Policy (CSP) header to limit which scripts can execute. Use a WAF with XSS filtering rules. Audit any custom theme or plugin code that outputs user-controlled data without escaping it.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">6. Backdoors Hidden After Initial Access</h2>
+        <p>This is the attack method that turns a one-time breach into an ongoing problem. After gaining initial access through any of the other methods, sophisticated attackers do not simply deface the site and leave. They plant persistence mechanisms — hidden PHP shells in upload directories, rogue admin users with obfuscated usernames, malicious cron jobs that re-infect the site on a schedule, or encoded payloads buried in the database.</p>
+        <p>A cleanup that removes visible malware but misses the backdoor will result in reinfection — often within hours. This is why many businesses report being "cleaned" by a plugin and then hacked again the following week. The backdoor was never found.</p>
+        <p><strong>Reduce the risk:</strong> Treat malware cleanup as a root-cause investigation, not just a visible file cleanup. After any incident, change all credentials, audit user accounts, check cron jobs, scan upload directories for PHP files, and review the database for injected content. Professional incident response that includes post-cleanup hardening is far more reliable than plugin-only cleanup.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">7. File Upload Abuse</h2>
+        <p>WordPress and many plugins accept file uploads — profile pictures, documents, media attachments. If file validation is weak, an attacker can upload a PHP file disguised as an image. Once on the server, that file becomes an executable web shell — a direct command interface into the hosting environment. From there, the attacker can read and modify any file the web server can access.</p>
+        <p>File upload vulnerabilities are particularly common in form builder plugins, LMS platforms, community features, and portfolio systems. They often go undetected because the upload appears to succeed normally from the user interface.</p>
+        <p><strong>Reduce the risk:</strong> Restrict permitted file types to only what is genuinely needed. Block PHP execution inside the uploads directory at the server or WAF level — this single measure stops most file upload exploitation even if a malicious file gets through. Keep plugins that handle uploads updated and audit the specific upload directories for unexpected PHP files.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">8. Hosting-Level or Account-Level Access</h2>
+        <p>Some attackers bypass WordPress entirely. If hosting credentials, cPanel access, FTP login details, or SSH keys are compromised — through phishing, credential stuffing against the hosting provider, or weak account passwords — the attacker gains direct filesystem access. They can read, modify, or replace any file on the server. WordPress security settings, plugins, and WAFs provide no protection at this level.</p>
+        <p>Shared hosting environments introduce additional risk: a vulnerability in one site on the server can sometimes be used to access files belonging to neighbouring sites (cross-site contamination), particularly when hosting accounts are not properly isolated.</p>
+        <p><strong>Reduce the risk:</strong> Use unique, strong credentials for every hosting account and control panel. Enable two-factor authentication on hosting accounts where available. Rotate credentials after any incident or suspected breach. Limit FTP/SSH access to specific IP addresses. Consider managed WordPress hosting that provides stronger account isolation and security monitoring at the infrastructure level.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">9. Misconfigured Permissions and Server Rules</h2>
+        <p>Overly permissive file permissions make exploitation easier. Files that should be read-only — like <code className="text-sm bg-slate-100 px-1 rounded">wp-config.php</code> — being world-writable mean that an attacker who gains any level of access can modify core configuration, database credentials, or secret keys. Similarly, missing or incorrect server configuration (no <code className="text-sm bg-slate-100 px-1 rounded">.htaccess</code> protections, directory listing enabled, debug mode left on in production) can expose information that helps attackers plan more targeted attacks.</p>
+        <p><strong>Reduce the risk:</strong> Review and harden file permissions after setup and after any incident. Disable directory listing. Protect <code className="text-sm bg-slate-100 px-1 rounded">wp-config.php</code> and <code className="text-sm bg-slate-100 px-1 rounded">.htaccess</code> from direct access. Disable XML-RPC if unused. Turn off WordPress debug mode in production environments. These changes do not require ongoing work — they are one-time hardening tasks that reduce the attack surface permanently.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">10. Delayed Detection</h2>
+        <p>This is arguably the most commercially damaging item on this list. Many websites stay compromised for weeks — sometimes months — because no one is watching closely enough to notice. During that window, the attacker uses the site to send spam, host phishing pages, redirect visitors, skim payment data, or mine cryptocurrency. Google eventually detects the malicious content and blacklists the domain. Hosting providers flag it and suspend the account. Visitors start seeing browser security warnings.</p>
+        <p>By the time the compromise is discovered, the damage extends well beyond the site itself: revenue loss, blacklist removal overhead, potential GDPR notification obligations, and a reputational hit that takes months to recover from. A site blacklisted by Google typically loses 95% of organic traffic overnight.</p>
+        <p><strong>Reduce the risk:</strong> Implement continuous monitoring: uptime monitoring, malware scanning, file integrity checking, blacklist status monitoring, and alerting on unexpected changes. A monitoring stack that detects compromise within hours — rather than weeks — reduces both the technical remediation cost and the commercial damage significantly.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">What happens after a WordPress site is compromised</h2>
+        <p>Understanding the typical attacker workflow after gaining access helps clarify why proper incident response matters as much as prevention.</p>
+        <ol className="list-decimal list-inside space-y-3 pl-2">
+          <li><strong>Initial reconnaissance.</strong> The attacker maps the site — identifying the WordPress version, active plugins, user accounts, file structure, and what data is stored.</li>
+          <li><strong>Privilege escalation.</strong> If access was gained at a lower privilege level (subscriber, contributor), they attempt to escalate to admin access.</li>
+          <li><strong>Persistence installation.</strong> Backdoors, rogue admin accounts, or scheduled reinfection tasks are planted before doing anything visible.</li>
+          <li><strong>Monetisation or further exploitation.</strong> Depending on the attacker's goal: spam relay, redirect injection, phishing page hosting, credential harvesting, SEO spam, or ransomware deployment.</li>
+          <li><strong>Lateral movement.</strong> On shared hosting, the attacker may attempt to access neighbouring sites or escalate server-level access.</li>
+        </ol>
+        <p>A proper incident response should address all five stages — not just stage four. Sites that are "cleaned" without closing the original access vector and removing persistence mechanisms are almost always reinfected.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10">Warning signs your site may already be compromised</h2>
+        <ul className="list-disc list-inside space-y-2 pl-2">
+          <li>Unexpected admin users appearing in WordPress user list</li>
+          <li>Google Search Console showing URLs you did not create (spam injection)</li>
+          <li>Visitors being redirected to other sites — often only on mobile or from search engine clicks</li>
+          <li>Hosting provider flagging unusual outbound email volume or resource usage spikes</li>
+          <li>Browser security warnings appearing for your domain</li>
+          <li>Site appearing on Google Safe Browsing or other blacklists</li>
+          <li>Files in the uploads directory with <code className="text-sm bg-slate-100 px-1 rounded">.php</code> extensions</li>
+          <li>Unexplained changes to <code className="text-sm bg-slate-100 px-1 rounded">wp-config.php</code>, functions.php, or .htaccess</li>
+        </ul>
+
         <div className="bg-red-50 border border-red-200 rounded-2xl p-6 my-8">
           <p className="font-bold text-red-700 text-lg mb-2">Worried your site is already exposed?</p>
-          <p className="text-red-700 text-sm">If your site is showing suspicious behaviour, <Link href="/hacked-site-recovery" className="underline font-semibold">contact our emergency recovery team</Link>. If you want to reduce risk before something breaks, <Link href="/contact" className="underline font-semibold">request a free security audit</Link>.</p>
+          <p className="text-red-700 text-sm">If your site is showing any of the warning signs above, <Link href="/hacked-site-recovery" className="underline font-semibold">contact our emergency recovery team</Link>. If you want to reduce risk before something breaks, <Link href="/security-score" className="underline font-semibold">run a free security score</Link> or <Link href="/contact" className="underline font-semibold">request a security review</Link>.</p>
         </div>
       </div>
     ),

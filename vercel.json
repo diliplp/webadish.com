@@ -10,8 +10,13 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "webadish.com" }],
-      "destination": "https://www.webadish.com/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.webadish.com"
+        }
+      ],
+      "destination": "https://webadish.com/:path*",
       "permanent": true
     },
     {
@@ -86,7 +91,7 @@
     },
     {
       "source": "/about",
-      "destination": "/",
+      "destination": "/about",
       "permanent": true
     },
     {
@@ -106,7 +111,7 @@
     },
     {
       "source": "/about-us",
-      "destination": "/",
+      "destination": "/about",
       "permanent": true
     },
     {
@@ -201,12 +206,12 @@
     },
     {
       "source": "/about-webadish-web-agency",
-      "destination": "/",
+      "destination": "/about",
       "permanent": true
     },
     {
       "source": "/about-webadish-web-agency/",
-      "destination": "/",
+      "destination": "/about",
       "permanent": true
     },
     {

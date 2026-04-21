@@ -20,8 +20,8 @@
     "mem-MEMORY-key-patterns": {
       "id": "mem-MEMORY-key-patterns",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.5800000000000001,
+      "accessCount": 2,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-file-structure": {
@@ -34,22 +34,22 @@
     "mem-MEMORY-setup-steps--for-user-": {
       "id": "mem-MEMORY-setup-steps--for-user-",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-env-vars-required": {
       "id": "mem-MEMORY-env-vars-required",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.5800000000000001,
+      "accessCount": 2,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-project": {
       "id": "mem-MEMORY-project",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.5800000000000001,
+      "accessCount": 2,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-architecture": {
@@ -69,8 +69,8 @@
     "mem-MEMORY-processing-flow": {
       "id": "mem-MEMORY-processing-flow",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-crm-integrations": {
@@ -83,8 +83,8 @@
     "mem-MEMORY-key-developer-extension-point": {
       "id": "mem-MEMORY-key-developer-extension-point",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.5800000000000001,
+      "accessCount": 2,
       "createdAt": 1774064082337
     },
     "mem-MEMORY-admin-pages": {
@@ -118,15 +118,15 @@
     "mem-MEMORY-social-media": {
       "id": "mem-MEMORY-social-media",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1774064082338
     },
     "mem-MEMORY-logo-url": {
       "id": "mem-MEMORY-logo-url",
       "category": "core",
-      "confidence": 0.5,
-      "accessCount": 0,
+      "confidence": 0.53,
+      "accessCount": 1,
       "createdAt": 1774064082338
     },
     "mem-MEMORY-dev-server": {

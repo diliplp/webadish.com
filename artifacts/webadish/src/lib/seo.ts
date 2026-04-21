@@ -1,4 +1,4 @@
-export const SITE_URL = "https://www.webadish.com";
+export const SITE_URL = "https://webadish.com";
 export const SITE_NAME = "WebAdish";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph.jpg`;
 export const DEFAULT_DESCRIPTION =
@@ -16,6 +16,7 @@ export const PRERENDER_ROUTES = [
   "/india/cert-in-incident-readiness",
   "/security-score",
   "/agency-partners",
+  "/about",
   "/blog",
   "/blog/wordpress-hacked-india-what-to-do",
   "/blog/dpdp-act-wordpress-website-guide",
@@ -555,6 +556,28 @@ const pageSeo: Record<string, SeoData> = {
       { name: "Crystal Group", path: "/case-studies/crystalgroup" },
     ],
   },
+  "/about": {
+    title: "About WebAdish — WordPress Security Agency Since 2004",
+    description:
+      "WebAdish is a specialist WordPress security and maintenance agency with 20+ years of experience. Learn who we are, how we work, and the businesses we protect.",
+    path: "/about",
+    keywords: [
+      "about webadish",
+      "wordpress security agency",
+      "wordpress maintenance agency",
+      "wordpress security company",
+    ],
+    breadcrumbs: breadcrumbs("About", "/about"),
+    schema: [
+      organizationSchema,
+      serviceSchema(
+        "WordPress Security and Maintenance Agency",
+        "Specialist WordPress security, protection plans, hacked site recovery, and maintenance for business-critical websites.",
+        "/about",
+        "WordPress security agency",
+      ),
+    ],
+  },
   "/contact": {
     title: "Contact WebAdish | WordPress Security & Protection Team",
     description:
@@ -1006,12 +1029,66 @@ const blogPosts: Record<string, SeoData> = {
       }),
     ],
   },
+  "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025": {
+    title: "10 Ways Hackers Attack WordPress Sites in 2025 (+ How to Stop Them)",
+    description:
+      "Discover the 10 most common methods hackers use to compromise WordPress sites in 2025 — from brute force and SQL injection to backdoors — and the exact steps to close each gap.",
+    path: "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
+    type: "article",
+    keywords: [
+      "website hacking methods 2025",
+      "how hackers attack wordpress sites",
+      "common ways websites get hacked",
+      "wordpress security vulnerabilities",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "10 Website Hacking Methods", path: "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025" },
+    ],
+    schema: [
+      articleSchema({
+        title: "10 Ways Hackers Attack WordPress Sites in 2025 (+ How to Stop Them)",
+        description:
+          "The most common attack methods used against WordPress websites in 2025 and the specific defences that close each vulnerability.",
+        path: "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
+        published: "2025-01-15",
+      }),
+      faqSchema([
+        {
+          question: "What are the most common ways WordPress sites get hacked?",
+          answer:
+            "The most common attack methods include exploiting vulnerable plugins and themes, brute force login attacks, credential stuffing, SQL injection, cross-site scripting (XSS), and backdoors left after an initial compromise. Misconfigured file permissions and delayed detection also play a major role.",
+        },
+        {
+          question: "How do hackers use brute force attacks on WordPress?",
+          answer:
+            "Brute force attacks use automated tools to try thousands of username and password combinations against the WordPress login page. Using strong unique passwords, limiting login attempts, and enabling two-factor authentication are the primary defences.",
+        },
+        {
+          question: "What is credential stuffing and does it affect WordPress?",
+          answer:
+            "Credential stuffing uses leaked username/password pairs from other data breaches to attempt login on WordPress sites. If your users reuse passwords, their accounts are at risk even if WordPress itself is secure. Enforcing password resets and monitoring for unusual logins helps mitigate this.",
+        },
+        {
+          question: "What is a WordPress backdoor and how do I find one?",
+          answer:
+            "A WordPress backdoor is hidden malicious code that lets attackers regain access even after a site is cleaned. Backdoors are typically embedded in plugin files, theme files, or uploaded file directories. Professional malware scanning tools and integrity checks against official plugin repositories are the most reliable way to find them.",
+        },
+        {
+          question: "How can I protect my WordPress site from SQL injection?",
+          answer:
+            "SQL injection exploits poorly sanitised input fields to manipulate your database. Keeping WordPress, plugins, and themes updated, using a web application firewall (WAF), and choosing plugins with active security maintenance significantly reduces this risk.",
+        },
+      ]),
+    ],
+  },
 };
 
 export function getSeoData(pathname: string): SeoData {
+  const normalized = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
   return (
-    blogPosts[pathname] ??
-    pageSeo[pathname] ?? {
+    blogPosts[normalized] ??
+    pageSeo[normalized] ?? {
       title: "Page Not Found",
       description: DEFAULT_DESCRIPTION,
       path: pathname,
@@ -1025,7 +1102,8 @@ export function getSeoData(pathname: string): SeoData {
 }
 
 export function getCanonicalUrl(pathname: string): string {
-  return `${SITE_URL}${pathname === "/" ? "" : pathname}`;
+  const normalized = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+  return `${SITE_URL}${normalized === "/" ? "" : normalized}`;
 }
 
 export function getFullTitle(pathname: string): string {
@@ -1055,7 +1133,8 @@ function escapeHtml(value: string): string {
 }
 
 export function renderSeoHead(pathname: string): string {
-  const seo = getSeoData(pathname);
+  const normalized = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+  const seo = getSeoData(normalized);
   const canonicalUrl = getCanonicalUrl(seo.path);
   const fullTitle = getFullTitle(pathname);
   const description = seo.description || DEFAULT_DESCRIPTION;

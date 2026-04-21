@@ -24,6 +24,27 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("/react/") || id.includes("/react-dom/") || id.includes("/scheduler/")) {
+              return "react-core";
+            }
+            if (id.includes("/lucide-react/")) {
+              return "icons";
+            }
+            if (id.includes("/@radix-ui/")) {
+              return "radix";
+            }
+            if (id.includes("/wouter/")) {
+              return "router";
+            }
+            return "vendor";
+          }
+        },
+      },
+    },
   },
   server: {
     port,
