@@ -1,0 +1,124 @@
+[
+  {
+    "timestamp": 1776795909164,
+    "nodes": 20,
+    "edges": 16,
+    "pageRankSum": 1,
+    "confidences": [
+      0.345,
+      0.345,
+      0.5800000000000001,
+      0.53,
+      0.53,
+      0.6100000000000001,
+      0.5800000000000001,
+      0.345,
+      0.345,
+      0.53,
+      0.53,
+      0.5800000000000001,
+      0.56,
+      0.345,
+      0.345,
+      0.345,
+      0.53,
+      0.53,
+      0.345,
+      0.5
+    ],
+    "accessCounts": [
+      0,
+      0,
+      2,
+      1,
+      1,
+      3,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "topPatterns": [
+      {
+        "id": "mem-MEMORY-env-vars-required",
+        "summary": "Env Vars Required",
+        "confidence": 0.6100000000000001,
+        "pageRank": 0.07557987079436415,
+        "accessCount": 3
+      },
+      {
+        "id": "mem-MEMORY-key-developer-extension-point",
+        "summary": "Key Developer Extension Point",
+        "confidence": 0.5800000000000001,
+        "pageRank": 0.07557987079436415,
+        "accessCount": 2
+      },
+      {
+        "id": "mem-MEMORY-admin-pages",
+        "summary": "Admin Pages",
+        "confidence": 0.56,
+        "pageRank": 0.08244465985562004,
+        "accessCount": 2
+      },
+      {
+        "id": "mem-MEMORY-key-patterns",
+        "summary": "Key Patterns",
+        "confidence": 0.5800000000000001,
+        "pageRank": 0.04682396755603111,
+        "accessCount": 2
+      },
+      {
+        "id": "mem-MEMORY-setup-steps--for-user-",
+        "summary": "Setup Steps (for user)",
+        "confidence": 0.53,
+        "pageRank": 0.06750358930955215,
+        "accessCount": 1
+      },
+      {
+        "id": "mem-MEMORY-crm-integrations",
+        "summary": "CRM Integrations",
+        "confidence": 0.53,
+        "pageRank": 0.06750358930955215,
+        "accessCount": 1
+      },
+      {
+        "id": "mem-MEMORY-logo-url",
+        "summary": "Logo URL",
+        "confidence": 0.53,
+        "pageRank": 0.06750358930955215,
+        "accessCount": 1
+      },
+      {
+        "id": "mem-MEMORY-file-structure",
+        "summary": "File Structure",
+        "confidence": 0.53,
+        "pageRank": 0.0580021153843842,
+        "accessCount": 1
+      },
+      {
+        "id": "mem-MEMORY-processing-flow",
+        "summary": "Processing Flow",
+        "confidence": 0.53,
+        "pageRank": 0.0580021153843842,
+        "accessCount": 1
+      },
+      {
+        "id": "mem-MEMORY-social-media",
+        "summary": "Social Media",
+        "confidence": 0.53,
+        "pageRank": 0.0580021153843842,
+        "accessCount": 1
+      }
+    ]
+  }
+]

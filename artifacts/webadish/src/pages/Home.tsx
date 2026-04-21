@@ -43,14 +43,10 @@ export default function Home() {
               <span>WordPress Security, Protection Plans, and Incident Response — 20+ Years Experience</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-tight mb-6 perspective-[1000px]">
-              <span className="inline-block hero-title-word origin-bottom">WordPress</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">Security</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">&</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom">Protection</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-5xl mx-auto leading-tight mb-6">
+              WordPress Security &amp; Protection
               <br />
-              <span className="inline-block hero-title-word origin-bottom text-accent">for Business-Critical</span>{" "}
-              <span className="inline-block hero-title-word origin-bottom text-accent">Websites</span>
+              <span className="text-accent">for Business-Critical Websites</span>
             </h1>
 
             <p className="hero-subtitle text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance">
@@ -149,7 +145,7 @@ export default function Home() {
         </section>
 
         {/* POSITIONING */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-24 bg-gray-50 below-fold">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 reveal-section">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -186,7 +182,7 @@ export default function Home() {
         </section>
 
         {/* PREVENTION ANGLE */}
-        <section className="py-20 bg-foreground text-white reveal-section">
+        <section className="py-20 bg-foreground text-white reveal-section below-fold">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
@@ -232,7 +228,7 @@ export default function Home() {
         </section>
 
         {/* PLANS */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-24 bg-gray-50 below-fold">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal-section">
               <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">Protection Plans</p>
@@ -326,7 +322,7 @@ export default function Home() {
         </section>
 
         {/* WHAT YOU GET */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white below-fold">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal-section">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">What You Get</h2>
@@ -350,7 +346,7 @@ export default function Home() {
         </section>
 
         {/* WHO THIS IS FOR */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50 below-fold">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal-section">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Who This Is For</h2>
@@ -379,7 +375,7 @@ export default function Home() {
         </section>
 
         {/* TESTIMONIALS */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white below-fold">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal-section">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trusted by businesses where uptime and security are critical</h2>
@@ -421,7 +417,7 @@ export default function Home() {
         </section>
 
         {/* BLOG PREVIEW */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50 below-fold">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-center mb-10 reveal-section">
               <div>
@@ -466,7 +462,7 @@ export default function Home() {
         </section>
 
         {/* BRIDGE — EMERGENCY ESCALATION */}
-        <section className="py-24 bg-primary text-white reveal-section">
+        <section className="py-24 bg-primary text-white reveal-section below-fold">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold mb-8 uppercase tracking-widest">
               <Ambulance size={16} /> Emergency Response
@@ -496,7 +492,7 @@ export default function Home() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="py-24 cta-gradient text-white text-center reveal-section">
+        <section className="py-24 cta-gradient text-white text-center reveal-section below-fold">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Protect your website before problems occur.</h2>
             <p className="text-xl text-white/90 mb-10 text-balance">
