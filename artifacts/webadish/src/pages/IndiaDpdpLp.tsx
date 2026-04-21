@@ -1,6 +1,7 @@
-import { ArrowRight, CheckCircle2, FileCheck2, Shield, LockKeyhole, Database } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileCheck2, Shield, LockKeyhole, Database, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LandingLayout } from "@/components/Layout";
+import ContactForm from "@/components/ContactForm";
 
 const implementationAreas = [
   {
@@ -58,7 +59,7 @@ export default function IndiaDpdpLp() {
             Most Indian SMEs have consent, form, and data gaps they don't know about. We audit and implement the technical side — alongside your legal advisor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
+            <Button variant="accent" size="lg" onClick={() => document.getElementById("assessment-form")?.scrollIntoView({ behavior: "smooth" })}>
               Get a Free Site Assessment <ArrowRight size={18} className="ml-2" />
             </Button>
             <Button variant="outline" size="lg" onClick={() => document.getElementById("what-we-fix")?.scrollIntoView({ behavior: "smooth" })}>
@@ -134,7 +135,7 @@ export default function IndiaDpdpLp() {
               <p className="text-sm text-muted-foreground mb-4">
                 We'll review your website, forms, plugins, and workflows and show you exactly where the gaps are.
               </p>
-              <Button variant="accent" className="w-full" onClick={() => (window.location.href = "/contact")}>
+              <Button variant="accent" className="w-full" onClick={() => document.getElementById("assessment-form")?.scrollIntoView({ behavior: "smooth" })}>
                 Get a Free Site Assessment <ArrowRight size={16} className="ml-2" />
               </Button>
             </div>
@@ -178,19 +179,52 @@ export default function IndiaDpdpLp() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 border border-white/10">
-            <Shield size={16} />
-            Free — No commitment required
+      <section id="assessment-form" className="py-20 bg-gray-950">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="text-white">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 border border-white/10">
+                <Shield size={16} />
+                Free — No commitment required
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Find out where your website stands on DPDP</h2>
+              <p className="text-white/70 text-lg mb-8">
+                We'll review your site, forms, and data workflows and tell you exactly what needs fixing — before enforcement starts.
+              </p>
+              <div className="space-y-4 mb-8">
+                {[
+                  "Consent and form gap review",
+                  "Plugin and data-flow risk check",
+                  "Implementation roadmap — not just a report",
+                  "Worked alongside your legal advisor",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-white/80 text-sm">
+                    <CheckCircle2 size={16} className="text-accent shrink-0" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-3 pt-6 border-t border-white/10">
+                <a href="tel:+919998757045" className="flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors">
+                  <Phone size={15} /> +91 9998757045
+                </a>
+                <a href="mailto:hello@webadish.com" className="flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors">
+                  <Mail size={15} /> hello@webadish.com
+                </a>
+              </div>
+            </div>
+            <div className="bg-white rounded-3xl p-8 shadow-xl">
+              <h3 className="text-xl font-bold mb-1">Request Your Free Assessment</h3>
+              <p className="text-sm text-muted-foreground mb-6">Takes 1 minute. We reply within 4 hours.</p>
+              <ContactForm
+                formName="dpdp_lp_contact"
+                pagePath="/india/dpdp-lp"
+                defaultService="DPDP Site Assessment"
+                submitLabel="Get My Free Assessment"
+                successMessage="We'll review your site and reply within 4 hours with specific gaps we found."
+              />
+            </div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Find out where your website stands on DPDP</h2>
-          <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
-            We'll review your site, forms, and data workflows and show you exactly what needs fixing — before enforcement starts. Specialised expertise in WordPress stacks.
-          </p>
-          <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-            Get a Free Site Assessment <ArrowRight size={18} className="ml-2" />
-          </Button>
         </div>
       </section>
     </LandingLayout>
