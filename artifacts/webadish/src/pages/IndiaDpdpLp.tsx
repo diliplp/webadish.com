@@ -49,13 +49,13 @@ export default function IndiaDpdpLp() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium text-sm mb-8 border border-accent/20">
             <Shield size={16} className="text-accent" />
-            India DPDP Implementation
+            India DPDP Compliance Support
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Is your WordPress site ready for <span className="text-accent">DPDP compliance?</span>
+            Is your website ready for <span className="text-accent">DPDP compliance?</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            Most Indian SMEs have consent, form, and data gaps they don't know about. We find and fix the technical side — alongside your legal advisor.
+            Most Indian SMEs have consent, form, and data gaps they don't know about. We audit and implement the technical side — alongside your legal advisor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
@@ -74,10 +74,14 @@ export default function IndiaDpdpLp() {
       <section id="what-we-fix" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-bold mb-4">Where WebAdish helps with DPDP implementation</h2>
+            <h2 className="text-3xl font-bold mb-4">Full DPDP audit and implementation for any website</h2>
             <p className="text-muted-foreground text-lg">
-              Most small and medium businesses do not need a massive consulting project first. They need someone to review the actual website stack, the forms, the plugins, the data flow, and the security gaps that make implementation risky.
+              Most small and medium businesses do not need a massive consulting project first. They need someone to review the actual website, forms, data flows, and security gaps — and tell them exactly what to fix.
             </p>
+            <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-semibold text-sm border border-accent/20">
+              <Shield size={15} className="text-accent" />
+              Specialised WordPress audit and implementation
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {implementationAreas.map((item) => {
@@ -180,9 +184,9 @@ export default function IndiaDpdpLp() {
             <Shield size={16} />
             Free — No commitment required
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Find out where your WordPress site stands on DPDP</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">Find out where your website stands on DPDP</h2>
           <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
-            We'll review your site, forms, plugins, and data workflows and show you exactly what needs fixing — before enforcement starts.
+            We'll review your site, forms, and data workflows and show you exactly what needs fixing — before enforcement starts. Specialised expertise in WordPress stacks.
           </p>
           <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
             Get a Free Site Assessment <ArrowRight size={18} className="ml-2" />
