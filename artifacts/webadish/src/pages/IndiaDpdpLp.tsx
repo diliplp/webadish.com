@@ -1,7 +1,6 @@
 import { ArrowRight, CheckCircle2, FileCheck2, Shield, LockKeyhole, Database } from "lucide-react";
-import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/Layout";
+import { LandingLayout } from "@/components/Layout";
 
 const implementationAreas = [
   {
@@ -43,9 +42,9 @@ const fitList = [
   "SMEs that need implementation help, not just legal interpretation",
 ];
 
-export default function IndiaDpdp() {
+export default function IndiaDpdpLp() {
   return (
-    <Layout>
+    <LandingLayout>
       <section className="pt-36 pb-20 hero-gradient">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-medium text-sm mb-8 border border-accent/20">
@@ -117,7 +116,7 @@ export default function IndiaDpdp() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold uppercase tracking-[0.12em] mb-5">
               Best Fit
             </div>
-            <h3 className="text-2xl font-bold mb-4">Who this page is for</h3>
+            <h3 className="text-2xl font-bold mb-4">Who this is for</h3>
             <ul className="space-y-4 mb-8">
               {fitList.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
@@ -127,12 +126,12 @@ export default function IndiaDpdp() {
               ))}
             </ul>
             <div className="rounded-2xl bg-gray-50 border border-border/50 p-5">
-              <h4 className="font-bold mb-2">Good starting CTA</h4>
+              <h4 className="font-bold mb-2">Start with a free assessment</h4>
               <p className="text-sm text-muted-foreground mb-4">
-                Ask for a DPDP website readiness review if you want clarity on where your website, forms, plugins, and workflows need implementation work first.
+                We'll review your website, forms, plugins, and workflows and show you exactly where the gaps are.
               </p>
               <Button variant="accent" className="w-full" onClick={() => (window.location.href = "/contact")}>
-                Request Readiness Review
+                Get a Free Site Assessment <ArrowRight size={16} className="ml-2" />
               </Button>
             </div>
           </div>
@@ -142,9 +141,9 @@ export default function IndiaDpdp() {
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Common DPDP implementation questions from SMEs</h2>
+            <h2 className="text-3xl font-bold mb-4">Common DPDP questions from SMEs</h2>
             <p className="text-muted-foreground">
-              These are the kinds of practical issues business owners raise when they are trying to move from concern to action.
+              These are the kinds of practical issues business owners raise when trying to move from concern to action.
             </p>
           </div>
           <div className="space-y-6">
@@ -179,24 +178,17 @@ export default function IndiaDpdp() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-8 border border-white/10">
             <Shield size={16} />
-            India Implementation Support
+            Free — No commitment required
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Need a DPDP implementation partner for your website stack?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">Find out where your WordPress site stands on DPDP</h2>
           <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
-            Start with a readiness review and we will show you where your WordPress setup, forms, plugins, and workflows need changes first.
+            We'll review your site, forms, plugins, and data workflows and show you exactly what needs fixing — before enforcement starts.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-              Request DPDP Review <ArrowRight size={18} className="ml-2" />
-            </Button>
-            <Link href="/security">
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
-                View Security Services
-              </Button>
-            </Link>
-          </div>
+          <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
+            Get a Free Site Assessment <ArrowRight size={18} className="ml-2" />
+          </Button>
         </div>
       </section>
-    </Layout>
+    </LandingLayout>
   );
 }

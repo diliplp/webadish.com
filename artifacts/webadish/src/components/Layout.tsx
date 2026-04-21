@@ -271,6 +271,40 @@ export function Footer() {
   );
 }
 
+export function LandingLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen flex flex-col w-full overflow-x-hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border/50 py-3 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer select-none">
+            <img src="/logo.webp" alt="WebAdish" width="180" height="40" className="h-10 w-auto block" />
+          </Link>
+          <a href="tel:+919998757045" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-accent transition-colors">
+            <Phone size={16} /> +91 9998757045
+          </a>
+        </div>
+      </header>
+      <main className="flex-1">{children}</main>
+      <footer className="bg-gray-50 py-8 border-t border-border/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} WebAdish LLP. All rights reserved.</p>
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <Shield size={14} className="text-accent" />
+              DPIIT Recognized Startup
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 size={16} className="text-green-500" />
+              20+ years protecting WordPress sites
+            </div>
+          </div>
+        </div>
+      </footer>
+      <FloatingWhatsApp />
+    </div>
+  );
+}
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col w-full overflow-x-hidden">
