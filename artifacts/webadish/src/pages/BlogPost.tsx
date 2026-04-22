@@ -1369,11 +1369,11 @@ export default function BlogPost() {
 
       {/* FEATURED IMAGE */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-12">
-        <div className="rounded-2xl overflow-hidden shadow-xl">
+        <div className="rounded-2xl overflow-hidden shadow-xl bg-[#0f172a]">
           <img
             src={post.img}
             alt={post.title}
-            className="w-full h-80 object-cover"
+            className="w-full h-80 object-contain"
             style={{ objectPosition: post.imgPosition ?? "center" }}
           />
         </div>
