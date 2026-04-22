@@ -20,6 +20,10 @@ export const PRERENDER_ROUTES = [
   "/blog",
   "/blog/wordpress-hacked-india-what-to-do",
   "/blog/dpdp-act-wordpress-website-guide",
+  "/blog/wordpress-malware-removal",
+  "/blog/wordpress-security-hardening-checklist",
+  "/blog/wordpress-firewall-explained",
+  "/blog/wordpress-security-monitoring",
   "/blog/state-of-wordpress-security-2025-business-takeaways",
   "/blog/dpdp-checklist-wordpress-india",
   "/10-website-hacking-methods-that-put-your-site-at-risk-in-2025",
@@ -57,6 +61,8 @@ type SeoData = {
   type?: "website" | "article";
   keywords?: string[];
   noindex?: boolean;
+  ogImage?: string;
+  ogImageAlt?: string;
   breadcrumbs?: Array<{ name: string; path: string }>;
   schema?: Array<Record<string, unknown>>;
 };
@@ -672,6 +678,178 @@ const articleSchema = (data: {
 });
 
 const blogPosts: Record<string, SeoData> = {
+  "/blog/wordpress-malware-removal": {
+    title: "How to Remove Malware from WordPress (Without Missing the Backdoor)",
+    description:
+      "A step-by-step professional WordPress malware removal process — from isolating the site and finding every infection point to post-cleanup hardening and Google blacklist removal.",
+    path: "/blog/wordpress-malware-removal",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Malware Removal", path: "/blog/wordpress-malware-removal" },
+    ],
+    schema: [
+      articleSchema({
+        title: "How to Remove Malware from a WordPress Site (Without Missing the Backdoor)",
+        description:
+          "Professional WordPress malware removal: isolation, forensic documentation, systematic cleanup, entry point closure, and hardening so the site stays clean.",
+        path: "/blog/wordpress-malware-removal",
+        published: "2026-04-22",
+      }),
+      faqSchema([
+        {
+          question: "How long does WordPress malware removal take?",
+          answer:
+            "A straightforward single-site cleanup with a known entry point typically takes 4–8 hours of professional work. More complex infections spread across the database, filesystem, and with unknown entry points can take 1–3 days depending on site size and available logs.",
+        },
+        {
+          question: "Can I use a plugin to remove WordPress malware?",
+          answer:
+            "Plugins like Wordfence, MalCare, and Sucuri can identify and remove many common malware variants. However, they miss obfuscated injections, database-based malware, and backdoors in non-standard file locations. Plugin-based cleanup should always be followed by a manual file integrity review.",
+        },
+        {
+          question: "What if my hosting company cleaned the site — is that enough?",
+          answer:
+            "Hosting companies typically remove obvious malware from the filesystem. They rarely review the database, check for hidden admin users, close the entry point, or harden the site afterward. A hosting-level clean is a starting point, not a complete remediation.",
+        },
+        {
+          question: "How do I know if malware has been completely removed?",
+          answer:
+            "Run multiple independent scanners, compare all core and plugin files against official checksums, audit the database for injected content and unknown admin users, review server access logs for post-cleanup suspicious activity, and check Google Safe Browsing and blacklist databases for your domain.",
+        },
+      ]),
+    ],
+  },
+  "/blog/wordpress-security-hardening-checklist": {
+    title: "WordPress Security Hardening Checklist: 15 Steps That Matter",
+    description:
+      "The 15 WordPress security hardening controls that security specialists apply to business-critical sites — ranked by the attack surface they close, with implementation details.",
+    path: "/blog/wordpress-security-hardening-checklist",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Security Hardening", path: "/blog/wordpress-security-hardening-checklist" },
+    ],
+    schema: [
+      articleSchema({
+        title: "WordPress Security Hardening Checklist: 15 Steps Security Teams Actually Use",
+        description:
+          "A ranked security hardening checklist for WordPress business sites covering authentication, file permissions, configuration, WAF, and monitoring.",
+        path: "/blog/wordpress-security-hardening-checklist",
+        published: "2026-04-20",
+      }),
+      faqSchema([
+        {
+          question: "Is security hardening a one-time task?",
+          answer:
+            "No. Hardening creates a baseline configuration, but maintaining it requires ongoing effort: credential rotation, plugin audits, reviewing new vulnerabilities as they are disclosed, and re-testing after major changes.",
+        },
+        {
+          question: "Do security plugins handle hardening automatically?",
+          answer:
+            "Partially. Plugins like Wordfence, iThemes Security, and Solid Security automate some controls but cannot move wp-config.php, set server-level headers, or restrict directory access at the web server level. Plugin-based hardening should be combined with server-level configuration.",
+        },
+        {
+          question: "How long does WordPress hardening take?",
+          answer:
+            "For an experienced security engineer, a full baseline hardening engagement on a standard WordPress site takes 4–8 hours. Complex multisite installations, WooCommerce stores, or sites with large plugin stacks take longer.",
+        },
+        {
+          question: "Can hardening break my site?",
+          answer:
+            "Some controls can break specific functionality if applied without testing. Disabling XML-RPC breaks some mobile app integrations. Aggressive CSP headers can break third-party scripts. Hardening should be staged and tested — ideally in a staging environment first.",
+        },
+      ]),
+    ],
+  },
+  "/blog/wordpress-firewall-explained": {
+    title: "WordPress Firewall Explained: What a WAF Covers and What It Misses",
+    description:
+      "What a WordPress web application firewall actually blocks, the difference between cloud WAF and plugin WAF, and where a WAF leaves your site exposed.",
+    path: "/blog/wordpress-firewall-explained",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Firewall Explained", path: "/blog/wordpress-firewall-explained" },
+    ],
+    schema: [
+      articleSchema({
+        title: "WordPress Firewall Explained: What a WAF Covers and What It Misses",
+        description:
+          "A practical guide to WordPress WAFs — what they block, cloud vs plugin architecture, Cloudflare vs Sucuri vs Wordfence, and what managed security adds on top.",
+        path: "/blog/wordpress-firewall-explained",
+        published: "2026-04-18",
+      }),
+      faqSchema([
+        {
+          question: "Do I need a firewall if I already have a security plugin?",
+          answer:
+            "Security plugins and firewalls serve overlapping but different functions. Plugins like Wordfence include a WAF component, but they run inside your WordPress application, which means a serious compromise can disable them. Adding a cloud-based WAF like Cloudflare at the DNS level provides an independent protection layer.",
+        },
+        {
+          question: "Will a WAF slow down my WordPress site?",
+          answer:
+            "A cloud WAF typically improves performance rather than degrading it — cloud providers run geographically distributed networks and cache content closer to visitors. Plugin-based WAFs add some PHP overhead, but well-optimised options keep this minimal.",
+        },
+        {
+          question: "Can a WAF block all WordPress attacks?",
+          answer:
+            "No. A WAF blocks attacks that match its rule set — primarily known exploit patterns, automated scanners, and signature-based threats. It does not protect against credential compromise, authenticated attacks, zero-days, or malware already on the server.",
+        },
+        {
+          question: "How much does a WordPress WAF cost?",
+          answer:
+            "Cloudflare's free tier provides baseline protection for most small sites. Cloudflare Pro is around $20/month. Sucuri's firewall plan starts at around $10/month. Wordfence Premium runs around $119/year.",
+        },
+      ]),
+    ],
+  },
+  "/blog/wordpress-security-monitoring": {
+    title: "What WordPress Security Monitoring Actually Covers",
+    description:
+      "What genuine WordPress security monitoring includes beyond uptime checks — file integrity, login anomalies, vulnerability feeds, blacklist monitoring, and alert triage.",
+    path: "/blog/wordpress-security-monitoring",
+    type: "article",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Security Monitoring", path: "/blog/wordpress-security-monitoring" },
+    ],
+    schema: [
+      articleSchema({
+        title: "What WordPress Security Monitoring Actually Covers on Business Sites",
+        description:
+          "The difference between uptime monitoring and genuine WordPress security monitoring, what each layer covers, and what a professional monitoring setup looks like.",
+        path: "/blog/wordpress-security-monitoring",
+        published: "2026-04-16",
+      }),
+      faqSchema([
+        {
+          question: "Is Wordfence enough for WordPress security monitoring?",
+          answer:
+            "Wordfence Premium provides file integrity monitoring, malware scanning, login protection, and real-time vulnerability alerts. It covers most of the monitoring checklist. The gap is triage and response — Wordfence generates the alerts, but a human or managed process still needs to review and act on them.",
+        },
+        {
+          question: "How often should a WordPress site be scanned for malware?",
+          answer:
+            "Daily automated scanning is the standard for business sites. Sites with high traffic, frequent plugin updates, or active WooCommerce transactions should run continuous or near-continuous scanning.",
+        },
+        {
+          question: "What is the difference between security monitoring and a security audit?",
+          answer:
+            "Monitoring is ongoing and automated — it watches for changes and anomalies continuously. A security audit is a periodic, manual deep-dive: reviewing configuration, access controls, plugin versions, and risk posture at a point in time. Both are necessary.",
+        },
+        {
+          question: "How quickly should a security alert be investigated?",
+          answer:
+            "Severity determines urgency. A new admin user created at 3am is a same-day investigation. A known malware signature found in an active plugin file is immediate. A failed login attempt from an unfamiliar IP may be logged and tracked but not escalated unless part of a pattern.",
+        },
+      ]),
+    ],
+  },
   "/blog/state-of-wordpress-security-2025-business-takeaways": {
     title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
     description:
@@ -1155,12 +1333,15 @@ export function renderSeoHead(pathname: string): string {
     `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`,
     `<meta property="og:description" content="${escapeHtml(description)}" />`,
     `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`,
-    `<meta property="og:image" content="${escapeHtml(DEFAULT_OG_IMAGE)}" />`,
-    `<meta property="og:image:alt" content="WebAdish WordPress security and maintenance services" />`,
+    `<meta property="og:image" content="${escapeHtml(seo.ogImage ?? DEFAULT_OG_IMAGE)}" />`,
+    `<meta property="og:image:width" content="1280" />`,
+    `<meta property="og:image:height" content="720" />`,
+    `<meta property="og:image:type" content="image/jpeg" />`,
+    `<meta property="og:image:alt" content="${escapeHtml(seo.ogImageAlt ?? "WebAdish — WordPress security and protection services")}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${escapeHtml(fullTitle)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
-    `<meta name="twitter:image" content="${escapeHtml(DEFAULT_OG_IMAGE)}" />`,
+    `<meta name="twitter:image" content="${escapeHtml(seo.ogImage ?? DEFAULT_OG_IMAGE)}" />`,
     `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`,
   ]
     .filter(Boolean)

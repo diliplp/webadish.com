@@ -8,6 +8,365 @@ const posts: Record<string, {
   tag: string; tagColor: string; title: string; date: string; read: string;
   img: string; imgPosition?: string; content: React.ReactNode;
 }> = {
+  "wordpress-malware-removal": {
+    tag: "Recovery", tagColor: "text-destructive",
+    title: "How to Remove Malware from a WordPress Site (Without Missing the Backdoor)",
+    date: "April 22, 2026", read: "8 min",
+    img: "/blog/incident-recovery-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Finding malware on your WordPress site is not the hardest part. The hardest part is making sure you actually removed all of it. Most sites that go through a DIY cleanup end up re-infected within weeks — not because the attacker is sophisticated, but because the cleanup process itself was incomplete.</p>
+        <p>This guide walks through what professional WordPress malware removal actually involves, why the sequence matters, and what to harden afterward so the same attacker cannot walk straight back in.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 1: Do not start by deleting files</h2>
+        <p>The instinct when you discover malware is to delete infected files immediately. That instinct is wrong. Delete before you document and you lose the forensic trail — the entry point, the attacker's IP, the timing of the breach, what data was accessed. For sites processing payments or personal data, that information is often legally required for breach notification.</p>
+        <p>Before anything else: take a full backup of the infected site, including the database. Yes, even though it is compromised. You need a snapshot of the attack state. Store it somewhere isolated and do not use it as a restore point.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 2: Isolate the site</h2>
+        <p>Put the site into maintenance mode or block public access if possible. This limits damage: attackers cannot use an isolated site to redirect your visitors to phishing pages, and you prevent further data exfiltration while you are working.</p>
+        <p>If you are on shared hosting, contact your host immediately. Malware on shared servers can spread laterally across other accounts. Reputable hosts will quarantine the account; some will alert you proactively. If they do not, escalate until they do.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 3: Identify the infection — all of it</h2>
+        <p>This is where most DIY cleanups fail. Attackers rarely plant malware in just one place. Common infection points include:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Plugin and theme files</strong> — injected PHP in legitimate-looking files</li>
+          <li><strong>The uploads directory</strong> — PHP files disguised as images or documents</li>
+          <li><strong>wp-config.php and wp-settings.php</strong> — modified to load malicious includes</li>
+          <li><strong>The database</strong> — injected JavaScript in post content, options table, widget settings</li>
+          <li><strong>Cron jobs</strong> — malicious scheduled tasks set to re-download malware after cleanup</li>
+          <li><strong>Hidden admin users</strong> — accounts created during the breach for persistent access</li>
+        </ul>
+        <p>Run a file integrity check against official WordPress core, plugin, and theme checksums. Any file that differs from the official version is a candidate for review. Tools like Wordfence's malware scanner, MalCare, or a manual diff against the plugin repository are the standard approaches. We typically run multiple scanners because no single tool catches everything.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 4: Find the entry point before you clean anything</h2>
+        <p>The entry point is the vulnerability that let the attacker in. Clean the malware without closing the entry point and the site will be re-infected — sometimes within hours. Common entry points include:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li>An outdated plugin or theme with a known, unpatched vulnerability</li>
+          <li>Compromised admin credentials (reused passwords, no 2FA)</li>
+          <li>A nulled or pirated plugin with malware pre-installed</li>
+          <li>A compromised hosting account (FTP credentials exposed in a third-party breach)</li>
+          <li>A file upload vulnerability in a form or media handler</li>
+        </ol>
+        <p>Check your server access logs for the date of the earliest suspicious activity. Attackers typically probe before they strike — that probing is visible in logs as bursts of 404s, unusual POST requests to admin paths, or login attempts from unfamiliar IPs.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 5: Clean systematically, not just the obvious files</h2>
+        <p>The professional approach to cleaning a WordPress site:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Reinstall WordPress core from official source (do not copy from the infected install)</li>
+          <li>Replace all plugins and themes with clean downloads from the official repository</li>
+          <li>Review and clean the database — especially the <code>wp_options</code> table (autoloaded data), post content, and widget settings</li>
+          <li>Remove all unknown admin users</li>
+          <li>Delete all files in the uploads directory that are PHP or executable scripts</li>
+          <li>Check for and remove malicious cron jobs via <code>wp cron event list</code></li>
+          <li>Regenerate all security keys in wp-config.php</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step 6: Harden before going live</h2>
+        <p>A freshly cleaned site with the same configuration that allowed the breach is just a site waiting to be re-infected. Before restoring public access:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Force-reset all user passwords, especially admins and editors</li>
+          <li>Enable two-factor authentication on all admin accounts</li>
+          <li>Close the specific entry point identified in Step 4</li>
+          <li>Disable XML-RPC if unused</li>
+          <li>Set proper file permissions (644 for files, 755 for directories, 600 for wp-config.php)</li>
+          <li>Install and configure a web application firewall</li>
+        </ul>
+        <p>Then submit a <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-medium">Google Search Console</a> review request if the site was flagged as dangerous. Google typically reviews and clears flagged sites within 72 hours of a successful resubmission.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">When DIY cleanup is not enough</h2>
+        <p>Professional cleanup is the right call when:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>The site handles payments or customer personal data</li>
+          <li>You cannot identify the entry point with confidence</li>
+          <li>The site was infected more than once</li>
+          <li>Google has flagged the site or the domain is on a blacklist</li>
+          <li>The infection is widespread across the database and filesystem</li>
+          <li>The site runs WooCommerce or has active customer sessions</li>
+        </ul>
+        <p>In these situations, incomplete cleanup creates ongoing liability. A <Link href="/hacked-site-recovery" className="text-accent hover:underline font-medium">professional incident response</Link> engagement covers full forensic documentation, systematic removal, entry point closure, hardening, and Google blacklist removal — with accountability.</p>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Already dealing with a hacked WordPress site?</p>
+          <p className="text-sm mb-4">Our incident response team handles full malware removal, entry point forensics, blacklist removal, and post-incident hardening. We work with businesses where the site generates revenue and downtime is not an option.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/hacked-site-recovery" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Get Emergency Help</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Contact Us</Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">How long does WordPress malware removal take?</p><p>A straightforward single-site cleanup with a known entry point typically takes 4–8 hours of professional work. More complex infections — spread across database, filesystem, and with unknown entry points — can take 1–3 days depending on site size and available logs.</p></div>
+          <div><p className="font-semibold text-foreground">Can I use a plugin to remove WordPress malware?</p><p>Plugins like Wordfence, MalCare, and Sucuri can identify and remove many common malware variants. However, they miss obfuscated injections, database-based malware, and backdoors in non-standard file locations. Plugin-based cleanup should always be followed by a manual file integrity review.</p></div>
+          <div><p className="font-semibold text-foreground">What if my hosting company cleaned the site — is that enough?</p><p>Hosting companies typically remove obvious malware from the filesystem. They rarely review the database, check for hidden admin users, close the entry point, or harden the site afterward. A hosting-level clean is a starting point, not a complete remediation.</p></div>
+          <div><p className="font-semibold text-foreground">How do I know if malware has been completely removed?</p><p>Run multiple independent scanners (not just one plugin), compare all core and plugin files against official checksums, audit the database for injected content and unknown admin users, review server access logs for post-cleanup suspicious activity, and check Google Safe Browsing and blacklist databases for your domain.</p></div>
+        </div>
+      </div>
+    ),
+  },
+  "wordpress-security-hardening-checklist": {
+    tag: "Security", tagColor: "text-primary",
+    title: "WordPress Security Hardening Checklist: 15 Steps Security Teams Actually Use",
+    date: "April 20, 2026", read: "9 min",
+    img: "/blog/plugin-audit-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Security hardening is the process of reducing a WordPress site's attack surface before an attacker finds an opening. It is distinct from installing a security plugin. A plugin is one control. Hardening is a configuration state — the result of systematically closing the paths that attackers probe first.</p>
+        <p>These 15 controls are what security teams apply to business-critical WordPress sites. They are ranked by the size of the attack surface they close, not by how easy they are to implement.</p>
+
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 my-4">
+          <p className="text-sm font-bold text-foreground mb-2">Who this checklist is for</p>
+          <p className="text-sm">Site owners, developers, and security teams responsible for WordPress sites that handle revenue, leads, or customer data. These controls assume WordPress, PHP, and server-level access.</p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">1. Enforce two-factor authentication on all admin accounts</h2>
+        <p>Admin credential compromise is the most direct path into a WordPress site. Two-factor authentication (2FA) closes it. A strong password alone is not sufficient — password reuse across services means a breach elsewhere can expose your WordPress credentials. Use a dedicated 2FA plugin (WP 2FA, Google Authenticator for WP) and enforce it for all users with admin, editor, or author roles.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">2. Change the default admin username</h2>
+        <p>Automated attacks target the username <code>admin</code> because a large proportion of WordPress installs never change it. Use a non-guessable username. If you already have an <code>admin</code> account, create a new admin with a different username, transfer ownership, then delete the original account.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">3. Limit login attempts</h2>
+        <p>Without rate limiting, brute force attacks can make thousands of login attempts per minute. Plugins like Limit Login Attempts Reloaded or Loginizer cap failed attempts and block IPs after threshold breaches. At the hosting level, a WAF with rate limiting is more reliable than a plugin-based solution alone.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">4. Disable XML-RPC if unused</h2>
+        <p>XML-RPC was designed to allow remote publishing to WordPress. Most modern sites do not use it. Attackers use it for amplified brute force attacks (one XML-RPC request can test hundreds of passwords) and as a DDoS vector. Disable it entirely unless you have a specific integration that requires it.</p>
+        <p>Add to your <code>.htaccess</code> on Apache hosts:</p>
+        <pre className="bg-slate-900 text-green-400 text-sm rounded-xl p-4 overflow-x-auto my-3"><code>{"<Files xmlrpc.php>\n  Order Deny,Allow\n  Deny from all\n</Files>"}</code></pre>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">5. Set correct file permissions</h2>
+        <p>Overly permissive file permissions let attackers write malicious files to your server. The correct baseline:</p>
+        <ul className="list-disc list-inside space-y-1 pl-4 text-sm">
+          <li>WordPress files: <strong>644</strong></li>
+          <li>WordPress directories: <strong>755</strong></li>
+          <li>wp-config.php: <strong>600</strong> (or 640 if your server requires group read)</li>
+          <li>Uploads directory: <strong>755</strong> — no PHP execution allowed here</li>
+        </ul>
+        <p className="mt-2">Block PHP execution in the uploads directory via .htaccess to prevent attackers from uploading and executing malicious scripts disguised as images.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">6. Disable file editing in the WordPress admin</h2>
+        <p>The built-in theme and plugin file editor lets anyone with admin access modify PHP files directly from the browser. An attacker who gains admin access can use it to inject code instantly. Add this to wp-config.php:</p>
+        <pre className="bg-slate-900 text-green-400 text-sm rounded-xl p-4 overflow-x-auto my-3"><code>{"define('DISALLOW_FILE_EDIT', true);"}</code></pre>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">7. Keep wp-config.php out of the web root</h2>
+        <p>WordPress automatically looks for wp-config.php one directory above the web root. Move it there. This means even if directory listing is accidentally enabled, the configuration file — which contains database credentials and security keys — is not publicly accessible.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">8. Regenerate security keys and salts</h2>
+        <p>Security keys and salts in wp-config.php protect user session cookies. If your site was previously compromised, regenerate them immediately — this invalidates all existing sessions, forcing every user to log in again. <a href="https://api.wordpress.org/secret-key/1.1/salt/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">WordPress provides a generator</a>. Do this after any confirmed breach and whenever you change admin credentials.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">9. Restrict access to the wp-admin directory</h2>
+        <p>If your admin team works from a predictable set of IP addresses, whitelist them at the server level. This does not need to be perfect (mobile IPs change) — even restricting to a broad CIDR block significantly reduces exposure. Combine with 2FA for defense in depth.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">10. Run the minimum number of plugins</h2>
+        <p>Every active plugin is a potential attack surface. Deactivate and delete plugins you are not actively using. Avoid plugins that are not maintained (no updates in over 12 months). Where two plugins do similar things, keep one. We typically see a 30–50% plugin reduction opportunity on sites that have grown by accumulation over several years.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">11. Enable HTTPS and set security headers</h2>
+        <p>HTTPS protects data in transit. Security headers protect the browser. The most impactful headers for WordPress sites:</p>
+        <ul className="list-disc list-inside space-y-1 pl-4 text-sm">
+          <li><strong>Strict-Transport-Security</strong> — forces HTTPS connections</li>
+          <li><strong>X-Content-Type-Options: nosniff</strong> — prevents MIME-type sniffing attacks</li>
+          <li><strong>X-Frame-Options: SAMEORIGIN</strong> — prevents clickjacking</li>
+          <li><strong>Referrer-Policy</strong> — controls referrer data sent to third parties</li>
+          <li><strong>Content-Security-Policy</strong> — restricts what scripts and resources can load</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">12. Configure a web application firewall</h2>
+        <p>A WAF filters malicious requests before they reach WordPress. Cloud-based options (Cloudflare, Sucuri) operate at the DNS level and handle volumetric attacks. Plugin-based options (Wordfence) operate at the application level. For business-critical sites, a cloud WAF is preferred — it cannot be disabled by a PHP vulnerability. See our <Link href="/blog/wordpress-firewall-explained" className="text-accent hover:underline font-medium">WordPress Firewall guide</Link> for a full comparison.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">13. Set up automated, off-site backups</h2>
+        <p>Backups are your recovery safety net, not a security control per se — but they are essential to hardening in the recovery sense. Requirements: automated (daily or more frequent for high-traffic sites), tested (restored at least quarterly), and off-site (not on the same server or hosting account). After a breach, you need a clean restore point that predates the infection.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">14. Enable file integrity monitoring</h2>
+        <p>File integrity monitoring (FIM) alerts you when WordPress files change unexpectedly. This catches attacker-planted backdoors and code injections that pass under the radar of signature-based malware scanners. Wordfence's real-time FIM, iThemes Security Pro, and server-level tools like OSSEC all provide this capability.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">15. Audit and rotate credentials on a schedule</h2>
+        <p>Hardening is not a one-time event. Credentials get reused, shared, and forgotten. Establish a process: audit admin user accounts quarterly, rotate database passwords and security keys annually or after any security event, review FTP/SSH access after any staff change.</p>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Want these applied by a security specialist?</p>
+          <p className="text-sm mb-4">WebAdish applies this hardening framework as part of our <Link href="/security" className="underline font-semibold">security engagement</Link> and <Link href="/maintenance" className="underline font-semibold">protection plans</Link>. We review your current configuration, close the highest-risk gaps first, and document what was applied and why.</p>
+          <Link href="/contact" className="inline-flex items-center gap-2 bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-accent/90 transition-colors">Request a Security Review</Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Is security hardening a one-time task?</p><p>No. Hardening creates a baseline configuration, but maintaining it requires ongoing effort: credential rotation, plugin audits, reviewing new vulnerabilities as they are disclosed, and re-testing after major changes. Think of it as a configuration state that needs periodic revalidation.</p></div>
+          <div><p className="font-semibold text-foreground">Do security plugins handle hardening automatically?</p><p>Partially. Plugins like Wordfence, iThemes Security, and Solid Security automate some controls (file permissions, 2FA enforcement, login rate limiting) but cannot move wp-config.php, set server-level headers, or restrict directory access at the web server level. Plugin-based hardening should be combined with server-level configuration.</p></div>
+          <div><p className="font-semibold text-foreground">How long does WordPress hardening take?</p><p>For an experienced security engineer, a full baseline hardening engagement on a standard WordPress site takes 4–8 hours. Complex multisite installations, WooCommerce stores, or sites with large plugin stacks take longer because of the dependency mapping required before changes are applied.</p></div>
+          <div><p className="font-semibold text-foreground">Can hardening break my site?</p><p>Some controls can break specific functionality if applied without testing. Disabling XML-RPC breaks some mobile app integrations. Aggressive CSP headers can break third-party scripts. Restricting the admin by IP affects remote team members. Hardening should be staged and tested — ideally in a staging environment first.</p></div>
+        </div>
+      </div>
+    ),
+  },
+  "wordpress-firewall-explained": {
+    tag: "Security", tagColor: "text-primary",
+    title: "WordPress Firewall Explained: What a WAF Covers and What It Misses",
+    date: "April 18, 2026", read: "7 min",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">A web application firewall (WAF) is one of the most widely recommended WordPress security tools — and one of the most widely misunderstood. It blocks a significant category of attacks. It does not make your site secure. Understanding the difference matters before you make a purchasing decision or, more importantly, before you assume you are protected.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a WordPress WAF actually does</h2>
+        <p>A web application firewall sits between your visitors and your WordPress server, inspecting incoming HTTP requests and filtering out ones that match known attack patterns. It operates at the application layer (Layer 7) — it understands the structure of web traffic in a way that a network firewall does not.</p>
+        <p>A well-configured WordPress WAF blocks:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>SQL injection attempts targeting your forms, search bars, and URL parameters</li>
+          <li>Cross-site scripting (XSS) payloads in request inputs</li>
+          <li>Brute force login attempts (rate limiting at the request level)</li>
+          <li>File inclusion attacks (remote and local)</li>
+          <li>Known exploit signatures for WordPress plugins and themes</li>
+          <li>Malicious bots and scanners probing your site for vulnerabilities</li>
+          <li>DDoS traffic (especially for cloud-based WAFs with volumetric attack capacity)</li>
+        </ul>
+        <p>For most WordPress sites, a properly configured WAF eliminates the automated, commodity-level attacks that account for the majority of WordPress compromises.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Cloud WAF vs plugin WAF: the critical difference</h2>
+        <p>There are two architecturally different types of WordPress firewall, and the distinction matters:</p>
+
+        <div className="overflow-x-auto my-4">
+          <table className="w-full text-sm border-collapse">
+            <thead><tr className="bg-slate-100"><th className="text-left p-3 font-semibold text-foreground border border-slate-200">Feature</th><th className="text-left p-3 font-semibold text-foreground border border-slate-200">Cloud WAF (Cloudflare, Sucuri)</th><th className="text-left p-3 font-semibold text-foreground border border-slate-200">Plugin WAF (Wordfence, iThemes)</th></tr></thead>
+            <tbody>
+              <tr><td className="p-3 border border-slate-200">Where it runs</td><td className="p-3 border border-slate-200">At the DNS / CDN edge, before traffic reaches your server</td><td className="p-3 border border-slate-200">Inside WordPress, after traffic reaches your server</td></tr>
+              <tr className="bg-slate-50"><td className="p-3 border border-slate-200">DDoS protection</td><td className="p-3 border border-slate-200">Strong — absorbs volumetric attacks</td><td className="p-3 border border-slate-200">Limited — server still receives the requests</td></tr>
+              <tr><td className="p-3 border border-slate-200">Can be bypassed by PHP vulnerability?</td><td className="p-3 border border-slate-200">No — operates independently of WordPress</td><td className="p-3 border border-slate-200">Yes — if PHP is compromised, the plugin can be disabled</td></tr>
+              <tr className="bg-slate-50"><td className="p-3 border border-slate-200">Application-layer visibility</td><td className="p-3 border border-slate-200">Varies by configuration</td><td className="p-3 border border-slate-200">Deep — runs inside the application</td></tr>
+              <tr><td className="p-3 border border-slate-200">Setup complexity</td><td className="p-3 border border-slate-200">Requires DNS change</td><td className="p-3 border border-slate-200">Plugin installation and configuration</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>For business-critical WordPress sites, a cloud WAF is the preferred architecture. A plugin-based WAF that runs inside a compromised PHP environment can itself be neutralised by the attacker — which defeats the purpose.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a WordPress WAF does NOT cover</h2>
+        <p>This is where many site owners have a false sense of security. A WAF does not protect against:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Compromised admin credentials.</strong> If an attacker logs in with valid credentials, the WAF sees a legitimate request. It has no way to distinguish a real admin from someone using stolen credentials.</li>
+          <li><strong>Malware already on your server.</strong> A WAF filters incoming traffic, not outbound activity from malware that is already resident on your filesystem.</li>
+          <li><strong>Vulnerabilities in your own custom code.</strong> WAF rules target known attack patterns. Novel vulnerabilities in custom themes or plugins will not have rules written for them.</li>
+          <li><strong>Insider threats or compromised team member accounts.</strong> A legitimate admin session passes through the WAF without inspection.</li>
+          <li><strong>Zero-day vulnerabilities.</strong> By definition, there are no rules for exploits that have not been publicly disclosed yet.</li>
+          <li><strong>Supply chain attacks.</strong> If a plugin you use becomes malicious through a compromised developer account, the WAF does not flag the plugin's own internal behaviour.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Recommended WordPress firewall options</h2>
+        <p>The right choice depends on your budget, technical configuration, and the level of protection required:</p>
+        <ul className="list-disc list-inside space-y-3 pl-4">
+          <li><strong>Cloudflare (Free–Pro):</strong> DNS-level WAF with excellent DDoS mitigation. The free tier covers basic bot and attack filtering. Pro adds OWASP rule sets. A good default choice for most business WordPress sites.</li>
+          <li><strong>Sucuri Website Firewall:</strong> Cloud WAF specifically built for WordPress with a managed rule set maintained by security researchers. Includes a CDN and handles blacklist monitoring. Better WordPress-specific coverage than generic cloud WAFs.</li>
+          <li><strong>Wordfence (Premium):</strong> Plugin-based with a real-time threat intelligence feed updated frequently. Good for sites that cannot change their DNS configuration. Less resilient to server-level compromises but strong application-layer visibility.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Where managed security fills the gap</h2>
+        <p>A WAF blocks known-bad traffic. What it does not provide is monitoring, triage, and response to what gets through or what is already on the server.</p>
+        <p>A <Link href="/maintenance" className="text-accent hover:underline font-medium">managed WordPress security programme</Link> combines WAF protection with file integrity monitoring, credential hygiene, vulnerability prioritisation, and human review of alerts. The WAF reduces the noise; managed security handles the signal.</p>
+        <p>For sites running WooCommerce, handling customer data, or managing significant organic traffic, a WAF alone is a starting point — not a security programme. The question is not whether to run a WAF, but what you are doing with the alerts and vulnerabilities that make it past one.</p>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Not sure what your site's current security posture is?</p>
+          <p className="text-sm mb-4">Start with a <Link href="/security-score" className="underline font-semibold">free WordPress security score</Link>. We review your visible configuration, plugin exposure, and access controls, then recommend the right next step.</p>
+          <Link href="/security-score" className="inline-flex items-center gap-2 bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-accent/90 transition-colors">Get Free Security Score</Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Do I need a firewall if I already have a security plugin?</p><p>Security plugins and firewalls serve overlapping but different functions. Plugins like Wordfence include a WAF component, but they also run inside your WordPress application, which means a serious compromise can disable them. Adding a cloud-based WAF like Cloudflare at the DNS level provides an independent layer of protection.</p></div>
+          <div><p className="font-semibold text-foreground">Will a WAF slow down my WordPress site?</p><p>A cloud WAF typically improves performance rather than degrading it — cloud providers run geographically distributed networks and cache content closer to visitors. Plugin-based WAFs add some PHP overhead, but well-optimised options like Wordfence Premium keep this minimal.</p></div>
+          <div><p className="font-semibold text-foreground">Can a WAF block all WordPress attacks?</p><p>No. A WAF blocks attacks that match its rule set — primarily known exploit patterns, automated scanners, and signature-based threats. It does not protect against credential compromise, authenticated attacks, zero-days, or malware already on the server. It is a necessary control, not a complete security solution.</p></div>
+          <div><p className="font-semibold text-foreground">How much does a WordPress WAF cost?</p><p>Cloudflare's free tier provides baseline protection for most small sites. Cloudflare Pro is around $20/month and adds managed OWASP rules. Sucuri's firewall plan starts at around $10/month. Wordfence Premium runs around $119/year. For enterprise requirements, custom pricing applies across all providers.</p></div>
+        </div>
+      </div>
+    ),
+  },
+  "wordpress-security-monitoring": {
+    tag: "Security", tagColor: "text-primary",
+    title: "What WordPress Security Monitoring Actually Covers on Business Sites",
+    date: "April 16, 2026", read: "7 min",
+    img: "/blog/maintenance-operations-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Uptime monitoring tells you when your site is down. Security monitoring tells you why — and ideally, catches the threat before the site goes down at all. Most businesses running WordPress have the first and think they have the second. They are usually wrong.</p>
+        <p>This guide explains what genuine WordPress security monitoring covers, what most businesses are actually running (which is much less), and what a professional monitoring setup looks like in practice.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What uptime monitoring does (and doesn't do)</h2>
+        <p>Uptime monitoring sends an alert when your site returns a non-200 HTTP status code or stops responding. It tells you the site is down. It does not tell you:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Whether malware has been injected into your pages (the site may be up and serving malicious content)</li>
+          <li>Whether an attacker has created a backdoor admin account</li>
+          <li>Whether your site is on Google's Safe Browsing blacklist</li>
+          <li>Whether your plugin files have been modified</li>
+          <li>Whether someone is actively brute-forcing your admin login</li>
+          <li>Whether a new plugin vulnerability affects a component you are running</li>
+        </ul>
+        <p>A site that has been silently compromised can remain "up" by uptime monitoring standards for weeks. The 2024 Patchstack report found that the average time between a vulnerability being disclosed and sites being patched was measured in days to weeks for low-priority fixes — enough time for silent exploitation.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What security monitoring actually covers</h2>
+        <p>Genuine WordPress security monitoring operates across several dimensions simultaneously:</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">File integrity monitoring (FIM)</h3>
+        <p>FIM establishes a baseline of what your WordPress core, plugin, and theme files should look like, then alerts when any file changes unexpectedly. A legitimate plugin update will trigger FIM — and that is the point: every file change should be intentional and accounted for. Unexpected changes during periods when no updates ran are a strong signal of compromise.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Login and authentication monitoring</h3>
+        <p>This covers failed login attempts, successful logins from unusual locations or IP ranges, new admin user creation, role changes, and password resets. Brute force attacks are obvious in authentication logs. More subtle is a single successful login from an IP address you have never seen — which may indicate credential stuffing.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Malware scanning</h3>
+        <p>Signature-based malware scanning compares your files against known malware patterns. It catches commodity infections reliably. Its limitation is that it requires updated signatures — novel or heavily obfuscated malware may pass a scanner that has not been updated to recognise it. Regular automated scans with a frequently updated signature database are the minimum standard.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Vulnerability monitoring</h3>
+        <p>Vulnerability monitoring tracks the plugins and themes running on your site against known vulnerability databases (NVD, Patchstack, WPScan). When a new vulnerability is disclosed for a component you are running, you need to know immediately — not when you next log in to check for plugin updates. For sites with 20+ plugins, manual tracking is not realistic.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">DNS and blacklist monitoring</h3>
+        <p>If your domain ends up on a blacklist — Google Safe Browsing, Spamhaus, Barracuda, or others — your email deliverability and search visibility are immediately affected. DNS monitoring also catches domain hijacking, where attackers redirect your domain to a malicious server. You want to know about this within minutes, not when a customer tells you.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Database monitoring</h3>
+        <p>The WordPress database is frequently targeted for injections — malicious JavaScript in post content, backdoors in the options table, spam link injections in page content. Database-level monitoring or regular integrity checks of critical tables catches this category of attack that filesystem-only monitoring misses.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The alert fatigue problem</h2>
+        <p>Running all of these monitoring systems independently generates significant alert volume. A site with 30 plugins running a major update cycle will trigger hundreds of FIM alerts. Without triage — a process for distinguishing expected changes from suspicious ones — the alerts become noise, and noise gets ignored.</p>
+        <p>This is why security monitoring is only as useful as the process behind it. Raw alerts are not monitoring. Monitored alerts with a defined response process are.</p>
+        <p>Professional <Link href="/retainer" className="text-accent hover:underline font-medium">WordPress security retainers</Link> include alert triage as a core function: separating legitimate changes from genuine threats, escalating when necessary, and maintaining the documentation that proves what was reviewed and when.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What monitoring looks like in practice</h2>
+        <p>For a business-critical WordPress site under professional monitoring, a typical week looks like this:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li>Automated FIM, malware scanning, and login monitoring run continuously</li>
+          <li>New vulnerability disclosures are cross-referenced against the active plugin stack daily</li>
+          <li>Alert digest is reviewed by a security engineer — expected changes are cleared, anomalies are investigated</li>
+          <li>Any high-severity vulnerability with an available patch is escalated immediately rather than waiting for the weekly update cycle</li>
+          <li>Monthly report documents what was seen, what was cleared, and what was actioned</li>
+        </ol>
+        <p>For most businesses, this requires either dedicated tooling and internal capacity, or a managed security partner who maintains this process on your behalf.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What to look for in a monitoring solution</h2>
+        <p>Whether you are evaluating tools or a managed provider, the minimum requirements for meaningful WordPress security monitoring:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>File integrity monitoring with real-time or near-real-time alerts</li>
+          <li>Vulnerability feed covering plugins, themes, and WordPress core</li>
+          <li>Malware scanning with a signature database updated at least daily</li>
+          <li>Login anomaly detection (not just failed logins — unusual successful logins)</li>
+          <li>Blacklist monitoring for the domain and IP</li>
+          <li>A defined escalation path when something is found</li>
+        </ul>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Want continuous monitoring handled by a dedicated team?</p>
+          <p className="text-sm mb-4">Our <Link href="/retainer" className="underline font-semibold">security retainer</Link> and <Link href="/maintenance" className="underline font-semibold">protection plans</Link> include all of these monitoring layers with human review, alert triage, and a monthly security report. Purpose-built for WordPress businesses where uptime and data integrity matter.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/retainer" className="inline-flex items-center gap-2 bg-accent text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-accent/90 transition-colors">See Retainer Plans</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-accent text-accent px-4 py-2 rounded-lg text-sm font-semibold hover:bg-accent/5 transition-colors">Talk to Us</Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Is Wordfence enough for WordPress security monitoring?</p><p>Wordfence Premium provides file integrity monitoring, malware scanning, login protection, and real-time vulnerability alerts. It covers most of the monitoring checklist above. The gap is triage and response — Wordfence generates the alerts, but a human or managed process still needs to review and act on them.</p></div>
+          <div><p className="font-semibold text-foreground">How often should a WordPress site be scanned for malware?</p><p>Daily automated scanning is the standard for business sites. Sites with high traffic, frequent plugin updates, or active WooCommerce transactions should run continuous or near-continuous scanning. Relying on weekly or manual scans gives attackers too long a window to operate undetected.</p></div>
+          <div><p className="font-semibold text-foreground">What is the difference between security monitoring and a security audit?</p><p>Monitoring is ongoing and automated — it watches for changes and anomalies continuously. A security audit is a periodic, manual deep-dive: reviewing configuration, access controls, plugin versions, and risk posture at a point in time. Both are necessary. Audits set the baseline; monitoring catches deviations from it.</p></div>
+          <div><p className="font-semibold text-foreground">How quickly should a security alert be investigated?</p><p>Severity determines urgency. A new admin user created at 3am is a same-day investigation. A known malware signature found in an active plugin file is immediate. A failed login attempt from an unfamiliar IP may be logged and tracked but not escalated unless part of a pattern. Alert triage is the process that separates these correctly.</p></div>
+        </div>
+      </div>
+    ),
+  },
   "state-of-wordpress-security-2025-business-takeaways": {
     tag: "Security", tagColor: "text-primary",
     title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",

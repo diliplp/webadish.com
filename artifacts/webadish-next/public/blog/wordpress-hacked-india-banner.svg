@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#081A28"/>
+  <rect x="40" y="40" width="1120" height="550" rx="32" fill="url(#bg)"/>
+  <circle cx="978" cy="178" r="138" fill="#EF4444" fill-opacity="0.16"/>
+  <circle cx="1060" cy="120" r="58" fill="#F97316" fill-opacity="0.22"/>
+  <path d="M894 238C894 201.549 923.549 172 960 172H1026C1062.45 172 1092 201.549 1092 238V392C1092 428.451 1062.45 458 1026 458H960C923.549 458 894 428.451 894 392V238Z" fill="#07131E" fill-opacity="0.72" stroke="#FCA5A5" stroke-width="2"/>
+  <path d="M993 286C1007.91 286 1020 273.912 1020 259C1020 244.088 1007.91 232 993 232C978.088 232 966 244.088 966 259C966 273.912 978.088 286 993 286Z" fill="#FDE68A"/>
+  <path d="M960 322C960 304.327 974.327 290 992 290H994C1011.67 290 1026 304.327 1026 322V366H960V322Z" fill="#F59E0B"/>
+  <path d="M942 388H1044" stroke="#FCA5A5" stroke-width="10" stroke-linecap="round"/>
+  <path d="M954 210L1032 420" stroke="#FCA5A5" stroke-width="6" stroke-linecap="round"/>
+  <text fill="#FCA5A5" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="0.16em"><tspan x="96" y="148.736">INCIDENT RESPONSE</tspan></text>
+  <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-0.03em"><tspan x="96" y="245.736">WordPress Hacked?</tspan><tspan x="96" y="320.736">What Indian Businesses</tspan><tspan x="96" y="395.736">Should Do Right Now</tspan></text>
+  <text fill="#D6E4F0" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="28" font-weight="400"><tspan x="96" y="470.798">Contain first. Assess CERT-In and DPDP exposure.</tspan><tspan x="96" y="510.798">Then clean the site properly.</tspan></text>
+  <defs>
+    <linearGradient id="bg" x1="40" y1="40" x2="1160" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B2235"/>
+      <stop offset="1" stop-color="#102F46"/>
+    </linearGradient>
+  </defs>
+</svg>

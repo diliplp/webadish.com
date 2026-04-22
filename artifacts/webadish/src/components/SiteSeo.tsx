@@ -80,13 +80,27 @@ export default function SiteSeo() {
       property: "og:url",
       content: canonicalUrl,
     });
+    const ogImage = seo.ogImage ?? DEFAULT_OG_IMAGE;
+    const ogImageAlt = seo.ogImageAlt ?? "WebAdish — WordPress security and protection services";
     upsertMeta('meta[property="og:image"]', {
       property: "og:image",
-      content: DEFAULT_OG_IMAGE,
+      content: ogImage,
+    });
+    upsertMeta('meta[property="og:image:width"]', {
+      property: "og:image:width",
+      content: "1280",
+    });
+    upsertMeta('meta[property="og:image:height"]', {
+      property: "og:image:height",
+      content: "720",
+    });
+    upsertMeta('meta[property="og:image:type"]', {
+      property: "og:image:type",
+      content: "image/jpeg",
     });
     upsertMeta('meta[property="og:image:alt"]', {
       property: "og:image:alt",
-      content: "WebAdish WordPress security and maintenance services",
+      content: ogImageAlt,
     });
     upsertMeta('meta[name="twitter:card"]', {
       name: "twitter:card",
@@ -102,7 +116,7 @@ export default function SiteSeo() {
     });
     upsertMeta('meta[name="twitter:image"]', {
       name: "twitter:image",
-      content: DEFAULT_OG_IMAGE,
+      content: ogImage,
     });
     upsertLink('link[rel="canonical"]', {
       rel: "canonical",
