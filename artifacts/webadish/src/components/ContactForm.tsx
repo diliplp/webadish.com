@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -96,7 +96,8 @@ export default function ContactForm({
     }
   }, []);
 
-  useEffect(() => {
+  // useLayoutEffect so the ref is attached before scroll runs (success card mounts same render)
+  useLayoutEffect(() => {
     if ((submitted || error) && feedbackRef.current) {
       feedbackRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -336,12 +337,15 @@ export default function ContactForm({
           </div>
         </div>
       )}
+      {(turnstileStatus === "idle" || turnstileStatus === "loading") && turnstileSiteKey && (
+        <p className="text-xs text-muted-foreground text-center">Security check loading…</p>
+      )}
       <Button
         type="submit"
         variant="accent"
         size="lg"
         className="w-full text-base"
-        disabled={loading}
+        disabled={loading || turnstileStatus === "idle" || turnstileStatus === "loading"}
         aria-busy={loading}
       >
         {loading ? (

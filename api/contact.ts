@@ -119,20 +119,17 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: err });
     }
 
-    // --- TURNSTILE: require token when secret key is configured ---
+    // --- TURNSTILE: verify if token is present; allow through if missing (Turnstile may not have loaded) ---
     const turnstileTokenStr = typeof turnstile_token === 'string' ? turnstile_token : '';
-    if (process.env.TURNSTILE_SECRET_KEY) {
-      if (!turnstileTokenStr) {
-        // Token missing entirely — silent drop (bot or JS-disabled scraper)
-        log('turnstile_missing_dropped');
-        return silentDrop(res, acceptsHtml, returnTo);
-      }
+    if (process.env.TURNSTILE_SECRET_KEY && turnstileTokenStr) {
       const isTurnstileValid = await verifyTurnstileToken(turnstileTokenStr, req);
       if (!isTurnstileValid) {
         log('turnstile_failed_dropped');
         return silentDrop(res, acceptsHtml, returnTo);
       }
       log('turnstile_passed');
+    } else if (process.env.TURNSTILE_SECRET_KEY && !turnstileTokenStr) {
+      log('turnstile_missing_continue');
     }
 
     // --- EMAIL PROVIDER ---
