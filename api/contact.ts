@@ -21,8 +21,7 @@ export default async function handler(req: any, res: any) {
     const startedAt = typeof form_started_at === 'number' ? form_started_at : Number(form_started_at);
     const now = Date.now();
     if (!startedAt || now - startedAt < MIN_FORM_FILL_MS || now - startedAt > MAX_FORM_AGE_MS) {
-      console.warn('Silently dropped contact submission due to invalid form timing');
-      return res.status(200).json({ success: true });
+      console.warn('Contact submission timing looks unusual; continuing', { email, service });
     }
 
     // Validate required fields
@@ -32,8 +31,7 @@ export default async function handler(req: any, res: any) {
     }
 
     if (!looksLikeRealName(name) || !looksLikeRealMessage(message) || !looksLikeRealPhone(phone || '')) {
-      console.warn('Silently dropped suspicious contact submission', { email, service });
-      return res.status(200).json({ success: true });
+      console.warn('Contact submission appears low-quality; continuing for manual review', { email, service });
     }
 
     if (process.env.TURNSTILE_SECRET_KEY && turnstile_token) {
