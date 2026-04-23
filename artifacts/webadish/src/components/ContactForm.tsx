@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -96,8 +96,7 @@ export default function ContactForm({
     }
   }, []);
 
-  // useLayoutEffect so the ref is attached before scroll runs (success card mounts same render)
-  useLayoutEffect(() => {
+  useEffect(() => {
     if ((submitted || error) && feedbackRef.current) {
       feedbackRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
