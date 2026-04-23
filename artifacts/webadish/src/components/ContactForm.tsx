@@ -1,17 +1,22 @@
-import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
 
-const services = [
-  "DPDP Site Assessment",
+const DEFAULT_SERVICES = [
   "Protection Plan",
   "WordPress Security",
   "Hacked Site Recovery (Emergency)",
   "Security Retainer",
+  "Free Security Score",
+  "DPDP Site Assessment",
+  "Agency White-Label Program",
+  "Web Design",
   "General Enquiry",
 ];
+
+const REQUEST_TIMEOUT_MS = 25_000;
 
 type ContactFormProps = {
   formName?: string;
@@ -19,22 +24,30 @@ type ContactFormProps = {
   defaultService?: string;
   submitLabel?: string;
   successMessage?: string;
+  services?: string[];
+  messageLabel?: string;
+  messagePlaceholder?: string;
 };
 
 export default function ContactForm({
   formName = "global_contact",
   pagePath = "/contact",
-  defaultService = "DPDP Site Assessment",
-  submitLabel = "Request Free Site Assessment",
-  successMessage = "We'll review your site and reply within a few hours.",
+  defaultService,
+  submitLabel = "Send Message",
+  successMessage = "We'll review your request and reply within 4 business hours.",
+  services = DEFAULT_SERVICES,
+  messageLabel = "Message *",
+  messagePlaceholder = "Website URL, what the site does, what concerns you most, and whether this is urgent...",
 }: ContactFormProps) {
   const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
   const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
+  const initialService = defaultService && services.includes(defaultService) ? defaultService : services[0];
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    service: defaultService,
+    service: initialService,
     message: "",
     fax_number: "",
     form_started_at: Date.now(),
@@ -46,6 +59,7 @@ export default function ContactForm({
   const [requestId, setRequestId] = useState("");
   const hasTrackedStart = useRef(false);
   const isSubmittingRef = useRef(false);
+  const feedbackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -60,7 +74,7 @@ export default function ContactForm({
       if (ref) setRequestId(ref);
     } else if (status === "error") {
       setSubmitted(false);
-      setError(msg || "We could not submit your request. Please try again.");
+      setError(msg || "We could not submit your request. Please try again or reach us on WhatsApp.");
       if (ref) setRequestId(ref);
     }
 
@@ -74,10 +88,30 @@ export default function ContactForm({
     }
   }, []);
 
+  useEffect(() => {
+    if ((submitted || error) && feedbackRef.current) {
+      feedbackRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [submitted, error]);
+
   const trackFormStart = () => {
     if (hasTrackedStart.current) return;
     hasTrackedStart.current = true;
     trackEvent("form_start", { form_name: formName, page_path: pagePath });
+  };
+
+  const resetForm = () => {
+    setForm({
+      name: "",
+      email: "",
+      phone: "",
+      service: initialService,
+      message: "",
+      fax_number: "",
+      form_started_at: Date.now(),
+      turnstile_token: "",
+    });
+    hasTrackedStart.current = false;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -89,11 +123,15 @@ export default function ContactForm({
     setRequestId("");
     trackFormStart();
 
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
+        signal: controller.signal,
       });
 
       const responseRequestId = response.headers.get("x-contact-request-id") || "";
@@ -110,20 +148,14 @@ export default function ContactForm({
         page_path: pagePath,
       });
       setSubmitted(true);
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        service: defaultService,
-        message: "",
-        fax_number: "",
-        form_started_at: Date.now(),
-        turnstile_token: "",
-      });
-      hasTrackedStart.current = false;
+      resetForm();
     } catch (err) {
-      const errorMsg =
-        err instanceof Error ? err.message : "Failed to send message. Please try again.";
+      const isTimeout = err instanceof DOMException && err.name === "AbortError";
+      const errorMsg = isTimeout
+        ? "The request timed out. Please check your connection and try again, or reach us on WhatsApp."
+        : err instanceof Error
+          ? err.message
+          : "Failed to send message. Please try again.";
       setError(errorMsg);
       trackEvent("form_submit_error", {
         form_name: formName,
@@ -131,6 +163,7 @@ export default function ContactForm({
         error_message: errorMsg,
       });
     } finally {
+      window.clearTimeout(timeoutId);
       setLoading(false);
       isSubmittingRef.current = false;
     }
@@ -138,7 +171,7 @@ export default function ContactForm({
 
   if (submitted) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
+      <div ref={feedbackRef} className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center" role="status" aria-live="polite">
         <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
         <h3 className="text-xl font-bold mb-2">Request Sent</h3>
         <p className="text-muted-foreground">{successMessage}</p>
@@ -146,7 +179,12 @@ export default function ContactForm({
           <p className="mt-3 text-xs text-muted-foreground">Reference: {requestId}</p>
         )}
         <button
-          onClick={() => setSubmitted(false)}
+          type="button"
+          onClick={() => {
+            setSubmitted(false);
+            setError("");
+            setRequestId("");
+          }}
           className="mt-6 text-accent hover:underline text-sm font-medium"
         >
           Send another message
@@ -156,11 +194,12 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate={false}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium mb-2">Full Name *</label>
+          <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
           <input
+            id={`${formName}-name`}
             required
             type="text"
             name="name"
@@ -175,8 +214,9 @@ export default function ContactForm({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-2">Email Address *</label>
+          <label htmlFor={`${formName}-email`} className="block text-sm font-medium mb-2">Email Address *</label>
           <input
+            id={`${formName}-email`}
             required
             type="email"
             name="email"
@@ -190,8 +230,9 @@ export default function ContactForm({
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-2">Phone / WhatsApp</label>
+        <label htmlFor={`${formName}-phone`} className="block text-sm font-medium mb-2">Phone / WhatsApp</label>
         <input
+          id={`${formName}-phone`}
           type="tel"
           name="phone"
           placeholder="+91 98765 43210"
@@ -203,8 +244,9 @@ export default function ContactForm({
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-2">Service Needed</label>
+        <label htmlFor={`${formName}-service`} className="block text-sm font-medium mb-2">Service Needed</label>
         <select
+          id={`${formName}-service`}
           name="service"
           value={form.service}
           onFocus={trackFormStart}
@@ -219,12 +261,13 @@ export default function ContactForm({
         </select>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-2">Your Website URL *</label>
+        <label htmlFor={`${formName}-message`} className="block text-sm font-medium mb-2">{messageLabel}</label>
         <textarea
+          id={`${formName}-message`}
           required
-          rows={4}
+          rows={5}
           name="message"
-          placeholder="Website URL and a brief description of the issue..."
+          placeholder={messagePlaceholder}
           value={form.message}
           onFocus={trackFormStart}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -248,8 +291,29 @@ export default function ContactForm({
         onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
       />
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-          <p className="text-red-600 text-sm font-medium">{error}</p>
+        <div
+          ref={feedbackRef}
+          className="bg-red-50 border border-red-200 rounded-xl p-4 space-y-3"
+          role="alert"
+          aria-live="assertive"
+        >
+          <p className="text-red-700 text-sm font-medium">{error}</p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://wa.me/919998757045?text=Hi%2C%20I%20tried%20submitting%20the%20form%20on%20webadish.com%20but%20it%20failed."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 hover:text-red-900 underline"
+            >
+              <MessageCircle size={14} /> WhatsApp us instead
+            </a>
+            <a
+              href="tel:+919998757045"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 hover:text-red-900 underline"
+            >
+              <Phone size={14} /> Call +91 9998757045
+            </a>
+          </div>
         </div>
       )}
       <Button
@@ -258,6 +322,7 @@ export default function ContactForm({
         size="lg"
         className="w-full text-base"
         disabled={loading}
+        aria-busy={loading}
       >
         {loading ? (
           <>
@@ -274,6 +339,9 @@ export default function ContactForm({
       <p className="text-xs text-muted-foreground text-center">
         We respond within 4 business hours. No spam, no hard sell.
       </p>
+      {requestId && !error && (
+        <p className="text-xs text-muted-foreground text-center">Reference: {requestId}</p>
+      )}
     </form>
   );
 }

@@ -1,10 +1,7 @@
-import { Phone, Mail, Clock, MapPin, CheckCircle2, ArrowRight, Ambulance, Loader2 } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, ArrowRight, Ambulance } from "lucide-react";
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import { useEffect, useRef, useState } from "react";
-import { trackEvent } from "@/lib/tracking";
-import TurnstileField from "@/components/TurnstileField";
+import ContactForm from "@/components/ContactForm";
 
 const services = [
   "Protection Plan",
@@ -18,121 +15,6 @@ const services = [
 ];
 
 export default function Contact() {
-  const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
-  const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
-  const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
-    turnstileSiteKey ? "idle" : "skipped",
-  );
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "Free Security Audit",
-    message: "",
-    fax_number: "",
-    form_started_at: Date.now(),
-    turnstile_token: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [requestId, setRequestId] = useState("");
-  const hasTrackedStart = useRef(false);
-  const isSubmittingRef = useRef(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const status = params.get("contact_status");
-    const ref = params.get("contact_ref") || "";
-    const msg = params.get("contact_msg") || "";
-
-    if (status === "success") {
-      setSubmitted(true);
-      setError("");
-      if (ref) setRequestId(ref);
-    } else if (status === "error") {
-      setSubmitted(false);
-      setError(msg || "We could not submit your request. Please try again.");
-      if (ref) setRequestId(ref);
-    }
-
-    if (status) {
-      params.delete("contact_status");
-      params.delete("contact_ref");
-      params.delete("contact_msg");
-      const nextQuery = params.toString();
-      const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
-      window.history.replaceState({}, "", nextUrl);
-    }
-  }, []);
-
-  const trackFormStart = () => {
-    if (hasTrackedStart.current) return;
-    hasTrackedStart.current = true;
-    trackEvent("form_start", {
-      form_name: "global_contact",
-      page_path: "/contact",
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmittingRef.current) return;
-    isSubmittingRef.current = true;
-    setLoading(true);
-    setError("");
-    setRequestId("");
-    trackFormStart();
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
-
-      const responseRequestId = response.headers.get("x-contact-request-id") || "";
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        const errorText = typeof data?.error === "string" ? data.error : "Failed to send message";
-        throw new Error(responseRequestId ? `${errorText} (Ref: ${responseRequestId})` : errorText);
-      }
-
-      if (responseRequestId) setRequestId(responseRequestId);
-      trackEvent("form_submit_success", {
-        form_name: "global_contact",
-        service: form.service || "unspecified",
-        page_path: "/contact",
-      });
-      setSubmitted(true);
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        service: "Free Security Audit",
-        message: "",
-        fax_number: "",
-        form_started_at: Date.now(),
-        turnstile_token: "",
-      });
-      hasTrackedStart.current = false;
-    } catch (err) {
-      const errorMsg = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
-      setError(errorMsg);
-      trackEvent("form_submit_error", {
-        form_name: "global_contact",
-        page_path: "/contact",
-        error_message: errorMsg,
-      });
-    } finally {
-      setLoading(false);
-      isSubmittingRef.current = false;
-    }
-  };
-
   return (
     <Layout>
       {/* HERO */}
@@ -167,113 +49,20 @@ export default function Contact() {
             <div>
               <h2 className="text-3xl font-bold mb-3">Start the Audit Request</h2>
               <p className="text-sm text-muted-foreground mb-8">This takes about 1 minute. The more specific you are, the more useful our first reply will be.</p>
-              {submitted ? (
-                <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
-                  <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Audit Request Sent</h3>
-                  <p className="text-muted-foreground">We will review this and reply within a few hours. If the site is actively hacked, call or WhatsApp us directly for faster triage.</p>
-                  {requestId && (
-                    <p className="mt-3 text-xs text-muted-foreground">Reference: {requestId}</p>
-                  )}
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-6 text-accent hover:underline text-sm font-medium"
-                  >
-                    Send another message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {error && (
-                    <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
-                      <p className="text-red-600 text-sm">{error}</p>
-                    </div>
-                  )}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Full Name *</label>
-                      <input required type="text" name="name" placeholder="John Smith" value={form.name} onFocus={trackFormStart} onChange={e => setForm({ ...form, name: e.target.value })}
-                        minLength={2}
-                        maxLength={80}
-                        autoComplete="name"
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Email Address *</label>
-                      <input required type="email" name="email" placeholder="john@company.com" value={form.email} onFocus={trackFormStart} onChange={e => setForm({ ...form, email: e.target.value })}
-                        autoComplete="email"
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone Number</label>
-                    <input type="tel" name="phone" placeholder="+1 234 567 8900" value={form.phone} onFocus={trackFormStart} onChange={e => setForm({ ...form, phone: e.target.value })}
-                      autoComplete="tel"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select name="service" value={form.service} onFocus={trackFormStart} onChange={e => setForm({ ...form, service: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all">
-                      {services.map(s => <option key={s} value={s}>{s}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Message *</label>
-                    <textarea required rows={5} name="message" placeholder="Website URL, what the site does, what concerns you most, and whether this is urgent..." value={form.message} onFocus={trackFormStart} onChange={e => setForm({ ...form, message: e.target.value })}
-                      minLength={12}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none" />
-                  </div>
-                  <div className="hidden" aria-hidden="true">
-                    <input
-                      type="text"
-                      name="fax_number"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={form.fax_number}
-                      onChange={e => setForm({ ...form, fax_number: e.target.value })}
-                    />
-                  </div>
-                  <TurnstileField
-                    siteKey={turnstileSiteKey}
-                    theme="light"
-                    onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
-                    onStatusChange={setTurnstileStatus}
-                  />
-                  {turnstileStatus === "error" && (
-                    <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                      <p className="text-sm text-amber-900">
-                        The Cloudflare security check did not load on this device. You can still submit the form, or use WhatsApp / email below for urgent help.
-                      </p>
-                    </div>
-                  )}
-                  <div className="rounded-2xl border border-border/50 bg-gray-50 p-4">
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Helpful details: website URL, recent plugin/theme changes, whether backups exist, whether you have seen malware warnings or suspicious behaviour, and whether this affects sales or leads right now.
-                    </p>
-                  </div>
-                  <Button
-                    type="submit"
-                    variant="accent"
-                    size="lg"
-                    className="w-full text-base"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <><Loader2 size={18} className="mr-2 animate-spin" />Sending...</>
-                    ) : (
-                      <>Request Free Security Audit <ArrowRight size={18} className="ml-2" /></>
-                    )}
-                  </Button>
-                  <p className="text-xs text-muted-foreground text-center">We respond to all enquiries within 4 business hours. Emergency hacked-site cases are prioritised.</p>
-                  {requestId && (
-                    <p className="text-xs text-muted-foreground text-center">Reference: {requestId}</p>
-                  )}
-                  {error && (
-                    <p className="text-xs text-red-600 text-center">Submission failed: {error}</p>
-                  )}
-                </form>
-              )}
+              <ContactForm
+                formName="global_contact"
+                pagePath="/contact"
+                defaultService="Free Security Score"
+                submitLabel="Request Free Security Audit"
+                successMessage="We will review this and reply within a few hours. If the site is actively hacked, call or WhatsApp us directly for faster triage."
+                services={services}
+                messagePlaceholder="Website URL, what the site does, what concerns you most, and whether this is urgent..."
+              />
+              <div className="mt-5 rounded-2xl border border-border/50 bg-gray-50 p-4">
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Helpful details: website URL, recent plugin/theme changes, whether backups exist, whether you have seen malware warnings or suspicious behaviour, and whether this affects sales or leads right now.
+                </p>
+              </div>
             </div>
 
             {/* INFO */}
