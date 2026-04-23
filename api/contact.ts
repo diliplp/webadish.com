@@ -3,6 +3,25 @@ import nodemailer from 'nodemailer';
 const MIN_FORM_FILL_MS = 3000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
 
+// Spam keyword patterns in message/name (bots, SEO spam, etc.)
+const SPAM_PATTERNS = [
+  /\b(seo\s+service|backlink|link.?build|rank.*google|search.?engine.?optimiz|google.*rank|increase.*traffic|website.*traffic|buy.*traffic)/i,
+  /\b(casino|poker|slot|gambling|bet.*site|crypto.*invest|bitcoin.*profit|forex.*signal|make.*money.*online|earn.*\$|work.*from.*home.*earn)/i,
+  /\b(payday.*loan|cheap.*med|generic.*viagra|cialis|buy.*follower|instagram.*follower|tiktok.*follower)/i,
+  /\b(http:\/\/|www\.)[\w.-]+\.(ru|cn|tk|pw|top|xyz|click|download)\b/i,
+];
+
+// Known disposable / throwaway email domains
+const DISPOSABLE_DOMAINS = new Set([
+  'mailinator.com', 'guerrillamail.com', 'guerrillamail.org', 'guerrillamail.net',
+  'sharklasers.com', 'grr.la', 'yopmail.com', 'yopmail.fr', 'cool.fr.nf',
+  'trashmail.com', 'trashmail.me', 'trashmail.at', 'trashmail.io',
+  'temp-mail.org', 'tempr.email', 'dispostable.com', 'maildrop.cc',
+  'throwam.com', 'throwam.net', 'spamgourmet.com', 'spamgourmet.org',
+  'getairmail.com', 'fakeinbox.com', 'mailnull.com', 'spamspot.com',
+  'mt2015.com', 'mt2014.com', 'discard.email', 'spamfree24.org',
+]);
+
 export default async function handler(req: any, res: any) {
   const requestId = buildRequestId(req);
   res.setHeader('x-contact-request-id', requestId);
@@ -26,24 +45,31 @@ export default async function handler(req: any, res: any) {
     const returnTo = normalizeReturnTo(return_to);
 
     log('received', {
-      email: typeof email === 'string' ? email : '',
+      email: typeof email === 'string' ? email.slice(0, 40) : '',
       service: typeof service === 'string' ? service : '',
       hasTurnstileToken: Boolean(turnstile_token),
-      hasHoneypotValue: Boolean(fax_number),
+      hasFormStartedAt: Boolean(form_started_at),
     });
 
-    const honeypotHit = Boolean(fax_number);
-    if (honeypotHit) {
-      log('honeypot_hit_continue');
+    // --- HONEYPOT: bots fill hidden fields, real users don't ---
+    if (fax_number) {
+      log('honeypot_hit_dropped');
+      return silentDrop(res, acceptsHtml, returnTo);
     }
 
+    // --- TIMING: bots fill forms in milliseconds ---
     const startedAt = typeof form_started_at === 'number' ? form_started_at : Number(form_started_at);
     const now = Date.now();
-    if (!startedAt || now - startedAt < MIN_FORM_FILL_MS || now - startedAt > MAX_FORM_AGE_MS) {
-      log('timing_unusual_continue', { startedAt });
+    if (startedAt && now - startedAt < MIN_FORM_FILL_MS) {
+      log('timing_too_fast_dropped', { elapsed: now - startedAt });
+      return silentDrop(res, acceptsHtml, returnTo);
+    }
+    if (startedAt && now - startedAt > MAX_FORM_AGE_MS) {
+      log('timing_too_old_dropped', { elapsed: now - startedAt });
+      return silentDrop(res, acceptsHtml, returnTo);
     }
 
-    // Validate required fields
+    // --- REQUIRED FIELDS ---
     if (!name || !email || !message) {
       log('validation_failed_missing_fields');
       if (acceptsHtml) {
@@ -52,22 +78,50 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: 'Missing required fields: name, email, message' });
     }
 
-    if (!looksLikeRealName(name) || !looksLikeRealMessage(message) || !looksLikeRealPhone(phone || '')) {
-      log('quality_flagged_continue');
+    // --- DISPOSABLE EMAIL ---
+    const emailDomain = typeof email === 'string' ? email.split('@').pop()?.toLowerCase() : '';
+    if (emailDomain && DISPOSABLE_DOMAINS.has(emailDomain)) {
+      log('disposable_email_dropped', { domain: emailDomain });
+      return silentDrop(res, acceptsHtml, returnTo);
     }
 
+    // --- SPAM KEYWORD DETECTION ---
+    const textToScan = `${name} ${message}`;
+    if (SPAM_PATTERNS.some(p => p.test(textToScan))) {
+      log('spam_pattern_dropped');
+      return silentDrop(res, acceptsHtml, returnTo);
+    }
+
+    // --- FIELD QUALITY: return friendly errors (real users can see and fix these) ---
+    if (!looksLikeRealName(name as string)) {
+      const err = 'Please enter your real full name.';
+      if (acceptsHtml) return respondHtml(res, 400, 'error', requestId, err, returnTo);
+      return res.status(400).json({ error: err });
+    }
+    if (!looksLikeRealPhone(phone || '')) {
+      const err = 'Please enter a valid phone number, or leave it blank.';
+      if (acceptsHtml) return respondHtml(res, 400, 'error', requestId, err, returnTo);
+      return res.status(400).json({ error: err });
+    }
+    if (!looksLikeRealMessage(message as string)) {
+      const err = 'Please describe your request in more detail (at least a few words, no special characters only).';
+      if (acceptsHtml) return respondHtml(res, 400, 'error', requestId, err, returnTo);
+      return res.status(400).json({ error: err });
+    }
+
+    // --- TURNSTILE: silent drop if token present and invalid ---
     if (process.env.TURNSTILE_SECRET_KEY && turnstile_token) {
       const isTurnstileValid = await verifyTurnstileToken(turnstile_token, req);
       if (!isTurnstileValid) {
-        log('turnstile_failed_continue');
+        log('turnstile_failed_dropped');
+        return silentDrop(res, acceptsHtml, returnTo);
       }
-      if (isTurnstileValid) {
-        log('turnstile_passed');
-      }
+      log('turnstile_passed');
     } else if (process.env.TURNSTILE_SECRET_KEY) {
       log('turnstile_missing_continue');
     }
 
+    // --- EMAIL PROVIDER ---
     const hasSmtp = Boolean(process.env.SMTP_USER && process.env.SMTP_PASSWORD);
     const hasResend = Boolean(process.env.RESEND_API_KEY);
     if (!hasSmtp && !hasResend) {
@@ -93,38 +147,27 @@ export default async function handler(req: any, res: any) {
         })
       : null;
 
-    // Email to support
     const supportMail = {
       to: 'support@webadish.com',
-      subject: `${honeypotHit ? '[Flagged] ' : ''}New Contact Form Submission from ${name}`,
+      subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
         ${service ? `<p><strong>Service Needed:</strong> ${escapeHtml(service)}</p>` : ''}
-        ${honeypotHit ? `<p><strong>Honeypot Flag:</strong> Hidden field had a value</p>` : ''}
         <p><strong>Message:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
         <hr>
-        <p><small>Received at: ${new Date().toISOString()}</small></p>
+        <p><small>Received at: ${new Date().toISOString()} | Ref: ${escapeHtml(requestId)}</small></p>
       `,
       replyTo: email,
     };
 
     log('sending_support_email');
-    const supportResult = await sendWithFallback(
-      supportMail,
-      transporter,
-      hasResend,
-      requestId,
-      log,
-      true,
-    );
+    const supportResult = await sendWithFallback(supportMail, transporter, hasResend, requestId, log, true);
     log('support_email_sent', supportResult);
 
-    // Send confirmation email to user
-    log('sending_confirmation_email');
     const confirmationMail = {
       to: email,
       subject: 'We received your message - WebAdish',
@@ -132,26 +175,18 @@ export default async function handler(req: any, res: any) {
         <h2>Thank you for contacting WebAdish!</h2>
         <p>Hi ${escapeHtml(name)},</p>
         <p>We've received your message and our team will get back to you within 4 business hours.</p>
-        <p>For urgent issues (site hacked), please call us directly at <strong>+91 999 875 7045</strong></p>
+        <p>For urgent issues (site hacked), please call us directly at <strong>+91 999 875 7045</strong>.</p>
         <p>Best regards,<br>WebAdish Team</p>
       `,
     };
 
     try {
-      const confirmResult = await sendWithFallback(
-        confirmationMail,
-        transporter,
-        hasResend,
-        requestId,
-        log,
-        false,
-      );
-      if (confirmResult) {
-        log('confirmation_email_sent', confirmResult);
-      }
+      const confirmResult = await sendWithFallback(confirmationMail, transporter, hasResend, requestId, log, false);
+      if (confirmResult) log('confirmation_email_sent', confirmResult);
     } catch (confirmationError) {
-      const errorMsg = confirmationError instanceof Error ? confirmationError.message : String(confirmationError);
-      log('confirmation_email_failed_continue', { error: errorMsg });
+      log('confirmation_email_failed_continue', {
+        error: confirmationError instanceof Error ? confirmationError.message : String(confirmationError),
+      });
     }
 
     log('completed_success');
@@ -162,13 +197,23 @@ export default async function handler(req: any, res: any) {
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : String(error);
     console.error(`[contact:${requestId}] failed`, errorMsg);
-    console.error(error);
     if (acceptsHtml) {
       const fallbackReturnTo = normalizeReturnTo(normalizeBody(req).return_to);
       return respondHtml(res, 500, 'error', requestId, 'We could not submit your request just now. Please call +91 9998757045.', fallbackReturnTo);
     }
     res.status(500).json({ error: 'Failed to send message. Please try again in a minute.', request_id: requestId });
   }
+}
+
+function silentDrop(res: any, acceptsHtml: boolean, returnTo: string) {
+  if (acceptsHtml) {
+    // Redirect as if success so bots don't retry
+    const url = new URL(returnTo, 'https://www.webadish.com');
+    url.searchParams.set('contact_status', 'success');
+    const location = `${url.pathname}${url.search}`;
+    return res.status(303).setHeader('Location', location).send('');
+  }
+  return res.status(200).json({ success: true });
 }
 
 function buildRequestId(req: any): string {
@@ -179,9 +224,7 @@ function buildRequestId(req: any): string {
 
 function normalizeBody(req: any): Record<string, any> {
   const body = req?.body;
-  if (body && typeof body === 'object' && !Array.isArray(body)) {
-    return body;
-  }
+  if (body && typeof body === 'object' && !Array.isArray(body)) return body;
   if (typeof body === 'string') {
     const trimmed = body.trim();
     if (!trimmed) return {};
@@ -251,8 +294,7 @@ async function sendWithFallback(
       });
       return { provider: 'smtp', messageId: smtpResult.messageId };
     } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      log('smtp_send_failed', { error: errorMsg, to: mail.to });
+      log('smtp_send_failed', { error: error instanceof Error ? error.message : String(error), to: mail.to });
       lastError = error;
     }
   }
@@ -262,8 +304,7 @@ async function sendWithFallback(
       const resendResult = await sendViaResend(mail, requestId);
       return { provider: 'resend', messageId: resendResult.id };
     } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      log('resend_send_failed', { error: errorMsg, to: mail.to });
+      log('resend_send_failed', { error: error instanceof Error ? error.message : String(error), to: mail.to });
       lastError = error;
     }
   }
@@ -287,16 +328,11 @@ async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ i
     html: mail.html,
     tags: [{ name: 'source', value: 'webadish-contact' }, { name: 'request_id', value: requestId.slice(0, 64) }],
   };
-  if (mail.replyTo) {
-    payload.reply_to = mail.replyTo;
-  }
+  if (mail.replyTo) payload.reply_to = mail.replyTo;
 
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
 
@@ -310,19 +346,12 @@ async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ i
 }
 
 function escapeHtml(text: string): string {
-  const map: { [key: string]: string } = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-  };
+  const map: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
   return text.replace(/[&<>"']/g, (m) => map[m]);
 }
 
 function countLetters(value: string): number {
-  const matches = value.match(/\p{L}/gu);
-  return matches ? matches.length : 0;
+  return (value.match(/\p{L}/gu) || []).length;
 }
 
 function countWords(value: string): number {
@@ -332,21 +361,20 @@ function countWords(value: string): number {
 function looksLikeRealName(value: string): boolean {
   if (typeof value !== 'string') return false;
   if (value.length < 2 || value.length > 80) return false;
-  if (!/^[\p{L}\s.'’-]+$/u.test(value)) return false;
+  if (!/^[\p{L}\s.''-]+$/u.test(value)) return false;
   return countLetters(value) >= 2;
 }
 
 function looksLikeRealMessage(value: string): boolean {
   if (typeof value !== 'string') return false;
   if (value.length < 12 || value.length > 4000) return false;
-  if (!/^[\p{L}\p{N}\s.,'’"!?():/&+@#%-]*$/u.test(value)) return false;
+  // Allow URLs: added = and _ to charset
+  if (!/^[\p{L}\p{N}\s.,''"!?():/&+@#%=_-]*$/u.test(value)) return false;
   if (countWords(value) < 3) return false;
-
   const letters = countLetters(value);
   const compactLength = value.replace(/\s+/g, '').length;
-  if (!compactLength || letters / compactLength < 0.45) return false;
+  if (!compactLength || letters / compactLength < 0.4) return false;
   if (/[bcdfghjklmnpqrstvwxyz]{7,}/i.test(value)) return false;
-
   return true;
 }
 
@@ -366,18 +394,11 @@ async function verifyTurnstileToken(token: string, req: any): Promise<boolean> {
 
   const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      secret,
-      response: token,
-      remoteip: remoteIp,
-    }),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ secret, response: token, remoteip: remoteIp }),
   });
 
   if (!response.ok) return false;
-
   const data = await response.json();
   return Boolean(data.success);
 }
