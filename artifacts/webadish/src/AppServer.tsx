@@ -8,6 +8,8 @@ import Retainer from "@/pages/Retainer";
 import Pricing from "@/pages/Pricing";
 import India from "@/pages/India";
 import IndiaDpdp from "@/pages/IndiaDpdp";
+import IndiaDpdpLp from "@/pages/IndiaDpdpLp";
+import IndiaHackedLp from "@/pages/IndiaHackedLp";
 import IndiaCertIn from "@/pages/IndiaCertIn";
 import SecurityScore from "@/pages/SecurityScore";
 import AgencyPartners from "@/pages/AgencyPartners";
@@ -17,6 +19,7 @@ import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyVerofax from "@/pages/CaseStudyVerofax";
 import CaseStudyShivamAutozone from "@/pages/CaseStudyShivamAutozone";
 import CaseStudyCrystalGroup from "@/pages/CaseStudyCrystalGroup";
+import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import WebDesign from "@/pages/WebDesign";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -37,6 +40,8 @@ function AppRoutes() {
         <Route path="/pricing" component={Pricing} />
         <Route path="/india" component={India} />
         <Route path="/india/dpdp-compliance-wordpress" component={IndiaDpdp} />
+        <Route path="/india/dpdp-lp" component={IndiaDpdpLp} />
+        <Route path="/india/hacked-site-recovery-lp" component={IndiaHackedLp} />
         <Route path="/india/cert-in-incident-readiness" component={IndiaCertIn} />
         <Route path="/security-score" component={SecurityScore} />
         <Route path="/agency-partners" component={AgencyPartners} />
@@ -47,6 +52,7 @@ function AppRoutes() {
         <Route path="/case-studies/verofax" component={CaseStudyVerofax} />
         <Route path="/case-studies/shivamautozone" component={CaseStudyShivamAutozone} />
         <Route path="/case-studies/crystalgroup" component={CaseStudyCrystalGroup} />
+        <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/web-design" component={WebDesign} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
