@@ -26,9 +26,9 @@ export default async function handler(req: any, res: any) {
       hasHoneypotValue: Boolean(fax_number),
     });
 
-    if (fax_number) {
-      log('honeypot_hit');
-      return res.status(200).json({ success: true });
+    const honeypotHit = Boolean(fax_number);
+    if (honeypotHit) {
+      log('honeypot_hit_continue');
     }
 
     const startedAt = typeof form_started_at === 'number' ? form_started_at : Number(form_started_at);
@@ -82,13 +82,14 @@ export default async function handler(req: any, res: any) {
     const mailOptions = {
       from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@webadish.com',
       to: 'support@webadish.com',
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `${honeypotHit ? '[Flagged] ' : ''}New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
         ${service ? `<p><strong>Service Needed:</strong> ${escapeHtml(service)}</p>` : ''}
+        ${honeypotHit ? `<p><strong>Honeypot Flag:</strong> Hidden field had a value</p>` : ''}
         <p><strong>Message:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
         <hr>
