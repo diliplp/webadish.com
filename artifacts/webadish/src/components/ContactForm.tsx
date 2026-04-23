@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -41,7 +41,15 @@ export default function ContactForm({
 }: ContactFormProps) {
   const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
   const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
-  const initialService = defaultService && services.includes(defaultService) ? defaultService : services[0];
+  // useMemo so initialService stays stable even if parent re-renders with same props
+  const initialService = useMemo(
+    () => (defaultService && services.includes(defaultService) ? defaultService : services[0]),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [], // intentionally computed once at mount
+  );
+  const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
+    turnstileSiteKey ? "idle" : "skipped",
+  );
 
   const [form, setForm] = useState({
     name: "",
@@ -292,7 +300,16 @@ export default function ContactForm({
         siteKey={turnstileSiteKey}
         theme="light"
         onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
+        onStatusChange={setTurnstileStatus}
       />
+      {turnstileStatus === "error" && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-3">
+          <p className="text-xs text-amber-800">
+            Security check failed to load. You can still submit, or reach us on{" "}
+            <a href="https://wa.me/919998757045" className="underline font-medium">WhatsApp</a>.
+          </p>
+        </div>
+      )}
       {error && (
         <div
           ref={feedbackRef}

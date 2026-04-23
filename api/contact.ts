@@ -45,9 +45,9 @@ export default async function handler(req: any, res: any) {
     const returnTo = normalizeReturnTo(return_to);
 
     log('received', {
-      email: typeof email === 'string' ? email.slice(0, 40) : '',
-      service: typeof service === 'string' ? service : '',
-      hasTurnstileToken: Boolean(turnstile_token),
+      email: (typeof email === 'string' ? email : '').slice(0, 40),
+      service: typeof service === 'string' ? service : '[non-string]',
+      hasTurnstileToken: typeof turnstile_token === 'string' && turnstile_token.length > 0,
       hasFormStartedAt: Boolean(form_started_at),
     });
 
@@ -60,17 +60,27 @@ export default async function handler(req: any, res: any) {
     // --- TIMING: bots fill forms in milliseconds ---
     const startedAt = typeof form_started_at === 'number' ? form_started_at : Number(form_started_at);
     const now = Date.now();
-    if (startedAt && now - startedAt < MIN_FORM_FILL_MS) {
-      log('timing_too_fast_dropped', { elapsed: now - startedAt });
-      return silentDrop(res, acceptsHtml, returnTo);
-    }
-    if (startedAt && now - startedAt > MAX_FORM_AGE_MS) {
-      log('timing_too_old_dropped', { elapsed: now - startedAt });
-      return silentDrop(res, acceptsHtml, returnTo);
+    // Use Number.isFinite to correctly reject 0, NaN, Infinity — not just falsy
+    if (Number.isFinite(startedAt) && startedAt > 0) {
+      if (now - startedAt < MIN_FORM_FILL_MS) {
+        log('timing_too_fast_dropped', { elapsed: now - startedAt });
+        return silentDrop(res, acceptsHtml, returnTo);
+      }
+      if (now - startedAt > MAX_FORM_AGE_MS) {
+        log('timing_too_old_dropped', { elapsed: now - startedAt });
+        return silentDrop(res, acceptsHtml, returnTo);
+      }
     }
 
+    // --- TYPE SAFETY: coerce body fields to strings before any checks ---
+    const nameStr = typeof name === 'string' ? name.trim() : '';
+    const emailStr = typeof email === 'string' ? email.trim() : '';
+    const phoneStr = typeof phone === 'string' ? phone.trim() : '';
+    const messageStr = typeof message === 'string' ? message.trim() : '';
+    const serviceStr = typeof service === 'string' ? service.trim() : '';
+
     // --- REQUIRED FIELDS ---
-    if (!name || !email || !message) {
+    if (!nameStr || !emailStr || !messageStr) {
       log('validation_failed_missing_fields');
       if (acceptsHtml) {
         return respondHtml(res, 400, 'error', requestId, 'Please fill name, email, and message.', returnTo);
@@ -79,46 +89,50 @@ export default async function handler(req: any, res: any) {
     }
 
     // --- DISPOSABLE EMAIL ---
-    const emailDomain = typeof email === 'string' ? email.split('@').pop()?.toLowerCase() : '';
+    const emailDomain = emailStr.split('@').pop()?.toLowerCase() ?? '';
     if (emailDomain && DISPOSABLE_DOMAINS.has(emailDomain)) {
       log('disposable_email_dropped', { domain: emailDomain });
       return silentDrop(res, acceptsHtml, returnTo);
     }
 
     // --- SPAM KEYWORD DETECTION ---
-    const textToScan = `${name} ${message}`;
+    const textToScan = `${nameStr} ${messageStr}`;
     if (SPAM_PATTERNS.some(p => p.test(textToScan))) {
       log('spam_pattern_dropped');
       return silentDrop(res, acceptsHtml, returnTo);
     }
 
     // --- FIELD QUALITY: return friendly errors (real users can see and fix these) ---
-    if (!looksLikeRealName(name as string)) {
+    if (!looksLikeRealName(nameStr)) {
       const err = 'Please enter your real full name.';
       if (acceptsHtml) return respondHtml(res, 400, 'error', requestId, err, returnTo);
       return res.status(400).json({ error: err });
     }
-    if (!looksLikeRealPhone(phone || '')) {
+    if (!looksLikeRealPhone(phoneStr)) {
       const err = 'Please enter a valid phone number, or leave it blank.';
       if (acceptsHtml) return respondHtml(res, 400, 'error', requestId, err, returnTo);
       return res.status(400).json({ error: err });
     }
-    if (!looksLikeRealMessage(message as string)) {
+    if (!looksLikeRealMessage(messageStr)) {
       const err = 'Please describe your request in more detail (at least a few words, no special characters only).';
       if (acceptsHtml) return respondHtml(res, 400, 'error', requestId, err, returnTo);
       return res.status(400).json({ error: err });
     }
 
-    // --- TURNSTILE: silent drop if token present and invalid ---
-    if (process.env.TURNSTILE_SECRET_KEY && turnstile_token) {
-      const isTurnstileValid = await verifyTurnstileToken(turnstile_token, req);
+    // --- TURNSTILE: require token when secret key is configured ---
+    const turnstileTokenStr = typeof turnstile_token === 'string' ? turnstile_token : '';
+    if (process.env.TURNSTILE_SECRET_KEY) {
+      if (!turnstileTokenStr) {
+        // Token missing entirely — silent drop (bot or JS-disabled scraper)
+        log('turnstile_missing_dropped');
+        return silentDrop(res, acceptsHtml, returnTo);
+      }
+      const isTurnstileValid = await verifyTurnstileToken(turnstileTokenStr, req);
       if (!isTurnstileValid) {
         log('turnstile_failed_dropped');
         return silentDrop(res, acceptsHtml, returnTo);
       }
       log('turnstile_passed');
-    } else if (process.env.TURNSTILE_SECRET_KEY) {
-      log('turnstile_missing_continue');
     }
 
     // --- EMAIL PROVIDER ---
@@ -149,19 +163,19 @@ export default async function handler(req: any, res: any) {
 
     const supportMail = {
       to: 'support@webadish.com',
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `New Contact Form Submission from ${nameStr}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
-        ${service ? `<p><strong>Service Needed:</strong> ${escapeHtml(service)}</p>` : ''}
+        <p><strong>Name:</strong> ${escapeHtml(nameStr)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(emailStr)}</p>
+        ${phoneStr ? `<p><strong>Phone:</strong> ${escapeHtml(phoneStr)}</p>` : ''}
+        ${serviceStr ? `<p><strong>Service Needed:</strong> ${escapeHtml(serviceStr)}</p>` : ''}
         <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtml(messageStr).replace(/\n/g, '<br>')}</p>
         <hr>
         <p><small>Received at: ${new Date().toISOString()} | Ref: ${escapeHtml(requestId)}</small></p>
       `,
-      replyTo: email,
+      replyTo: emailStr,
     };
 
     log('sending_support_email');
@@ -169,11 +183,11 @@ export default async function handler(req: any, res: any) {
     log('support_email_sent', supportResult);
 
     const confirmationMail = {
-      to: email,
+      to: emailStr,
       subject: 'We received your message - WebAdish',
       html: `
         <h2>Thank you for contacting WebAdish!</h2>
-        <p>Hi ${escapeHtml(name)},</p>
+        <p>Hi ${escapeHtml(nameStr)},</p>
         <p>We've received your message and our team will get back to you within 4 business hours.</p>
         <p>For urgent issues (site hacked), please call us directly at <strong>+91 999 875 7045</strong>.</p>
         <p>Best regards,<br>WebAdish Team</p>
