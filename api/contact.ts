@@ -4,50 +4,64 @@ const MIN_FORM_FILL_MS = 3000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
 
 export default async function handler(req: any, res: any) {
+  const requestId = buildRequestId(req);
+  res.setHeader('x-contact-request-id', requestId);
+
+  const log = (stage: string, details?: Record<string, unknown>) => {
+    console.log(`[contact:${requestId}] ${stage}`, details || {});
+  };
+
   try {
     if (req.method !== 'POST') {
+      log('rejected_method', { method: req.method });
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
     const { name, email, phone, service, message, fax_number, form_started_at, turnstile_token } = req.body || {};
 
-    console.log('📧 Contact form received:', { name, email, service });
+    log('received', {
+      email: typeof email === 'string' ? email : '',
+      service: typeof service === 'string' ? service : '',
+      hasTurnstileToken: Boolean(turnstile_token),
+      hasHoneypotValue: Boolean(fax_number),
+    });
 
     if (fax_number) {
-      console.warn('Silently dropped contact submission due to honeypot hit');
+      log('honeypot_hit');
       return res.status(200).json({ success: true });
     }
 
     const startedAt = typeof form_started_at === 'number' ? form_started_at : Number(form_started_at);
     const now = Date.now();
     if (!startedAt || now - startedAt < MIN_FORM_FILL_MS || now - startedAt > MAX_FORM_AGE_MS) {
-      console.warn('Contact submission timing looks unusual; continuing', { email, service });
+      log('timing_unusual_continue', { startedAt });
     }
 
     // Validate required fields
     if (!name || !email || !message) {
-      console.log('❌ Validation failed - missing fields');
+      log('validation_failed_missing_fields');
       return res.status(400).json({ error: 'Missing required fields: name, email, message' });
     }
 
     if (!looksLikeRealName(name) || !looksLikeRealMessage(message) || !looksLikeRealPhone(phone || '')) {
-      console.warn('Contact submission appears low-quality; continuing for manual review', { email, service });
+      log('quality_flagged_continue');
     }
 
     if (process.env.TURNSTILE_SECRET_KEY && turnstile_token) {
       const isTurnstileValid = await verifyTurnstileToken(turnstile_token, req);
       if (!isTurnstileValid) {
-        console.warn('Silently dropped contact submission due to Turnstile failure', { email, service });
+        log('turnstile_failed');
         return res.status(200).json({ success: true });
       }
+      log('turnstile_passed');
     } else if (process.env.TURNSTILE_SECRET_KEY) {
-      console.warn('Proceeding without Turnstile token; relying on honeypot, timing, and content checks', { email, service });
+      log('turnstile_missing_continue');
     }
 
     // Check environment variables
     if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
-      console.error('❌ Missing SMTP credentials in environment variables');
-      return res.status(500).json({ error: 'Email service not configured. Please contact admin.' });
+      log('smtp_missing_credentials');
+      return res.status(500).json({ error: 'Email service not configured. Please contact admin.', request_id: requestId });
     }
 
     // Create transporter for Hostinger SMTP
@@ -59,12 +73,10 @@ export default async function handler(req: any, res: any) {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
       },
+      connectionTimeout: 12000,
+      greetingTimeout: 12000,
+      socketTimeout: 20000,
     });
-
-    // Test connection
-    console.log('🔌 Testing SMTP connection...');
-    await transporter.verify();
-    console.log('✅ SMTP connection verified');
 
     // Email to support
     const mailOptions = {
@@ -85,13 +97,13 @@ export default async function handler(req: any, res: any) {
       replyTo: email,
     };
 
-    // Send email to support
-    console.log('📤 Sending email to support@webadish.com...');
+    // Send email to support (required path)
+    log('sending_support_email');
     const supportResult = await transporter.sendMail(mailOptions);
-    console.log('✅ Support email sent:', supportResult.messageId);
+    log('support_email_sent', { messageId: supportResult.messageId });
 
     // Send confirmation email to user
-    console.log(`📤 Sending confirmation email to ${email}...`);
+    log('sending_confirmation_email');
     const confirmationEmail = {
       from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@webadish.com',
       to: email,
@@ -105,17 +117,28 @@ export default async function handler(req: any, res: any) {
       `,
     };
 
-    const confirmResult = await transporter.sendMail(confirmationEmail);
-    console.log('✅ Confirmation email sent:', confirmResult.messageId);
+    try {
+      const confirmResult = await transporter.sendMail(confirmationEmail);
+      log('confirmation_email_sent', { messageId: confirmResult.messageId });
+    } catch (confirmationError) {
+      const errorMsg = confirmationError instanceof Error ? confirmationError.message : String(confirmationError);
+      log('confirmation_email_failed_continue', { error: errorMsg });
+    }
 
-    console.log('✨ Contact form processed successfully');
-    res.status(200).json({ success: true, message: 'Email sent successfully' });
+    log('completed_success');
+    res.status(200).json({ success: true, message: 'Email sent successfully', request_id: requestId });
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : String(error);
-    console.error('❌ Email error:', errorMsg);
-    console.error('Full error:', error);
-    res.status(500).json({ error: `Failed to send email: ${errorMsg}` });
+    console.error(`[contact:${requestId}] failed`, errorMsg);
+    console.error(error);
+    res.status(500).json({ error: 'Failed to send message. Please try again in a minute.', request_id: requestId });
   }
+}
+
+function buildRequestId(req: any): string {
+  const vercelId = typeof req?.headers?.['x-vercel-id'] === 'string' ? req.headers['x-vercel-id'] : '';
+  if (vercelId) return `vr_${vercelId.replace(/[^a-zA-Z0-9:_-]/g, '').slice(0, 80)}`;
+  return `rq_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
 }
 
 function escapeHtml(text: string): string {
