@@ -43,6 +43,7 @@ export default function ContactForm({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [requestId, setRequestId] = useState("");
   const hasTrackedStart = useRef(false);
 
   const trackFormStart = () => {
@@ -55,6 +56,7 @@ export default function ContactForm({
     e.preventDefault();
     setLoading(true);
     setError("");
+    setRequestId("");
     trackFormStart();
 
     try {
@@ -64,12 +66,14 @@ export default function ContactForm({
         body: JSON.stringify(form),
       });
 
+      const responseRequestId = response.headers.get("x-contact-request-id") || "";
+      const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || "Failed to send message");
+        const errorText = typeof data?.error === "string" ? data.error : "Failed to send message";
+        throw new Error(responseRequestId ? `${errorText} (Ref: ${responseRequestId})` : errorText);
       }
 
-      await response.json();
+      if (responseRequestId) setRequestId(responseRequestId);
       trackEvent("form_submit_success", {
         form_name: formName,
         service: form.service || "unspecified",
@@ -221,6 +225,12 @@ export default function ContactForm({
       <p className="text-xs text-muted-foreground text-center">
         We respond within 4 business hours. No spam, no hard sell.
       </p>
+      {requestId && (
+        <p className="text-xs text-muted-foreground text-center">Reference: {requestId}</p>
+      )}
+      {error && (
+        <p className="text-xs text-red-600 text-center">Submission failed: {error}</p>
+      )}
     </form>
   );
 }
