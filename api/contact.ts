@@ -6,6 +6,7 @@ const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
 export default async function handler(req: any, res: any) {
   const requestId = buildRequestId(req);
   res.setHeader('x-contact-request-id', requestId);
+  const acceptsHtml = typeof req?.headers?.accept === 'string' && req.headers.accept.includes('text/html');
 
   const log = (stage: string, details?: Record<string, unknown>) => {
     console.log(`[contact:${requestId}] ${stage}`, details || {});
@@ -14,10 +15,14 @@ export default async function handler(req: any, res: any) {
   try {
     if (req.method !== 'POST') {
       log('rejected_method', { method: req.method });
+      if (acceptsHtml) {
+        return respondHtml(res, 405, 'Contact form method not allowed', requestId);
+      }
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { name, email, phone, service, message, fax_number, form_started_at, turnstile_token } = req.body || {};
+    const body = normalizeBody(req);
+    const { name, email, phone, service, message, fax_number, form_started_at, turnstile_token } = body;
 
     log('received', {
       email: typeof email === 'string' ? email : '',
@@ -40,6 +45,9 @@ export default async function handler(req: any, res: any) {
     // Validate required fields
     if (!name || !email || !message) {
       log('validation_failed_missing_fields');
+      if (acceptsHtml) {
+        return respondHtml(res, 400, 'Please fill name, email, and message before submitting.', requestId);
+      }
       return res.status(400).json({ error: 'Missing required fields: name, email, message' });
     }
 
@@ -61,6 +69,9 @@ export default async function handler(req: any, res: any) {
     // Check environment variables
     if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
       log('smtp_missing_credentials');
+      if (acceptsHtml) {
+        return respondHtml(res, 500, 'Email service is temporarily unavailable. Please call +91 9998757045.', requestId);
+      }
       return res.status(500).json({ error: 'Email service not configured. Please contact admin.', request_id: requestId });
     }
 
@@ -127,11 +138,17 @@ export default async function handler(req: any, res: any) {
     }
 
     log('completed_success');
+    if (acceptsHtml) {
+      return respondHtml(res, 200, 'Thanks. Your request was submitted successfully. We will reply within 4 business hours.', requestId);
+    }
     res.status(200).json({ success: true, message: 'Email sent successfully', request_id: requestId });
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : String(error);
     console.error(`[contact:${requestId}] failed`, errorMsg);
     console.error(error);
+    if (acceptsHtml) {
+      return respondHtml(res, 500, 'We could not submit your request just now. Please call +91 9998757045.', requestId);
+    }
     res.status(500).json({ error: 'Failed to send message. Please try again in a minute.', request_id: requestId });
   }
 }
@@ -140,6 +157,33 @@ function buildRequestId(req: any): string {
   const vercelId = typeof req?.headers?.['x-vercel-id'] === 'string' ? req.headers['x-vercel-id'] : '';
   if (vercelId) return `vr_${vercelId.replace(/[^a-zA-Z0-9:_-]/g, '').slice(0, 80)}`;
   return `rq_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function normalizeBody(req: any): Record<string, any> {
+  const body = req?.body;
+  if (body && typeof body === 'object' && !Array.isArray(body)) {
+    return body;
+  }
+  if (typeof body === 'string') {
+    const trimmed = body.trim();
+    if (!trimmed) return {};
+    try {
+      return JSON.parse(trimmed);
+    } catch {
+      const params = new URLSearchParams(trimmed);
+      return Object.fromEntries(params.entries());
+    }
+  }
+  return {};
+}
+
+function respondHtml(res: any, status: number, message: string, requestId: string) {
+  const escapedMessage = escapeHtml(message);
+  const escapedRequestId = escapeHtml(requestId);
+  return res
+    .status(status)
+    .setHeader('Content-Type', 'text/html; charset=utf-8')
+    .send(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact Submission</title></head><body style="font-family:Arial,sans-serif;padding:24px;max-width:680px;margin:0 auto;"><h2>Contact Submission</h2><p>${escapedMessage}</p><p style="font-size:13px;color:#555;">Reference: ${escapedRequestId}</p><p><a href="/contact">Back to contact page</a></p></body></html>`);
 }
 
 function escapeHtml(text: string): string {

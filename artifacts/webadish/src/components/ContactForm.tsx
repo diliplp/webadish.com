@@ -122,13 +122,14 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label className="block text-sm font-medium mb-2">Full Name *</label>
           <input
             required
             type="text"
+            name="name"
             placeholder="Rahul Sharma"
             value={form.name}
             onFocus={trackFormStart}
@@ -144,6 +145,7 @@ export default function ContactForm({
           <input
             required
             type="email"
+            name="email"
             placeholder="rahul@company.com"
             value={form.email}
             onFocus={trackFormStart}
@@ -157,6 +159,7 @@ export default function ContactForm({
         <label className="block text-sm font-medium mb-2">Phone / WhatsApp</label>
         <input
           type="tel"
+          name="phone"
           placeholder="+91 98765 43210"
           value={form.phone}
           onFocus={trackFormStart}
@@ -168,6 +171,7 @@ export default function ContactForm({
       <div>
         <label className="block text-sm font-medium mb-2">Service Needed</label>
         <select
+          name="service"
           value={form.service}
           onFocus={trackFormStart}
           onChange={(e) => setForm({ ...form, service: e.target.value })}
@@ -185,6 +189,7 @@ export default function ContactForm({
         <textarea
           required
           rows={4}
+          name="message"
           placeholder="Website URL and a brief description of the issue..."
           value={form.message}
           onFocus={trackFormStart}
@@ -196,12 +201,15 @@ export default function ContactForm({
       <div className="hidden" aria-hidden="true">
         <input
           type="text"
+          name="fax_number"
           tabIndex={-1}
           autoComplete="off"
           value={form.fax_number}
           onChange={(e) => setForm({ ...form, fax_number: e.target.value })}
         />
       </div>
+      <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
+      <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
       <TurnstileField
         siteKey={turnstileSiteKey}
         theme="light"

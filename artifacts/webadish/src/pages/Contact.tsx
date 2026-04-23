@@ -154,7 +154,7 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
                   {error && (
                     <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
                       <p className="text-red-600 text-sm">{error}</p>
@@ -163,7 +163,7 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium mb-2">Full Name *</label>
-                      <input required type="text" placeholder="John Smith" value={form.name} onFocus={trackFormStart} onChange={e => setForm({ ...form, name: e.target.value })}
+                      <input required type="text" name="name" placeholder="John Smith" value={form.name} onFocus={trackFormStart} onChange={e => setForm({ ...form, name: e.target.value })}
                         minLength={2}
                         maxLength={80}
                         autoComplete="name"
@@ -171,39 +171,42 @@ export default function Contact() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Email Address *</label>
-                      <input required type="email" placeholder="john@company.com" value={form.email} onFocus={trackFormStart} onChange={e => setForm({ ...form, email: e.target.value })}
+                      <input required type="email" name="email" placeholder="john@company.com" value={form.email} onFocus={trackFormStart} onChange={e => setForm({ ...form, email: e.target.value })}
                         autoComplete="email"
                         className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Phone Number</label>
-                    <input type="tel" placeholder="+1 234 567 8900" value={form.phone} onFocus={trackFormStart} onChange={e => setForm({ ...form, phone: e.target.value })}
+                    <input type="tel" name="phone" placeholder="+1 234 567 8900" value={form.phone} onFocus={trackFormStart} onChange={e => setForm({ ...form, phone: e.target.value })}
                       autoComplete="tel"
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Service Needed</label>
-                    <select value={form.service} onFocus={trackFormStart} onChange={e => setForm({ ...form, service: e.target.value })}
+                    <select name="service" value={form.service} onFocus={trackFormStart} onChange={e => setForm({ ...form, service: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all">
                       {services.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Message *</label>
-                    <textarea required rows={5} placeholder="Website URL, what the site does, what concerns you most, and whether this is urgent..." value={form.message} onFocus={trackFormStart} onChange={e => setForm({ ...form, message: e.target.value })}
+                    <textarea required rows={5} name="message" placeholder="Website URL, what the site does, what concerns you most, and whether this is urgent..." value={form.message} onFocus={trackFormStart} onChange={e => setForm({ ...form, message: e.target.value })}
                       minLength={12}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none" />
                   </div>
                   <div className="hidden" aria-hidden="true">
                     <input
                       type="text"
+                      name="fax_number"
                       tabIndex={-1}
                       autoComplete="off"
                       value={form.fax_number}
                       onChange={e => setForm({ ...form, fax_number: e.target.value })}
                     />
                   </div>
+                  <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
+                  <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
                   <TurnstileField
                     siteKey={turnstileSiteKey}
                     theme="light"
