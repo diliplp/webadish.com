@@ -1,4 +1,4 @@
-import { Phone, Mail, Clock, MapPin, CheckCircle2, ArrowRight, Ambulance } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, CheckCircle2, ArrowRight, Ambulance, Loader2 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
@@ -38,6 +38,7 @@ export default function Contact() {
   const [error, setError] = useState("");
   const [requestId, setRequestId] = useState("");
   const hasTrackedStart = useRef(false);
+  const isSubmittingRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -77,11 +78,8 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const shouldRequireTurnstile = Boolean(turnstileSiteKey) && turnstileStatus !== "error" && turnstileStatus !== "skipped";
-    if (shouldRequireTurnstile && !form.turnstile_token) {
-      setError("Please complete the security check and try again.");
-      return;
-    }
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setLoading(true);
     setError("");
     setRequestId("");
@@ -131,6 +129,7 @@ export default function Contact() {
       });
     } finally {
       setLoading(false);
+      isSubmittingRef.current = false;
     }
   };
 
@@ -184,7 +183,7 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {error && (
                     <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
                       <p className="text-red-600 text-sm">{error}</p>
@@ -235,9 +234,6 @@ export default function Contact() {
                       onChange={e => setForm({ ...form, fax_number: e.target.value })}
                     />
                   </div>
-                  <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
-                  <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
-                  <input type="hidden" name="return_to" value="/contact" />
                   <TurnstileField
                     siteKey={turnstileSiteKey}
                     theme="light"
@@ -263,7 +259,11 @@ export default function Contact() {
                     className="w-full text-base"
                     disabled={loading}
                   >
-                    {loading ? 'Sending...' : 'Request Free Security Audit'} {!loading && <ArrowRight size={18} className="ml-2" />}
+                    {loading ? (
+                      <><Loader2 size={18} className="mr-2 animate-spin" />Sending...</>
+                    ) : (
+                      <>Request Free Security Audit <ArrowRight size={18} className="ml-2" /></>
+                    )}
                   </Button>
                   <p className="text-xs text-muted-foreground text-center">We respond to all enquiries within 4 business hours. Emergency hacked-site cases are prioritised.</p>
                   {requestId && (
