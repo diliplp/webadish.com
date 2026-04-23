@@ -1,8 +1,28 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, Component, ReactNode } from "react";
 import { Switch, Route } from "wouter";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
 import AppShell from "@/AppShell";
+
+class RouteErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: "2rem", textAlign: "center" }}>
+          <p>Something went wrong loading this page. <a href={window.location.pathname} style={{ textDecoration: "underline" }}>Click here to reload.</a></p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 const Maintenance = lazy(() => import("@/pages/Maintenance"));
 const Security = lazy(() => import("@/pages/Security"));
@@ -72,7 +92,9 @@ type AppProps = {
 function App({ ssrPath }: AppProps) {
   return (
     <AppShell ssrPath={ssrPath}>
-      <AppRoutes />
+      <RouteErrorBoundary>
+        <AppRoutes />
+      </RouteErrorBoundary>
     </AppShell>
   );
 }
