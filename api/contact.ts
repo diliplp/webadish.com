@@ -1,4 +1,3 @@
-import nodemailer from 'nodemailer';
 
 const MIN_FORM_FILL_MS = 3000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
@@ -132,33 +131,16 @@ export default async function handler(req: any, res: any) {
       log('turnstile_missing_continue');
     }
 
-    // --- EMAIL PROVIDER ---
-    const hasSmtp = Boolean(process.env.SMTP_USER && process.env.SMTP_PASSWORD);
-    const hasResend = Boolean(process.env.RESEND_API_KEY);
-    if (!hasSmtp && !hasResend) {
-      log('email_provider_missing');
+    // --- EMAIL (Resend only) ---
+    if (!process.env.RESEND_API_KEY) {
+      log('resend_key_missing');
       if (acceptsHtml) {
         return respondHtml(res, 500, 'error', requestId, 'Email service is temporarily unavailable. Please call +91 9998757045.', returnTo);
       }
-      return res.status(500).json({ error: 'Email service not configured. Please contact admin.', request_id: requestId });
+      return res.status(500).json({ error: 'Email service not configured.', request_id: requestId });
     }
 
-    const transporter = hasSmtp
-      ? nodemailer.createTransport({
-          host: process.env.SMTP_HOST || 'smtp.hostinger.com',
-          port: parseInt(process.env.SMTP_PORT || '465'),
-          secure: true,
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASSWORD,
-          },
-          connectionTimeout: 12000,
-          greetingTimeout: 12000,
-          socketTimeout: 20000,
-        })
-      : null;
-
-    const supportMail = {
+    const supportMail: OutboundMail = {
       to: 'support@webadish.com',
       subject: `New Contact Form Submission from ${nameStr}`,
       html: `
@@ -176,10 +158,10 @@ export default async function handler(req: any, res: any) {
     };
 
     log('sending_support_email');
-    const supportResult = await sendWithFallback(supportMail, transporter, hasResend, requestId, log, true);
-    log('support_email_sent', supportResult);
+    const supportResult = await sendViaResend(supportMail, requestId);
+    log('support_email_sent', { messageId: supportResult.id });
 
-    const confirmationMail = {
+    const confirmationMail: OutboundMail = {
       to: emailStr,
       subject: 'We received your message - WebAdish',
       html: `
@@ -192,8 +174,8 @@ export default async function handler(req: any, res: any) {
     };
 
     try {
-      const confirmResult = await sendWithFallback(confirmationMail, transporter, hasResend, requestId, log, false);
-      if (confirmResult) log('confirmation_email_sent', confirmResult);
+      const confirmResult = await sendViaResend(confirmationMail, requestId);
+      log('confirmation_email_sent', { messageId: confirmResult.id });
     } catch (confirmationError) {
       log('confirmation_email_failed_continue', {
         error: confirmationError instanceof Error ? confirmationError.message : String(confirmationError),
@@ -284,48 +266,6 @@ type OutboundMail = {
   replyTo?: string;
 };
 
-async function sendWithFallback(
-  mail: OutboundMail,
-  transporter: nodemailer.Transporter | null,
-  hasResend: boolean,
-  requestId: string,
-  log: (stage: string, details?: Record<string, unknown>) => void,
-  required: boolean,
-) {
-  let lastError: unknown = null;
-
-  if (transporter) {
-    try {
-      const smtpResult = await transporter.sendMail({
-        from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@webadish.com',
-        to: mail.to,
-        subject: mail.subject,
-        html: mail.html,
-        replyTo: mail.replyTo,
-      });
-      return { provider: 'smtp', messageId: smtpResult.messageId };
-    } catch (error) {
-      log('smtp_send_failed', { error: error instanceof Error ? error.message : String(error), to: mail.to });
-      lastError = error;
-    }
-  }
-
-  if (hasResend) {
-    try {
-      const resendResult = await sendViaResend(mail, requestId);
-      return { provider: 'resend', messageId: resendResult.id };
-    } catch (error) {
-      log('resend_send_failed', { error: error instanceof Error ? error.message : String(error), to: mail.to });
-      lastError = error;
-    }
-  }
-
-  if (required) {
-    throw lastError instanceof Error ? lastError : new Error('No email provider available');
-  }
-
-  return null;
-}
 
 async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ id: string }> {
   const apiKey = process.env.RESEND_API_KEY;

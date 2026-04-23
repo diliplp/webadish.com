@@ -5,7 +5,8 @@
   "outputDirectory": "artifacts/webadish/dist",
   "env": {
     "NODE_ENV": "production",
-    "BASE_PATH": "/"
+    "BASE_PATH": "/",
+    "VITE_TURNSTILE_ENABLED": "true"
   },
   "headers": [
     {
