@@ -18,7 +18,8 @@ const services = [
 ];
 
 export default function Contact() {
-  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
+  const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
+  const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
   const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
     turnstileSiteKey ? "idle" : "skipped",
   );

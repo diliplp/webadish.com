@@ -28,7 +28,8 @@ export default function ContactForm({
   submitLabel = "Request Free Site Assessment",
   successMessage = "We'll review your site and reply within a few hours.",
 }: ContactFormProps) {
-  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
+  const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
+  const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
   const [form, setForm] = useState({
     name: "",
     email: "",
