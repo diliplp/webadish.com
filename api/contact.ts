@@ -16,13 +16,14 @@ export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
       log('rejected_method', { method: req.method });
       if (acceptsHtml) {
-        return respondHtml(res, 405, 'Contact form method not allowed', requestId);
+        return respondRedirect(res, '/contact', 'error', requestId, 'Contact form method not allowed.');
       }
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
     const body = normalizeBody(req);
-    const { name, email, phone, service, message, fax_number, form_started_at, turnstile_token } = body;
+    const { name, email, phone, service, message, fax_number, form_started_at, turnstile_token, return_to } = body;
+    const returnTo = normalizeReturnTo(return_to);
 
     log('received', {
       email: typeof email === 'string' ? email : '',
@@ -46,7 +47,7 @@ export default async function handler(req: any, res: any) {
     if (!name || !email || !message) {
       log('validation_failed_missing_fields');
       if (acceptsHtml) {
-        return respondHtml(res, 400, 'Please fill name, email, and message before submitting.', requestId);
+        return respondRedirect(res, returnTo, 'error', requestId, 'Please fill name, email, and message.');
       }
       return res.status(400).json({ error: 'Missing required fields: name, email, message' });
     }
@@ -70,7 +71,7 @@ export default async function handler(req: any, res: any) {
     if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
       log('smtp_missing_credentials');
       if (acceptsHtml) {
-        return respondHtml(res, 500, 'Email service is temporarily unavailable. Please call +91 9998757045.', requestId);
+        return respondRedirect(res, returnTo, 'error', requestId, 'Email service is temporarily unavailable. Please call +91 9998757045.');
       }
       return res.status(500).json({ error: 'Email service not configured. Please contact admin.', request_id: requestId });
     }
@@ -139,7 +140,7 @@ export default async function handler(req: any, res: any) {
 
     log('completed_success');
     if (acceptsHtml) {
-      return respondHtml(res, 200, 'Thanks. Your request was submitted successfully. We will reply within 4 business hours.', requestId);
+      return respondRedirect(res, returnTo, 'success', requestId, 'Thanks. Your request was submitted successfully. We will reply within 4 business hours.');
     }
     res.status(200).json({ success: true, message: 'Email sent successfully', request_id: requestId });
   } catch (error) {
@@ -147,7 +148,8 @@ export default async function handler(req: any, res: any) {
     console.error(`[contact:${requestId}] failed`, errorMsg);
     console.error(error);
     if (acceptsHtml) {
-      return respondHtml(res, 500, 'We could not submit your request just now. Please call +91 9998757045.', requestId);
+      const fallbackReturnTo = normalizeReturnTo(normalizeBody(req).return_to);
+      return respondRedirect(res, fallbackReturnTo, 'error', requestId, 'We could not submit your request just now. Please call +91 9998757045.');
     }
     res.status(500).json({ error: 'Failed to send message. Please try again in a minute.', request_id: requestId });
   }
@@ -177,13 +179,30 @@ function normalizeBody(req: any): Record<string, any> {
   return {};
 }
 
-function respondHtml(res: any, status: number, message: string, requestId: string) {
-  const escapedMessage = escapeHtml(message);
-  const escapedRequestId = escapeHtml(requestId);
+function normalizeReturnTo(value: unknown): string {
+  if (typeof value !== 'string') return '/contact';
+  const trimmed = value.trim();
+  if (!trimmed || !trimmed.startsWith('/') || trimmed.startsWith('//')) return '/contact';
+  if (trimmed.includes('\n') || trimmed.includes('\r')) return '/contact';
+  return trimmed;
+}
+
+function respondRedirect(
+  res: any,
+  returnTo: string,
+  status: 'success' | 'error',
+  requestId: string,
+  message: string,
+) {
+  const url = new URL(returnTo, 'https://www.webadish.com');
+  url.searchParams.set('contact_status', status);
+  url.searchParams.set('contact_ref', requestId);
+  url.searchParams.set('contact_msg', message);
+  const location = `${url.pathname}${url.search}${url.hash}`;
   return res
-    .status(status)
-    .setHeader('Content-Type', 'text/html; charset=utf-8')
-    .send(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact Submission</title></head><body style="font-family:Arial,sans-serif;padding:24px;max-width:680px;margin:0 auto;"><h2>Contact Submission</h2><p>${escapedMessage}</p><p style="font-size:13px;color:#555;">Reference: ${escapedRequestId}</p><p><a href="/contact">Back to contact page</a></p></body></html>`);
+    .status(303)
+    .setHeader('Location', location)
+    .send('');
 }
 
 function escapeHtml(text: string): string {

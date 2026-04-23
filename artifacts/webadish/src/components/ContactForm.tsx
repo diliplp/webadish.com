@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -45,6 +45,33 @@ export default function ContactForm({
   const [error, setError] = useState("");
   const [requestId, setRequestId] = useState("");
   const hasTrackedStart = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("contact_status");
+    const ref = params.get("contact_ref") || "";
+    const msg = params.get("contact_msg") || "";
+
+    if (status === "success") {
+      setSubmitted(true);
+      setError("");
+      if (ref) setRequestId(ref);
+    } else if (status === "error") {
+      setSubmitted(false);
+      setError(msg || "We could not submit your request. Please try again.");
+      if (ref) setRequestId(ref);
+    }
+
+    if (status) {
+      params.delete("contact_status");
+      params.delete("contact_ref");
+      params.delete("contact_msg");
+      const nextQuery = params.toString();
+      const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
+      window.history.replaceState({}, "", nextUrl);
+    }
+  }, []);
 
   const trackFormStart = () => {
     if (hasTrackedStart.current) return;
@@ -111,6 +138,9 @@ export default function ContactForm({
         <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
         <h3 className="text-xl font-bold mb-2">Request Sent</h3>
         <p className="text-muted-foreground">{successMessage}</p>
+        {requestId && (
+          <p className="mt-3 text-xs text-muted-foreground">Reference: {requestId}</p>
+        )}
         <button
           onClick={() => setSubmitted(false)}
           className="mt-6 text-accent hover:underline text-sm font-medium"
@@ -210,6 +240,7 @@ export default function ContactForm({
       </div>
       <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
       <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
+      <input type="hidden" name="return_to" value={pagePath || "/contact"} />
       <TurnstileField
         siteKey={turnstileSiteKey}
         theme="light"
