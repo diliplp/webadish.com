@@ -59,40 +59,42 @@ export default async function handler(req: any, res: any) {
     if (process.env.TURNSTILE_SECRET_KEY && turnstile_token) {
       const isTurnstileValid = await verifyTurnstileToken(turnstile_token, req);
       if (!isTurnstileValid) {
-        log('turnstile_failed');
-        return res.status(200).json({ success: true });
+        log('turnstile_failed_continue');
       }
-      log('turnstile_passed');
+      if (isTurnstileValid) {
+        log('turnstile_passed');
+      }
     } else if (process.env.TURNSTILE_SECRET_KEY) {
       log('turnstile_missing_continue');
     }
 
-    // Check environment variables
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
-      log('smtp_missing_credentials');
+    const hasSmtp = Boolean(process.env.SMTP_USER && process.env.SMTP_PASSWORD);
+    const hasResend = Boolean(process.env.RESEND_API_KEY);
+    if (!hasSmtp && !hasResend) {
+      log('email_provider_missing');
       if (acceptsHtml) {
         return respondRedirect(res, returnTo, 'error', requestId, 'Email service is temporarily unavailable. Please call +91 9998757045.');
       }
       return res.status(500).json({ error: 'Email service not configured. Please contact admin.', request_id: requestId });
     }
 
-    // Create transporter for Hostinger SMTP
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.hostinger.com',
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-      connectionTimeout: 12000,
-      greetingTimeout: 12000,
-      socketTimeout: 20000,
-    });
+    const transporter = hasSmtp
+      ? nodemailer.createTransport({
+          host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+          port: parseInt(process.env.SMTP_PORT || '465'),
+          secure: true,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASSWORD,
+          },
+          connectionTimeout: 12000,
+          greetingTimeout: 12000,
+          socketTimeout: 20000,
+        })
+      : null;
 
     // Email to support
-    const mailOptions = {
-      from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@webadish.com',
+    const supportMail = {
       to: 'support@webadish.com',
       subject: `${honeypotHit ? '[Flagged] ' : ''}New Contact Form Submission from ${name}`,
       html: `
@@ -110,15 +112,20 @@ export default async function handler(req: any, res: any) {
       replyTo: email,
     };
 
-    // Send email to support (required path)
     log('sending_support_email');
-    const supportResult = await transporter.sendMail(mailOptions);
-    log('support_email_sent', { messageId: supportResult.messageId });
+    const supportResult = await sendWithFallback(
+      supportMail,
+      transporter,
+      hasResend,
+      requestId,
+      log,
+      true,
+    );
+    log('support_email_sent', supportResult);
 
     // Send confirmation email to user
     log('sending_confirmation_email');
-    const confirmationEmail = {
-      from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@webadish.com',
+    const confirmationMail = {
       to: email,
       subject: 'We received your message - WebAdish',
       html: `
@@ -131,8 +138,17 @@ export default async function handler(req: any, res: any) {
     };
 
     try {
-      const confirmResult = await transporter.sendMail(confirmationEmail);
-      log('confirmation_email_sent', { messageId: confirmResult.messageId });
+      const confirmResult = await sendWithFallback(
+        confirmationMail,
+        transporter,
+        hasResend,
+        requestId,
+        log,
+        false,
+      );
+      if (confirmResult) {
+        log('confirmation_email_sent', confirmResult);
+      }
     } catch (confirmationError) {
       const errorMsg = confirmationError instanceof Error ? confirmationError.message : String(confirmationError);
       log('confirmation_email_failed_continue', { error: errorMsg });
@@ -203,6 +219,92 @@ function respondRedirect(
     .status(303)
     .setHeader('Location', location)
     .send('');
+}
+
+type OutboundMail = {
+  to: string;
+  subject: string;
+  html: string;
+  replyTo?: string;
+};
+
+async function sendWithFallback(
+  mail: OutboundMail,
+  transporter: nodemailer.Transporter | null,
+  hasResend: boolean,
+  requestId: string,
+  log: (stage: string, details?: Record<string, unknown>) => void,
+  required: boolean,
+) {
+  let lastError: unknown = null;
+
+  if (transporter) {
+    try {
+      const smtpResult = await transporter.sendMail({
+        from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@webadish.com',
+        to: mail.to,
+        subject: mail.subject,
+        html: mail.html,
+        replyTo: mail.replyTo,
+      });
+      return { provider: 'smtp', messageId: smtpResult.messageId };
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      log('smtp_send_failed', { error: errorMsg, to: mail.to });
+      lastError = error;
+    }
+  }
+
+  if (hasResend) {
+    try {
+      const resendResult = await sendViaResend(mail, requestId);
+      return { provider: 'resend', messageId: resendResult.id };
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      log('resend_send_failed', { error: errorMsg, to: mail.to });
+      lastError = error;
+    }
+  }
+
+  if (required) {
+    throw lastError instanceof Error ? lastError : new Error('No email provider available');
+  }
+
+  return null;
+}
+
+async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ id: string }> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) throw new Error('RESEND_API_KEY is missing');
+
+  const from = process.env.RESEND_FROM_EMAIL || process.env.SMTP_FROM_EMAIL || 'noreply@webadish.com';
+  const payload: Record<string, unknown> = {
+    from,
+    to: [mail.to],
+    subject: mail.subject,
+    html: mail.html,
+    tags: [{ name: 'source', value: 'webadish-contact' }, { name: 'request_id', value: requestId.slice(0, 64) }],
+  };
+  if (mail.replyTo) {
+    payload.reply_to = mail.replyTo;
+  }
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const reason = typeof data?.message === 'string' ? data.message : `HTTP ${response.status}`;
+    throw new Error(`Resend failed: ${reason}`);
+  }
+
+  return { id: typeof data?.id === 'string' ? data.id : 'unknown' };
 }
 
 function escapeHtml(text: string): string {

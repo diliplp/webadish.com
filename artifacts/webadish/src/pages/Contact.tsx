@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import ContactForm from "@/components/ContactForm";
 
 const services = [
+  "Free Security Audit",
   "Protection Plan",
   "WordPress Security",
   "Hacked Site Recovery (Emergency)",
@@ -52,7 +53,7 @@ export default function Contact() {
               <ContactForm
                 formName="global_contact"
                 pagePath="/contact"
-                defaultService="Free Security Score"
+                defaultService="Free Security Audit"
                 submitLabel="Request Free Security Audit"
                 successMessage="We will review this and reply within a few hours. If the site is actively hacked, call or WhatsApp us directly for faster triage."
                 services={services}

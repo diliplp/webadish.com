@@ -194,7 +194,7 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate={false}>
+    <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
@@ -285,6 +285,9 @@ export default function ContactForm({
           onChange={(e) => setForm({ ...form, fax_number: e.target.value })}
         />
       </div>
+      <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
+      <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
+      <input type="hidden" name="return_to" value={pagePath || "/contact"} />
       <TurnstileField
         siteKey={turnstileSiteKey}
         theme="light"
