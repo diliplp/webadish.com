@@ -36,12 +36,14 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({ success: true });
     }
 
-    if (process.env.TURNSTILE_SECRET_KEY) {
+    if (process.env.TURNSTILE_SECRET_KEY && turnstile_token) {
       const isTurnstileValid = await verifyTurnstileToken(turnstile_token, req);
       if (!isTurnstileValid) {
         console.warn('Silently dropped contact submission due to Turnstile failure', { email, service });
         return res.status(200).json({ success: true });
       }
+    } else if (process.env.TURNSTILE_SECRET_KEY) {
+      console.warn('Proceeding without Turnstile token; relying on honeypot, timing, and content checks', { email, service });
     }
 
     // Check environment variables

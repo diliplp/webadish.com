@@ -41,11 +41,11 @@ export default function HackedSiteRecovery() {
               Professional malware removal, blacklist removal, and complete WordPress site recovery. Guaranteed clean — or we work until it is.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="primary" size="lg" className="text-lg px-8 shadow-lg shadow-primary/30" onClick={() => window.location.href='/contact'}>
-                <Phone size={18} className="mr-2" /> Get Emergency Help Now
+              <Button asChild variant="primary" size="lg" className="text-lg px-8 shadow-lg shadow-primary/30">
+                <Link href="/contact"><Phone size={18} className="mr-2" /> Get Emergency Help Now</Link>
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8" onClick={() => window.location.href='mailto:hello@webadish.com'}>
-                Email Us Directly
+              <Button asChild variant="outline" size="lg" className="text-lg px-8">
+                <a href="mailto:hello@webadish.com">Email Us Directly</a>
               </Button>
             </div>
             <div className="flex flex-wrap gap-6 mt-10 text-sm font-medium">
@@ -95,8 +95,8 @@ export default function HackedSiteRecovery() {
                   <a href="tel:+919998757045" className="text-accent font-semibold hover:underline">+91 9998757045</a>
                 </div>
               </div>
-              <Button variant="primary" className="w-full" size="lg" onClick={() => window.location.href='/contact'}>
-                Submit Emergency Request <ArrowRight size={18} className="ml-2" />
+              <Button asChild variant="primary" className="w-full" size="lg">
+                <Link href="/contact">Submit Emergency Request <ArrowRight size={18} className="ml-2" /></Link>
               </Button>
             </div>
           </div>
@@ -135,8 +135,8 @@ export default function HackedSiteRecovery() {
           <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
             After we clean your site, if it gets infected again within 30 days, we fix it again at absolutely no charge. We stand behind our work completely.
           </p>
-          <Button variant="primary" size="lg" className="text-lg px-10" onClick={() => window.location.href='/contact'}>
-            Start Recovery Now <ArrowRight size={18} className="ml-2" />
+          <Button asChild variant="primary" size="lg" className="text-lg px-10">
+            <Link href="/contact">Start Recovery Now <ArrowRight size={18} className="ml-2" /></Link>
           </Button>
         </div>
       </section>
@@ -148,8 +148,12 @@ export default function HackedSiteRecovery() {
           <h3 className="text-2xl font-bold mb-4">Prevent the Next Hack with Our Business Continuity Retainer</h3>
           <p className="text-muted-foreground mb-6">Most recovered sites are hacked again within 6 months if left unprotected. Our Business Continuity Retainer provides ongoing monitoring, hardening, and dedicated incident response — so this never happens again.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/retainer"><Button variant="accent">Learn About Business Continuity Retainers <ArrowRight size={16} className="ml-2" /></Button></Link>
-            <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer"><Button variant="outline">UK-Based Recovery Service</Button></a>
+            <Button asChild variant="accent">
+              <Link href="/retainer">Learn About Business Continuity Retainers <ArrowRight size={16} className="ml-2" /></Link>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="https://www.webadish.co.uk/hacked-website-recovery-uk" target="_blank" rel="noopener noreferrer">UK-Based Recovery Service</a>
+            </Button>
           </div>
         </div>
       </section>

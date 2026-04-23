@@ -29,6 +29,9 @@ export default function ContactForm({
   successMessage = "We'll review your site and reply within a few hours.",
 }: ContactFormProps) {
   const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
+  const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
+    turnstileSiteKey ? "idle" : "skipped",
+  );
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -52,7 +55,8 @@ export default function ContactForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (turnstileSiteKey && !form.turnstile_token) {
+    const shouldRequireTurnstile = Boolean(turnstileSiteKey) && turnstileStatus !== "error" && turnstileStatus !== "skipped";
+    if (shouldRequireTurnstile && !form.turnstile_token) {
       setError("Please complete the security check and try again.");
       return;
     }
@@ -210,13 +214,21 @@ export default function ContactForm({
         siteKey={turnstileSiteKey}
         theme="light"
         onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
+        onStatusChange={setTurnstileStatus}
       />
+      {turnstileStatus === "error" && (
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+          <p className="text-sm text-amber-900">
+            The Cloudflare security check did not load. You can still submit this form, and we will review it manually.
+          </p>
+        </div>
+      )}
       <Button
         type="submit"
         variant="accent"
         size="lg"
         className="w-full text-base"
-        disabled={loading || (Boolean(turnstileSiteKey) && !form.turnstile_token)}
+        disabled={loading}
       >
         {loading ? "Sending..." : submitLabel}{" "}
         {!loading && <ArrowRight size={18} className="ml-2" />}

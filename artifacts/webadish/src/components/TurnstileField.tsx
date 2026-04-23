@@ -22,6 +22,7 @@ interface TurnstileFieldProps {
   siteKey: string;
   onTokenChange: (token: string) => void;
   theme?: "light" | "dark" | "auto";
+  onStatusChange?: (status: "idle" | "loading" | "ready" | "error" | "skipped") => void;
 }
 
 let turnstileScriptPromise: Promise<void> | null = null;
@@ -56,19 +57,29 @@ export default function TurnstileField({
   siteKey,
   onTokenChange,
   theme = "light",
+  onStatusChange,
 }: TurnstileFieldProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);
   const onTokenChangeRef = useRef(onTokenChange);
+  const onStatusChangeRef = useRef(onStatusChange);
 
   useEffect(() => {
     onTokenChangeRef.current = onTokenChange;
   }, [onTokenChange]);
 
   useEffect(() => {
-    if (!siteKey) return;
+    onStatusChangeRef.current = onStatusChange;
+  }, [onStatusChange]);
+
+  useEffect(() => {
+    if (!siteKey) {
+      onStatusChangeRef.current?.("skipped");
+      return;
+    }
 
     let cancelled = false;
+    onStatusChangeRef.current?.("loading");
 
     loadTurnstileScript()
       .then(() => {
@@ -79,11 +90,16 @@ export default function TurnstileField({
           theme,
           callback: (token) => onTokenChangeRef.current(token),
           "expired-callback": () => onTokenChangeRef.current(""),
-          "error-callback": () => onTokenChangeRef.current(""),
+          "error-callback": () => {
+            onTokenChangeRef.current("");
+            onStatusChangeRef.current?.("error");
+          },
         });
+        onStatusChangeRef.current?.("ready");
       })
       .catch(() => {
         onTokenChangeRef.current("");
+        onStatusChangeRef.current?.("error");
       });
 
     return () => {
