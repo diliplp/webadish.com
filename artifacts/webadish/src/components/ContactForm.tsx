@@ -193,7 +193,7 @@ export default function ContactForm({
         <textarea
           required
           rows={4}
-          placeholder="Website URL and what concerns you most about DPDP readiness..."
+          placeholder="Website URL and a brief description of the issue..."
           value={form.message}
           onFocus={trackFormStart}
           onChange={(e) => setForm({ ...form, message: e.target.value })}

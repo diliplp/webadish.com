@@ -113,14 +113,5 @@ export default function TurnstileField({
 
   if (!siteKey) return null;
 
-  return (
-    <div className="rounded-2xl border border-border/50 bg-gray-50 p-4">
-      <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        Security Check
-      </p>
-      <div style={{ minHeight: "72px" }}>
-        <div ref={containerRef} />
-      </div>
-    </div>
-  );
+  return <div ref={containerRef} />;
 }

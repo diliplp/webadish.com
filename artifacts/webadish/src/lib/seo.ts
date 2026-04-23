@@ -13,6 +13,7 @@ export const PRERENDER_ROUTES = [
   "/india",
   "/india/dpdp-compliance-wordpress",
   "/india/dpdp-lp",
+  "/india/hacked-site-recovery-lp",
   "/india/cert-in-incident-readiness",
   "/security-score",
   "/agency-partners",
@@ -374,6 +375,13 @@ const pageSeo: Record<string, SeoData> = {
     description:
       "Is your WordPress site ready for DPDP compliance? WebAdish finds and fixes consent, form, and data gaps — alongside your legal advisor. Get a free site assessment.",
     path: "/india/dpdp-lp",
+    noindex: true,
+  },
+  "/india/hacked-site-recovery-lp": {
+    title: "Website Hacked? Emergency Recovery for Indian Businesses — WebAdish",
+    description:
+      "Malware removed, blacklists cleared, site restored — within 24 hours. Flat INR pricing, 30-day guarantee. Emergency response for hacked websites across India.",
+    path: "/india/hacked-site-recovery-lp",
     noindex: true,
   },
   "/india/cert-in-incident-readiness": {
