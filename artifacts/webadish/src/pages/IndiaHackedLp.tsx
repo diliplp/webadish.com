@@ -168,7 +168,7 @@ export default function IndiaHackedLp() {
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8">
+            <div className="bg-white rounded-3xl p-8 text-foreground">
               <ContactForm
                 formName="hacked_lp_india"
                 pagePath="/india/hacked-site-recovery-lp"
