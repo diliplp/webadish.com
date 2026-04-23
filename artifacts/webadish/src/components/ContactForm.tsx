@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -41,12 +41,7 @@ export default function ContactForm({
 }: ContactFormProps) {
   const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
   const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
-  // useMemo so initialService stays stable even if parent re-renders with same props
-  const initialService = useMemo(
-    () => (defaultService && services.includes(defaultService) ? defaultService : services[0]),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [], // intentionally computed once at mount
-  );
+  const initialService = defaultService && services.includes(defaultService) ? defaultService : services[0];
   const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
     turnstileSiteKey ? "idle" : "skipped",
   );
@@ -125,6 +120,13 @@ export default function ContactForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmittingRef.current) return;
+
+    const requiresTurnstileToken = Boolean(turnstileSiteKey) && turnstileStatus === "ready";
+    if (requiresTurnstileToken && !form.turnstile_token) {
+      setError("Please complete the security check, or wait a moment for it to finish loading.");
+      return;
+    }
+
     isSubmittingRef.current = true;
     setLoading(true);
     setError("");
@@ -137,7 +139,7 @@ export default function ContactForm({
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(form),
         signal: controller.signal,
       });
@@ -149,7 +151,8 @@ export default function ContactForm({
         throw new Error(responseRequestId ? `${errorText} (Ref: ${responseRequestId})` : errorText);
       }
 
-      if (responseRequestId) setRequestId(responseRequestId);
+      const successRequestId = responseRequestId || (typeof data?.request_id === "string" ? data.request_id : "");
+      if (successRequestId) setRequestId(successRequestId);
       trackEvent("form_submit_success", {
         form_name: formName,
         service: form.service || "unspecified",
@@ -344,7 +347,7 @@ export default function ContactForm({
         variant="accent"
         size="lg"
         className="w-full text-base"
-        disabled={loading || turnstileStatus === "idle" || turnstileStatus === "loading"}
+        disabled={loading}
         aria-busy={loading}
       >
         {loading ? (

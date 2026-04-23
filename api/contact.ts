@@ -1,4 +1,6 @@
 
+import nodemailer from 'nodemailer';
+
 const MIN_FORM_FILL_MS = 3000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
 
@@ -42,6 +44,7 @@ export default async function handler(req: any, res: any) {
     const body = normalizeBody(req);
     const { name, email, phone, service, message, fax_number, form_started_at, turnstile_token, return_to } = body;
     const returnTo = normalizeReturnTo(return_to);
+    const flags: string[] = [];
 
     log('received', {
       email: (typeof email === 'string' ? email : '').slice(0, 40),
@@ -52,8 +55,8 @@ export default async function handler(req: any, res: any) {
 
     // --- HONEYPOT: bots fill hidden fields, real users don't ---
     if (fax_number) {
-      log('honeypot_hit_dropped');
-      return silentDrop(res, acceptsHtml, returnTo);
+      flags.push('honeypot');
+      log('honeypot_flagged');
     }
 
     // --- TIMING: bots fill forms in milliseconds ---
@@ -62,12 +65,12 @@ export default async function handler(req: any, res: any) {
     // Use Number.isFinite to correctly reject 0, NaN, Infinity — not just falsy
     if (Number.isFinite(startedAt) && startedAt > 0) {
       if (now - startedAt < MIN_FORM_FILL_MS) {
-        log('timing_too_fast_dropped', { elapsed: now - startedAt });
-        return silentDrop(res, acceptsHtml, returnTo);
+        flags.push('timing_fast');
+        log('timing_too_fast_flagged', { elapsed: now - startedAt });
       }
       if (now - startedAt > MAX_FORM_AGE_MS) {
-        log('timing_too_old_dropped', { elapsed: now - startedAt });
-        return silentDrop(res, acceptsHtml, returnTo);
+        flags.push('timing_old');
+        log('timing_too_old_flagged', { elapsed: now - startedAt });
       }
     }
 
@@ -90,15 +93,15 @@ export default async function handler(req: any, res: any) {
     // --- DISPOSABLE EMAIL ---
     const emailDomain = emailStr.split('@').pop()?.toLowerCase() ?? '';
     if (emailDomain && DISPOSABLE_DOMAINS.has(emailDomain)) {
-      log('disposable_email_dropped', { domain: emailDomain });
-      return silentDrop(res, acceptsHtml, returnTo);
+      flags.push('disposable_email');
+      log('disposable_email_flagged', { domain: emailDomain });
     }
 
     // --- SPAM KEYWORD DETECTION ---
     const textToScan = `${nameStr} ${messageStr}`;
     if (SPAM_PATTERNS.some(p => p.test(textToScan))) {
-      log('spam_pattern_dropped');
-      return silentDrop(res, acceptsHtml, returnTo);
+      flags.push('spam_pattern');
+      log('spam_pattern_flagged');
     }
 
     // --- FIELD QUALITY: return friendly errors (real users can see and fix these) ---
@@ -123,28 +126,23 @@ export default async function handler(req: any, res: any) {
     if (process.env.TURNSTILE_SECRET_KEY && turnstileTokenStr) {
       const isTurnstileValid = await verifyTurnstileToken(turnstileTokenStr, req);
       if (!isTurnstileValid) {
-        log('turnstile_failed_dropped');
-        return silentDrop(res, acceptsHtml, returnTo);
+        flags.push('turnstile_invalid');
+        log('turnstile_failed_flagged');
+      } else {
+        log('turnstile_passed');
       }
-      log('turnstile_passed');
     } else if (process.env.TURNSTILE_SECRET_KEY && !turnstileTokenStr) {
       log('turnstile_missing_continue');
     }
 
-    // --- EMAIL (Resend only) ---
-    if (!process.env.RESEND_API_KEY) {
-      log('resend_key_missing');
-      if (acceptsHtml) {
-        return respondHtml(res, 500, 'error', requestId, 'Email service is temporarily unavailable. Please call +91 9998757045.', returnTo);
-      }
-      return res.status(500).json({ error: 'Email service not configured.', request_id: requestId });
-    }
+    const flagPrefix = flags.length ? `[Flagged: ${flags.join(', ')}] ` : '';
 
     const supportMail: OutboundMail = {
       to: 'support@webadish.com',
-      subject: `New Contact Form Submission from ${nameStr}`,
+      subject: `${flagPrefix}New Contact Form Submission from ${nameStr}`,
       html: `
         <h2>New Contact Form Submission</h2>
+        ${flags.length ? `<p><strong>Flags:</strong> ${escapeHtml(flags.join(', '))}</p>` : ''}
         <p><strong>Name:</strong> ${escapeHtml(nameStr)}</p>
         <p><strong>Email:</strong> ${escapeHtml(emailStr)}</p>
         ${phoneStr ? `<p><strong>Phone:</strong> ${escapeHtml(phoneStr)}</p>` : ''}
@@ -158,8 +156,8 @@ export default async function handler(req: any, res: any) {
     };
 
     log('sending_support_email');
-    const supportResult = await sendViaResend(supportMail, requestId);
-    log('support_email_sent', { messageId: supportResult.id });
+    const supportResult = await sendMail(supportMail, requestId);
+    log('support_email_sent', { provider: supportResult.provider, messageId: supportResult.id });
 
     const confirmationMail: OutboundMail = {
       to: emailStr,
@@ -173,13 +171,17 @@ export default async function handler(req: any, res: any) {
       `,
     };
 
-    try {
-      const confirmResult = await sendViaResend(confirmationMail, requestId);
-      log('confirmation_email_sent', { messageId: confirmResult.id });
-    } catch (confirmationError) {
-      log('confirmation_email_failed_continue', {
-        error: confirmationError instanceof Error ? confirmationError.message : String(confirmationError),
-      });
+    if (!flags.length) {
+      try {
+        const confirmResult = await sendMail(confirmationMail, requestId);
+        log('confirmation_email_sent', { provider: confirmResult.provider, messageId: confirmResult.id });
+      } catch (confirmationError) {
+        log('confirmation_email_failed_continue', {
+          error: confirmationError instanceof Error ? confirmationError.message : String(confirmationError),
+        });
+      }
+    } else {
+      log('confirmation_email_skipped_flagged_submission', { flags });
     }
 
     log('completed_success');
@@ -196,17 +198,6 @@ export default async function handler(req: any, res: any) {
     }
     res.status(500).json({ error: 'Failed to send message. Please try again in a minute.', request_id: requestId });
   }
-}
-
-function silentDrop(res: any, acceptsHtml: boolean, returnTo: string) {
-  if (acceptsHtml) {
-    // Redirect as if success so bots don't retry
-    const url = new URL(returnTo, 'https://www.webadish.com');
-    url.searchParams.set('contact_status', 'success');
-    const location = `${url.pathname}${url.search}`;
-    return res.status(303).setHeader('Location', location).send('');
-  }
-  return res.status(200).json({ success: true });
 }
 
 function buildRequestId(req: any): string {
@@ -266,6 +257,38 @@ type OutboundMail = {
   replyTo?: string;
 };
 
+type MailSendResult = {
+  id: string;
+  provider: 'resend' | 'smtp';
+};
+
+async function sendMail(mail: OutboundMail, requestId: string): Promise<MailSendResult> {
+  const attempts: string[] = [];
+
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const result = await sendViaResend(mail, requestId);
+      return { ...result, provider: 'resend' };
+    } catch (error) {
+      attempts.push(error instanceof Error ? error.message : String(error));
+    }
+  } else {
+    attempts.push('RESEND_API_KEY is missing');
+  }
+
+  if (hasSmtpConfig()) {
+    try {
+      const result = await sendViaSmtp(mail);
+      return { ...result, provider: 'smtp' };
+    } catch (error) {
+      attempts.push(error instanceof Error ? error.message : String(error));
+    }
+  } else {
+    attempts.push('SMTP credentials are missing');
+  }
+
+  throw new Error(`All email providers failed: ${attempts.join(' | ')}`);
+}
 
 async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ id: string }> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -294,6 +317,41 @@ async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ i
   }
 
   return { id: typeof data?.id === 'string' ? data.id : 'unknown' };
+}
+
+function hasSmtpConfig(): boolean {
+  return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD);
+}
+
+async function sendViaSmtp(mail: OutboundMail): Promise<{ id: string }> {
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASSWORD;
+
+  if (!host || !user || !pass) {
+    throw new Error('SMTP configuration is incomplete');
+  }
+
+  const port = Number(process.env.SMTP_PORT || 465);
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: {
+      user,
+      pass,
+    },
+  });
+
+  const info = await transporter.sendMail({
+    from: process.env.SMTP_FROM_EMAIL || user || 'noreply@webadish.com',
+    to: mail.to,
+    subject: mail.subject,
+    html: mail.html,
+    replyTo: mail.replyTo,
+  });
+
+  return { id: info.messageId || 'smtp' };
 }
 
 function escapeHtml(text: string): string {
