@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
@@ -45,6 +45,7 @@ export default function ContactForm({
   const [error, setError] = useState("");
   const [requestId, setRequestId] = useState("");
   const hasTrackedStart = useRef(false);
+  const isSubmittingRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -81,6 +82,8 @@ export default function ContactForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setLoading(true);
     setError("");
     setRequestId("");
@@ -129,6 +132,7 @@ export default function ContactForm({
       });
     } finally {
       setLoading(false);
+      isSubmittingRef.current = false;
     }
   };
 
@@ -152,7 +156,7 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label className="block text-sm font-medium mb-2">Full Name *</label>
@@ -238,9 +242,6 @@ export default function ContactForm({
           onChange={(e) => setForm({ ...form, fax_number: e.target.value })}
         />
       </div>
-      <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
-      <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
-      <input type="hidden" name="return_to" value={pagePath || "/contact"} />
       <TurnstileField
         siteKey={turnstileSiteKey}
         theme="light"
@@ -258,18 +259,21 @@ export default function ContactForm({
         className="w-full text-base"
         disabled={loading}
       >
-        {loading ? "Sending..." : submitLabel}{" "}
-        {!loading && <ArrowRight size={18} className="ml-2" />}
+        {loading ? (
+          <>
+            <Loader2 size={18} className="mr-2 animate-spin" />
+            Sending...
+          </>
+        ) : (
+          <>
+            {submitLabel}
+            <ArrowRight size={18} className="ml-2" />
+          </>
+        )}
       </Button>
       <p className="text-xs text-muted-foreground text-center">
         We respond within 4 business hours. No spam, no hard sell.
       </p>
-      {requestId && (
-        <p className="text-xs text-muted-foreground text-center">Reference: {requestId}</p>
-      )}
-      {error && (
-        <p className="text-xs text-red-600 text-center">Submission failed: {error}</p>
-      )}
     </form>
   );
 }
