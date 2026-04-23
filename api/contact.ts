@@ -379,13 +379,13 @@ function looksLikeRealName(value: string): boolean {
 function looksLikeRealMessage(value: string): boolean {
   if (typeof value !== 'string') return false;
   if (value.length < 12 || value.length > 4000) return false;
-  // Allow URLs: added = and _ to charset
-  if (!/^[\p{L}\p{N}\s.,''"!?():/&+@#%=_-]*$/u.test(value)) return false;
   if (countWords(value) < 3) return false;
+  // Must contain at least 40% actual letters (catches pure-symbol/number spam)
   const letters = countLetters(value);
   const compactLength = value.replace(/\s+/g, '').length;
-  if (!compactLength || letters / compactLength < 0.4) return false;
-  if (/[bcdfghjklmnpqrstvwxyz]{7,}/i.test(value)) return false;
+  if (!compactLength || letters / compactLength < 0.35) return false;
+  // No implausibly long consonant clusters (gibberish)
+  if (/[bcdfghjklmnpqrstvwxyz]{8,}/i.test(value)) return false;
   return true;
 }
 
