@@ -46,6 +46,7 @@ export default function ContactForm({
     turnstileSiteKey ? "idle" : "skipped",
   );
 
+  const [mounted, setMounted] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -65,6 +66,7 @@ export default function ContactForm({
   const feedbackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    setMounted(true);
     setForm((f) => ({ ...f, form_started_at: Date.now() }));
   }, []);
 
@@ -184,6 +186,19 @@ export default function ContactForm({
       isSubmittingRef.current = false;
     }
   };
+
+  if (!mounted) {
+    return <div className="space-y-5 animate-pulse" aria-hidden="true">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="h-12 rounded-xl bg-gray-100" />
+        <div className="h-12 rounded-xl bg-gray-100" />
+      </div>
+      <div className="h-12 rounded-xl bg-gray-100" />
+      <div className="h-12 rounded-xl bg-gray-100" />
+      <div className="h-32 rounded-xl bg-gray-100" />
+      <div className="h-12 rounded-xl bg-gray-100" />
+    </div>;
+  }
 
   if (submitted) {
     return (
