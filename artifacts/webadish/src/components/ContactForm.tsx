@@ -205,7 +205,7 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} action="javascript:void(0)" className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
