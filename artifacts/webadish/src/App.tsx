@@ -42,7 +42,7 @@ const CaseStudies = lazy(() => import("@/pages/CaseStudies"));
 const CaseStudyVerofax = lazy(() => import("@/pages/CaseStudyVerofax"));
 const CaseStudyShivamAutozone = lazy(() => import("@/pages/CaseStudyShivamAutozone"));
 const CaseStudyCrystalGroup = lazy(() => import("@/pages/CaseStudyCrystalGroup"));
-const Contact = lazy(() => import("@/pages/Contact"));
+import Contact from "@/pages/Contact";
 const About = lazy(() => import("@/pages/About"));
 const WebDesign = lazy(() => import("@/pages/WebDesign"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
