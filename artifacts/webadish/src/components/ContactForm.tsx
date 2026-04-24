@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -29,6 +30,34 @@ type ContactFormProps = {
   messagePlaceholder?: string;
 };
 
+type ContactFeedback = {
+  status: "success" | "error" | null;
+  ref: string;
+  msg: string;
+};
+
+function parseContactFeedback(urlValue: string): ContactFeedback {
+  const queryIndex = urlValue.indexOf("?");
+  if (queryIndex === -1) {
+    return { status: null, ref: "", msg: "" };
+  }
+
+  const hashIndex = urlValue.indexOf("#", queryIndex);
+  const search = hashIndex === -1 ? urlValue.slice(queryIndex) : urlValue.slice(queryIndex, hashIndex);
+  const params = new URLSearchParams(search);
+  const status = params.get("contact_status");
+
+  if (status !== "success" && status !== "error") {
+    return { status: null, ref: "", msg: "" };
+  }
+
+  return {
+    status,
+    ref: params.get("contact_ref") || "",
+    msg: params.get("contact_msg") || "",
+  };
+}
+
 export default function ContactForm({
   formName = "global_contact",
   pagePath = "/contact",
@@ -39,10 +68,16 @@ export default function ContactForm({
   messageLabel = "Message *",
   messagePlaceholder = "Website URL, what the site does, what concerns you most, and whether this is urgent...",
 }: ContactFormProps) {
+  const [location] = useLocation();
   const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
   const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
   const initialService = defaultService && services.includes(defaultService) ? defaultService : services[0];
   const formAnchorId = `${formName}-form`;
+  const initialFeedback = parseContactFeedback(
+    typeof window !== "undefined"
+      ? `${window.location.pathname}${window.location.search}${window.location.hash}`
+      : location,
+  );
   const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
     turnstileSiteKey ? "idle" : "skipped",
   );
@@ -57,10 +92,14 @@ export default function ContactForm({
     form_started_at: 0,
     turnstile_token: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(initialFeedback.status === "success");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [requestId, setRequestId] = useState("");
+  const [error, setError] = useState(
+    initialFeedback.status === "error"
+      ? initialFeedback.msg || "We could not submit your request. Please try again or reach us on WhatsApp."
+      : "",
+  );
+  const [requestId, setRequestId] = useState(initialFeedback.ref);
   const hasTrackedStart = useRef(false);
   const isSubmittingRef = useRef(false);
   const feedbackRef = useRef<HTMLDivElement | null>(null);
@@ -186,32 +225,29 @@ export default function ContactForm({
     }
   };
 
-  if (submitted) {
-    return (
-      <div id={formAnchorId} ref={feedbackRef} className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center" role="status" aria-live="polite">
-        <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
-        <h3 className="text-xl font-bold mb-2">Request Sent</h3>
-        <p className="text-muted-foreground">{successMessage}</p>
-        {requestId && (
-          <p className="mt-3 text-xs text-muted-foreground">Reference: {requestId}</p>
-        )}
-        <button
-          type="button"
-          onClick={() => {
-            setSubmitted(false);
-            setError("");
-            setRequestId("");
-          }}
-          className="mt-6 text-accent hover:underline text-sm font-medium"
-        >
-          Send another message
-        </button>
-      </div>
-    );
-  }
-
   return (
     <form id={formAnchorId} onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
+      {submitted && (
+        <div ref={feedbackRef} className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center" role="status" aria-live="polite">
+          <CheckCircle2 size={40} className="text-green-500 mx-auto mb-3" />
+          <h3 className="text-lg font-bold mb-2">Thank you! We have received your message and will get back to you shortly.</h3>
+          <p className="text-sm text-muted-foreground">{successMessage}</p>
+          {requestId && (
+            <p className="mt-3 text-xs text-muted-foreground">Reference: {requestId}</p>
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              setSubmitted(false);
+              setError("");
+              setRequestId("");
+            }}
+            className="mt-5 text-accent hover:underline text-sm font-medium"
+          >
+            Send another message
+          </button>
+        </div>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>

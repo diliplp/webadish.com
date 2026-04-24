@@ -114,14 +114,16 @@ export default function Retainer() {
               <p className="text-base text-foreground font-medium">If you are not sure whether you need a retainer, start with a free security audit first.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href = "/contact"}>
-                Book a Retainer Call <ArrowRight size={18} className="ml-2" />
+              <Button asChild variant="accent" size="lg" className="text-lg px-8">
+                <Link href="/contact">
+                  Book a Retainer Call <ArrowRight size={18} className="ml-2" />
+                </Link>
               </Button>
-              <Link href="/pricing">
-                <Button variant="outline" size="lg" className="text-lg px-8">
+              <Button asChild variant="outline" size="lg" className="text-lg px-8">
+                <Link href="/pricing">
                   View All Pricing
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -231,8 +233,8 @@ export default function Retainer() {
                     </li>
                   ))}
                 </ul>
-                <Button variant={idx === 0 ? "white" : "accent"} className="w-full" onClick={() => window.location.href = "/contact"}>
-                  {t.cta}
+                <Button asChild variant={idx === 0 ? "white" : "accent"} className="w-full">
+                  <Link href="/contact">{t.cta}</Link>
                 </Button>
               </div>
             ))}
@@ -264,8 +266,10 @@ export default function Retainer() {
           <p className="text-lg text-white/90 mb-8">
             If your team needs accountability, faster response, and a stronger security operating rhythm, the retainer is where we usually start.
           </p>
-          <Button variant="white" size="lg" onClick={() => window.location.href = "/contact"}>
-            Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+          <Button asChild variant="white" size="lg">
+            <Link href="/contact">
+              Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

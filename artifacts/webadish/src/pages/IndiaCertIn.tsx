@@ -34,12 +34,14 @@ export default function IndiaCertIn() {
             WebAdish helps Indian businesses prepare the website, WordPress, logging, access, and response side of incident readiness so teams can move faster when something goes wrong.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-              Request Incident Readiness Review <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="accent" size="lg">
+              <Link href="/contact">
+                Request Incident Readiness Review <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
-            <Link href="/india/dpdp-compliance-wordpress">
-              <Button variant="outline" size="lg">View DPDP Implementation Support</Button>
-            </Link>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/india/dpdp-compliance-wordpress">View DPDP Implementation Support</Link>
+            </Button>
           </div>
           <p className="text-sm text-muted-foreground mt-6 max-w-2xl mx-auto">
             This page focuses on technical and operational readiness, not legal advice. Your legal, compliance, and internal security stakeholders should remain part of final reporting decisions.
@@ -137,14 +139,16 @@ export default function IndiaCertIn() {
             Start with a readiness review and we will help your team understand where logging, forms, plugins, access, and monitoring need attention first.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-              Book Incident Readiness Review <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="accent" size="lg">
+              <Link href="/contact">
+                Book Incident Readiness Review <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
-            <Link href="/security">
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+            <Button asChild variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+              <Link href="/security">
                 View Security Services
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

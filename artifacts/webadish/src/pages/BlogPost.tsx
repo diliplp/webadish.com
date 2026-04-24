@@ -1315,7 +1315,9 @@ export default function BlogPost() {
           <div className="max-w-2xl mx-auto px-4">
             <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
             <p className="text-muted-foreground mb-8">This article doesn't exist or may have been moved.</p>
-            <Link href="/blog"><Button variant="accent">Browse All Articles</Button></Link>
+            <Button asChild variant="accent">
+              <Link href="/blog">Browse All Articles</Link>
+            </Button>
           </div>
         </section>
       </Layout>
@@ -1395,7 +1397,9 @@ export default function BlogPost() {
           </div>
           <div className="text-right">
             <p className="text-sm font-medium text-muted-foreground mb-1">Protect your WordPress site</p>
-            <Link href="/contact"><Button variant="accent" size="sm">Get a Security Assessment</Button></Link>
+            <Button asChild variant="accent" size="sm">
+              <Link href="/contact">Get a Security Assessment</Link>
+            </Button>
           </div>
         </div>
 
@@ -1422,8 +1426,12 @@ export default function BlogPost() {
           <h3 className="text-xl font-bold mb-3">Need Professional WordPress Security?</h3>
           <p className="text-muted-foreground text-sm mb-6">Our team of WordPress security experts protects 800+ sites. Let us protect yours.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/security"><Button variant="accent">View Security Plans</Button></Link>
-            <Link href="/hacked-site-recovery"><Button variant="outline-primary">Emergency Recovery</Button></Link>
+            <Button asChild variant="accent">
+              <Link href="/security">View Security Plans</Link>
+            </Button>
+            <Button asChild variant="outline-primary">
+              <Link href="/hacked-site-recovery">Emergency Recovery</Link>
+            </Button>
           </div>
         </div>
       </article>

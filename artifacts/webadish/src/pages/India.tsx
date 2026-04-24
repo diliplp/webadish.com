@@ -44,12 +44,14 @@ export default function India() {
             Local-market pricing for dealerships, education brands, eCommerce businesses, and service companies that need dependable WordPress protection without mixing INR rates into the global pricing page.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => window.location.href = "/contact"}>
-              Request India Quote <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="accent" size="lg">
+              <Link href="/contact">
+                Request India Quote <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg">View Global USD Pricing</Button>
-            </Link>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/pricing">View Global USD Pricing</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -67,11 +69,11 @@ export default function India() {
                   We now offer India-focused DPDP implementation support for WordPress websites, lead forms, consent journeys, plugin stacks, and technical readiness work for SMEs.
                 </p>
               </div>
-              <Link href="/india/dpdp-compliance-wordpress">
-                <Button variant="accent" size="lg">
+              <Button asChild variant="accent" size="lg">
+                <Link href="/india/dpdp-compliance-wordpress">
                   View DPDP Page <ArrowRight size={18} className="ml-2" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
           <div className="rounded-3xl border border-red-500/20 bg-red-500/5 p-8 mb-10">
@@ -85,11 +87,11 @@ export default function India() {
                   We also offer CERT-In incident-readiness support for WordPress websites, forms, access control, logging, and technical response preparation for Indian SMEs.
                 </p>
               </div>
-              <Link href="/india/cert-in-incident-readiness">
-                <Button variant="accent" size="lg">
+              <Button asChild variant="accent" size="lg">
+                <Link href="/india/cert-in-incident-readiness">
                   View CERT-In Page <ArrowRight size={18} className="ml-2" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

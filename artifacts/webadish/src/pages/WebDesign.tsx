@@ -42,12 +42,14 @@ export default function WebDesign() {
               Beautiful, fast, secure, and SEO-optimized WordPress websites designed to turn visitors into customers. Every brand has a story — let's make yours unforgettable.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href='/contact'}>
-                Start Your Project <ArrowRight size={18} className="ml-2" />
+              <Button asChild variant="accent" size="lg" className="text-lg px-8">
+                <Link href="/contact">
+                  Start Your Project <ArrowRight size={18} className="ml-2" />
+                </Link>
               </Button>
-              <Link href="/case-studies">
-                <Button variant="outline" size="lg" className="text-lg px-8">View Our Work</Button>
-              </Link>
+              <Button asChild variant="outline" size="lg" className="text-lg px-8">
+                <Link href="/case-studies">View Our Work</Link>
+              </Button>
             </div>
             <div className="flex flex-wrap gap-6 mt-10 text-sm font-medium text-muted-foreground">
               {["Custom WordPress design", "Mobile-first", "SEO optimized", "Security included"].map(b => (
@@ -128,12 +130,14 @@ export default function WebDesign() {
           <h3 className="text-2xl font-bold mb-4">Starting from $999 for Custom WordPress Websites</h3>
           <p className="text-muted-foreground mb-6">Every project is scoped individually. Contact us for a free quote tailored to your requirements.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" onClick={() => window.location.href='/contact'}>
-              Get a Free Quote <ArrowRight size={16} className="ml-2" />
+            <Button asChild variant="accent">
+              <Link href="/contact">
+                Get a Free Quote <ArrowRight size={16} className="ml-2" />
+              </Link>
             </Button>
-            <Link href="/case-studies">
-              <Button variant="outline">View Our Work</Button>
-            </Link>
+            <Button asChild variant="outline">
+              <Link href="/case-studies">View Our Work</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -143,8 +147,10 @@ export default function WebDesign() {
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Next WordPress Site?</h2>
           <p className="text-lg text-white/90 mb-8">Let's create something that makes your competitors envious and your customers convert.</p>
-          <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-            Start a Project <ArrowRight size={18} className="ml-2" />
+          <Button asChild variant="white" size="lg">
+            <Link href="/contact">
+              Start a Project <ArrowRight size={18} className="ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

@@ -75,14 +75,16 @@ export default function Security() {
               <p className="text-sm text-muted-foreground mt-2">We will identify the obvious risks first, then recommend hardening, a protection plan, or emergency recovery.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href = "/contact"}>
-                Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+              <Button asChild variant="accent" size="lg" className="text-lg px-8">
+                <Link href="/contact">
+                  Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+                </Link>
               </Button>
-              <Link href="/pricing">
-                <Button variant="outline-primary" size="lg" className="text-lg px-8">
+              <Button asChild variant="outline-primary" size="lg" className="text-lg px-8">
+                <Link href="/pricing">
                   Compare Protection Plans
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -224,14 +226,16 @@ export default function Security() {
             We work best with businesses that want experienced ownership, faster response, and fewer WordPress fire drills for internal teams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="white" size="lg" onClick={() => window.location.href = "/contact"}>
-              Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="white" size="lg">
+              <Link href="/contact">
+                Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
+            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
+              <Link href="/pricing">
                 View Protection Pricing
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

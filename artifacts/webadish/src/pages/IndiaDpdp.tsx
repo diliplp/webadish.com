@@ -59,8 +59,10 @@ export default function IndiaDpdp() {
             Most Indian SMEs have consent, form, and data gaps they don't know about. We find and fix the technical side — alongside your legal advisor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-              Get a Free Site Assessment <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="accent" size="lg">
+              <Link href="/contact">
+                Get a Free Site Assessment <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
             <Button variant="outline" size="lg" onClick={() => document.getElementById("what-we-fix")?.scrollIntoView({ behavior: "smooth" })}>
               See what we fix →
@@ -131,8 +133,8 @@ export default function IndiaDpdp() {
               <p className="text-sm text-muted-foreground mb-4">
                 Ask for a DPDP website readiness review if you want clarity on where your website, forms, plugins, and workflows need implementation work first.
               </p>
-              <Button variant="accent" className="w-full" onClick={() => (window.location.href = "/contact")}>
-                Request Readiness Review
+              <Button asChild variant="accent" className="w-full">
+                <Link href="/contact">Request Readiness Review</Link>
               </Button>
             </div>
           </div>
@@ -186,14 +188,16 @@ export default function IndiaDpdp() {
             Start with a readiness review and we will show you where your WordPress setup, forms, plugins, and workflows need changes first.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-              Request DPDP Review <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="accent" size="lg">
+              <Link href="/contact">
+                Request DPDP Review <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
-            <Link href="/security">
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+            <Button asChild variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+              <Link href="/security">
                 View Security Services
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

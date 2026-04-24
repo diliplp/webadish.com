@@ -308,14 +308,16 @@ export default function SecurityScore() {
                       This tool is a lead-in, not a substitute for a real audit. If the site supports leads, sales, clients, or operational trust, the next step is a deeper review of plugins, access, backups, and incident-readiness.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button variant="accent" size="lg" onClick={() => (window.location.href = "/contact")}>
-                        Request Full Security Review <ArrowRight size={18} className="ml-2" />
+                      <Button asChild variant="accent" size="lg">
+                        <Link href="/contact">
+                          Request Full Security Review <ArrowRight size={18} className="ml-2" />
+                        </Link>
                       </Button>
-                      <Link href="/retainer">
-                        <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+                      <Button asChild variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+                        <Link href="/retainer">
                           Explore Retainer
-                        </Button>
-                      </Link>
+                        </Link>
+                      </Button>
                     </div>
                   </div>
 

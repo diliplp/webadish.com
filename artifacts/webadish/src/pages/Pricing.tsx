@@ -144,12 +144,10 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  variant={plan.highlight ? "accent" : "outline"}
-                  className="w-full h-12"
-                  onClick={() => window.location.href='/contact'}
-                >
-                  Request This Plan <ArrowRight size={16} className="ml-2" />
+                <Button asChild variant={plan.highlight ? "accent" : "outline"} className="w-full h-12">
+                  <Link href="/contact">
+                    Request This Plan <ArrowRight size={16} className="ml-2" />
+                  </Link>
                 </Button>
               </div>
             ))}
@@ -198,16 +196,16 @@ export default function Pricing() {
             <div className="bg-white rounded-2xl p-8 border border-border/50">
               <h3 className="text-xl font-bold mb-3">Free Security Score</h3>
               <p className="text-sm text-muted-foreground mb-6">Give prospects a low-friction entry point with an instant WordPress risk snapshot and clear next steps.</p>
-              <Link href="/security-score">
-                <Button variant="outline" className="w-full">Run Free Security Score</Button>
-              </Link>
+              <Button asChild variant="outline" className="w-full">
+                <Link href="/security-score">Run Free Security Score</Link>
+              </Button>
             </div>
             <div className="bg-white rounded-2xl p-8 border border-border/50">
               <h3 className="text-xl font-bold mb-3">Agency White-Label</h3>
               <p className="text-sm text-muted-foreground mb-6">For agencies managing multiple WordPress sites and needing security delivery under their own brand.</p>
-              <Link href="/agency-partners">
-                <Button variant="outline" className="w-full">Explore Agency Program</Button>
-              </Link>
+              <Button asChild variant="outline" className="w-full">
+                <Link href="/agency-partners">Explore Agency Program</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -233,8 +231,10 @@ export default function Pricing() {
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Not Sure Which Plan Is Right?</h2>
           <p className="text-lg text-white/90 mb-8">We'll review your site and recommend the appropriate level of protection based on your situation.</p>
-          <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-            Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+          <Button asChild variant="white" size="lg">
+            <Link href="/contact">
+              Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

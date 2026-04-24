@@ -1,4 +1,5 @@
 import { ArrowRight, CheckCircle2, Shield } from "lucide-react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 
@@ -50,8 +51,10 @@ export default function AgencyPartners() {
               <p>Teams that want specialist oversight without hiring a full-time WordPress security lead.</p>
               <p>Partners that need a dependable response model for malware, suspicious behaviour, plugin-risk review, and client-facing reports.</p>
             </div>
-            <Button variant="white" size="lg" className="mt-8" onClick={() => window.location.href = "/contact"}>
-              Talk About Agency Partnership <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="white" size="lg" className="mt-8">
+              <Link href="/contact">
+                Talk About Agency Partnership <ArrowRight size={18} className="ml-2" />
+              </Link>
             </Button>
           </div>
         </div>

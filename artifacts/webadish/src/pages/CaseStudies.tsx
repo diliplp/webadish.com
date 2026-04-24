@@ -7,11 +7,11 @@ const EmergencyCTA = () => (
   <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 text-center">
     <p className="text-lg font-bold text-foreground mb-2">Facing a similar issue?</p>
     <p className="text-sm text-muted-foreground mb-6">Response within 30 minutes during business hours.</p>
-    <Link href="/hacked-site-recovery">
-      <Button variant="primary" size="lg">
+    <Button asChild variant="primary" size="lg">
+      <Link href="/hacked-site-recovery">
         Request Emergency Assessment <ArrowRight size={18} className="ml-2" />
-      </Button>
-    </Link>
+      </Link>
+    </Button>
   </div>
 );
 
@@ -32,9 +32,15 @@ export default function CaseStudies() {
             Trust built through real client work for verofax.com, shivamautozone.com, and crystalgroup.in.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
-            <Link href="/case-studies/verofax"><Button variant="accent">View Verofax Case Study</Button></Link>
-            <Link href="/case-studies/shivamautozone"><Button variant="outline-primary" className="bg-white">View Shivam Autozone</Button></Link>
-            <Link href="/case-studies/crystalgroup"><Button variant="outline-primary" className="bg-white">View Crystal Group</Button></Link>
+            <Button asChild variant="accent">
+              <Link href="/case-studies/verofax">View Verofax Case Study</Link>
+            </Button>
+            <Button asChild variant="outline-primary" className="bg-white">
+              <Link href="/case-studies/shivamautozone">View Shivam Autozone</Link>
+            </Button>
+            <Button asChild variant="outline-primary" className="bg-white">
+              <Link href="/case-studies/crystalgroup">View Crystal Group</Link>
+            </Button>
           </div>
         </div>
       </section>
