@@ -311,7 +311,6 @@ export default function ContactForm({
           value={form.message}
           onFocus={trackFormStart}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          minLength={12}
           className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none"
         />
       </div>

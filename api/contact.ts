@@ -122,12 +122,6 @@ export default async function handler(req: any, res: any) {
       if (acceptsHtml) return respondRedirect(res, returnTo, 'error', requestId, err);
       return res.status(400).json({ error: err });
     }
-    if (!looksLikeRealMessage(messageStr)) {
-      const err = 'Please describe your request in more detail (at least a few words).';
-      if (acceptsHtml) return respondRedirect(res, returnTo, 'error', requestId, err);
-      return res.status(400).json({ error: err });
-    }
-
     const submissionKey = buildSubmissionKey({
       name: nameStr,
       email: emailStr,
@@ -390,19 +384,6 @@ function looksLikeRealName(value: string): boolean {
   if (value.length < 2 || value.length > 80) return false;
   if (!/^[\p{L}\s.''-]+$/u.test(value)) return false;
   return countLetters(value) >= 2;
-}
-
-function looksLikeRealMessage(value: string): boolean {
-  if (typeof value !== 'string') return false;
-  if (value.length < 12 || value.length > 4000) return false;
-  if (countWords(value) < 3) return false;
-  // Must contain at least 40% actual letters (catches pure-symbol/number spam)
-  const letters = countLetters(value);
-  const compactLength = value.replace(/\s+/g, '').length;
-  if (!compactLength || letters / compactLength < 0.35) return false;
-  // No implausibly long consonant clusters (gibberish)
-  if (/[bcdfghjklmnpqrstvwxyz]{8,}/i.test(value)) return false;
-  return true;
 }
 
 function looksLikeRealPhone(value: string): boolean {
