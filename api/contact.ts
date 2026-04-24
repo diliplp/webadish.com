@@ -352,7 +352,7 @@ async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ i
     to: [mail.to],
     subject: mail.subject,
     html: mail.html,
-    tags: [{ name: 'source', value: 'webadish-contact' }, { name: 'request_id', value: requestId.slice(0, 64) }],
+    tags: [{ name: 'source', value: 'webadish-contact' }, { name: 'request_id', value: requestId.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 64) }],
   };
   if (mail.replyTo) payload.reply_to = mail.replyTo;
 
