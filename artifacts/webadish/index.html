@@ -89,10 +89,9 @@
           var border = status === 'success' ? '#86efac' : '#fca5a5';
           var title = status === 'success' ? 'Request Submitted' : 'Submission Error';
 
-          shell.hidden = false;
           shell.innerHTML = ''
-            + '<div style="position:sticky;top:0;z-index:80;padding:12px 16px;background:' + background + ';border-bottom:1px solid ' + border + ';box-shadow:0 8px 30px rgba(15,23,42,.08)">'
-            +   '<div style="max-width:1100px;margin:0 auto;display:flex;gap:16px;align-items:flex-start;justify-content:space-between">'
+            + '<div style="margin:0 0 20px;padding:18px 20px;background:' + background + ';border:1px solid ' + border + ';border-radius:20px;box-shadow:0 12px 30px rgba(15,23,42,.08)">'
+            +   '<div style="display:flex;gap:16px;align-items:flex-start;justify-content:space-between">'
             +     '<div>'
             +       '<p style="margin:0 0 4px;font:600 16px/1.4 Alata,system-ui,sans-serif;color:#111827">' + title + '</p>'
             +       '<p style="margin:0;font:400 14px/1.6 Alata,system-ui,sans-serif;color:#374151">' + msg + '</p>'
@@ -102,11 +101,30 @@
             +   '</div>'
             + '</div>';
 
-          var dismissButton = document.getElementById('contact-feedback-dismiss');
-          if (dismissButton) {
-            dismissButton.addEventListener('click', function () {
-              shell.hidden = true;
-            }, { once: true });
+          var placeShell = function () {
+            var targetId = window.location.hash ? window.location.hash.slice(1) : '';
+            var target = (targetId && document.getElementById(targetId)) || document.getElementById('global_contact-form');
+
+            if (target && target.parentNode) {
+              target.parentNode.insertBefore(shell, target);
+            } else {
+              document.body.insertBefore(shell, document.getElementById('root'));
+            }
+
+            shell.hidden = false;
+
+            var dismissButton = document.getElementById('contact-feedback-dismiss');
+            if (dismissButton) {
+              dismissButton.addEventListener('click', function () {
+                shell.hidden = true;
+              }, { once: true });
+            }
+          };
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', placeShell, { once: true });
+          } else {
+            placeShell();
           }
         }
 
