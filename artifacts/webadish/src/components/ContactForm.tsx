@@ -1,6 +1,5 @@
 import { ArrowRight, CheckCircle2, Loader2, Phone, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import TurnstileField from "@/components/TurnstileField";
 import { trackEvent } from "@/lib/tracking";
@@ -36,6 +35,12 @@ type ContactFeedback = {
   msg: string;
 };
 
+declare global {
+  interface Window {
+    __waContactFeedback?: ContactFeedback;
+  }
+}
+
 function parseContactFeedback(urlValue: string): ContactFeedback {
   const queryIndex = urlValue.indexOf("?");
   if (queryIndex === -1) {
@@ -68,16 +73,10 @@ export default function ContactForm({
   messageLabel = "Message *",
   messagePlaceholder = "Website URL, what the site does, what concerns you most, and whether this is urgent...",
 }: ContactFormProps) {
-  const [location] = useLocation();
   const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
   const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
   const initialService = defaultService && services.includes(defaultService) ? defaultService : services[0];
   const formAnchorId = `${formName}-form`;
-  const initialFeedback = parseContactFeedback(
-    typeof window !== "undefined"
-      ? `${window.location.pathname}${window.location.search}${window.location.hash}`
-      : location,
-  );
   const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
     turnstileSiteKey ? "idle" : "skipped",
   );
@@ -92,14 +91,10 @@ export default function ContactForm({
     form_started_at: 0,
     turnstile_token: "",
   });
-  const [submitted, setSubmitted] = useState(initialFeedback.status === "success");
+  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(
-    initialFeedback.status === "error"
-      ? initialFeedback.msg || "We could not submit your request. Please try again or reach us on WhatsApp."
-      : "",
-  );
-  const [requestId, setRequestId] = useState(initialFeedback.ref);
+  const [error, setError] = useState("");
+  const [requestId, setRequestId] = useState("");
   const hasTrackedStart = useRef(false);
   const isSubmittingRef = useRef(false);
   const feedbackRef = useRef<HTMLDivElement | null>(null);
@@ -110,28 +105,20 @@ export default function ContactForm({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const status = params.get("contact_status");
-    const ref = params.get("contact_ref") || "";
-    const msg = params.get("contact_msg") || "";
+    const feedback = window.__waContactFeedback || parseContactFeedback(window.location.href);
 
-    if (status === "success") {
+    if (feedback.status === "success") {
       setSubmitted(true);
       setError("");
-      if (ref) setRequestId(ref);
-    } else if (status === "error") {
+      if (feedback.ref) setRequestId(feedback.ref);
+    } else if (feedback.status === "error") {
       setSubmitted(false);
-      setError(msg || "We could not submit your request. Please try again or reach us on WhatsApp.");
-      if (ref) setRequestId(ref);
+      setError(feedback.msg || "We could not submit your request. Please try again or reach us on WhatsApp.");
+      if (feedback.ref) setRequestId(feedback.ref);
     }
 
-    if (status) {
-      params.delete("contact_status");
-      params.delete("contact_ref");
-      params.delete("contact_msg");
-      const nextQuery = params.toString();
-      const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
-      window.history.replaceState({}, "", nextUrl);
+    if (feedback.status) {
+      document.getElementById("contact-feedback-fallback")?.setAttribute("hidden", "hidden");
     }
   }, []);
 
