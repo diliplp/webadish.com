@@ -53,7 +53,7 @@ export default function ContactForm({
     service: initialService,
     message: "",
     fax_number: "",
-    form_started_at: Date.now(),
+    form_started_at: 0,
     turnstile_token: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -63,6 +63,10 @@ export default function ContactForm({
   const hasTrackedStart = useRef(false);
   const isSubmittingRef = useRef(false);
   const feedbackRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setForm((f) => ({ ...f, form_started_at: Date.now() }));
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -116,6 +120,7 @@ export default function ContactForm({
     });
     hasTrackedStart.current = false;
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -205,7 +210,7 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} action="javascript:void(0)" className="space-y-5">
+    <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
@@ -296,7 +301,8 @@ export default function ContactForm({
           onChange={(e) => setForm({ ...form, fax_number: e.target.value })}
         />
       </div>
-      <input type="hidden" name="form_started_at" value={String(form.form_started_at)} />
+      <input type="hidden" name="form_started_at" value={String(form.form_started_at)} suppressHydrationWarning />
+      <input type="hidden" name="return_to" value={pagePath} />
       <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
       <TurnstileField
         siteKey={turnstileSiteKey}
