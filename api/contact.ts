@@ -1,8 +1,11 @@
 
+import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
 const MIN_FORM_FILL_MS = 3000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
+const DUPLICATE_WINDOW_MS = 90 * 1000;
+const RECENT_SUBMISSIONS = new Map<string, { requestId: string; submittedAt: number }>();
 
 // Spam keyword patterns in message/name (bots, SEO spam, etc.)
 const SPAM_PATTERNS = [
@@ -121,6 +124,27 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: err });
     }
 
+    const submissionKey = buildSubmissionKey({
+      name: nameStr,
+      email: emailStr,
+      phone: phoneStr,
+      service: serviceStr,
+      message: messageStr,
+    });
+    const duplicate = getRecentSubmission(submissionKey);
+    if (duplicate) {
+      log('duplicate_submission_suppressed', { originalRequestId: duplicate.requestId });
+      if (acceptsHtml) {
+        return respondRedirect(res, returnTo, 'success', duplicate.requestId, 'Thanks. Your request was already submitted and we are reviewing it now.');
+      }
+      return res.status(200).json({
+        success: true,
+        message: 'Request already received',
+        request_id: duplicate.requestId,
+        duplicate: true,
+      });
+    }
+
     // --- TURNSTILE: verify if token is present; allow through if missing (Turnstile may not have loaded) ---
     const turnstileTokenStr = typeof turnstile_token === 'string' ? turnstile_token : '';
     if (process.env.TURNSTILE_SECRET_KEY && turnstileTokenStr) {
@@ -158,6 +182,7 @@ export default async function handler(req: any, res: any) {
     log('sending_support_email');
     const supportResult = await sendMail(supportMail, requestId);
     log('support_email_sent', { provider: supportResult.provider, messageId: supportResult.id });
+    rememberSubmission(submissionKey, requestId);
 
     const confirmationMail: OutboundMail = {
       to: emailStr,
@@ -172,14 +197,15 @@ export default async function handler(req: any, res: any) {
     };
 
     if (!flags.length) {
-      try {
-        const confirmResult = await sendMail(confirmationMail, requestId);
-        log('confirmation_email_sent', { provider: confirmResult.provider, messageId: confirmResult.id });
-      } catch (confirmationError) {
-        log('confirmation_email_failed_continue', {
-          error: confirmationError instanceof Error ? confirmationError.message : String(confirmationError),
+      void sendMail(confirmationMail, requestId)
+        .then((confirmResult) => {
+          log('confirmation_email_sent', { provider: confirmResult.provider, messageId: confirmResult.id });
+        })
+        .catch((confirmationError) => {
+          log('confirmation_email_failed_continue', {
+            error: confirmationError instanceof Error ? confirmationError.message : String(confirmationError),
+          });
         });
-      }
     } else {
       log('confirmation_email_skipped_flagged_submission', { flags });
     }
@@ -244,6 +270,46 @@ function respondRedirect(
   const location = `${url.pathname}${url.search}`;
 
   return res.status(303).setHeader('Location', location).send('');
+}
+
+function buildSubmissionKey(input: {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}): string {
+  return crypto
+    .createHash('sha256')
+    .update(
+      [
+        input.name.trim().toLowerCase(),
+        input.email.trim().toLowerCase(),
+        input.phone.replace(/\s+/g, ''),
+        input.service.trim().toLowerCase(),
+        input.message.trim().replace(/\s+/g, ' ').toLowerCase(),
+      ].join('|'),
+    )
+    .digest('hex');
+}
+
+function getRecentSubmission(key: string): { requestId: string; submittedAt: number } | null {
+  pruneRecentSubmissions();
+  return RECENT_SUBMISSIONS.get(key) || null;
+}
+
+function rememberSubmission(key: string, requestId: string) {
+  pruneRecentSubmissions();
+  RECENT_SUBMISSIONS.set(key, { requestId, submittedAt: Date.now() });
+}
+
+function pruneRecentSubmissions() {
+  const cutoff = Date.now() - DUPLICATE_WINDOW_MS;
+  for (const [key, value] of RECENT_SUBMISSIONS.entries()) {
+    if (value.submittedAt < cutoff) {
+      RECENT_SUBMISSIONS.delete(key);
+    }
+  }
 }
 
 type OutboundMail = {
