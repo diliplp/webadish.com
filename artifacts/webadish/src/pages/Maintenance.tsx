@@ -60,10 +60,14 @@ export default function Maintenance() {
               <p className="text-sm text-muted-foreground mt-2">We handle the maintenance layer properly: staged updates, offsite backups, monitoring, hardening, and faster response when something breaks or looks risky.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="lg" className="text-lg px-8" onClick={() => window.location.href='/contact'}>
-                Schedule a Protection Review <ArrowRight size={18} className="ml-2" />
+              <Button asChild variant="accent" size="lg" className="text-lg px-8">
+                <Link href="/contact">
+                  Schedule a Protection Review <ArrowRight size={18} className="ml-2" />
+                </Link>
               </Button>
-              <Link href="/pricing"><Button variant="outline" size="lg" className="text-lg px-8">See All Plans</Button></Link>
+              <Button asChild variant="outline" size="lg" className="text-lg px-8">
+                <Link href="/pricing">See All Plans</Link>
+              </Button>
             </div>
             <div className="flex flex-wrap gap-6 mt-10 text-sm text-muted-foreground font-medium">
               {["800+ sites protected", "No lock-in contracts", "99.9% uptime guarantee", "20+ years in business"].map(b => (
@@ -113,7 +117,9 @@ export default function Maintenance() {
                     </li>
                   ))}
                 </ul>
-                <Button variant={plan.highlight ? "white" : "outline"} className="w-full" onClick={() => window.location.href='/contact'}>{plan.cta}</Button>
+                <Button asChild variant={plan.highlight ? "white" : "outline"} className="w-full">
+                  <Link href="/contact">{plan.cta}</Link>
+                </Button>
               </div>
             ))}
           </div>
@@ -172,8 +178,10 @@ export default function Maintenance() {
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Stop Worrying About Your WordPress Site</h2>
           <p className="text-lg text-white/90 mb-8">We handle the protection stack, and when you need a named expert plus emergency recovery coverage, the security retainer becomes the next step.</p>
-          <Button variant="white" size="lg" onClick={() => window.location.href='/contact'}>
-            Start Your Protection Plan <ArrowRight size={18} className="ml-2" />
+          <Button asChild variant="white" size="lg">
+            <Link href="/contact">
+              Start Your Protection Plan <ArrowRight size={18} className="ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

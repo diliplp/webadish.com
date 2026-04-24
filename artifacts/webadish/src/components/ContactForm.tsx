@@ -42,6 +42,7 @@ export default function ContactForm({
   const turnstileEnabled = import.meta.env.VITE_TURNSTILE_ENABLED === "true";
   const turnstileSiteKey = turnstileEnabled ? (import.meta.env.VITE_TURNSTILE_SITE_KEY || "") : "";
   const initialService = defaultService && services.includes(defaultService) ? defaultService : services[0];
+  const formAnchorId = `${formName}-form`;
   const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "ready" | "error" | "skipped">(
     turnstileSiteKey ? "idle" : "skipped",
   );
@@ -187,7 +188,7 @@ export default function ContactForm({
 
   if (submitted) {
     return (
-      <div ref={feedbackRef} className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center" role="status" aria-live="polite">
+      <div id={formAnchorId} ref={feedbackRef} className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center" role="status" aria-live="polite">
         <CheckCircle2 size={48} className="text-green-500 mx-auto mb-4" />
         <h3 className="text-xl font-bold mb-2">Request Sent</h3>
         <p className="text-muted-foreground">{successMessage}</p>
@@ -210,7 +211,7 @@ export default function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
+    <form id={formAnchorId} onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
@@ -302,7 +303,7 @@ export default function ContactForm({
         />
       </div>
       <input type="hidden" name="form_started_at" value={String(form.form_started_at)} suppressHydrationWarning />
-      <input type="hidden" name="return_to" value={pagePath} />
+      <input type="hidden" name="return_to" value={`${pagePath}#${formAnchorId}`} />
       <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
       <TurnstileField
         siteKey={turnstileSiteKey}

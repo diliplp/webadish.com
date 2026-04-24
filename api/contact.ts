@@ -271,7 +271,7 @@ function respondRedirect(
   url.searchParams.set('contact_status', status);
   url.searchParams.set('contact_ref', requestId);
   url.searchParams.set('contact_msg', message);
-  const location = `${url.pathname}${url.search}`;
+  const location = `${url.pathname}${url.search}${url.hash}`;
 
   return res.status(303).setHeader('Location', location).send('');
 }
