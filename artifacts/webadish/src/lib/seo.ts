@@ -48,7 +48,7 @@ export const PRERENDER_ROUTES = [
   "/case-studies/verofax",
   "/case-studies/shivamautozone",
   "/case-studies/crystalgroup",
-  // "/contact" intentionally excluded — form page uses createRoot (no SSR) to avoid hydration issues
+  "/contact",
   "/web-design",
   "/privacy-policy",
   "/terms",
