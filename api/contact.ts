@@ -1,6 +1,5 @@
 
 import crypto from 'crypto';
-import nodemailer from 'nodemailer';
 
 const MIN_FORM_FILL_MS = 3000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
@@ -118,8 +117,13 @@ export default async function handler(req: any, res: any) {
       if (acceptsHtml) return respondRedirect(res, returnTo, 'error', requestId, err);
       return res.status(400).json({ error: err });
     }
+    if (messageStr.length > 4000) {
+      const err = 'Your message is too long (max 4000 characters). Please shorten it.';
+      if (acceptsHtml) return respondRedirect(res, returnTo, 'error', requestId, err);
+      return res.status(400).json({ error: err });
+    }
     if (!looksLikeRealMessage(messageStr)) {
-      const err = 'Please describe your request in more detail (at least a few words, no special characters only).';
+      const err = 'Please describe your request in more detail (at least a few words).';
       if (acceptsHtml) return respondRedirect(res, returnTo, 'error', requestId, err);
       return res.status(400).json({ error: err });
     }
@@ -325,31 +329,17 @@ type MailSendResult = {
 };
 
 async function sendMail(mail: OutboundMail, requestId: string): Promise<MailSendResult> {
-  const attempts: string[] = [];
-
-  if (process.env.RESEND_API_KEY) {
-    try {
-      const result = await sendViaResend(mail, requestId);
-      return { ...result, provider: 'resend' };
-    } catch (error) {
-      attempts.push(error instanceof Error ? error.message : String(error));
-    }
-  } else {
-    attempts.push('RESEND_API_KEY is missing');
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not configured');
   }
-
-  if (hasSmtpConfig()) {
-    try {
-      const result = await sendViaSmtp(mail);
-      return { ...result, provider: 'smtp' };
-    } catch (error) {
-      attempts.push(error instanceof Error ? error.message : String(error));
-    }
-  } else {
-    attempts.push('SMTP credentials are missing');
+  try {
+    const result = await sendViaResend(mail, requestId);
+    return { ...result, provider: 'resend' };
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    console.error(`[contact:${requestId}] resend_failed to=${mail.to} reason=${reason}`);
+    throw new Error(`Resend failed: ${reason}`);
   }
-
-  throw new Error(`All email providers failed: ${attempts.join(' | ')}`);
 }
 
 async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ id: string }> {
@@ -381,40 +371,6 @@ async function sendViaResend(mail: OutboundMail, requestId: string): Promise<{ i
   return { id: typeof data?.id === 'string' ? data.id : 'unknown' };
 }
 
-function hasSmtpConfig(): boolean {
-  return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD);
-}
-
-async function sendViaSmtp(mail: OutboundMail): Promise<{ id: string }> {
-  const host = process.env.SMTP_HOST;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASSWORD;
-
-  if (!host || !user || !pass) {
-    throw new Error('SMTP configuration is incomplete');
-  }
-
-  const port = Number(process.env.SMTP_PORT || 465);
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: {
-      user,
-      pass,
-    },
-  });
-
-  const info = await transporter.sendMail({
-    from: process.env.SMTP_FROM_EMAIL || user || 'noreply@webadish.com',
-    to: mail.to,
-    subject: mail.subject,
-    html: mail.html,
-    replyTo: mail.replyTo,
-  });
-
-  return { id: info.messageId || 'smtp' };
-}
 
 function escapeHtml(text: string): string {
   const map: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
