@@ -46,14 +46,14 @@ export default function IndiaHackedLp() {
               Professional malware removal, blacklist clearance, and full site recovery for Indian businesses. Flat-rate INR pricing. 30-day guarantee.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <a href="tel:+919998757045">
-                <Button variant="primary" size="lg" className="text-lg px-8 shadow-lg shadow-primary/30">
-                  <Phone size={18} className="mr-2" /> Call Now: +91 9998757045
+              <a href="tel:+919998757045" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" className="w-full text-lg px-8 shadow-lg shadow-primary/30 h-14 bg-red-600 hover:bg-red-700">
+                  <Phone size={20} className="mr-2 animate-bounce" /> Call Specialist: +91 9998757045
                 </Button>
               </a>
-              <a href="https://wa.me/919998757045?text=My%20website%20has%20been%20hacked%2C%20I%20need%20emergency%20recovery" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg" className="text-lg px-8">
-                  <MessageCircle size={18} className="mr-2" /> WhatsApp Us
+              <a href="https://wa.me/919998757045?text=My%20website%20has%20been%20hacked%2C%20I%20need%20emergency%20recovery" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full text-lg px-8 h-14 border-green-600 text-green-700 hover:bg-green-50">
+                  <MessageCircle size={20} className="mr-2" /> WhatsApp Triage
                 </Button>
               </a>
             </div>
