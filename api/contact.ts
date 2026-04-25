@@ -25,6 +25,8 @@ const DISPOSABLE_DOMAINS = new Set([
   'mt2015.com', 'mt2014.com', 'discard.email', 'spamfree24.org',
 ]);
 
+const RISKY_LINK_TLDS = ['.ru', '.cn', '.tk', '.pw', '.top', '.xyz', '.click', '.download'];
+
 export default async function handler(req: any, res: any) {
   const requestId = buildRequestId(req);
   res.setHeader('x-contact-request-id', requestId);
@@ -155,6 +157,21 @@ export default async function handler(req: any, res: any) {
       }
     } else if (process.env.TURNSTILE_SECRET_KEY && !turnstileTokenStr) {
       log('turnstile_missing_continue');
+    }
+
+    const blockReason = getBlockedSpamReason({
+      flags,
+      emailDomain,
+      message: messageStr,
+      hasTurnstileToken: Boolean(turnstileTokenStr),
+    });
+    if (blockReason) {
+      log('high_confidence_spam_blocked', { blockReason, flags, emailDomain });
+      rememberSubmission(submissionKey, requestId);
+      if (acceptsHtml) {
+        return respondRedirect(res, returnTo, 'success', requestId, 'Thanks. Your request was submitted successfully. We will reply within 4 business hours.');
+      }
+      return res.status(200).json({ success: true, message: 'Email sent successfully', request_id: requestId, blocked: true });
     }
 
     const flagPrefix = flags.length ? `[Flagged: ${flags.join(', ')}] ` : '';
@@ -390,6 +407,45 @@ function looksLikeRealPhone(value: string): boolean {
   if (!value) return true;
   const normalized = value.replace(/[^\d+]/g, '');
   return normalized.length >= 7 && normalized.length <= 16;
+}
+
+function getBlockedSpamReason(input: {
+  flags: string[];
+  emailDomain: string;
+  message: string;
+  hasTurnstileToken: boolean;
+}): string | null {
+  const flags = new Set(input.flags);
+  const linkCount = countUrls(input.message);
+  const riskyLinkCount = countRiskyLinks(input.message);
+  const riskyEmailTld = RISKY_LINK_TLDS.some((suffix) => input.emailDomain.endsWith(suffix));
+
+  if (flags.has('honeypot') && (flags.has('spam_pattern') || flags.has('disposable_email') || flags.has('turnstile_invalid') || flags.has('timing_fast'))) {
+    return 'honeypot_plus_signal';
+  }
+
+  if (flags.has('spam_pattern') && (flags.has('disposable_email') || riskyLinkCount > 0 || linkCount >= 2 || riskyEmailTld)) {
+    return 'spam_pattern_plus_links';
+  }
+
+  if (flags.has('turnstile_invalid') && flags.has('spam_pattern') && (flags.has('timing_fast') || !input.hasTurnstileToken)) {
+    return 'turnstile_failed_spam';
+  }
+
+  if (flags.has('timing_fast') && flags.has('spam_pattern') && riskyLinkCount > 0) {
+    return 'fast_link_spam';
+  }
+
+  return null;
+}
+
+function countUrls(value: string): number {
+  return (value.match(/https?:\/\/[^\s<>"')]+/gi) || []).length;
+}
+
+function countRiskyLinks(value: string): number {
+  const matches = value.match(/https?:\/\/[^\s<>"')]+/gi) || [];
+  return matches.filter((url) => RISKY_LINK_TLDS.some((suffix) => url.toLowerCase().includes(suffix))).length;
 }
 
 async function verifyTurnstileToken(token: string, req: any): Promise<boolean> {
