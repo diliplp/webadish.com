@@ -91,6 +91,16 @@ export default function ContactForm({
     form_started_at: 0,
     turnstile_token: "",
   });
+  const [utmData, setUtmData] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: "",
+    gclid: "",
+    landing_page: "",
+    referrer: "",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -101,6 +111,20 @@ export default function ContactForm({
 
   useEffect(() => {
     setForm((f) => ({ ...f, form_started_at: Date.now() }));
+    
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      setUtmData({
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_term: params.get("utm_term") || "",
+        utm_content: params.get("utm_content") || "",
+        gclid: params.get("gclid") || "",
+        landing_page: window.location.pathname,
+        referrer: document.referrer || "",
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -172,7 +196,7 @@ export default function ContactForm({
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ...utmData }),
         signal: controller.signal,
       });
 

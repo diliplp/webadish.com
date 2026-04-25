@@ -45,7 +45,7 @@ export default function TrackingManager() {
       if (
         href.includes("/contact") ||
         element.getAttribute("data-track") === "cta" ||
-        /request|get protected|assessment|review|quote|call/i.test(label)
+        /request|get protected|assessment|review|audit|emergency|quote|call/i.test(label)
       ) {
         trackEvent("cta_click", { label, href, page_path: pagePath });
       }

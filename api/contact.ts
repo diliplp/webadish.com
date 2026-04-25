@@ -11,8 +11,10 @@ const SPAM_PATTERNS = [
   /\b(seo\s+service|backlink|link.?build|rank.*google|search.?engine.?optimiz|google.*rank|increase.*traffic|website.*traffic|buy.*traffic)/i,
   /\b(casino|poker|slot|gambling|bet.*site|crypto.*invest|bitcoin.*profit|forex.*signal|make.*money.*online|earn.*\$|work.*from.*home.*earn)/i,
   /\b(payday.*loan|cheap.*med|generic.*viagra|cialis|buy.*follower|instagram.*follower|tiktok.*follower)/i,
-  /\b(http:\/\/|www\.)[\w.-]+\.(ru|cn|tk|pw|top|xyz|click|download)\b/i,
+  /\b(http:\/\/|https:\/\/|www\.)[\w.-]+\.(ru|cn|tk|pw|top|xyz|click|download)\b/i,
 ];
+
+const CYRILLIC_PATTERN = /[\u0400-\u04FF]/;
 
 // Known disposable / throwaway email domains
 const DISPOSABLE_DOMAINS = new Set([
@@ -106,6 +108,12 @@ export default async function handler(req: any, res: any) {
     if (SPAM_PATTERNS.some(p => p.test(textToScan))) {
       flags.push('spam_pattern');
       log('spam_pattern_flagged');
+    }
+
+    // --- CYRILLIC DETECTION (For non-Cyrillic markets) ---
+    if (CYRILLIC_PATTERN.test(textToScan)) {
+      flags.push('cyrillic');
+      log('cyrillic_text_flagged');
     }
 
     // --- FIELD QUALITY: return friendly errors (real users can see and fix these) ---
@@ -420,8 +428,14 @@ function getBlockedSpamReason(input: {
   const riskyLinkCount = countRiskyLinks(input.message);
   const riskyEmailTld = RISKY_LINK_TLDS.some((suffix) => input.emailDomain.endsWith(suffix));
 
-  if (flags.has('honeypot') && (flags.has('spam_pattern') || flags.has('disposable_email') || flags.has('turnstile_invalid') || flags.has('timing_fast'))) {
-    return 'honeypot_plus_signal';
+  // Hard block on honeypot - no reason for a human to fill this
+  if (flags.has('honeypot')) {
+    return 'honeypot';
+  }
+
+  // Hard block on Cyrillic for this specific business context (India/UK/Global English)
+  if (flags.has('cyrillic') && (riskyEmailTld || riskyLinkCount > 0 || flags.has('spam_pattern'))) {
+    return 'cyrillic_spam';
   }
 
   if (flags.has('spam_pattern') && (flags.has('disposable_email') || riskyLinkCount > 0 || linkCount >= 2 || riskyEmailTld)) {
