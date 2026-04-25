@@ -237,189 +237,197 @@ export default function ContactForm({
   };
 
   return (
-    <form id={formAnchorId} onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
-      {submitted && (
-        <div ref={feedbackRef} className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center" role="status" aria-live="polite">
-          <CheckCircle2 size={40} className="text-green-500 mx-auto mb-3" />
-          <h3 className="text-lg font-bold mb-2">Thank you! We have received your message and will get back to you shortly.</h3>
-          <p className="text-sm text-muted-foreground">{successMessage}</p>
-          {requestId && (
-            <p className="mt-3 text-xs text-muted-foreground">Reference: {requestId}</p>
-          )}
-          <button
-            type="button"
-            onClick={() => {
-              setSubmitted(false);
-              setError("");
-              setRequestId("");
-            }}
-            className="mt-5 text-accent hover:underline text-sm font-medium"
-          >
-            Send another message
-          </button>
-        </div>
-      )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
-          <input
-            id={`${formName}-name`}
-            required
-            type="text"
-            name="name"
-            placeholder="Rahul Sharma"
-            value={form.name}
-            onFocus={trackFormStart}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            minLength={2}
-            maxLength={80}
-            autoComplete="name"
-            className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
-          />
-        </div>
-        <div>
-          <label htmlFor={`${formName}-email`} className="block text-sm font-medium mb-2">Email Address *</label>
-          <input
-            id={`${formName}-email`}
-            required
-            type="email"
-            name="email"
-            placeholder="rahul@company.com"
-            value={form.email}
-            onFocus={trackFormStart}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            autoComplete="email"
-            className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
-          />
-        </div>
-      </div>
-      <div>
-        <label htmlFor={`${formName}-phone`} className="block text-sm font-medium mb-2">Phone / WhatsApp</label>
-        <input
-          id={`${formName}-phone`}
-          type="tel"
-          name="phone"
-          placeholder="+91 98765 43210"
-          value={form.phone}
-          onFocus={trackFormStart}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          autoComplete="tel"
-          className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
-        />
-      </div>
-      <div>
-        <label htmlFor={`${formName}-service`} className="block text-sm font-medium mb-2">Service Needed</label>
-        <select
-          id={`${formName}-service`}
-          name="service"
-          value={form.service}
-          onFocus={trackFormStart}
-          onChange={(e) => setForm({ ...form, service: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
-        >
-          {services.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label htmlFor={`${formName}-message`} className="block text-sm font-medium mb-2">{messageLabel}</label>
-        <textarea
-          id={`${formName}-message`}
-          required
-          rows={5}
-          name="message"
-          placeholder={messagePlaceholder}
-          value={form.message}
-          onFocus={trackFormStart}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none"
-        />
-      </div>
-      <div className="hidden" aria-hidden="true">
-        <input
-          type="text"
-          name="fax_number"
-          tabIndex={-1}
-          autoComplete="off"
-          value={form.fax_number}
-          onChange={(e) => setForm({ ...form, fax_number: e.target.value })}
-        />
-      </div>
-      <input type="hidden" name="form_started_at" value={String(form.form_started_at)} suppressHydrationWarning />
-      <input type="hidden" name="return_to" value={`${pagePath}#${formAnchorId}`} />
-      <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
-      <TurnstileField
-        siteKey={turnstileSiteKey}
-        theme="light"
-        onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
-        onStatusChange={setTurnstileStatus}
-      />
-      {turnstileStatus === "error" && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-3">
-          <p className="text-xs text-amber-800">
-            Security check failed to load. You can still submit, or reach us on{" "}
-            <a href="https://wa.me/919998757045" className="underline font-medium">WhatsApp</a>.
+    <div id={formAnchorId} className="space-y-5 min-h-[400px] flex flex-col justify-center">
+      {submitted ? (
+        <div ref={feedbackRef} className="bg-green-50 border-2 border-green-200 rounded-3xl p-8 md:p-12 text-center animate-in fade-in zoom-in duration-300" role="status" aria-live="polite">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 size={48} className="text-green-600" />
+          </div>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Request Received!</h3>
+          <p className="text-lg text-gray-700 mb-8 max-w-md mx-auto leading-relaxed">
+            {successMessage}
           </p>
-        </div>
-      )}
-      {error && (
-        <div
-          ref={feedbackRef}
-          className="bg-red-50 border border-red-200 rounded-xl p-4 space-y-3"
-          role="alert"
-          aria-live="assertive"
-        >
-          <p className="text-red-700 text-sm font-medium">{error}</p>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="https://wa.me/919998757045?text=Hi%2C%20I%20tried%20submitting%20the%20form%20on%20webadish.com%20but%20it%20failed."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 hover:text-red-900 underline"
+          {requestId && (
+            <div className="bg-white/50 rounded-xl py-2 px-4 inline-block mb-8 border border-green-100">
+              <p className="text-xs font-mono text-gray-500 uppercase tracking-wider">Reference: {requestId}</p>
+            </div>
+          )}
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                setSubmitted(false);
+                setError("");
+                setRequestId("");
+              }}
+              className="text-accent hover:underline text-sm font-semibold inline-flex items-center gap-2"
             >
-              <MessageCircle size={14} /> WhatsApp us instead
-            </a>
-            <a
-              href="tel:+919998757045"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 hover:text-red-900 underline"
-            >
-              <Phone size={14} /> Call +91 9998757045
-            </a>
+              Send another message <ArrowRight size={14} />
+            </button>
           </div>
         </div>
+      ) : (
+        <form onSubmit={handleSubmit} method="post" action="/api/contact" className="space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label htmlFor={`${formName}-name`} className="block text-sm font-medium mb-2">Full Name *</label>
+              <input
+                id={`${formName}-name`}
+                required
+                type="text"
+                name="name"
+                placeholder="Rahul Sharma"
+                value={form.name}
+                onFocus={trackFormStart}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                minLength={2}
+                maxLength={80}
+                autoComplete="name"
+                className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
+              />
+            </div>
+            <div>
+              <label htmlFor={`${formName}-email`} className="block text-sm font-medium mb-2">Email Address *</label>
+              <input
+                id={`${formName}-email`}
+                required
+                type="email"
+                name="email"
+                placeholder="rahul@company.com"
+                value={form.email}
+                onFocus={trackFormStart}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                autoComplete="email"
+                className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor={`${formName}-phone`} className="block text-sm font-medium mb-2">Phone / WhatsApp</label>
+            <input
+              id={`${formName}-phone`}
+              type="tel"
+              name="phone"
+              placeholder="+91 98765 43210"
+              value={form.phone}
+              onFocus={trackFormStart}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              autoComplete="tel"
+              className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
+            />
+          </div>
+          <div>
+            <label htmlFor={`${formName}-service`} className="block text-sm font-medium mb-2">Service Needed</label>
+            <select
+              id={`${formName}-service`}
+              name="service"
+              value={form.service}
+              onFocus={trackFormStart}
+              onChange={(e) => setForm({ ...form, service: e.target.value })}
+              className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all"
+            >
+              {services.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor={`${formName}-message`} className="block text-sm font-medium mb-2">{messageLabel}</label>
+            <textarea
+              id={`${formName}-message`}
+              required
+              rows={5}
+              name="message"
+              placeholder={messagePlaceholder}
+              value={form.message}
+              onFocus={trackFormStart}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="w-full px-4 py-3 rounded-xl border border-border bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white text-sm transition-all resize-none"
+            />
+          </div>
+          <div className="hidden" aria-hidden="true">
+            <input
+              type="text"
+              name="fax_number"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.fax_number}
+              onChange={(e) => setForm({ ...form, fax_number: e.target.value })}
+            />
+          </div>
+          <input type="hidden" name="form_started_at" value={String(form.form_started_at)} suppressHydrationWarning />
+          <input type="hidden" name="return_to" value={`${pagePath}#${formAnchorId}`} />
+          <input type="hidden" name="turnstile_token" value={form.turnstile_token} />
+          <TurnstileField
+            siteKey={turnstileSiteKey}
+            theme="light"
+            onTokenChange={(token) => setForm((current) => ({ ...current, turnstile_token: token }))}
+            onStatusChange={setTurnstileStatus}
+          />
+          {turnstileStatus === "error" && (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-3">
+              <p className="text-xs text-amber-800">
+                Security check failed to load. You can still submit, or reach us on{" "}
+                <a href="https://wa.me/919998757045" className="underline font-medium">WhatsApp</a>.
+              </p>
+            </div>
+          )}
+          {error && (
+            <div
+              ref={feedbackRef}
+              className="bg-red-50 border border-red-200 rounded-xl p-4 space-y-3"
+              role="alert"
+              aria-live="assertive"
+            >
+              <p className="text-red-700 text-sm font-medium">{error}</p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://wa.me/919998757045?text=Hi%2C%20I%20tried%20submitting%20the%20form%20on%20webadish.com%20but%20it%20failed."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 hover:text-red-900 underline"
+                >
+                  <MessageCircle size={14} /> WhatsApp us instead
+                </a>
+                <a
+                  href="tel:+919998757045"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 hover:text-red-900 underline"
+                >
+                  <Phone size={14} /> Call +91 9998757045
+                </a>
+              </div>
+            </div>
+          )}
+          {(turnstileStatus === "idle" || turnstileStatus === "loading") && turnstileSiteKey && (
+            <p className="text-xs text-muted-foreground text-center">Security check loading…</p>
+          )}
+          <Button
+            type="submit"
+            variant="accent"
+            size="lg"
+            className="w-full text-base"
+            disabled={loading}
+            aria-busy={loading}
+          >
+            {loading ? (
+              <>
+                <Loader2 size={18} className="mr-2 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                {submitLabel}
+                <ArrowRight size={18} className="ml-2" />
+              </>
+            )}
+          </Button>
+          <p className="text-xs text-muted-foreground text-center">
+            We respond within 4 business hours. No spam, no hard sell.
+          </p>
+        </form>
       )}
-      {(turnstileStatus === "idle" || turnstileStatus === "loading") && turnstileSiteKey && (
-        <p className="text-xs text-muted-foreground text-center">Security check loading…</p>
-      )}
-      <Button
-        type="submit"
-        variant="accent"
-        size="lg"
-        className="w-full text-base"
-        disabled={loading}
-        aria-busy={loading}
-      >
-        {loading ? (
-          <>
-            <Loader2 size={18} className="mr-2 animate-spin" />
-            Sending...
-          </>
-        ) : (
-          <>
-            {submitLabel}
-            <ArrowRight size={18} className="ml-2" />
-          </>
-        )}
-      </Button>
-      <p className="text-xs text-muted-foreground text-center">
-        We respond within 4 business hours. No spam, no hard sell.
-      </p>
-      {requestId && !error && (
-        <p className="text-xs text-muted-foreground text-center">Reference: {requestId}</p>
-      )}
-    </form>
+    </div>
   );
 }

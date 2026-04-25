@@ -86,20 +86,20 @@
 
         var shell = document.getElementById('contact-feedback-fallback');
         if (shell) {
-          var background = status === 'success' ? '#ecfdf3' : '#fef2f2';
-          var border = status === 'success' ? '#86efac' : '#fca5a5';
-          var title = status === 'success' ? 'Request Submitted' : 'Submission Error';
+          var background = status === 'success' ? '#f0fdf4' : '#fef2f2';
+          var border = status === 'success' ? '#bbf7d0' : '#fca5a5';
+          var title = status === 'success' ? 'Request Received!' : 'Submission Error';
+          var icon = status === 'success' ? '✓' : '⚠';
+          var iconColor = status === 'success' ? '#16a34a' : '#dc2626';
 
           shell.innerHTML = ''
-            + '<div style="margin:0 0 20px;padding:18px 20px;background:' + background + ';border:1px solid ' + border + ';border-radius:20px;box-shadow:0 12px 30px rgba(15,23,42,.08)">'
-            +   '<div style="display:flex;gap:16px;align-items:flex-start;justify-content:space-between">'
-            +     '<div>'
-            +       '<p style="margin:0 0 4px;font:600 16px/1.4 Alata,system-ui,sans-serif;color:#111827">' + title + '</p>'
-            +       '<p style="margin:0;font:400 14px/1.6 Alata,system-ui,sans-serif;color:#374151">' + msg + '</p>'
-            +       (ref ? '<p style="margin:6px 0 0;font:400 12px/1.5 Alata,system-ui,sans-serif;color:#6b7280">Reference: ' + ref + '</p>' : '')
-            +     '</div>'
-            +     '<button type="button" id="contact-feedback-dismiss" aria-label="Dismiss message" style="border:0;background:transparent;color:#6b7280;font-size:18px;line-height:1;cursor:pointer;padding:2px 4px">×</button>'
-            +   '</div>'
+            + '<div style="margin:0 0 30px;padding:32px;background:' + background + ';border:2px solid ' + border + ';border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.05);text-align:center;animation:fadeInDown 0.5s ease-out">'
+            +   '<style>@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }</style>'
+            +   '<div style="width:64px;height:64px;background:white;border-radius:50%;display:flex;items-center;justify-content:center;margin:0 auto 16px;font-size:32px;line-height:64px;color:' + iconColor + ';box-shadow:0 4px 12px rgba(0,0,0,0.05)">' + icon + '</div>'
+            +   '<h3 style="margin:0 0 8px;font:700 24px/1.2 Alata,system-ui,sans-serif;color:#111827">' + title + '</h3>'
+            +   '<p style="margin:0 0 20px;font:400 16px/1.6 Alata,system-ui,sans-serif;color:#374151;max-width:400px;margin-left:auto;margin-right:auto">' + msg + '</p>'
+            +   (ref ? '<div style="background:rgba(255,255,255,0.5);padding:4px 12px;border-radius:8px;display:inline-block;margin-bottom:20px;border:1px solid ' + border + '"><p style="margin:0;font:400 12px/1.5 monospace;color:#6b7280;text-transform:uppercase;letter-spacing:1px">Reference: ' + ref + '</p></div>' : '')
+            +   '<div><button type="button" id="contact-feedback-dismiss" style="border:0;background:transparent;color:#1d4ed8;font:600 14px Alata,sans-serif;cursor:pointer;text-decoration:underline">Send another message</button></div>'
             + '</div>';
 
           var placeShell = function () {
