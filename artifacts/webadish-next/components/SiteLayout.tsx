@@ -124,7 +124,16 @@ function Navbar() {
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex h-full flex-col overflow-y-auto bg-white px-6 pb-8 pt-24">
+        <div className="flex h-full flex-col overflow-y-auto bg-white px-6 pb-8 pt-6">
+          <div className="flex justify-end mb-4">
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
           <nav className="flex flex-col gap-5 text-xl">
             {navLinks.map((link) => (
               <Link
