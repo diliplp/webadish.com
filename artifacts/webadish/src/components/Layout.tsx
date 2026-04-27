@@ -84,7 +84,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex-shrink-0 z-50 flex items-center cursor-pointer select-none">
+          <Link href="/" className="flex-shrink-0 relative z-[70] flex items-center cursor-pointer select-none">
             <img
               src="/logo.webp"
               alt="WebAdish"

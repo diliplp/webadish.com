@@ -75,7 +75,7 @@ function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex-shrink-0 z-50 flex items-center cursor-pointer select-none">
+          <Link href="/" className="flex-shrink-0 relative z-[70] flex items-center cursor-pointer select-none">
             <Image src="/logo.webp" alt="WebAdish" width={180} height={40} className="h-10 w-auto block" priority />
           </Link>
 
@@ -102,7 +102,7 @@ function Navbar() {
             })}
           </nav>
 
-          <div className="flex items-center gap-4 z-50">
+          <div className="flex items-center gap-4 relative z-[70]">
             <div className="hidden md:block">
               <Link href="/contact">
                 <Button variant="accent">Get Protected</Button>
