@@ -117,7 +117,7 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="flex items-center gap-4 z-50">
+          <div className="flex items-center gap-4 relative z-[70]">
             <div className="hidden md:block">
               <Button asChild variant="accent">
                 <Link href="/contact">Get Protected</Link>
