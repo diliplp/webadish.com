@@ -121,7 +121,7 @@ function Navbar() {
 
       <div
         className={`fixed inset-0 z-[60] bg-white transition-transform duration-300 lg:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         }`}
       >
         <div className="flex h-full flex-col overflow-y-auto bg-white px-6 pb-8 pt-6">
