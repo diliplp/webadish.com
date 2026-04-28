@@ -9,6 +9,11 @@
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.4",
@@ -42,7 +47,6 @@
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-query": "^5.87.4",
     "@types/node": "^22.15.31",
-    "@types/nodemailer": "^6.4.14",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "@vercel/node": "^3.0.11",
@@ -56,9 +60,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.511.0",
     "next-themes": "^0.4.6",
-    "react": "^18.3.1",
     "react-day-picker": "^9.11.1",
-    "react-dom": "^18.3.1",
     "react-hook-form": "^7.55.0",
     "react-icons": "^5.4.0",
     "react-resizable-panels": "^2.1.7",
@@ -71,9 +73,5 @@
     "vite": "^5.4.19",
     "wouter": "^3.3.5",
     "zod": "^3.24.2"
-  },
-  "dependencies": {
-    "@vercel/speed-insights": "^2.0.0",
-    "nodemailer": "^6.9.7"
   }
 }

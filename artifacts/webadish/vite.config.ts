@@ -28,35 +28,8 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (
-              id.includes("/react/") ||
-              id.includes("/react-dom/") ||
-              id.includes("/scheduler/") ||
-              id.includes("/framer-motion/") ||
-              id.includes("/recharts/") ||
-              id.includes("/victory-vendor/") ||
-              id.includes("/@tanstack/") ||
-              id.includes("/vaul/") ||
-              id.includes("/cmdk/") ||
-              id.includes("/sonner/") ||
-              id.includes("/next-themes/") ||
-              id.includes("/embla-carousel") ||
-              id.includes("/react-day-picker/") ||
-              id.includes("/react-hook-form/") ||
-              id.includes("/react-resizable-panels/") ||
-              id.includes("/react-icons/") ||
-              id.includes("/input-otp/")
-            ) {
-              return "react-core";
-            }
             if (id.includes("/lucide-react/")) {
               return "icons";
-            }
-            if (id.includes("/@radix-ui/")) {
-              return "radix";
-            }
-            if (id.includes("/wouter/")) {
-              return "router";
             }
             return "vendor";
           }
