@@ -1272,6 +1272,184 @@ const posts: Record<string, {
       </div>
     ),
   },
+  "woocommerce-hacked-what-to-do": {
+    tag: "Recovery", tagColor: "text-destructive",
+    title: "My WooCommerce Store Was Hacked: Emergency Recovery Guide",
+    date: "April 29, 2026", read: "10 min",
+    img: "/blog/incident-recovery-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">WooCommerce stores are targeted at a higher rate than standard WordPress sites because they hold what attackers want most: live payment flows, customer card data, and personal records. If your store has been compromised, every hour it stays live increases customer harm. Here is how to shut that down fast and recover completely.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Signs your WooCommerce store has been hacked</h2>
+        <p>Some compromises are immediately visible. Others run silently for weeks, skimming card data from every checkout without any surface symptoms. Watch for:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Customers reporting card fraud</strong> shortly after purchasing from your store</li>
+          <li><strong>Checkout redirecting</strong> to unexpected third-party sites or URLs</li>
+          <li><strong>Google showing a "Deceptive site ahead" warning</strong> when visitors open your URL</li>
+          <li><strong>Your payment gateway flagging or suspending</strong> your merchant account</li>
+          <li><strong>WooCommerce admin showing unknown orders, refunds, or coupon codes</strong> you did not create</li>
+          <li><strong>Unexpected admin users</strong> appearing in your WordPress user list</li>
+          <li><strong>Your hosting provider suspending your account</strong> for malware or spam</li>
+          <li><strong>A drop in organic traffic or Google Search Console security warnings</strong></li>
+        </ul>
+        <p>The most dangerous attack — a JavaScript payment skimmer — produces none of the above symptoms. The store appears to function normally. The attacker captures card data from every live transaction in the background and exfiltrates it without touching any visible page. The only way to detect a skimmer is a file integrity check and source code inspection of your checkout page.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Your first 30 minutes: stop the damage</h2>
+        <p>Do these in this order. Every minute of delay increases customer exposure and liability.</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Put the store into maintenance mode immediately</strong> — disable the checkout, or switch your payment gateway to test mode. Do not let customers complete purchases while the site is compromised. Use a maintenance plugin or ask your host to block the checkout path.</li>
+          <li><strong>Notify your payment processor</strong> — call them directly, not via email. Explain that you have identified a suspected security incident. They will advise on whether to freeze card processing and what reporting is required. Most processors have a 24/7 fraud line.</li>
+          <li><strong>Take a backup of the infected state</strong> — before cleaning anything, take a full file and database backup. This is your forensic record. You need it to understand the scope of the breach, identify what customer data may have been accessed, and comply with any breach notification obligations. Store it isolated from your live hosting.</li>
+          <li><strong>Change every credential</strong> — WordPress admin passwords, FTP/SFTP, database password, hosting panel. An attacker with active server access can undo any cleanup in real time if you do not close their access first.</li>
+          <li><strong>Document what you observe</strong> — note when the compromise was discovered, what symptoms you see, what plugins and themes are installed, and when they were last updated. This record is needed for your payment processor, your customers, and potentially for breach notification.</li>
+        </ol>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What attackers target in WooCommerce stores</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">JavaScript payment skimmers</h3>
+        <p>The most serious WooCommerce attack injects a small JavaScript snippet into your checkout page — typically into a plugin file, a theme file, or directly into your WordPress database. When a customer enters their card number on your checkout form, the skimmer captures the data and sends it silently to an attacker-controlled server before the legitimate transaction processes. Your payment gateway processes the real transaction normally. The customer has no idea their data was stolen. You have no idea it is happening.</p>
+        <p>Skimmers are designed to be invisible to surface-level malware scans. They are often obfuscated, encoded, or disguised as legitimate analytics scripts. Detecting them requires a source code inspection of the rendered checkout page and a file integrity check against your plugin and theme versions.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Customer data exfiltration</h3>
+        <p>WooCommerce stores hold order history, customer addresses, email addresses, phone numbers, and sometimes partial payment information. All of this has resale value on data markets. Attackers who gain database access via SQL injection or compromised credentials will extract and export your customer table — often without triggering any visible change to the site.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Admin account takeover</h3>
+        <p>With WordPress admin access, an attacker can create additional admin users, install plugins containing backdoors, modify WooCommerce settings, change the bank account for payouts (on certain payment setups), and export your full customer database. Admin account compromises via brute force or credential stuffing are among the most common WooCommerce attack vectors.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Redirect malware</h3>
+        <p>Malware that redirects mobile visitors (or all visitors) to phishing or spam sites. These redirects are often conditional — they only fire for visitors arriving from search engines, so they are invisible when you visit your own site directly. Customers clicking your Google search result get sent to a spam page. You visit the URL and see your normal store. This is a deliberate evasion technique.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The recovery process</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Full forensic scan — not a plugin scan</h3>
+        <p>Basic plugin-based malware scans (Wordfence, Sucuri) compare files against known malware signatures. They find most common infections but miss custom-built or obfuscated attacks. A forensic scan inspects every file on your server — including the uploads directory, custom directories, and hidden files — decodes obfuscated PHP, compares core and plugin files against official checksums, and inspects the WordPress database for injected scripts in post content, widget settings, and the options table.</p>
+        <p>For WooCommerce stores where skimmers are suspected, you also need to inspect the rendered source code of the checkout page as delivered to a browser — not just the server-side files.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Find and remove all backdoors</h3>
+        <p>Before cleaning visible malware, locate every backdoor. A backdoor is a hidden file or code snippet that lets the attacker re-enter even after you clean everything else. Common WooCommerce backdoor locations include the uploads directory (PHP files disguised as images), encoded PHP files in plugin directories, modified WordPress core files, and malicious entries in the database options table.</p>
+        <p>If you clean the malware without removing all backdoors, the site will be re-infected within days — sometimes within hours.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 3: Close the entry point</h3>
+        <p>Find and close the vulnerability that let the attacker in. Common WooCommerce entry points include an outdated plugin with a known CVE, a nulled or pirated plugin/theme with malware pre-installed, a compromised admin credential, or a vulnerable file upload handler. If you do not close the entry point, a different attacker will use the same path within days.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 4: Verify clean checkout before going live</h3>
+        <p>Before re-enabling your payment gateway, run a test transaction end-to-end. Inspect the checkout page source code for any unexpected external scripts. Run a final scan. Only then should live transactions resume.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 5: Customer notification</h3>
+        <p>If customer card data or personal data may have been exposed, your customers deserve to know. The appropriate notification depends on the nature of the data and your jurisdiction. If you process card payments under a payment processor agreement, your agreement likely requires you to notify your processor of any confirmed card data breach. Your processor will advise on next steps including whether cardholders need to be notified directly.</p>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">WooCommerce store hacked? Get it recovered today.</p>
+          <p className="text-sm mb-4">WebAdish recovers WooCommerce stores within 24 hours — complete malware removal, skimmer detection, backdoor elimination, and a 30-day re-infection guarantee. 800+ sites recovered.</p>
+          <Link href="/hacked-site-recovery" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Get Emergency Help →</Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Prevention after recovery</h2>
+        <p>Recovery fixes yesterday's problem. These steps prevent the next one:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Web Application Firewall</strong> — deploy Cloudflare or a similar WAF in front of your store. It blocks exploit attempts before they reach WordPress.</li>
+          <li><strong>Remove every unused plugin and theme</strong> — deactivated plugins still present vulnerabilities. Delete them entirely.</li>
+          <li><strong>Two-factor authentication</strong> — enforce 2FA for every WordPress admin account without exception.</li>
+          <li><strong>Payment page integrity monitoring</strong> — set up automated monitoring that alerts you if your checkout page's JavaScript changes unexpectedly. This is the early warning system for skimmer attacks.</li>
+          <li><strong>Regular security audits</strong> — quarterly at minimum for active WooCommerce stores.</li>
+          <li><strong>Security retainer</strong> — ongoing managed protection means vulnerabilities are patched before attackers can exploit them, and incidents are caught in hours rather than weeks.</li>
+        </ul>
+      </div>
+    ),
+  },
+
+  "wordpress-google-blacklist-removal": {
+    tag: "Recovery", tagColor: "text-destructive",
+    title: "WordPress Blacklisted by Google: How to Remove the Warning and Recover",
+    date: "April 29, 2026", read: "8 min",
+    img: "/blog/incident-recovery-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">A Google blacklist warning cuts organic traffic by 90% or more within hours of appearing. Search results show a red warning. Chrome blocks visitors with a full-page alert. The damage compounds daily. Here is exactly what to do — in order — to clean the infection, submit a review request, and get the warning removed.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What "blacklisted by Google" actually means</h2>
+        <p>Google maintains the Safe Browsing database — a constantly updated list of sites that have been identified as serving malware, hosting phishing pages, or distributing unwanted software. When a site is added to this list, Google Search shows a warning in results, and browsers including Chrome, Firefox, and Safari block visitors with a full-page interstitial alert.</p>
+        <p>Google's automated crawlers discover the malware, not a manual report in most cases. Googlebot follows links, scans page content, and analyses JavaScript behaviour. When it detects known malware patterns, phishing content, or unusual redirects, the site is flagged automatically. The time between a site being infected and it being blacklisted can be as short as 24–48 hours.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Types of Google blacklist warnings</h2>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Deceptive site ahead</strong> — the most common for hacked WordPress sites. Usually triggered by phishing pages, redirect malware, or injected content designed to impersonate trusted brands.</li>
+          <li><strong>Site ahead contains malware</strong> — triggered when Googlebot detects code that attempts to install malware on visitors' devices. Common in sites with drive-by download scripts injected by attackers.</li>
+          <li><strong>This site may be hacked</strong> — a lighter warning that appears in search results (not a full browser interstitial). Triggered when Google detects signs of compromise but is less certain.</li>
+          <li><strong>Unwanted software</strong> — triggered by bundled software installers or deceptive download pages, occasionally planted by attackers in the uploads directory.</li>
+        </ul>
+        <p>The type of warning in your Google Search Console Security Issues report tells you what Googlebot found. That gives you a strong signal about where to look for the infection.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Confirm you are blacklisted</h2>
+        <p>Do not rely on someone telling you. Check directly:</p>
+        <ol className="list-decimal list-inside space-y-2 pl-4">
+          <li>Open <strong>Google Search Console → Security Issues</strong>. This shows you which pages were flagged and what category of issue was detected.</li>
+          <li>Visit <strong>transparencyreport.google.com/safe-browsing/search</strong> and enter your domain. This is the authoritative check — the same database browsers use.</li>
+          <li>Open an <strong>incognito Chrome window</strong> and visit your site. If a full-page warning appears, you are actively blacklisted.</li>
+          <li>Run your domain through <strong>Sucuri SiteCheck</strong> or <strong>VirusTotal</strong> to check other blocklists (not just Google — your domain may appear on multiple lists).</li>
+        </ol>
+        <p>Also check if your site has received a <strong>Google Search Console Manual Action</strong> — this is a separate issue from Safe Browsing and requires a separate reconsideration request process.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Why WordPress sites get blacklisted</h2>
+        <p>Google does not blacklist sites arbitrarily. The site is serving something it identified as harmful. The most common causes on WordPress sites:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Redirect malware</strong> — JavaScript or PHP that sends visitors (especially those arriving from Google) to phishing or spam sites. Googlebot follows these redirects and sees where they lead.</li>
+          <li><strong>Phishing pages</strong> — attackers create fake login pages for banks, payment providers, or popular platforms inside your uploads directory or as new WordPress posts/pages.</li>
+          <li><strong>Drive-by download scripts</strong> — injected code that attempts to download malicious files to visitors' browsers or exploit browser vulnerabilities.</li>
+          <li><strong>Spam content injection</strong> — hidden links, pages, or text added to your site for SEO spam, which Googlebot detects as manipulative and occasionally flags as harmful.</li>
+          <li><strong>Compromised email server</strong> — if attackers use your hosting account to send malware-laced emails at scale, your domain may be added to email blocklists and sometimes to Safe Browsing.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Step-by-step blacklist removal process</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Full malware removal — including the root cause</h3>
+        <p>A review request submitted with active malware still present will be rejected by Google. The review process involves a Googler or automated system re-checking your site. If anything harmful remains, the warning stays. You need a complete, forensic-level cleanup before requesting review — not a surface scan that misses obfuscated injections or database-level malware.</p>
+        <p>Specifically for blacklisting cases: focus on the pages Google flagged in Search Console. Those exact pages need to be clean. Also scan your entire site — if Google found infection on those pages, other pages are likely infected too, and a re-infection from an unscanned area will get you re-blacklisted.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Remove all backdoors and close the entry point</h3>
+        <p>Do not skip this. If you clean the site without removing backdoors or closing the vulnerability that let the attacker in, Googlebot will re-crawl your site after your review request is approved — and find malware again. Google re-blacklists immediately and the second review process is significantly harder to resolve than the first.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 3: Verify clean across multiple tools</h3>
+        <p>Before submitting to Google, run your site through at minimum two independent scanners: Sucuri SiteCheck, VirusTotal, and your own manual inspection of the pages Google flagged. If you have WooCommerce or any checkout pages, inspect the rendered page source for unexpected external scripts. Do not assume clean because one scanner returned no results.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 4: Request a review in Google Search Console</h3>
+        <p>Once you are confident the site is clean:</p>
+        <ol className="list-decimal list-inside space-y-2 pl-4">
+          <li>Open <strong>Google Search Console → Security Issues</strong></li>
+          <li>Review the listed issues and confirm each one is resolved</li>
+          <li>Click <strong>"Request a review"</strong></li>
+          <li>In the review request, describe specifically what the infection was, how you cleaned it, and what you have done to prevent recurrence. A detailed, technical description is reviewed faster than a one-line note.</li>
+        </ol>
+        <p>Google typically reviews within <strong>1–3 business days</strong> for standard cases. Complex or repeat cases may take longer.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 5: Monitor the review outcome</h3>
+        <p>You will receive a notification in Search Console when the review is complete. If approved, the Safe Browsing warning is removed and browser warnings cease within a few hours of the database update propagating. If rejected, Google will usually indicate why — typically because malware was still found. Address the remaining issue and submit again.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Will being blacklisted affect rankings long-term?</h2>
+        <p>The Safe Browsing blacklist and organic search rankings are separate systems. Removal from the blacklist does not restore any ranking loss that occurred during the blacklisting period — but it stops the active damage. Rankings typically recover over weeks as Googlebot re-crawls your pages and reassesses them without the security warning. Sites that were blacklisted and re-infected (leading to a second blacklisting) tend to see more lasting ranking damage.</p>
+        <p>If you received a <strong>Google Manual Action</strong> in addition to a Safe Browsing flag, that is a separate issue requiring a reconsideration request via a different process in Search Console, and it has a more direct impact on organic rankings.</p>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Need the blacklist warning removed quickly?</p>
+          <p className="text-sm mb-4">WebAdish handles emergency recovery including full malware removal, backdoor elimination, and Google Safe Browsing review submission — with a 30-day re-infection guarantee. Most reviews are submitted within the same day as cleanup.</p>
+          <Link href="/hacked-site-recovery" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Start Emergency Recovery →</Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">After removal: preventing a return to the blacklist</h2>
+        <p>Sites that get blacklisted once are re-targeted. Attackers know that a recently recovered site is likely running the same vulnerable setup. After removal:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Deploy a <strong>Web Application Firewall</strong> (Cloudflare, Sucuri) — blocks the attack patterns that typically precede blacklisting events</li>
+          <li>Enable <strong>file integrity monitoring</strong> — alerts you within hours if any site file changes unexpectedly, rather than waiting for Googlebot to find the malware first</li>
+          <li>Remove all <strong>unused plugins and themes</strong> — deactivated plugins remain exploitable</li>
+          <li>Set up <strong>Google Search Console email alerts</strong> for Security Issues — you want to know the moment Google detects a problem, not days later</li>
+          <li>Consider a <strong>security retainer</strong> — continuous monitoring means incidents are caught and contained before they reach the blacklisting threshold</li>
+        </ul>
+        <p>Sites on a <Link href="/retainer" className="underline font-medium">WebAdish security retainer</Link> have not been blacklisted while under active monitoring — not because the attacks stop, but because they are caught and remediated before Googlebot can detect and flag them.</p>
+      </div>
+    ),
+  },
+
   "woocommerce-maintenance-checklist": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",

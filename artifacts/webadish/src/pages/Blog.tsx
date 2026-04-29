@@ -272,6 +272,30 @@ const posts = [
   },
   {
     tag: "Recovery",
+    tagColor: "text-destructive",
+    tagBg: "bg-destructive/10",
+    title: "My WooCommerce Store Was Hacked: Emergency Recovery Guide",
+    excerpt:
+      "WooCommerce stores are targeted at a higher rate than standard WordPress sites. Here is what to do in the first 30 minutes — and how to recover completely without missing a backdoor.",
+    date: "April 29, 2026",
+    read: "10 min",
+    img: "/blog/incident-recovery-banner.svg",
+    href: "/blog/woocommerce-hacked-what-to-do",
+  },
+  {
+    tag: "Recovery",
+    tagColor: "text-destructive",
+    tagBg: "bg-destructive/10",
+    title: "WordPress Blacklisted by Google: How to Remove the Warning and Recover",
+    excerpt:
+      "A Google blacklist warning cuts organic traffic by 90% or more within hours. Here is exactly how to clean the infection, submit a Safe Browsing review request, and get the warning removed.",
+    date: "April 29, 2026",
+    read: "8 min",
+    img: "/blog/incident-recovery-banner.svg",
+    href: "/blog/wordpress-google-blacklist-removal",
+  },
+  {
+    tag: "Recovery",
     tagColor: "text-red-600",
     tagBg: "bg-red-50",
     title: "My WordPress Site Got Hacked: What To Do Right Now",

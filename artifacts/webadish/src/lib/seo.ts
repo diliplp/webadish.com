@@ -37,6 +37,8 @@ export const PRERENDER_ROUTES = [
   "/blog/wordpress-security-agency-vs-freelancer",
   "/blog/hacked-wordpress-site-recovery-cost",
   "/blog/wordpress-security-retainer-includes",
+  "/blog/woocommerce-hacked-what-to-do",
+  "/blog/wordpress-google-blacklist-removal",
   "/blog/woocommerce-maintenance-checklist",
   "/blog/protect-your-digital-assets",
   "/blog/how-hackers-break-into-websites",
@@ -1221,6 +1223,106 @@ const blogPosts: Record<string, SeoData> = {
         path: "/blog/site-hacked-what-to-do",
         published: "2023-01-15",
       }),
+    ],
+  },
+  "/blog/woocommerce-hacked-what-to-do": {
+    title: "My WooCommerce Store Was Hacked: Emergency Recovery Guide",
+    description:
+      "WooCommerce store hacked? Stop the damage fast — disable checkout, notify your payment processor, then follow this forensic recovery guide. Skimmer detection included.",
+    path: "/blog/woocommerce-hacked-what-to-do",
+    type: "article",
+    keywords: [
+      "woocommerce hacked",
+      "hacked woocommerce store",
+      "woocommerce malware removal",
+      "woocommerce site hacked what to do",
+      "woocommerce payment skimmer",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WooCommerce Store Hacked", path: "/blog/woocommerce-hacked-what-to-do" },
+    ],
+    schema: [
+      articleSchema({
+        title: "My WooCommerce Store Was Hacked: Emergency Recovery Guide",
+        description:
+          "How to shut down the damage, recover safely, and protect your WooCommerce store after a hack — including skimmer detection and customer data considerations.",
+        path: "/blog/woocommerce-hacked-what-to-do",
+        published: "2026-04-29",
+      }),
+      faqSchema([
+        {
+          question: "Does a hacked WooCommerce store mean my customers' card data was stolen?",
+          answer:
+            "Not necessarily, but it is a serious risk that must be investigated. If your store was running a JavaScript skimmer, card data entered at checkout may have been captured. The only way to confirm is a forensic inspection of your checkout page source code and server files. If a skimmer is found, assume card data was compromised and notify your payment processor immediately.",
+        },
+        {
+          question: "Do I need to notify customers after a WooCommerce hack?",
+          answer:
+            "Whether you are legally required to notify customers depends on what data was compromised and your jurisdiction. If you process card payments under a payment processor agreement, you will almost certainly be required to notify your processor of any confirmed cardholder data breach. Your processor will advise on customer notification requirements. If you hold other personal data (names, addresses, emails) and operate under GDPR or similar regulations, breach notification obligations may also apply.",
+        },
+        {
+          question: "How long does WooCommerce hack recovery take?",
+          answer:
+            "Most WooCommerce site recoveries are completed within 24 hours by professional recovery services. More complex infections — particularly those involving database-level malware, multiple backdoors, or a compromised hosting account — may take 24–48 hours. You should not re-enable live checkout until a complete forensic scan confirms the site is clean.",
+        },
+        {
+          question: "Can my payment gateway account be reinstated after a WooCommerce hack?",
+          answer:
+            "Yes, in most cases. Contact your payment gateway proactively as soon as you suspect a breach. Explain the situation, the steps you are taking, and when you expect to be fully clean. Providing a professional incident report and evidence of remediation significantly improves the outcome. Most payment processors would rather reinstate a merchant who handled an incident responsibly than lose the relationship.",
+        },
+      ]),
+    ],
+  },
+  "/blog/wordpress-google-blacklist-removal": {
+    title: "WordPress Blacklisted by Google: Remove the Warning and Recover",
+    description:
+      "WordPress site showing 'Deceptive site ahead'? Here's how to confirm the blacklist, clean the infection, submit a review request, and get Google's warning removed.",
+    path: "/blog/wordpress-google-blacklist-removal",
+    type: "article",
+    keywords: [
+      "wordpress blacklisted by google",
+      "google safe browsing warning wordpress",
+      "remove website from google blacklist",
+      "deceptive site ahead wordpress",
+      "google blacklist removal",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: "WordPress Google Blacklist Removal", path: "/blog/wordpress-google-blacklist-removal" },
+    ],
+    schema: [
+      articleSchema({
+        title: "WordPress Blacklisted by Google: How to Remove the Warning and Recover",
+        description:
+          "Step-by-step guide to removing a WordPress site from Google's Safe Browsing blacklist — cleaning the infection, submitting a review request, and preventing re-blacklisting.",
+        path: "/blog/wordpress-google-blacklist-removal",
+        published: "2026-04-29",
+      }),
+      faqSchema([
+        {
+          question: "How long does it take Google to remove a blacklist warning after I submit a review request?",
+          answer:
+            "Google typically reviews Safe Browsing removal requests within 1–3 business days. If the review is approved, the warning is removed from browsers within a few hours as the Safe Browsing database propagates. If the review is rejected — because malware was still detected — you will need to complete another cleanup and resubmit. Providing a detailed, specific description of what was found and fixed in your review request speeds up the process.",
+        },
+        {
+          question: "Will being blacklisted by Google affect my site's rankings long-term?",
+          answer:
+            "The Safe Browsing blacklist and organic search rankings are separate systems. Removal from the blacklist does not automatically restore rankings lost during the blacklisting period. Rankings typically recover over weeks as Googlebot re-crawls your clean pages. Sites that are blacklisted a second time after being re-infected tend to see more lasting ranking damage. A Manual Action (a separate issue in Google Search Console) has a more direct impact on rankings and requires a different reconsideration process.",
+        },
+        {
+          question: "Can I still receive orders while my WordPress site is blacklisted by Google?",
+          answer:
+            "Technically yes, but practically very few customers will complete a purchase when Chrome is showing a full-page 'Deceptive site ahead' warning. Most visitors will leave immediately. If your store is blacklisted because of a payment skimmer or other fraud-related malware, you should disable checkout regardless — allowing transactions to proceed while a skimmer is active exposes your customers to card theft.",
+        },
+        {
+          question: "Does Google blacklisting affect email deliverability?",
+          answer:
+            "Google Safe Browsing blacklisting affects browser and search visibility, not email deliverability directly. However, if your site was blacklisted because attackers used your hosting to send spam or malware emails at scale, your IP address and domain may have been added to email blocklists (such as Spamhaus or Barracuda) independently. Check your domain on MXToolbox and similar email reputation services separately.",
+        },
+      ]),
     ],
   },
   "/blog/why-plugin-updates-matter": {
