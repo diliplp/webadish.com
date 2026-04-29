@@ -268,11 +268,13 @@ const pageSeo: Record<string, SeoData> = {
     ],
   },
   "/hacked-site-recovery": {
-    title: "Hacked WordPress Site Recovery",
+    title: "WordPress Site Hacked? 24-Hour Emergency Recovery",
     description:
-      "Emergency hacked WordPress site recovery with malware removal, blacklist cleanup, hardening, and reinfection protection for business-critical websites.",
+      "WordPress hacked? WebAdish removes malware, clears blacklists, and restores your site within 24 hours — 30-day re-infection guarantee, 800+ sites recovered.",
     path: "/hacked-site-recovery",
     keywords: [
+      "my wordpress site was hacked",
+      "my wordpress has been hacked",
       "hacked wordpress site recovery",
       "wordpress malware removal service",
       "wordpress blacklist removal",
@@ -285,6 +287,33 @@ const pageSeo: Record<string, SeoData> = {
         "/hacked-site-recovery",
         "WordPress hacked site recovery",
       ),
+      faqSchema([
+        {
+          question: "What should I do if my WordPress site has been hacked?",
+          answer:
+            "Take the site offline or enable maintenance mode immediately to prevent further damage. Do not delete files — preserve evidence. Contact a professional recovery service like WebAdish to perform forensic cleanup, remove backdoors, and close the entry point. Avoid using free scanner plugins as your only remediation step; they miss obfuscated infections and database-injected malware.",
+        },
+        {
+          question: "How long does WordPress hack recovery take?",
+          answer:
+            "WebAdish targets 24-hour recovery for most compromised WordPress sites. Complex infections with unknown entry points, database injections, or multi-site architectures may take 24–48 hours. You will receive updates throughout the process.",
+        },
+        {
+          question: "Will my WordPress site be hacked again after recovery?",
+          answer:
+            "Not if the entry point is properly closed and post-recovery hardening is applied. WebAdish includes 30 days of re-infection cover. If the same infection returns within 30 days of cleanup, it is remediated at no additional charge. Ongoing protection plans prevent future incidents.",
+        },
+        {
+          question: "How much does it cost to recover a hacked WordPress site?",
+          answer:
+            "Recovery cost depends on infection severity, whether blacklist removal is needed, and urgency. WebAdish provides transparent pricing after an initial assessment. Most standard recoveries are priced as a one-time flat engagement.",
+        },
+        {
+          question: "Can you recover a WordPress site that has been blacklisted by Google?",
+          answer:
+            "Yes. WebAdish handles Google Safe Browsing blacklist removal as part of the standard recovery process. This includes malware removal, blacklist review submission to Google, and monitoring until the flag is lifted.",
+        },
+      ]),
     ],
   },
   "/retainer": {
