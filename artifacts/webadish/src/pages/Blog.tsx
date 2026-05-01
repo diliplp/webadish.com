@@ -7,6 +7,18 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Buyer Intent",
+    tagColor: "text-foreground",
+    tagBg: "bg-foreground/10",
+    title: "WordPress Care Plans Explained: What Monthly Maintenance Actually Prevents",
+    excerpt:
+      "A care plan is not a support ticket system or a hosting upgrade. Here is what a well-structured WordPress maintenance plan actually covers — and the specific failure modes it prevents.",
+    date: "May 2, 2026",
+    read: "7 min",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
+    href: "/blog/what-a-wordpress-care-plan-includes",
+  },
+  {
     tag: "Recovery",
     tagColor: "text-destructive",
     tagBg: "bg-destructive/10",
@@ -73,7 +85,7 @@ const posts = [
     title: "The DPDP Act and Your WordPress Website: What Indian Businesses Need to Do",
     excerpt:
       "Your WordPress website is your biggest DPDP compliance exposure — every form, analytics tool, and plugin is a data collection point. Five specific changes most sites need to make.",
-    date: "April 19, 2026",
+    date: "April 17, 2026",
     read: "7 min",
     img: "/blog/dpdp-act-wordpress-guide-banner.svg",
     href: "/blog/dpdp-act-wordpress-website-guide",
@@ -289,7 +301,7 @@ const posts = [
     title: "WordPress Blacklisted by Google: How to Remove the Warning and Recover",
     excerpt:
       "A Google blacklist warning cuts organic traffic by 90% or more within hours. Here is exactly how to clean the infection, submit a Safe Browsing review request, and get the warning removed.",
-    date: "April 29, 2026",
+    date: "April 28, 2026",
     read: "8 min",
     img: "/blog/incident-recovery-banner.svg",
     href: "/blog/wordpress-google-blacklist-removal",
@@ -343,7 +355,10 @@ export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
 
-  const filtered = posts.filter((p) => {
+  const now = new Date();
+  const published = posts.filter((p) => new Date(p.date) <= now);
+
+  const filtered = published.filter((p) => {
     const matchCat = activeCategory === "All" || p.tag === activeCategory;
     const matchSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||

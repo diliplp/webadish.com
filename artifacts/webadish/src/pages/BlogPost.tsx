@@ -367,6 +367,87 @@ const posts: Record<string, {
       </div>
     ),
   },
+  "what-a-wordpress-care-plan-includes": {
+    tag: "Buyer Intent", tagColor: "text-foreground",
+    title: "WordPress Care Plans Explained: What Monthly Maintenance Actually Prevents",
+    date: "May 2, 2026", read: "7 min",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">A WordPress care plan is a recurring maintenance arrangement — not a support ticket system, not a hosting upgrade, and not a once-a-year plugin refresh. Understanding what a well-structured plan actually does is useful before committing to one, because the quality and scope vary significantly across providers.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The problem care plans exist to solve</h2>
+        <p>WordPress sites degrade predictably without active maintenance. The degradation is not dramatic — it accumulates slowly and becomes a problem at the worst moment. The patterns are consistent:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Plugins fall behind on updates. Vulnerabilities are disclosed publicly. Automated scanners identify the site as unpatched within days.</li>
+          <li>Backups are configured once and assumed to be running. Years later, the backup destination is full or the credentials lapsed. There is no recovery copy when it is needed.</li>
+          <li>Performance degrades as the database grows, caches expire, and hosting configurations drift from their original state.</li>
+          <li>Security configuration set during launch becomes outdated as plugin and WordPress updates change the attack surface.</li>
+        </ul>
+        <p>None of these are catastrophic in isolation. Together, over 12–18 months without maintenance, they create a site that is noticeably slower, incrementally more exposed, and harder to recover from when something does go wrong.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a care plan covers — and what it does not</h2>
+        <p>A care plan is a maintenance and protection service, not an on-demand development resource. This distinction matters. Here is what it covers:</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Plugin and core updates — with staging</h3>
+        <p>The difference between a care plan and pressing "update all" yourself is the staging step. Updates are tested in a copy of your site before being applied to production. Plugin conflicts, theme incompatibilities, and PHP version issues appear in staging and are resolved before your live site is touched. Sites updated without staging occasionally break — a WooCommerce plugin update that conflicts with a payment gateway extension, or a theme update that changes layout on the checkout page. Staging catches these before they affect customers.</p>
+        <p>Core, plugin, and theme updates handled via staging: this is the minimum standard for a care plan applied to a revenue-generating site.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Offsite backups with verified restore capability</h3>
+        <p>Backups stored on the same server as the site are not backups in any meaningful recovery sense. A hosting account suspension, a ransomware attack, or a hosting provider failure takes both the site and the backup simultaneously. Care plans route backups offsite — to independent cloud storage — with automated daily snapshots and sufficient retention to recover from a breach that was not discovered immediately.</p>
+        <p>Equally important: backups should be verified periodically. A backup that cannot be restored is not a backup. Restore testing is something individual site owners rarely do and care plans should do as a matter of course.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Uptime and performance monitoring</h3>
+        <p>External uptime monitoring confirms whether your site is reachable from outside your network, on the intervals that matter. This catches outages before customers report them, and creates an audit trail that is useful when investigating hosting issues or SLA claims.</p>
+        <p>Performance monitoring tracks response times over time — catching degradation before it becomes a user experience or conversion problem. For WooCommerce stores or lead-gen sites, a page that was loading in 1.2 seconds and is now loading in 4.1 seconds has a measurable effect on conversion rates that uptime monitoring alone does not capture.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Security hardening and malware scanning</h3>
+        <p>Care plans include a security layer — the scope varies significantly by provider and plan tier. At minimum: file permissions verification, wp-config.php protection, XML-RPC management, login attempt limiting, and regular malware scans. More comprehensive plans include real-time file integrity monitoring, web application firewall management, and review of new admin accounts or unusual access patterns.</p>
+        <p>This is where care plans overlap with security retainers. On a pure maintenance plan, security is defensive and periodic. On a security-focused retainer, security is continuous and proactive. The right level depends on how much revenue your site generates and how significant a compromise would be to your business.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">What care plans do not cover</h3>
+        <p>Care plans are not development retainers. Adding new features, redesigning pages, custom plugin development, and content strategy are not maintenance tasks. Plans may include a small monthly allowance for minor content or configuration changes — a few hours of work — but significant development scope requires a separate engagement.</p>
+        <p>Emergency incident response is also typically outside standard care plan scope. If a site is actively compromised, that is incident response work — different skill set, different time commitment, different pricing. Some providers include incident response in higher-tier plans; most handle it as a separate engagement.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How to evaluate a care plan provider</h2>
+        <p>The questions that surface quality differences between providers:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Do you use staging for all updates, or do you update directly on production?</strong> Any provider that updates production directly without a staging step is accepting a risk on your behalf that you may not know about.</li>
+          <li><strong>Where are backups stored, and how frequently are restores tested?</strong> "We do daily backups" is not the same as "we do daily offsite backups with verified restore testing."</li>
+          <li><strong>What is your response time if my site goes down at 11pm on a Sunday?</strong> The answer reveals whether "monitoring" means alerting you or alerting someone who will act on it.</li>
+          <li><strong>What happens if a plugin update breaks my checkout?</strong> A provider with staging and a rollback process should be able to answer this clearly and quickly.</li>
+          <li><strong>Is security monitoring included, and what does that mean specifically?</strong> "Security monitoring" ranges from a weekly automated malware scan to real-time file integrity monitoring with human review. These are not the same product.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a care plan prevents, specifically</h2>
+        <p>Based on the pattern of failures we see on sites that come to us after a breach or significant downtime event:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Plugin-based intrusions from known CVEs</strong> — the overwhelming majority of WordPress hacks exploit vulnerabilities that had patches available. Sites on a care plan with prompt update cycles close these windows before attackers can exploit them.</li>
+          <li><strong>Unrecoverable data loss</strong> — hosting providers suspend accounts, databases get corrupted, and accidental deletions happen. Verified offsite backups are the only reliable mitigation.</li>
+          <li><strong>Performance degradation that erodes conversion</strong> — gradual slowdown is invisible without monitoring but measurable in bounce rates and abandoned carts over months.</li>
+          <li><strong>Cascading plugin conflicts from deferred updates</strong> — updating 25 plugins that haven't been touched in 18 months at once is significantly riskier than updating 2–3 at a time on a regular cycle. Deferred maintenance compounds risk.</li>
+        </ul>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">WordPress care plans from WebAdish</p>
+          <p className="text-sm mb-4">Our Essential Care plan ($199/mo) covers staged updates, offsite backups, uptime monitoring, and security hardening. Business Protection ($399–$599/mo) adds real-time scanning, priority response, and a 24-hour response SLA — appropriate for WooCommerce stores and revenue-critical sites.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/maintenance" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">See Maintenance Plans</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Request Assessment</Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">How is a care plan different from a security retainer?</p><p>A care plan is primarily a maintenance service — updates, backups, monitoring, and baseline hardening. A security retainer is a security-first service with continuous monitoring, vulnerability tracking, real-time alerting, and incident response as the core deliverable. There is overlap at higher care plan tiers. For WooCommerce stores and any site where a breach has material financial or legal consequences, a security-focused retainer is the appropriate level of service.</p></div>
+          <div><p className="font-semibold text-foreground">Can I pause or cancel a care plan?</p><p>Reputable providers offer month-to-month arrangements with cancellation notice periods of 30 days. Be cautious of care plans with long lock-in periods or large cancellation fees — the ongoing nature of maintenance work means the relationship should be renewable on merit, not contractually binding.</p></div>
+          <div><p className="font-semibold text-foreground">What if my site was already compromised before starting a care plan?</p><p>A care plan starts from a known-clean baseline. If there is any uncertainty about whether a site is currently clean, the right first step is a security audit or forensic review — not enrolling in a maintenance plan that runs on an already-compromised installation. Starting maintenance on a compromised site creates a false sense of security without resolving the underlying issue.</p></div>
+          <div><p className="font-semibold text-foreground">Do I need a care plan if my hosting provider offers managed WordPress hosting?</p><p>Managed WordPress hosting handles infrastructure — server configuration, PHP version management, caching, and in some cases automatic core updates. It does not handle plugin updates comprehensively, backup verification, security monitoring at the application layer, or incident response. A care plan fills the application-layer gap that managed hosting leaves. The two are complementary, not alternatives.</p></div>
+        </div>
+      </div>
+    ),
+  },
+
   "state-of-wordpress-security-2025-business-takeaways": {
     tag: "Security", tagColor: "text-primary",
     title: "What the State of WordPress Security in 2025 Means for Business Websites in 2026",
