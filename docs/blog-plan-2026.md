@@ -11,9 +11,9 @@
 | # | Status | Title | Category | Slug |
 |---|--------|-------|----------|------|
 | 1 | ✅ | WordPress Care Plans Explained: What Monthly Maintenance Actually Prevents | Buyer Intent | `what-a-wordpress-care-plan-includes` |
-| 2 | 🔲 | CERT-In 6-Hour Incident Reporting: What Indian WordPress Site Owners Must Know | Guides | `cert-in-6-hour-reporting-wordpress` |
-| 3 | 🔲 | WordPress XML-RPC: Why a Rarely-Used Feature Is a Common Attack Vector | Security | `wordpress-xmlrpc-attack-vector` |
-| 4 | 🔲 | Recovering a WordPress Site After a Shared Hosting Compromise | Recovery | `wordpress-shared-hosting-recovery` |
+| 2 | ✅ | CERT-In 6-Hour Incident Reporting: What Indian WordPress Site Owners Must Know | Guides | `cert-in-6-hour-reporting-wordpress` |
+| 3 | ✅ | WordPress XML-RPC: Why a Rarely-Used Feature Is a Common Attack Vector | Security | `wordpress-xmlrpc-attack-vector` |
+| 4 | ✅ | Recovering a WordPress Site After a Shared Hosting Compromise | Recovery | `wordpress-shared-hosting-recovery` |
 
 ---
 

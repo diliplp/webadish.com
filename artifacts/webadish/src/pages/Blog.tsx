@@ -7,6 +7,42 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Recovery",
+    tagColor: "text-destructive",
+    tagBg: "bg-destructive/10",
+    title: "Recovering a WordPress Site After a Shared Hosting Compromise",
+    excerpt:
+      "Shared hosting compromises rarely stay contained to one site. If one WordPress installation in your hosting account is infected, assume all of them are. Here is the correct recovery sequence.",
+    date: "May 23, 2026",
+    read: "7 min",
+    img: "/blog/incident-recovery-banner.svg",
+    href: "/blog/wordpress-shared-hosting-recovery",
+  },
+  {
+    tag: "Security",
+    tagColor: "text-primary",
+    tagBg: "bg-primary/10",
+    title: "WordPress XML-RPC: Why a Rarely-Used Feature Is a Common Attack Vector",
+    excerpt:
+      "XML-RPC is enabled on every WordPress site by default and almost no site needs it in 2026. Here is how attackers exploit it and how to close the vector in under five minutes.",
+    date: "May 16, 2026",
+    read: "6 min",
+    img: "/blog/plugin-audit-banner.svg",
+    href: "/blog/wordpress-xmlrpc-attack-vector",
+  },
+  {
+    tag: "Guides",
+    tagColor: "text-accent",
+    tagBg: "bg-accent/10",
+    title: "CERT-In 6-Hour Incident Reporting: What Indian WordPress Site Owners Must Know",
+    excerpt:
+      "India's CERT-In directive requires mandatory cybersecurity incident reporting within 6 hours of discovery. Most Indian business websites are covered — here is what the obligation actually requires.",
+    date: "May 9, 2026",
+    read: "8 min",
+    img: "/blog/dpdp-act-wordpress-guide-banner.svg",
+    href: "/blog/cert-in-6-hour-reporting-wordpress",
+  },
+  {
     tag: "Buyer Intent",
     tagColor: "text-foreground",
     tagBg: "bg-foreground/10",

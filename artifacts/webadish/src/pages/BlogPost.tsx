@@ -367,6 +367,266 @@ const posts: Record<string, {
       </div>
     ),
   },
+  "cert-in-6-hour-reporting-wordpress": {
+    tag: "Guides", tagColor: "text-accent",
+    title: "CERT-In 6-Hour Incident Reporting: What Indian WordPress Site Owners Must Know",
+    date: "May 9, 2026", read: "8 min",
+    img: "/blog/dpdp-act-wordpress-guide-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">In April 2022, India's CERT-In issued a directive that created one of the strictest mandatory cybersecurity incident reporting obligations in the world: a 6-hour window from detection to report. For Indian businesses running WordPress sites that handle customer data, process payments, or support business operations, this directive has direct and ongoing implications that most site owners have not fully assessed.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What the CERT-In directive requires</h2>
+        <p>The CERT-In directive (issued under Section 70B of the Information Technology Act, 2000) mandates that any cybersecurity incident must be reported to CERT-In within <strong>6 hours of noticing or being brought to notice</strong> of the incident. The directive applies to:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Service providers</li>
+          <li>Intermediaries</li>
+          <li>Data centres</li>
+          <li>Body corporates (which includes most companies running a business website)</li>
+          <li>Government organisations</li>
+        </ul>
+        <p>If your business is incorporated in India and your WordPress site is compromised, you are almost certainly covered by this obligation — regardless of whether your site is a brochure site, an e-commerce store, or a lead-generation platform.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Which incidents must be reported</h2>
+        <p>The directive lists 20 categories of reportable incidents. The ones most directly relevant to WordPress site operators:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Targeted scanning or probing of critical networks or systems</strong> — repeated, targeted scanning of your WordPress admin or login page by a specific threat actor</li>
+          <li><strong>Compromise of critical systems or information</strong> — any confirmed unauthorised access to your WordPress installation, database, or hosting account</li>
+          <li><strong>Unauthorised access to IT systems or data</strong> — covers credential compromise, admin account takeover, and database exfiltration</li>
+          <li><strong>Defacement of websites or intrusion into a website</strong> — visible defacement or confirmed file modification by an attacker</li>
+          <li><strong>Malicious code attacks such as spreading of virus or worm, Trojan, Bots, Spyware, Ransomware, Cryptominers</strong> — malware found on your WordPress installation</li>
+          <li><strong>Identity theft, spoofing and phishing attacks</strong> — phishing pages planted in your WordPress uploads directory or as hidden posts</li>
+          <li><strong>Data breach</strong> — any confirmed or suspected exfiltration of customer or employee data from your WordPress database</li>
+          <li><strong>Attacks on critical infrastructure, SCADA, operational technology systems and wireless networks</strong> — less directly relevant for most WordPress operators but applicable for industrial or utility sector sites</li>
+        </ul>
+        <p>Note that the reporting obligation is triggered by the incident, not by confirmed harm. If you discover malware on your WordPress site, the 6-hour clock starts regardless of whether you have confirmed what data, if any, was accessed.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The 6-hour window in practice</h2>
+        <p>Six hours from discovery is an extremely tight window for incident response. Consider what must happen within that period for a compliant response to a WordPress compromise:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Detect the incident</strong> — discovery may come from a customer complaint, a hosting provider alert, a Google Search Console security warning, or your own monitoring. If you have no monitoring in place, discovery may happen days or weeks after the initial compromise, but the 6-hour clock runs from when you become aware.</li>
+          <li><strong>Assess the scope</strong> — enough initial investigation to characterise what happened for the CERT-In report: what type of attack, which systems were affected, approximate timing.</li>
+          <li><strong>Prepare and submit the report</strong> — CERT-In accepts reports via their online portal at cert-in.org.in, by email at incident@cert-in.org.in, or by phone. The report requires basic details of the incident including the type, affected systems, and initial assessment.</li>
+        </ol>
+        <p>The 6-hour window does not require that the incident be fully investigated or remediated before reporting — it requires initial notification. A follow-up report with complete details is expected as the investigation progresses. This is an important distinction: do not delay the initial report while waiting for a complete forensic picture.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What to include in a CERT-In report</h2>
+        <p>CERT-In's incident reporting form requires the following information:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Organisation name and contact details</li>
+          <li>Date and time the incident was detected</li>
+          <li>Type of incident (from the 20-category list)</li>
+          <li>Systems affected (domain names, IP addresses, server details where known)</li>
+          <li>Impact assessment — what data or services were affected</li>
+          <li>Actions taken so far</li>
+          <li>Any known indicators of compromise (malicious IPs, file hashes, domain names observed in the attack)</li>
+        </ul>
+        <p>For a WordPress site compromise, "systems affected" typically means your domain, hosting server, and the WordPress database. "Impact assessment" at the initial stage means your best current understanding of whether customer data may have been accessed — not a confirmed forensic conclusion.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How this interacts with DPDP obligations</h2>
+        <p>The Digital Personal Data Protection Act 2023 (DPDP Act) creates a parallel notification obligation for data principals (your customers) and the Data Protection Board when personal data is breached. The CERT-In and DPDP obligations are separate and both may apply simultaneously to the same incident.</p>
+        <p>In practice: a confirmed WordPress database compromise that exposed customer names, email addresses, or payment information triggers both the CERT-In 6-hour reporting obligation and assessment under the DPDP Act. The DPDP notification timeline is not yet published in final rules, but the CERT-In obligation is active now.</p>
+        <p>See our <Link href="/blog/dpdp-act-wordpress-website-guide" className="text-accent hover:underline font-medium">DPDP Act and WordPress guide</Link> for the data protection side of this obligation.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What Indian WordPress operators should put in place</h2>
+        <p>The CERT-In directive makes several operational requirements clear:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Monitoring that enables rapid detection</strong> — you cannot report within 6 hours of detection if detection itself takes days. File integrity monitoring, security alerting, and uptime monitoring are not optional infrastructure for an Indian business with CERT-In obligations — they are part of your compliance posture.</li>
+          <li><strong>An incident response contact and process</strong> — the 6-hour window requires that someone in your organisation can act quickly. This means a defined contact, access to your hosting panel and WordPress admin, and at minimum a documented first-response checklist.</li>
+          <li><strong>Log retention for 180 days</strong> — the CERT-In directive separately requires that ICT system logs be maintained for a rolling 180-day period and be available to CERT-In on request. For WordPress sites, this means server access logs, WordPress activity logs, and where applicable, application-level security logs.</li>
+          <li><strong>Synchronised time on all systems</strong> — the directive requires that all ICT infrastructure use NTP and sync to the National Physical Laboratory (NPL) or National Informatics Centre (NIC) time servers. This affects the accuracy of timestamps in incident reports and logs.</li>
+        </ul>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Is your Indian WordPress site prepared for a CERT-In reportable incident?</p>
+          <p className="text-sm mb-4">WebAdish works with Indian businesses to implement the monitoring, logging, and incident response processes that make CERT-In compliance operationally realistic — not just a policy on paper. We also handle emergency recovery and can support the technical documentation required for a CERT-In report.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Talk to an Expert</Link>
+            <Link href="/retainer" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Security Retainer</Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Does the CERT-In directive apply to small businesses?</p><p>The directive applies to all body corporates — the term used in the IT Act encompasses most registered companies regardless of size. There is no SME exemption. A small Indian business running a WooCommerce store that experiences a data breach has the same 6-hour reporting obligation as a large enterprise.</p></div>
+          <div><p className="font-semibold text-foreground">What happens if we miss the 6-hour window?</p><p>Non-compliance with the CERT-In directive can result in penalties under the IT Act of up to one year imprisonment or a fine of Rs 1 lakh, or both — applicable to the person responsible for the organisation's compliance. The more significant practical risk is that delayed reporting creates a compliance record and limits CERT-In's ability to coordinate a response, which may affect how the incident is treated in subsequent regulatory review.</p></div>
+          <div><p className="font-semibold text-foreground">Can we report while the incident is still being investigated?</p><p>Yes — and you should. CERT-In explicitly expects an initial report within 6 hours with incomplete information, followed by updates as the investigation progresses. Waiting for a complete forensic picture before filing the initial report defeats the purpose of the directive and puts you in breach of the obligation.</p></div>
+          <div><p className="font-semibold text-foreground">Do we need to notify customers?</p><p>CERT-In reporting and customer notification are separate obligations under separate frameworks. The CERT-In directive does not directly require customer notification — that obligation comes from the DPDP Act and, for payment card data, from your payment processor agreement. All three may apply simultaneously to the same incident.</p></div>
+        </div>
+      </div>
+    ),
+  },
+
+  "wordpress-xmlrpc-attack-vector": {
+    tag: "Security", tagColor: "text-primary",
+    title: "WordPress XML-RPC: Why a Rarely-Used Feature Is a Common Attack Vector",
+    date: "May 16, 2026", read: "6 min",
+    img: "/blog/plugin-audit-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">XML-RPC is a WordPress feature that almost no site needs in 2026. It was built to allow remote applications — mobile apps, desktop clients, third-party publishing tools — to communicate with WordPress before the REST API existed. The REST API replaced it years ago. Despite this, XML-RPC is enabled by default on every WordPress installation and remains one of the most commonly exploited attack vectors against WordPress sites.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What XML-RPC does and why it still exists</h2>
+        <p>The XML-RPC interface lives at <code>yoursite.com/xmlrpc.php</code>. It accepts POST requests that allow authenticated users to publish posts, manage comments, upload media, and perform other WordPress actions — all without using the admin dashboard.</p>
+        <p>It was genuinely useful when the WordPress mobile app relied on it, when desktop blogging clients like Windows Live Writer used it, and when services like IFTTT triggered WordPress actions via XML-RPC calls. All of these use cases now have REST API equivalents, and the WordPress mobile app has used the REST API since 2019.</p>
+        <p>It still exists because WordPress has a strong backwards compatibility commitment and removing it would break a small number of legitimate integrations that have not been updated. Disabling it is left to site operators — which most never do.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How attackers exploit XML-RPC</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Brute force login amplification</h3>
+        <p>The most exploited XML-RPC attack uses the <code>system.multicall</code> method — a feature that allows multiple method calls to be bundled into a single HTTP request. An attacker can test hundreds of username and password combinations in a single request, each bundle containing up to 100 credential pairs.</p>
+        <p>This matters because most WordPress login protection plugins (including Wordfence's login limiting) operate at the <code>wp-login.php</code> level. They do not block XML-RPC by default. An attacker performing a brute force campaign through XML-RPC can test thousands of credential combinations without triggering the login attempt limits that protect the standard login page.</p>
+        <p>This is not a theoretical vulnerability — it is actively used. XML-RPC brute force attempts appear in server logs for nearly every exposed WordPress installation on a daily basis.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">DDoS amplification</h3>
+        <p>A compromised WordPress site with XML-RPC enabled can be used as an amplification node in a distributed denial-of-service attack against third-party targets. The pingback functionality in XML-RPC can be triggered remotely to send HTTP requests to an arbitrary URL — meaning that thousands of compromised WordPress sites can be directed to flood a target with pingback requests, each originating from a different IP address. The WordPress site is being used as a weapon against someone else, with reputational and legal implications for the site owner.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Server-side request forgery</h3>
+        <p>The pingback mechanism can also be used to make the WordPress server issue requests to internal network addresses — a server-side request forgery (SSRF) vector. On hosting environments where the WordPress server has access to internal services (databases, admin interfaces, other VMs), this can allow an external attacker to probe and interact with resources that should not be publicly accessible.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How to check if XML-RPC is exposed and being targeted</h2>
+        <p>Check whether XML-RPC is accessible on your site by requesting <code>yoursite.com/xmlrpc.php</code> directly. If it returns an XML response saying "XML-RPC server accepts POST requests only," it is exposed. If it returns a 403 or 404, it has been blocked.</p>
+        <p>To see whether it is being targeted, search your server access logs for <code>POST /xmlrpc.php</code> entries. On most exposed WordPress sites, you will find multiple requests per day. On actively targeted sites, you may find thousands per hour.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How to disable XML-RPC</h2>
+        <p>There are three methods, in order of preference:</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Block at the server level (most effective)</h3>
+        <p>Blocking access to <code>xmlrpc.php</code> at the web server level prevents the request from reaching PHP at all — the lowest possible attack surface. In your <code>.htaccess</code> file (Apache):</p>
+        <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto"><code>{`<Files xmlrpc.php>
+  Order Deny,Allow
+  Deny from all
+</Files>`}</code></pre>
+        <p>For Nginx, add to your server block:</p>
+        <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto"><code>{`location = /xmlrpc.php {
+    deny all;
+    access_log off;
+    log_not_found off;
+}`}</code></pre>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Disable via plugin</h3>
+        <p>Several security plugins can disable XML-RPC. Wordfence has a setting under Tools → All Options → Brute Force Protection. The "Disable WordPress XML-RPC authentication" option prevents authentication via XML-RPC while leaving other XML-RPC functionality intact if needed. The dedicated "Disable XML-RPC" plugin provides a simple toggle with no other features.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Disable via functions.php</h3>
+        <p>Adding the following to your theme's <code>functions.php</code> disables XML-RPC at the application level:</p>
+        <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto"><code>{`add_filter('xmlrpc_enabled', '__return_false');`}</code></pre>
+        <p>This is less effective than server-level blocking because the request still reaches PHP — it just returns a disabled response. It adds no protection against the DDoS amplification vector.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">When you actually need XML-RPC</h2>
+        <p>Check before disabling. Legitimate cases where XML-RPC may still be in use:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Jetpack — older Jetpack versions required XML-RPC for some features. Current Jetpack versions primarily use the REST API, but check your Jetpack version before blocking.</li>
+          <li>Third-party desktop publishing clients that have not been updated to use the REST API</li>
+          <li>Custom integrations built before the REST API was available</li>
+          <li>Some backup and migration plugins that use XML-RPC for remote operations</li>
+        </ul>
+        <p>If you are not sure whether anything depends on XML-RPC, block it and monitor for 48 hours. If a legitimate integration breaks, it will be immediately apparent. In practice, the vast majority of business WordPress sites have nothing that relies on XML-RPC and can disable it without any consequence.</p>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">XML-RPC is one item on a longer hardening checklist</p>
+          <p className="text-sm mb-4">A WebAdish security audit covers XML-RPC exposure, login protection, file permissions, user access review, and the full range of WordPress attack surface — with a prioritised remediation list rather than a raw findings dump.</p>
+          <Link href="/security" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Security Audit →</Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Will disabling XML-RPC break my site?</p><p>For the vast majority of WordPress sites, no. The main risk is a third-party integration that still uses XML-RPC rather than the REST API. Disable it, observe for 48 hours, and restore if something breaks. Common integrations that might break: older Jetpack installs, legacy desktop publishing clients, custom scripts built before the REST API.</p></div>
+          <div><p className="font-semibold text-foreground">My login protection plugin says it blocks brute force — does that cover XML-RPC?</p><p>Not by default in most plugins. Wordfence, for example, applies rate limiting to wp-login.php attempts but does not block XML-RPC authentication attempts unless you explicitly enable that setting. Check your security plugin's XML-RPC-specific settings and do not assume that login limiting covers XML-RPC.</p></div>
+          <div><p className="font-semibold text-foreground">Can attackers use XML-RPC to access my site without knowing my password?</p><p>XML-RPC authentication requires a valid username and password. Attackers use XML-RPC to test large numbers of credentials efficiently — it does not bypass authentication. The risk is that it allows brute force at a scale and speed that bypasses most rate-limiting protections applied at wp-login.php. The solution is both rate-limiting XML-RPC specifically and disabling it entirely if not needed.</p></div>
+        </div>
+      </div>
+    ),
+  },
+
+  "wordpress-shared-hosting-recovery": {
+    tag: "Recovery", tagColor: "text-destructive",
+    title: "Recovering a WordPress Site After a Shared Hosting Compromise",
+    date: "May 23, 2026", read: "7 min",
+    img: "/blog/incident-recovery-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Shared hosting compromises follow a pattern that differs from single-site incidents in one critical way: the infection is rarely contained to the site where it originated. When multiple WordPress installations share a server account, malware that enters through one site can propagate laterally to the others. Recovery from a shared hosting compromise requires addressing every site on the account, not just the one where symptoms appeared.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Why shared hosting changes the recovery process</h2>
+        <p>On a dedicated server or isolated hosting account, a compromised site is self-contained. The infection path runs from the entry point (a vulnerable plugin, a compromised admin credential) to the file system and database of that single installation.</p>
+        <p>On shared hosting, the boundaries between sites in the same hosting account are significantly weaker:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Shared file system access</strong> — on most shared hosting configurations, all sites in the same cPanel or hosting account run under the same user account. A PHP file with write access to one site's directory often has write access to adjacent sites in the same account.</li>
+          <li><strong>Shared database credentials</strong> — many shared hosting configurations use a single database user with access to multiple databases. A compromised site that exposes its wp-config.php credentials may provide access to other databases on the same server user.</li>
+          <li><strong>Lateral malware propagation</strong> — attackers who gain access to a shared hosting account routinely use automated scripts to scan and infect all WordPress installations they can reach from the compromised account. This happens within hours of initial compromise.</li>
+        </ul>
+        <p>The practical implication: if you have three WordPress sites on a shared hosting account and one shows symptoms of compromise, assume all three are infected. Cleaning the symptomatic site and leaving the others unexamined results in re-infection — the untouched sites contain the same malware and in many cases still have the backdoors that allow the attacker to re-enter.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The hosting provider's role</h2>
+        <p>Contact your hosting provider before beginning recovery. On shared hosting, they have visibility and controls you do not:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Server-level malware scanning across your entire account, not just a single site</li>
+          <li>The ability to temporarily isolate your account from the broader server while cleanup is underway</li>
+          <li>Access logs at the server level — which show requests across all sites in the account, not just WordPress application logs</li>
+          <li>In some cases, the ability to identify other accounts on the same server that have been compromised, if the breach originated elsewhere on the shared server</li>
+        </ul>
+        <p>Reputable shared hosting providers will quarantine a compromised account, assist with identifying infected files at the server level, and in some cases provide a clean backup from before the infection. The quality and speed of this response varies significantly between providers — but asking is always the right first step.</p>
+        <p>Important: do not ask your hosting provider to "just restore a backup" before you have understood the scope of the breach and identified the entry point. Restoring a backup without closing the vulnerability restores the site to a known-clean state for a matter of hours before the attacker re-enters through the same path.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Recovery sequence for shared hosting</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Change all account-level credentials immediately</h3>
+        <p>Before touching any files, change every credential associated with the hosting account:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>cPanel or hosting panel password</li>
+          <li>FTP and SFTP account passwords — all of them, for all sites in the account</li>
+          <li>Database passwords for every database in the account</li>
+          <li>All WordPress admin passwords across every site</li>
+          <li>Any email accounts associated with the hosting panel</li>
+        </ul>
+        <p>An attacker who retains any of these credentials can undo your cleanup in real time. Credential rotation is the first action, before any file or database work begins.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Take forensic backups of all sites</h3>
+        <p>Before cleaning anything, back up the current state of every site in the account — files and databases. These are forensic copies, not restore points. You need them to establish the timeline of the breach, identify which customer data may have been accessible, and document the incident if reporting obligations apply.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 3: Scan every site in the account — not just the symptomatic one</h3>
+        <p>Run a file integrity scan across all WordPress installations in the account. This means checking every site's files against official WordPress core, plugin, and theme checksums — and inspecting the uploads directory of every site for PHP files that should not be there.</p>
+        <p>Common shared hosting malware patterns to look for across all sites:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>PHP files in uploads directories (especially files with names that appear to be images — <code>image.php</code>, <code>photo.jpg.php</code>)</li>
+          <li>Modified <code>index.php</code> files with base64-encoded content injected at the top</li>
+          <li>New files in theme directories that do not match the official theme file list</li>
+          <li>Modified <code>wp-config.php</code> files with additional includes added</li>
+          <li>Malicious cron jobs registered via <code>wp-cron</code> that re-download malware on a schedule</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 4: Identify the original entry point</h3>
+        <p>The infection spread laterally from somewhere. The original entry point is usually one of:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>An outdated plugin with a known CVE on one of the sites</li>
+          <li>A nulled or pirated theme or plugin installed on any site in the account</li>
+          <li>Compromised FTP credentials — often from an old client machine that stored FTP credentials in a file manager or legacy FTP client</li>
+          <li>A compromised email account associated with the hosting panel, used to reset passwords</li>
+        </ul>
+        <p>Check server access logs for the earliest unusual activity. Lateral propagation typically happens fast — but there is usually a first event that differs from the propagation pattern.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 5: Clean all sites systematically</h3>
+        <p>Clean every site in the account, not just the one with visible symptoms. For each site: reinstall WordPress core from official source, replace plugins and themes with clean downloads, clean the database, remove all unknown admin users, and verify file permissions. Do all sites before any goes back online — a partially cleaned account re-infects itself.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 6: Consider migrating off shared hosting</h3>
+        <p>If the shared hosting environment contributed to the scope of the breach — through weak account isolation or inadequate server-level controls — recovery is an appropriate moment to evaluate the hosting architecture. VPS or cloud hosting with isolated containers per site eliminates lateral propagation as a risk vector. The cost difference between shared hosting and entry-level VPS has narrowed significantly, and for any site that generates revenue, the isolation benefit is material.</p>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Shared hosting compromise affecting multiple sites?</p>
+          <p className="text-sm mb-4">WebAdish handles multi-site shared hosting recovery — scanning all installations in the account, cleaning systematically, and identifying the original entry point. Most recoveries are completed within 24 hours regardless of the number of sites involved.</p>
+          <Link href="/hacked-site-recovery" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Emergency Recovery →</Link>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently Asked Questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Can malware spread from my site to other customers on the same shared server?</p><p>Between different customer accounts on the same server, propagation is significantly harder — hosting providers implement account-level isolation that prevents cross-customer file access in most configurations. The lateral spread risk is primarily within your own hosting account, across sites that share the same account credentials and file system user. Your neighbouring customers on the same physical server are not typically at risk from your account compromise.</p></div>
+          <div><p className="font-semibold text-foreground">Should I restore from backup or clean manually?</p><p>Both, in sequence. Restore a clean backup of each site to establish a known-clean baseline, then harden and close the entry point. Do not restore without closing the entry point — you will be re-infected within hours. If your backup predates the infection by weeks or months, it may also contain the vulnerability that was exploited. Verify the backup's WordPress, plugin, and theme versions before restoring.</p></div>
+          <div><p className="font-semibold text-foreground">My hosting provider says they've cleaned the site — is that sufficient?</p><p>Hosting provider cleanups are typically server-level scans that identify known malware signatures in files. They often miss database-level malware, obfuscated injections, and backdoors in non-standard locations. A hosting provider cleanup is a useful first step but should be followed by application-level verification — checking the database, reviewing plugin and theme files against official checksums, and confirming that no backdoors remain.</p></div>
+        </div>
+      </div>
+    ),
+  },
+
   "what-a-wordpress-care-plan-includes": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Care Plans Explained: What Monthly Maintenance Actually Prevents",
