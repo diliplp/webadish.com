@@ -29,6 +29,41 @@ const DISPOSABLE_DOMAINS = new Set([
 
 const RISKY_LINK_TLDS = ['.ru', '.cn', '.tk', '.pw', '.top', '.xyz', '.click', '.download'];
 
+async function sendLeadWebhook(payload: Record<string, unknown>, requestId: string) {
+  const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
+  if (!webhookUrl) return { sent: false as const, skipped: true as const };
+
+  const secret = process.env.CONTACT_WEBHOOK_SECRET || '';
+  const targetUrl = new URL(webhookUrl);
+  if (secret) {
+    targetUrl.searchParams.set('secret', secret);
+  }
+
+  const response = await fetch(targetUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(secret ? { 'x-webhook-secret': secret } : {}),
+    },
+    body: JSON.stringify({
+      ...payload,
+      webhookSecret: secret || undefined,
+    }),
+  });
+
+  if (!response.ok) {
+    const responseText = await response.text().catch(() => '');
+    console.error(`[contact:${requestId}] lead_webhook_failed`, {
+      status: response.status,
+      statusText: response.statusText,
+      body: responseText.slice(0, 200),
+    });
+    return { sent: false as const, skipped: false as const };
+  }
+
+  return { sent: true as const, skipped: false as const };
+}
+
 export default async function handler(req: any, res: any) {
   const requestId = buildRequestId(req);
   res.setHeader('x-contact-request-id', requestId);
@@ -206,6 +241,26 @@ export default async function handler(req: any, res: any) {
     const supportResult = await sendMail(supportMail, requestId);
     log('support_email_sent', { provider: supportResult.provider, messageId: supportResult.id });
     rememberSubmission(submissionKey, requestId);
+
+    const webhookResult = await sendLeadWebhook(
+      {
+        submissionId: requestId,
+        submittedAt: new Date().toISOString(),
+        source: 'webadish-com-contact',
+        name: nameStr,
+        email: emailStr,
+        phone: phoneStr,
+        service: serviceStr,
+        website: '',
+        message: messageStr,
+        landingPage: returnTo,
+        referrer: typeof req?.headers?.referer === 'string' ? req.headers.referer : '',
+        utm: {},
+        flags,
+      },
+      requestId,
+    );
+    log('lead_webhook_result', webhookResult);
 
     const confirmationMail: OutboundMail = {
       to: emailStr,
