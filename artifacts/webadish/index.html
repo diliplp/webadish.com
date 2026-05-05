@@ -10,7 +10,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-G5KV9ZHEXG', { send_page_view: false });
-      gtag('config', 'AW-17995549251');
+      var googleAdsId = '%VITE_GOOGLE_ADS_ID%';
+      if (googleAdsId && googleAdsId.indexOf('%') !== 0) {
+        gtag('config', googleAdsId);
+      }
       window.clarity = window.clarity || function () {
         (window.clarity.q = window.clarity.q || []).push(arguments);
       };
