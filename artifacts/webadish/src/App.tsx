@@ -33,6 +33,7 @@ const India = lazy(() => import("@/pages/India"));
 const IndiaDpdp = lazy(() => import("@/pages/IndiaDpdp"));
 const IndiaDpdpLp = lazy(() => import("@/pages/IndiaDpdpLp"));
 const IndiaHackedLp = lazy(() => import("@/pages/IndiaHackedLp"));
+const MaintenanceRetainerLp = lazy(() => import("@/pages/MaintenanceRetainerLp"));
 const IndiaCertIn = lazy(() => import("@/pages/IndiaCertIn"));
 const SecurityScore = lazy(() => import("@/pages/SecurityScore"));
 const AgencyPartners = lazy(() => import("@/pages/AgencyPartners"));
@@ -63,6 +64,7 @@ function AppRoutes() {
         <Route path="/india/dpdp-compliance-wordpress" component={IndiaDpdp} />
         <Route path="/india/dpdp-lp" component={IndiaDpdpLp} />
         <Route path="/india/hacked-site-recovery-lp" component={IndiaHackedLp} />
+        <Route path="/maintenance-retainer-lp" component={MaintenanceRetainerLp} />
         <Route path="/india/cert-in-incident-readiness" component={IndiaCertIn} />
         <Route path="/security-score" component={SecurityScore} />
         <Route path="/agency-partners" component={AgencyPartners} />

@@ -14,6 +14,7 @@ export const PRERENDER_ROUTES = [
   "/india/dpdp-compliance-wordpress",
   "/india/dpdp-lp",
   "/india/hacked-site-recovery-lp",
+  "/maintenance-retainer-lp",
   "/india/cert-in-incident-readiness",
   "/security-score",
   "/agency-partners",
@@ -413,6 +414,13 @@ const pageSeo: Record<string, SeoData> = {
     description:
       "Malware removed, blacklists cleared, site restored — within 24 hours. Flat INR pricing, 30-day guarantee. Emergency response for hacked websites across India.",
     path: "/india/hacked-site-recovery-lp",
+    noindex: true,
+  },
+  "/maintenance-retainer-lp": {
+    title: "WordPress Maintenance & Retainer Review — WebAdish",
+    description:
+      "Schedule a global WordPress maintenance and security retainer review. WebAdish helps business websites with safe updates, backups, monitoring, incident response, and higher-touch retained support.",
+    path: "/maintenance-retainer-lp",
     noindex: true,
   },
   "/india/cert-in-incident-readiness": {

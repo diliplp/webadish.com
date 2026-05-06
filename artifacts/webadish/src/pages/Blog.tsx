@@ -494,11 +494,11 @@ export default function Blog() {
                           height={347}
                         />
                       </div>
-                      <div className={`absolute left-5 top-5 rounded-full px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur ring-1 ${getImageTagClass(post.tag)}`}>
-                        {post.tag}
-                      </div>
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
+                      <div className={`inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold mb-3 ring-1 ${getImageTagClass(post.tag)}`}>
+                        {post.tag}
+                      </div>
                       <div className="flex items-center text-xs text-muted-foreground mb-3 gap-4">
                         <span>{post.date}</span>
                         <span className="flex items-center gap-1">
