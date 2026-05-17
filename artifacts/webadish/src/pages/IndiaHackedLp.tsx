@@ -1,7 +1,8 @@
-import { AlertTriangle, CheckCircle2, Clock, Phone, Shield, MessageCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Clock, Phone, Shield, MessageCircle, ArrowRight } from "lucide-react";
 import { LandingLayout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
+import { TrustBar } from "@/components/TrustBar";
 
 const signs = [
   "Site redirecting visitors to spam / pharma pages",
@@ -43,37 +44,47 @@ export default function IndiaHackedLp() {
               <span className="text-primary">We'll Clean It in 24 Hours.</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Professional malware removal, blacklist clearance, and full site recovery for Indian businesses. Flat-rate INR pricing. 30-day guarantee.
+              Professional malware removal, blacklist clearance, and full site recovery for Indian businesses. 30-day guarantee.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <a href="tel:+919998757045" className="w-full sm:w-auto">
-                <Button variant="primary" size="lg" className="w-full text-lg px-8 shadow-lg shadow-primary/30 h-14 bg-red-600 hover:bg-red-700">
-                  <Phone size={20} className="mr-2 animate-bounce" /> Call Specialist: +91 9998757045
-                </Button>
-              </a>
               <a href="https://wa.me/919998757045?text=My%20website%20has%20been%20hacked%2C%20I%20need%20emergency%20recovery" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full text-lg px-8 h-14 border-green-600 text-green-700 hover:bg-green-50">
+                <Button size="lg" className="w-full text-lg px-8 shadow-lg shadow-green-600/30 h-14 bg-green-600 hover:bg-green-700">
                   <MessageCircle size={20} className="mr-2" /> WhatsApp Triage
                 </Button>
               </a>
-            </div>
-            <div className="flex flex-wrap gap-6 text-sm font-medium">
-              {[
-                { icon: <Clock size={16} className="text-primary" />, label: "1-hour response, 24h recovery" },
-                { icon: <Shield size={16} className="text-green-600" />, label: "30-day re-infection guarantee" },
-                { icon: <CheckCircle2 size={16} className="text-accent" />, label: "800+ sites recovered" },
-              ].map((b) => (
-                <div key={b.label} className="flex items-center gap-2 text-muted-foreground">
-                  {b.icon} {b.label}
-                </div>
-              ))}
+              <a href="tel:+919998757045" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full text-lg px-8 h-14 border-red-600 text-red-700 hover:bg-red-50">
+                  <Phone size={20} className="mr-2" /> Call Specialist
+                </Button>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      <TrustBar />
+
+      {/* FORM SECTION (MOVED UP) */}
+      <section id="recovery-form" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-foreground rounded-3xl p-8 md:p-12 text-white">
+              <h2 className="text-3xl font-bold mb-4">Request Emergency Assessment</h2>
+              <p className="text-white/70 mb-8">Fill in the details below. A security engineer will review your site and contact you within 1 hour.</p>
+              <div className="bg-white rounded-3xl p-6 md:p-8 text-foreground">
+                <ContactForm
+                    formName="hacked_lp_india_v2"
+                    pagePath="/india/hacked-site-recovery-lp"
+                    defaultService="Hacked Site Recovery (Emergency)"
+                    submitLabel="Get Assessment"
+                    successMessage="Request Received. A security engineer is reviewing your site and will contact you via WhatsApp or phone within 1 hour."
+                />
+              </div>
+            </div>
+        </div>
+      </section>
+
       {/* IS YOUR SITE HACKED? */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
@@ -91,14 +102,11 @@ export default function IndiaHackedLp() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
-                Every hour a hacked site is live, Google deepens the blacklist penalty. The sooner you act, the faster the recovery.
-              </p>
             </div>
 
             {/* WHAT'S INCLUDED */}
-            <div className="bg-gray-50 rounded-3xl p-8 border border-border/50">
-              <h3 className="text-xl font-bold mb-6">What's Included in Every Recovery</h3>
+            <div className="bg-white rounded-3xl p-8 border border-border">
+              <h3 className="text-xl font-bold mb-6">What's Included in Recovery</h3>
               <ul className="space-y-3">
                 {included.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm">
@@ -112,71 +120,21 @@ export default function IndiaHackedLp() {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section className="py-16 bg-gray-50 border-t border-border/50">
+      {/* PRICING (MOVED DOWN) */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-3">Flat-Rate INR Pricing</h2>
-            <p className="text-muted-foreground">No hidden charges. Price confirmed before we start work.</p>
+            <h2 className="text-2xl font-bold mb-3">Transparent Pricing</h2>
+            <p className="text-muted-foreground text-sm">Final pricing confirmed after a quick assessment of your site's infection level.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {pricing.map((p) => (
-              <div key={p.label} className="bg-white rounded-2xl p-6 border border-border/50 text-center">
+              <div key={p.label} className="bg-gray-50 rounded-2xl p-6 border text-center">
                 <h3 className="font-bold mb-2">{p.label}</h3>
-                <div className="text-2xl font-bold text-primary mb-2">{p.range}</div>
+                <div className="text-xl font-bold text-primary mb-2">{p.range}</div>
                 <p className="text-xs text-muted-foreground">{p.desc}</p>
               </div>
             ))}
-          </div>
-          <p className="text-center text-xs text-muted-foreground mt-6">
-            Final price confirmed after a quick site assessment. GST applicable.
-          </p>
-        </div>
-      </section>
-
-      {/* FORM */}
-      <section id="recovery-form" className="py-20 bg-foreground text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Get Emergency Help Now
-              </h2>
-              <p className="text-white/70 mb-8 leading-relaxed">
-                Fill in the form and a security engineer will call or WhatsApp you within 1 hour. We work 24/7 for hacked site emergencies.
-              </p>
-              <div className="space-y-4">
-                {[
-                  { icon: <Clock size={18} />, text: "Response within 1 hour — including nights & weekends" },
-                  { icon: <Shield size={18} />, text: "30-day re-infection guarantee, in writing" },
-                  { icon: <CheckCircle2 size={18} />, text: "Price fixed before work starts — no surprises" },
-                ].map((item) => (
-                  <div key={item.text} className="flex items-start gap-3 text-white/80 text-sm">
-                    <span className="text-primary mt-0.5 shrink-0">{item.icon}</span>
-                    {item.text}
-                  </div>
-                ))}
-              </div>
-              <div className="mt-10 space-y-3">
-                <p className="text-white/50 text-xs uppercase tracking-wider font-semibold">Prefer to call or message?</p>
-                <a href="tel:+919998757045" className="flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors">
-                  <Phone size={16} /> +91 9998757045
-                </a>
-                <a href="https://wa.me/919998757045?text=My%20website%20has%20been%20hacked%2C%20I%20need%20emergency%20recovery" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors">
-                  <MessageCircle size={16} /> WhatsApp Us
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-3xl p-8 text-foreground">
-              <ContactForm
-                formName="hacked_lp_india"
-                pagePath="/india/hacked-site-recovery-lp"
-                defaultService="Hacked Site Recovery (Emergency)"
-                submitLabel="Request Emergency Recovery"
-                successMessage="We've received your request. A security engineer will call or WhatsApp you within 1 hour."
-              />
-            </div>
           </div>
         </div>
       </section>
