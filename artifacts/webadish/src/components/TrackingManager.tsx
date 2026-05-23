@@ -29,6 +29,9 @@ export default function TrackingManager() {
 
       if (href.includes("wa.me")) {
         trackEvent("whatsapp_click", { label, href, page_path: pagePath });
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "conversion", { send_to: "AW-17995549251/tE5MCMmO4LEcEMOU-YRD" });
+        }
         return;
       }
 

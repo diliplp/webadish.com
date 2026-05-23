@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title><!--app-title--></title>
     <!--app-head-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5KV9ZHEXG"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -33,19 +34,13 @@
       }
 
       function scheduleDeferredThirdParties() {
-        const loadAll = function () {
-          loadDeferredScript('https://www.googletagmanager.com/gtag/js?id=G-G5KV9ZHEXG');
-        };
-
         const loadClarity = function () {
           loadDeferredScript('https://www.clarity.ms/tag/vzlgprw0bu');
         };
 
         if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(loadAll, { timeout: 3000 });
           window.setTimeout(loadClarity, 6000);
         } else {
-          window.setTimeout(loadAll, 2000);
           window.setTimeout(loadClarity, 6000);
         }
       }

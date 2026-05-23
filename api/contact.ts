@@ -16,6 +16,9 @@ const SPAM_PATTERNS = [
 
 const CYRILLIC_PATTERN = /[\u0400-\u04FF]/;
 
+// Surveillance / stalkerware / unauthorized account-access requests \u2014 always blocked
+const SURVEILLANCE_PATTERN = /\b(hack(ing)?\s+(whatsapp|instagram|facebook|snapchat|telegram|gmail|email|phone|account)|whatsapp\s+hack(er|ing)?|hack\s+someone|spy\s+on\s+(whatsapp|phone|partner|wife|husband|girlfriend|boyfriend)|read\s+someone.?s\s+(whatsapp|messages?|chats?)|track\s+(someone|whatsapp|phone|location)\s+without|monitor\s+(someone.?s\s+)?(whatsapp|phone)|access\s+someone.?s\s+(whatsapp|account|messages?)|whatsapp\s+spy|phone\s+spy|clone\s+whatsapp|whatsapp\s+clone|catch\s+(cheating|wife|husband|girlfriend|boyfriend)|recover\s+deleted\s+whatsapp|see\s+deleted\s+(whatsapp\s+)?messages?|bypass\s+(2fa|two.?factor|otp|verification)|crack\s+(password|account|whatsapp))\b/i;
+
 // Known disposable / throwaway email domains
 const DISPOSABLE_DOMAINS = new Set([
   'mailinator.com', 'guerrillamail.com', 'guerrillamail.org', 'guerrillamail.net',
@@ -143,6 +146,12 @@ export default async function handler(req: any, res: any) {
     if (SPAM_PATTERNS.some(p => p.test(textToScan))) {
       flags.push('spam_pattern');
       log('spam_pattern_flagged');
+    }
+
+    // --- SURVEILLANCE / STALKERWARE DETECTION ---
+    if (SURVEILLANCE_PATTERN.test(textToScan)) {
+      flags.push('surveillance_request');
+      log('surveillance_request_flagged');
     }
 
     // --- CYRILLIC DETECTION (For non-Cyrillic markets) ---
@@ -486,6 +495,11 @@ function getBlockedSpamReason(input: {
   // Hard block on honeypot - no reason for a human to fill this
   if (flags.has('honeypot')) {
     return 'honeypot';
+  }
+
+  // Hard block: surveillance / stalkerware / unauthorized account-access requests
+  if (flags.has('surveillance_request')) {
+    return 'surveillance_request';
   }
 
   // Hard block on Cyrillic for this specific business context (India/UK/Global English)
