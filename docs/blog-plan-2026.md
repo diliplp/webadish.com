@@ -21,9 +21,9 @@
 
 | # | Status | Title | Category | Slug |
 |---|--------|-------|----------|------|
-| 5 | 🔲 | WooCommerce Payment Gateway Security: What Stripe, Razorpay, and PayPal Cover — and What They Don't | Security | `woocommerce-payment-gateway-security` |
-| 6 | 🔲 | The Real Cost of Running Nulled WordPress Plugins | Security | `wordpress-nulled-plugins-risk` |
-| 7 | 🔲 | How to Choose a WordPress Maintenance Plan: A Framework for Indian Businesses | Buyer Intent | `wordpress-maintenance-plan-india` |
+| 5 | ✅ | WooCommerce Payment Gateway Security: What Stripe, Razorpay, and PayPal Cover — and What They Don't | Security | `woocommerce-payment-gateway-security` |
+| 6 | ✅ | The Real Cost of Running Nulled WordPress Plugins | Security | `wordpress-nulled-plugins-risk` |
+| 7 | ✅ | How to Choose a WordPress Maintenance Plan: A Framework for Indian Businesses | Buyer Intent | `wordpress-maintenance-plan-india` |
 
 ---
 

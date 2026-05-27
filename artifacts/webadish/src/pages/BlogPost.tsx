@@ -1791,6 +1791,215 @@ const posts: Record<string, {
     ),
   },
 
+  "wordpress-maintenance-plan-india": {
+    tag: "Buyer Intent", tagColor: "text-foreground",
+    title: "How to Choose a WordPress Maintenance Plan: A Framework for Indian Businesses",
+    date: "June 16, 2026", read: "8 min",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Most WordPress maintenance plans sold in India are built around one assumption: that something has already gone wrong. A site is down. A plugin broke. Malware was detected. The plan is called in to fix the problem and then goes quiet until the next one.</p>
+        <p>That reactive model works for keeping the lights on. It does not work for protecting revenue, rankings, or customer data. This guide helps Indian business owners evaluate maintenance plans correctly — by the criteria that actually matter when something serious happens.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a WordPress maintenance plan should cover</h2>
+        <p>A maintenance plan should address three categories of ongoing risk:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Update risk</strong> — Outdated plugins are the leading cause of WordPress compromises globally. A maintenance plan should apply updates on a defined schedule, backed by pre-update backups and staging-environment testing so a bad update does not take the live site down.</li>
+          <li><strong>Infrastructure risk</strong> — Backups, uptime monitoring, and hosting-level health checks. Backups must be offsite; on-server backups are useless in a hosting account compromise or server failure. Uptime monitoring should alert within minutes, not hours.</li>
+          <li><strong>Security risk</strong> — Security monitoring is not the same as security response. A plan that monitors for malware and alerts you when something is detected is not covering incident response. Determine whether the plan includes full cleanup if the site is compromised — or whether cleanup is billed separately at Rs 15,000–Rs 50,000 per incident.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The Indian market context: what is different</h2>
+        <p>Indian WordPress sites face the same global threat landscape as sites anywhere else — automated vulnerability scanners do not discriminate by geography. But there are specific factors that affect how maintenance should be structured for Indian businesses:</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">CERT-In incident reporting obligations</h3>
+        <p>India's CERT-In directive (April 2022) requires organisations to report cybersecurity incidents — including website compromises — within six hours of detection. The obligation is not limited to large enterprises. If your site processes payments, personal data, or user accounts, a compromise is a reportable event. A maintenance plan that does not help you assess and document security incidents leaves you exposed to this obligation without support. Ask any maintenance provider directly: have you handled a CERT-In reporting situation for a client?</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Hosting environment variability</h3>
+        <p>Many Indian businesses use shared hosting plans from domestic providers where server-level security controls are limited. A maintenance plan cannot compensate for a fundamentally insecure hosting environment — but a good provider will flag this risk and can advise on hosting tiers that reduce exposure without requiring an expensive dedicated server.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">WooCommerce and payment gateway considerations</h3>
+        <p>Indian WooCommerce stores integrating Razorpay, PayU, or CCAvenue are processing sensitive payment data. A maintenance plan for an Indian eCommerce site should include checkout-flow monitoring — not just site uptime — and should verify that payment gateway plugin versions are patched promptly when vulnerabilities are disclosed.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The three-tier reality of Indian maintenance pricing</h2>
+        <p>Indian WordPress maintenance plans broadly fall into three tiers:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li><strong>Rs 2,000–Rs 5,000/month</strong> — Automated update tools, basic uptime monitoring, and email alerts. Rarely includes human response, staging environment testing, or security incident coverage. Adequate for static brochure sites with no revenue dependency.</li>
+          <li><strong>Rs 8,000–Rs 15,000/month</strong> — Human-managed updates with pre-update backups, offsite backup storage, malware monitoring, and a defined response time for critical issues. Some plans include security incident response; many do not. Read the scope document carefully.</li>
+          <li><strong>Rs 20,000–Rs 40,000+/month</strong> — Comprehensive plans including security incident response, staging environments, performance monitoring, CERT-In compliance support, and SLA guarantees. Appropriate for revenue-generating sites, WooCommerce stores, or sites processing personal data under DPDP obligations.</li>
+        </ol>
+        <p>The second tier is where most businesses sit — and where the most confusion exists. Two plans at Rs 10,000/month can offer vastly different levels of actual protection depending on whether security response is included and how updates are handled.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Questions to ask before signing</h2>
+        <p>These seven questions will reveal more about a maintenance provider than any service page:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li>Is security incident response included in the monthly fee, or billed separately?</li>
+          <li>Do you use a staging environment to test updates before applying to the live site?</li>
+          <li>Where are backups stored, and what is the retention period?</li>
+          <li>What is the response time for a critical issue (site down or compromised) — and is that in the contract?</li>
+          <li>How do you handle CERT-In reporting obligations if the site is compromised?</li>
+          <li>What specifically triggers an escalation from the automated monitoring to a human response?</li>
+          <li>What does the contract exit process look like, and do we retain access to all our data?</li>
+        </ol>
+        <p>Providers who answer these clearly and in writing have actual operational processes. Providers who hedge, defer to "we'll figure it out if it happens," or cannot give specifics on backup retention are communicating that the service is less structured than the marketing implies.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Matching the plan to the site's risk profile</h2>
+        <p>Not every Indian WordPress site needs the same level of maintenance. The right starting point is assessing what the site actually costs to be unavailable or compromised:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>A static portfolio site with no active leads or revenue: basic monitoring and update automation is appropriate. Rs 2,000–4,000/month is a defensible spend.</li>
+          <li>A lead-generation site where every enquiry is worth Rs 5,000–50,000: professional managed maintenance with human oversight and SLA guarantees is the correct model. One missed enquiry day pays for months of managed service.</li>
+          <li>A WooCommerce store processing payments: comprehensive maintenance including checkout monitoring, payment plugin patching, and security incident response is non-negotiable. The cost of a single compromised checkout flow — chargebacks, reputation damage, CERT-In exposure — far exceeds an annual maintenance contract.</li>
+        </ul>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">WordPress maintenance plans built for Indian businesses</p>
+          <p className="text-sm mb-4">Our maintenance plans include staging-tested updates, offsite backups, malware monitoring, security incident response, and CERT-In incident support — with a written response SLA. Pricing in INR, no hidden extras for security incidents.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/maintenance" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">See Maintenance Plans</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Talk to Our Team</Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  "wordpress-nulled-plugins-risk": {
+    tag: "Security", tagColor: "text-primary",
+    title: "The Real Cost of Running Nulled WordPress Plugins",
+    date: "June 9, 2026", read: "7 min",
+    img: "/blog/plugin-audit-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">Nulled WordPress plugins — cracked copies of commercial plugins distributed without a valid licence — are one of the most consistent sources of WordPress compromises we see. The appeal is understandable: premium plugins at no cost. The reality is that the plugin you downloaded for free comes with a cost built in; you just do not choose when or how it is extracted.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What a nulled plugin actually is</h2>
+        <p>A nulled plugin is a commercial WordPress plugin that has had its licence verification code stripped out or bypassed, allowing it to be installed and used without purchasing a valid licence. The original plugin code may be largely intact — or it may have been modified. That is the core problem.</p>
+        <p>Nulled plugins are distributed through grey-market sites, file-sharing platforms, and free download repositories. The people distributing them are not doing it as a public service. They are monetising in other ways: by injecting malicious code into the plugin before distributing it, or by including a backdoor that allows remote access to any site that installs the nulled version.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How nulled plugins compromise WordPress sites</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Pre-installed backdoors</h3>
+        <p>The most common pattern is a PHP backdoor injected into the plugin's code before distribution. The backdoor is designed to look like normal PHP — it may be obfuscated, encoded, or structured to resemble a legitimate function. When you install the nulled plugin, the backdoor is installed with it. The attacker now has persistent remote access to your site regardless of your WordPress admin password, your security plugins, or your firewall. The backdoor survives plugin updates and WordPress reinstalls if you reinstall from the same nulled source.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Phoning home</h3>
+        <p>Some nulled plugins include code that periodically contacts a remote server — the attacker's infrastructure — and downloads additional payloads. The initial install may be clean. The compromise comes later, when the plugin quietly downloads and executes malicious code that the attacker controls. This pattern is particularly hard to detect because the initial scan after installation shows nothing suspicious.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">SEO spam injection</h3>
+        <p>A common commercial use of nulled plugin backdoors is bulk SEO spam: injecting hidden links to gambling, pharmaceutical, or adult sites into your site's content. Your site appears normal to visitors but serves as a link farm in search results. This damages your domain authority and can trigger Google blacklisting — which drops organic traffic by 90% or more within hours of the warning appearing in search results.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">No security updates</h3>
+        <p>Even a genuinely clean nulled plugin — one distributed without modifications, purely to bypass the licence check — creates a different problem: it can never receive security updates. Commercial plugin developers issue security patches in response to disclosed vulnerabilities. A nulled plugin is frozen at whatever version it was when it was cracked. If that version has a known vulnerability, your site is permanently exposed to it, and the vulnerability is in a piece of code that was never supposed to be on your site in the first place.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The economics of paying versus nulling</h2>
+        <p>Consider the actual numbers. A commercial WordPress plugin typically costs $50–$200/year for a single-site licence. The cost of a professional forensic cleanup after a compromise caused by a nulled plugin — identifying all backdoors, removing all malicious code, closing the entry point, hardening the site, and removing any Google or blacklist flags — starts at Rs 15,000 and can reach Rs 50,000 or more for complex infections with multiple malware strains and database-level injections.</p>
+        <p>That calculation does not include revenue lost during downtime, SEO recovery after blacklisting, or CERT-In reporting obligations if personal data was exposed during the compromise. The maths of nulled plugins is straightforward when the whole cost is in view.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">How to audit your site for nulled plugins</h2>
+        <p>If you are not certain whether any plugins on your current site came from unofficial sources, a basic audit involves:</p>
+        <ol className="list-decimal list-inside space-y-3 pl-4">
+          <li>Compare each installed plugin against the official WordPress plugin repository or the plugin developer's official site. If a paid plugin is installed and you cannot find a purchase receipt, it is a candidate for review.</li>
+          <li>Check plugin file modification dates — legitimate plugin installations have file timestamps consistent with when the plugin was installed. Modified files with timestamps that do not match often indicate tampering.</li>
+          <li>Run a file integrity check against official plugin checksums. Tools like Wordfence's file scanner compare installed plugin files against the official repository versions and flag any differences.</li>
+          <li>Review your server access logs for unusual outbound connections, particularly repeated POST requests to unfamiliar domains — a common pattern of nulled plugins phoning home.</li>
+        </ol>
+        <p>If you discover nulled plugins, the correct response is not simply to deactivate and delete them. Assume the site is compromised and conduct a full forensic review — the backdoor, if any was injected, may have persisted in other file locations beyond the plugin directory itself.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Alternatives to nulled plugins</h2>
+        <p>For businesses where commercial plugin costs are a genuine constraint, there are legitimate alternatives:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Free plugin equivalents</strong> — The WordPress plugin repository has free alternatives for most commercial plugin categories. They may have fewer features, but they receive security updates and do not carry the risk profile of nulled software.</li>
+          <li><strong>Developer licences</strong> — Many commercial plugins offer developer or agency licences that allow installation across multiple client sites at a cost that is far lower per site than individual licences.</li>
+          <li><strong>Build or customise</strong> — For sites with specific requirements, a one-time development cost for a custom solution is typically less than the cleanup cost of one serious compromise, and eliminates the ongoing risk.</li>
+        </ul>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Concerned a nulled plugin may have compromised your site?</p>
+          <p className="text-sm mb-4">Our forensic team specialises in identifying and removing all traces of nulled-plugin compromises — including backdoors that survive standard scans. We identify the entry point, remove all malicious code, and harden the site against re-infection.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/hacked-site-recovery" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Get Emergency Help</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Contact Us</Link>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  "woocommerce-payment-gateway-security": {
+    tag: "Security", tagColor: "text-primary",
+    title: "WooCommerce Payment Gateway Security: What Stripe, Razorpay, and PayPal Cover — and What They Don't",
+    date: "June 2, 2026", read: "8 min",
+    img: "/blog/plugin-audit-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">A common misunderstanding among WooCommerce store owners is that integrating a reputable payment gateway — Stripe, Razorpay, PayPal — provides comprehensive security coverage for the checkout process. It does not. Payment gateways secure the payment transaction itself. They do not secure your WordPress site, your customer data outside the payment flow, or the code that connects your store to the gateway.</p>
+        <p>This distinction matters because it is the code between your store and the payment gateway — the WooCommerce plugin, payment gateway plugins, and your WordPress installation — where attackers typically operate.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What payment gateways actually secure</h2>
+        <p>Reputable payment gateways like Stripe, Razorpay, and PayPal are PCI DSS compliant, which means they meet the Payment Card Industry Data Security Standard for handling card data. Specifically, they secure:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>The payment transaction itself</strong> — Card numbers, CVVs, and expiry dates entered at checkout are transmitted directly to the gateway's servers using encrypted connections. In a properly configured integration, raw card data never touches your WordPress server.</li>
+          <li><strong>Their own infrastructure</strong> — The gateway's servers, databases, and internal systems are secured and audited under their PCI compliance obligations.</li>
+          <li><strong>Tokenisation</strong> — Instead of storing actual card numbers, gateways return tokens that represent the card for future transactions. Your WooCommerce database stores tokens, not raw card data.</li>
+        </ul>
+        <p>This is meaningful protection — it means a database breach of your WooCommerce store does not expose raw card numbers. But it is narrower than most store owners assume.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What payment gateways do not secure</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Your WordPress and WooCommerce installation</h3>
+        <p>The gateway plugin running on your WordPress site — the code that handles the handoff between WooCommerce and the gateway's API — is your responsibility to keep updated and secure. If a vulnerability is discovered in the Stripe WooCommerce plugin, Razorpay's WooCommerce extension, or WooCommerce core, the payment gateway provider is not obligated to patch your installation. You are. These plugins receive security updates through the standard WordPress repository — which means a site without current plugin maintenance is exposed to disclosed vulnerabilities regardless of how secure the gateway itself is.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Customer data outside the payment flow</h3>
+        <p>WooCommerce stores substantial data that payment gateways do not touch: customer names, email addresses, physical addresses, order history, and account credentials. This data lives in your WordPress database. A database breach exposes all of it — the gateway's PCI compliance provides no protection for non-payment personal data. For Indian stores, this data falls under DPDP Act obligations. For stores with EU customers, GDPR applies. A WooCommerce breach is not limited to financial exposure.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Formjacking and client-side skimming</h3>
+        <p>Formjacking (also called Magecart-style attacks) is a technique where attackers inject malicious JavaScript into the checkout page that intercepts payment details as they are typed — before the data is encrypted and sent to the gateway. The attack operates at the browser level, which means the gateway's server-side security is irrelevant. The card data is captured and transmitted to the attacker before the legitimate payment transaction even begins.</p>
+        <p>These attacks are executed by compromising the WordPress site and injecting JavaScript into the checkout page — typically via a vulnerable plugin, an outdated theme, or a compromised admin account. The gateway's transaction logs appear completely normal because the legitimate transaction also completes; the attack is invisible in the payment flow.</p>
+        <p>Formjacking specifically requires site-level security controls: Content Security Policy headers that restrict what JavaScript can execute on checkout pages, file integrity monitoring, and real-time detection of unauthorised script injections.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Checkout flow manipulation</h3>
+        <p>Separate from payment interception, attackers who gain access to a WooCommerce store can manipulate the checkout flow itself: changing bank account details for direct-transfer options, modifying order confirmation emails, redirecting post-payment confirmations, or altering shipping and fulfilment data. None of these manipulations involve the payment gateway — they operate on the WordPress and WooCommerce layer that gateways do not monitor or control.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">The specific risks by gateway type</h2>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Razorpay (Indian market)</h3>
+        <p>Razorpay's WooCommerce plugin is widely used for Indian eCommerce and has had security updates published in the past — as have virtually all major payment plugins. The critical practice is ensuring the plugin version is always current, as Razorpay patches vulnerabilities through version updates to the WooCommerce plugin. Sites running older plugin versions are running known vulnerabilities. Additionally, Razorpay webhook endpoints — the URLs that receive payment confirmation events — should be protected with signature verification to prevent spoofed payment confirmations.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Stripe</h3>
+        <p>Stripe's integration model — using Stripe.js to handle card data client-side before transmitting to Stripe servers — is one of the cleaner architectures from a PCI scope reduction perspective. However, this model is only as secure as the WordPress page it runs on. If an attacker can inject JavaScript into your checkout page (via a compromised plugin, theme, or admin account), Stripe.js becomes the interception point rather than the protection point. Content Security Policy configuration is the primary control against this attack vector.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">PayPal</h3>
+        <p>PayPal's redirect-based checkout — where customers complete payment on PayPal's site rather than yours — provides stronger isolation between your WordPress environment and the payment process. However, IPN (Instant Payment Notification) and webhook handling code on your WordPress site introduces its own validation requirements. Improperly validated IPN handlers have been exploited to mark orders as paid without actual payment processing.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">What WooCommerce store owners should implement</h2>
+        <p>Gateway compliance does not substitute for site-level security. For WooCommerce stores processing real transactions:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li><strong>Keep all plugins current</strong> — Payment gateway plugins, WooCommerce, and WordPress core should be updated within 24–48 hours of security releases. Delayed updates on payment-handling code are the primary source of exposure.</li>
+          <li><strong>Implement Content Security Policy headers</strong> — Restrict which external JavaScript sources can execute on checkout pages. This is the primary control against formjacking attacks.</li>
+          <li><strong>Monitor file integrity</strong> — Detect unauthorised changes to checkout page templates, payment gateway plugin files, and WordPress core files. Changes that are not part of a scheduled update are indicators of compromise.</li>
+          <li><strong>Validate all webhook signatures</strong> — All gateway webhook and IPN payloads should be verified using the gateway's signature mechanism. Unsigned or invalidated payment notifications should be rejected.</li>
+          <li><strong>Restrict admin access</strong> — Two-factor authentication on all WordPress admin accounts, access limited by IP if feasible, and immediate deactivation of unused admin accounts. Most WooCommerce compromises that involve checkout manipulation start with a compromised admin credential.</li>
+          <li><strong>Log and monitor checkout activity</strong> — Unusual patterns — multiple failed payments, orders from new accounts at high average order values, billing and shipping address mismatches — are worth monitoring as indicators of fraud or account compromise.</li>
+        </ul>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">WooCommerce security assessment</p>
+          <p className="text-sm mb-4">We audit WooCommerce stores for the specific vulnerabilities payment gateway compliance does not cover: checkout page integrity, plugin security posture, Content Security Policy configuration, and admin account hygiene. If you are processing real transactions, the audit is worth running before an incident makes it unavoidable.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/security" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">View Security Services</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Book an Assessment</Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Frequently asked questions</h2>
+        <div className="space-y-5">
+          <div><p className="font-semibold text-foreground">Does being Razorpay or Stripe integrated mean my site is PCI compliant?</p><p>No. Using a PCI-compliant gateway reduces your PCI scope — you are not responsible for securing the payment data within the gateway's systems. But your WordPress site, the code integrating with the gateway, and the customer data you collect outside the payment transaction remain your responsibility. Most WooCommerce stores fall under SAQ-A (if using hosted payment pages) or SAQ-A-EP (if the checkout form is on your own domain), each of which has its own compliance requirements.</p></div>
+          <div><p className="font-semibold text-foreground">Can my customer's card details be stolen even with Razorpay integrated?</p><p>Yes, through formjacking: malicious JavaScript injected into your checkout page can intercept card details as they are typed, before the data is sent to Razorpay. This type of attack is invisible in the gateway's transaction records and requires site-level security controls — specifically file integrity monitoring and Content Security Policy — to detect and prevent.</p></div>
+          <div><p className="font-semibold text-foreground">What should I do if I suspect my WooCommerce checkout has been compromised?</p><p>Take the store offline immediately to prevent further exposure. Do not log into the WordPress admin from the same device you believe may have been compromised. Contact a WordPress security specialist for a forensic assessment. If card data may have been intercepted, notify your payment gateway provider and assess whether a CERT-In report is required under India's incident reporting obligations.</p></div>
+        </div>
+      </div>
+    ),
+  },
+
   "woocommerce-maintenance-checklist": {
     tag: "Buyer Intent", tagColor: "text-foreground",
     title: "WordPress Maintenance for WooCommerce: What Growing Stores Should Expect",

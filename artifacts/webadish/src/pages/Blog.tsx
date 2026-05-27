@@ -7,6 +7,42 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Buyer Intent",
+    tagColor: "text-foreground",
+    tagBg: "bg-foreground/10",
+    title: "How to Choose a WordPress Maintenance Plan: A Framework for Indian Businesses",
+    excerpt:
+      "Most WordPress maintenance plans sold in India are reactive. Here is how to evaluate them correctly — by the criteria that matter when something serious happens, including CERT-In obligations and WooCommerce-specific risks.",
+    date: "June 16, 2026",
+    read: "8 min",
+    img: "/blog/hosting-vs-managed-security-banner.svg",
+    href: "/blog/wordpress-maintenance-plan-india",
+  },
+  {
+    tag: "Security",
+    tagColor: "text-primary",
+    tagBg: "bg-primary/10",
+    title: "The Real Cost of Running Nulled WordPress Plugins",
+    excerpt:
+      "Nulled plugins are the source of some of the most persistent WordPress compromises we see. The attackers distributing them are not doing it as a public service — they are monetising through backdoors, phoning home, and SEO spam injection.",
+    date: "June 9, 2026",
+    read: "7 min",
+    img: "/blog/plugin-audit-banner.svg",
+    href: "/blog/wordpress-nulled-plugins-risk",
+  },
+  {
+    tag: "Security",
+    tagColor: "text-primary",
+    tagBg: "bg-primary/10",
+    title: "WooCommerce Payment Gateway Security: What Stripe, Razorpay, and PayPal Cover — and What They Don't",
+    excerpt:
+      "Payment gateways secure the transaction. They do not secure your WordPress site, your customer data, or the code that connects your store to the gateway. This is where most WooCommerce compromises actually happen.",
+    date: "June 2, 2026",
+    read: "8 min",
+    img: "/blog/plugin-audit-banner.svg",
+    href: "/blog/woocommerce-payment-gateway-security",
+  },
+  {
     tag: "Recovery",
     tagColor: "text-destructive",
     tagBg: "bg-destructive/10",
