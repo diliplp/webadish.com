@@ -2043,9 +2043,9 @@ export default function BlogPost() {
           <div className="max-w-2xl mx-auto px-4">
             <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
             <p className="text-muted-foreground mb-8">This article doesn't exist or may have been moved.</p>
-            <Button asChild variant="accent">
-              <Link href="/blog">Browse All Articles</Link>
-            </Button>
+            <Link href="/blog">
+              <Button variant="accent">Browse All Articles</Button>
+            </Link>
           </div>
         </section>
       </Layout>

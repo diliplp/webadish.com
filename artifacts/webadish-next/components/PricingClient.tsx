@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, X } from 'lucide-react';
+import { ArrowRight, CheckCircle2, IndianRupee, MessageCircle, X } from 'lucide-react';
 import { Button } from '@/components/Button';
 
 const plans = [
@@ -88,6 +88,15 @@ const faqs = [
   { q: 'Is there a contract?', a: "Monthly plans have no contract — cancel anytime with 30 days' notice. Annual plans are paid upfront at a discount." },
 ];
 
+const indiaHighlights = [
+  'Maintenance from Rs 9,999/mo',
+  'Hacked recovery from Rs 29,999',
+  'UPI and bank transfer accepted',
+];
+
+const whatsappUrl =
+  'https://wa.me/919998757045?text=I%20am%20from%20India%20and%20need%20the%20INR%20WordPress%20security%20pricing.';
+
 export default function PricingClient() {
   const [annual, setAnnual] = useState(false);
 
@@ -102,9 +111,42 @@ export default function PricingClient() {
           <p className="text-xl text-muted-foreground mb-10">
             USD pricing for global clients who need continuous protection, expert support, and a clear path from prevention to incident response.
           </p>
-          <div className="max-w-2xl mx-auto mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Not Ready to Choose a Plan?</p>
-            <p className="text-base text-foreground font-medium">Start with a free security audit and we will recommend the right level of protection.</p>
+          <div className="max-w-3xl mx-auto mb-8 rounded-3xl border-2 border-accent/30 bg-white p-6 shadow-xl shadow-accent/10">
+            <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between text-left">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-accent mb-3">
+                  <IndianRupee size={14} />
+                  India visitors
+                </div>
+                <h2 className="text-2xl font-bold text-foreground mb-2">Do not use this USD page for India quotes.</h2>
+                <p className="text-sm text-muted-foreground">
+                  We have a separate INR pricing page for Indian businesses and paid traffic.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {indiaHighlights.map((item) => (
+                    <span key={item} className="rounded-full bg-gray-50 border border-border/50 px-3 py-1 text-xs font-medium text-foreground">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col gap-3 md:min-w-56">
+                <Link href="/india">
+                  <Button variant="accent" className="w-full h-12">
+                    View India INR Pricing <ArrowRight size={16} className="ml-2" />
+                  </Button>
+                </Link>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="w-full h-12">
+                    <MessageCircle size={16} className="mr-2" /> WhatsApp Quote
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="max-w-2xl mx-auto mb-8 rounded-2xl border border-border/50 bg-white/90 p-5 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Global clients</p>
+            <p className="text-base text-foreground font-medium">Continue below for USD-led protection retainers and global incident response support.</p>
           </div>
           <p className="text-sm text-muted-foreground/70 mb-3">Billing preference</p>
           <div className="inline-flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-sm border border-border/50 text-sm">
@@ -160,11 +202,13 @@ export default function PricingClient() {
               </div>
             ))}
           </div>
-          <div className="mt-10 max-w-2xl mx-auto text-center">
-            <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">
-              <strong className="text-foreground">⚠️ Note:</strong> Indian pricing is intentionally separate so global prospects see USD-led protection plans.{' '}
-              <Link href="/india" className="text-accent hover:underline font-medium">View India pricing →</Link>
-            </p>
+          <div className="mt-10 max-w-3xl mx-auto text-center">
+            <div className="rounded-2xl border-2 border-accent/20 bg-accent/5 px-6 py-5">
+              <p className="text-sm text-muted-foreground">
+                <strong className="text-foreground">India pricing is separate:</strong> If you are an Indian business, use the INR page before comparing USD retainers.{' '}
+                <Link href="/india" className="text-accent hover:underline font-semibold">View India pricing</Link>
+              </p>
+            </div>
           </div>
           <div className="mt-4 max-w-2xl mx-auto text-center">
             <p className="text-sm text-muted-foreground border border-border/50 bg-gray-50 rounded-xl px-6 py-4">

@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+
+node_modules
+.pnpm-store
+artifacts/**/node_modules
+artifacts/**/.env
+artifacts/**/.env.*
+artifacts/**/.next
+artifacts/**/dist
+artifacts/**/.ssr
+
+*.log
+.DS_Store

@@ -4,9 +4,12 @@ import { cn } from '@/lib/utils';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'primary' | 'accent' | 'outline' | 'outline-primary' | 'ghost' | 'white';
   size?: 'default' | 'sm' | 'lg' | 'icon';
+  asChild?: boolean;
 }
 
 export function Button({
+  asChild = false,
+  children,
   className,
   variant = 'default',
   size = 'default',
@@ -35,10 +38,20 @@ export function Button({
     icon: 'h-11 w-11',
   } as const;
 
+  const classes = cn(baseStyles, variants[variant], sizes[size], className);
+
+  if (asChild && React.isValidElement<{ className?: string }>(children)) {
+    return React.cloneElement(children, {
+      className: cn(classes, children.props.className),
+    });
+  }
+
   return (
     <button
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      className={classes}
       {...props}
-    />
+    >
+      {children}
+    </button>
   );
 }
