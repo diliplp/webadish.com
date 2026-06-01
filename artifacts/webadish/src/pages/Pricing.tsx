@@ -109,9 +109,9 @@ export default function Pricing() {
                   <Shield size={14} />
                   India visitors
                 </div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Do not use this USD page for India quotes.</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-2">India pricing is available in INR.</h2>
                 <p className="text-sm text-muted-foreground">
-                  We have a separate INR pricing page for Indian businesses and paid traffic.
+                  View local India plans before comparing global USD retainers.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {indiaHighlights.map((item) => (

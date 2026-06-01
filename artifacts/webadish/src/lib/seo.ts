@@ -14,6 +14,7 @@ export const PRERENDER_ROUTES = [
   "/india/dpdp-compliance-wordpress",
   "/india/dpdp-lp",
   "/india/hacked-site-recovery-lp",
+  "/lp/wordpress-maintenance-india",
   "/maintenance-retainer-lp",
   "/india/cert-in-incident-readiness",
   "/security-score",
@@ -414,6 +415,13 @@ const pageSeo: Record<string, SeoData> = {
     description:
       "Malware removed, blacklists cleared, site restored — within 24 hours. Flat INR pricing, 30-day guarantee. Emergency response for hacked websites across India.",
     path: "/india/hacked-site-recovery-lp",
+    noindex: true,
+  },
+  "/lp/wordpress-maintenance-india": {
+    title: "WordPress Maintenance Plans India — INR Pricing",
+    description:
+      "INR-priced WordPress maintenance plans for Indian business websites. Safe updates, backups, uptime monitoring, malware checks, and WhatsApp-first response.",
+    path: "/lp/wordpress-maintenance-india",
     noindex: true,
   },
   "/maintenance-retainer-lp": {

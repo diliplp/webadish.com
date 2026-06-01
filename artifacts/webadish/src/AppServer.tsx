@@ -10,6 +10,7 @@ import India from "@/pages/India";
 import IndiaDpdp from "@/pages/IndiaDpdp";
 import IndiaDpdpLp from "@/pages/IndiaDpdpLp";
 import IndiaHackedLp from "@/pages/IndiaHackedLp";
+import IndiaMaintenanceLp from "@/pages/IndiaMaintenanceLp";
 import MaintenanceRetainerLp from "@/pages/MaintenanceRetainerLp";
 import IndiaCertIn from "@/pages/IndiaCertIn";
 import SecurityScore from "@/pages/SecurityScore";
@@ -43,6 +44,7 @@ function AppRoutes() {
         <Route path="/india/dpdp-compliance-wordpress" component={IndiaDpdp} />
         <Route path="/india/dpdp-lp" component={IndiaDpdpLp} />
         <Route path="/india/hacked-site-recovery-lp" component={IndiaHackedLp} />
+        <Route path="/lp/wordpress-maintenance-india" component={IndiaMaintenanceLp} />
         <Route path="/maintenance-retainer-lp" component={MaintenanceRetainerLp} />
         <Route path="/india/cert-in-incident-readiness" component={IndiaCertIn} />
         <Route path="/security-score" component={SecurityScore} />
