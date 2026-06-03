@@ -120,21 +120,15 @@ function WorkspaceHeroGraphic() {
         ))}
       </div>
 
-      {/* Partner badge floating below */}
-      <div className="absolute -bottom-5 -left-3 bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-3 flex items-center gap-3">
-        <div className="flex gap-0.5">
-          <span className="text-blue-600 font-black text-lg">G</span>
-          <span className="text-red-500 font-black text-lg">o</span>
-          <span className="text-yellow-500 font-black text-lg">o</span>
-          <span className="text-blue-600 font-black text-lg">g</span>
-          <span className="text-green-500 font-black text-lg">l</span>
-          <span className="text-red-500 font-black text-lg">e</span>
-        </div>
-        <div className="text-xs leading-tight">
-          <div className="font-bold text-gray-800">Workspace</div>
-          <div className="text-gray-500">Authorised Partner</div>
-        </div>
-        <CheckCircle2 size={16} className="text-blue-600" />
+      {/* Official badge floating below */}
+      <div className="absolute -bottom-6 -left-4 bg-white rounded-2xl shadow-xl border border-gray-100 p-3">
+        <img
+          src="https://www.gstatic.com/cloud-partners/images/gcpn/badges/tiers/tier_gws_cosell_and_service_select.png"
+          alt="Google Workspace SELECT Co-sell & Services Partner"
+          width={110}
+          height={110}
+          loading="eager"
+        />
       </div>
     </div>
   );
@@ -150,19 +144,20 @@ export default function IndiaWorkspaceLp() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* LEFT — copy */}
             <div>
-              {/* Google Partner badge */}
-              <div className="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-2.5 mb-6 shadow-sm">
-                <div className="flex gap-0.5 items-center">
-                  <span className="text-blue-600 font-black text-base leading-none">G</span>
-                  <span className="text-red-500 font-black text-base leading-none">o</span>
-                  <span className="text-yellow-500 font-black text-base leading-none">o</span>
-                  <span className="text-blue-600 font-black text-base leading-none">g</span>
-                  <span className="text-green-500 font-black text-base leading-none">l</span>
-                  <span className="text-red-500 font-black text-base leading-none">e</span>
+              {/* Official Google Partner badge */}
+              <div className="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-xl pl-2 pr-4 py-2 mb-6 shadow-sm">
+                <img
+                  src="https://www.gstatic.com/cloud-partners/images/gcpn/badges/tiers/tier_gws_cosell_and_service_select.png"
+                  alt="Google Workspace SELECT Co-sell & Services Partner"
+                  width={48}
+                  height={48}
+                  loading="eager"
+                  className="rounded-lg"
+                />
+                <div className="text-sm leading-tight">
+                  <div className="font-bold text-gray-800">Google Workspace SELECT</div>
+                  <div className="text-gray-500 text-xs">Co-sell &amp; Services Partner</div>
                 </div>
-                <div className="w-px h-4 bg-gray-200" />
-                <span className="text-sm font-semibold text-gray-700">Workspace Authorised Partner</span>
-                <CheckCircle2 size={15} className="text-blue-600" />
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
@@ -209,6 +204,60 @@ export default function IndiaWorkspaceLp() {
       </section>
 
       <TrustBar />
+
+      {/* CREDENTIALS STRIP */}
+      <section className="py-8 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+            {/* Official badge */}
+            <div className="flex items-center gap-4">
+              <img
+                src="https://www.gstatic.com/cloud-partners/images/gcpn/badges/tiers/tier_gws_cosell_and_service_select.png"
+                alt="Google Workspace SELECT Co-sell & Services Partner"
+                width={72}
+                height={72}
+                loading="eager"
+              />
+              <div>
+                <div className="font-bold text-gray-900 text-sm">Google Workspace SELECT</div>
+                <div className="text-gray-500 text-xs">Co-sell &amp; Services Partner</div>
+                <div className="text-gray-400 text-xs mt-0.5">Verified by Google Partner Network Hub</div>
+              </div>
+            </div>
+
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+
+            {/* Certified engineers */}
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-blue-50 border-2 border-blue-200 flex items-center justify-center flex-shrink-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-blue-600">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" opacity="0.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div className="font-bold text-gray-900 text-sm">Google Certified Engineers</div>
+                <div className="text-gray-500 text-xs">Google Workspace certified setup &amp; migration specialists</div>
+                <div className="text-gray-400 text-xs mt-0.5">Certified via Google Cloud Partner program</div>
+              </div>
+            </div>
+
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+
+            {/* Track record */}
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-green-50 border-2 border-green-200 flex items-center justify-center flex-shrink-0">
+                <CheckCircle2 size={26} className="text-green-600" />
+              </div>
+              <div>
+                <div className="font-bold text-gray-900 text-sm">100+ Workspaces Deployed</div>
+                <div className="text-gray-500 text-xs">For Indian SMEs, WooCommerce stores &amp; agencies</div>
+                <div className="text-gray-400 text-xs mt-0.5">Based in Vadodara, Gujarat · Since 2015</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* PROBLEMS */}
       <section className="py-16 bg-gray-50">
