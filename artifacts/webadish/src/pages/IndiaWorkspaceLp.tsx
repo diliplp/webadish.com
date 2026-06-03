@@ -63,49 +63,146 @@ const faqs = [
   },
 ];
 
+function WorkspaceHeroGraphic() {
+  return (
+    <div className="relative w-full max-w-sm mx-auto lg:max-w-none">
+      {/* Main card — email client mockup */}
+      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+        {/* Title bar */}
+        <div className="bg-gray-50 border-b px-4 py-3 flex items-center gap-2">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-red-400" />
+            <div className="w-3 h-3 rounded-full bg-yellow-400" />
+            <div className="w-3 h-3 rounded-full bg-green-400" />
+          </div>
+          <div className="flex-1 bg-white rounded-md px-3 py-1 text-xs text-gray-400 border mx-4">mail.google.com</div>
+        </div>
+        {/* Compose area */}
+        <div className="p-5">
+          <div className="text-xs text-gray-400 mb-3 font-medium uppercase tracking-wide">New Message</div>
+          <div className="space-y-2 mb-4">
+            <div className="flex items-center gap-2 border-b pb-2">
+              <span className="text-xs text-gray-400 w-8">From</span>
+              <div className="flex items-center gap-2 bg-blue-50 rounded-full px-3 py-1">
+                <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">R</div>
+                <span className="text-xs font-semibold text-blue-700">rahul@yourcompany.com</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 border-b pb-2">
+              <span className="text-xs text-gray-400 w-8">To</span>
+              <span className="text-xs text-gray-600">client@enterprise.com</span>
+            </div>
+            <div className="flex items-center gap-2 border-b pb-2">
+              <span className="text-xs text-gray-400 w-8">Sub</span>
+              <span className="text-xs text-gray-700 font-medium">Project Proposal — Q3 2026</span>
+            </div>
+          </div>
+          <div className="text-xs text-gray-500 leading-relaxed">
+            Dear Team,<br />
+            Please find attached our proposal for...<br />
+            <span className="text-gray-300">━━━━━━━━━━━━━━━━━━━</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Google Apps floating chips */}
+      <div className="absolute -right-4 top-8 flex flex-col gap-2">
+        {[
+          { label: "Gmail", color: "bg-red-500", letter: "M" },
+          { label: "Drive", color: "bg-yellow-500", letter: "D" },
+          { label: "Meet", color: "bg-green-500", letter: "M" },
+          { label: "Calendar", color: "bg-blue-500", letter: "C" },
+        ].map((app) => (
+          <div key={app.label} className="flex items-center gap-2 bg-white rounded-full pl-1.5 pr-3 py-1.5 shadow-md border border-gray-100 text-xs font-medium text-gray-700">
+            <div className={`w-5 h-5 rounded-full ${app.color} flex items-center justify-center text-white text-xs font-bold`}>{app.letter}</div>
+            {app.label}
+          </div>
+        ))}
+      </div>
+
+      {/* Partner badge floating below */}
+      <div className="absolute -bottom-5 -left-3 bg-white rounded-xl shadow-lg border border-gray-100 px-4 py-3 flex items-center gap-3">
+        <div className="flex gap-0.5">
+          <span className="text-blue-600 font-black text-lg">G</span>
+          <span className="text-red-500 font-black text-lg">o</span>
+          <span className="text-yellow-500 font-black text-lg">o</span>
+          <span className="text-blue-600 font-black text-lg">g</span>
+          <span className="text-green-500 font-black text-lg">l</span>
+          <span className="text-red-500 font-black text-lg">e</span>
+        </div>
+        <div className="text-xs leading-tight">
+          <div className="font-bold text-gray-800">Workspace</div>
+          <div className="text-gray-500">Authorised Partner</div>
+        </div>
+        <CheckCircle2 size={16} className="text-blue-600" />
+      </div>
+    </div>
+  );
+}
+
 export default function IndiaWorkspaceLp() {
   return (
     <LandingLayout>
       {/* HERO */}
-      <section className="pt-36 pb-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+      <section className="pt-36 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-bold mb-6 border border-blue-200">
-              <Mail size={14} /> Google Workspace Partner — India Setup Service
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* LEFT — copy */}
+            <div>
+              {/* Google Partner badge */}
+              <div className="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-2.5 mb-6 shadow-sm">
+                <div className="flex gap-0.5 items-center">
+                  <span className="text-blue-600 font-black text-base leading-none">G</span>
+                  <span className="text-red-500 font-black text-base leading-none">o</span>
+                  <span className="text-yellow-500 font-black text-base leading-none">o</span>
+                  <span className="text-blue-600 font-black text-base leading-none">g</span>
+                  <span className="text-green-500 font-black text-base leading-none">l</span>
+                  <span className="text-red-500 font-black text-base leading-none">e</span>
+                </div>
+                <div className="w-px h-4 bg-gray-200" />
+                <span className="text-sm font-semibold text-gray-700">Workspace Authorised Partner</span>
+                <CheckCircle2 size={15} className="text-blue-600" />
+              </div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                Get a Professional<br />Business Email.<br />
+                <span className="text-blue-600">Set Up in 1 Day.</span>
+              </h1>
+              <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
+                Stop sending from @gmail.com. We set up Google Workspace for your business — email migration included, INR pricing, WhatsApp support.
+              </p>
+              <p className="text-base text-muted-foreground mb-8">
+                <span className="font-semibold text-foreground">you@yourbusiness.com</span> — professional, reliable, backed by Google.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <a
+                  href="https://wa.me/919998757045?text=I%20need%20help%20setting%20up%20Google%20Workspace%20for%20my%20business"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="lg" className="w-full text-lg px-8 shadow-lg shadow-green-600/30 h-14 bg-green-600 hover:bg-green-700">
+                    <MessageCircle size={20} className="mr-2" /> WhatsApp for Quick Quote
+                  </Button>
+                </a>
+                <a href="#workspace-form" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full text-lg px-8 h-14 border-blue-600 text-blue-700 hover:bg-blue-50">
+                    Get a Free Consultation <ArrowRight size={18} className="ml-2" />
+                  </Button>
+                </a>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> INR pricing</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> UPI &amp; bank transfer</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> GST invoice</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> Same-day setup</span>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Get a Professional Business Email.<br />
-              <span className="text-blue-600">Set Up in 1 Day.</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
-              Stop sending from @gmail.com. We set up Google Workspace for your business — email migration included, INR pricing, WhatsApp support.
-            </p>
-            <p className="text-base text-muted-foreground mb-8">
-              <span className="font-semibold text-foreground">you@yourbusiness.com</span> — professional, reliable, backed by Google.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <a
-                href="https://wa.me/919998757045?text=I%20need%20help%20setting%20up%20Google%20Workspace%20for%20my%20business"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
-                <Button size="lg" className="w-full text-lg px-8 shadow-lg shadow-green-600/30 h-14 bg-green-600 hover:bg-green-700">
-                  <MessageCircle size={20} className="mr-2" /> WhatsApp for Quick Quote
-                </Button>
-              </a>
-              <a href="#workspace-form" className="w-full sm:w-auto">
-                <Button variant="outline" size="lg" className="w-full text-lg px-8 h-14 border-blue-600 text-blue-700 hover:bg-blue-50">
-                  Get a Free Consultation <ArrowRight size={18} className="ml-2" />
-                </Button>
-              </a>
-            </div>
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> INR pricing</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> UPI &amp; bank transfer</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> GST invoice</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-green-500" /> Same-day setup</span>
+
+            {/* RIGHT — graphic */}
+            <div className="hidden lg:flex justify-center items-center pt-8 pb-8 pr-8">
+              <WorkspaceHeroGraphic />
             </div>
           </div>
         </div>
