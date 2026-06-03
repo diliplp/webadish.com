@@ -15,6 +15,7 @@ export const PRERENDER_ROUTES = [
   "/india/dpdp-lp",
   "/india/hacked-site-recovery-lp",
   "/lp/wordpress-maintenance-india",
+  "/lp/google-workspace-india",
   "/maintenance-retainer-lp",
   "/india/cert-in-incident-readiness",
   "/security-score",
@@ -423,6 +424,85 @@ const pageSeo: Record<string, SeoData> = {
       "INR-priced WordPress maintenance plans for Indian business websites. Safe updates, backups, uptime monitoring, malware checks, and WhatsApp-first response.",
     path: "/lp/wordpress-maintenance-india",
     noindex: true,
+  },
+  "/lp/google-workspace-india": {
+    title: "Google Workspace Setup India — Authorised Partner",
+    description:
+      "Google Workspace Authorised Partner offering business email setup, email migration (Gmail / cPanel / Outlook), and full Workspace configuration for Indian businesses. INR pricing, GST invoice, same-day setup.",
+    path: "/lp/google-workspace-india",
+    keywords: [
+      "google workspace setup india",
+      "google workspace migration india",
+      "business email setup india",
+      "google workspace authorised partner india",
+      "gsuite setup india",
+      "professional email setup india",
+      "migrate email to google workspace india",
+    ],
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "India", path: "/india" },
+      { name: "Google Workspace Setup", path: "/lp/google-workspace-india" },
+    ],
+    schema: [
+      serviceSchema(
+        "Google Workspace Setup & Migration India",
+        "Google Workspace Authorised Partner providing business email setup, full email migration from Gmail, cPanel, Outlook or Zoho, and Google Drive / Meet / Calendar configuration for Indian businesses.",
+        "/lp/google-workspace-india",
+        "IT Setup Service",
+      ),
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Google Workspace Setup India",
+        "serviceType": "Google Workspace Partner Service",
+        "provider": {
+          "@type": "Organization",
+          "name": "WebAdish LLP",
+          "url": "https://www.webadish.com",
+          "sameAs": ["https://www.webadish.com"],
+        },
+        "areaServed": { "@type": "Country", "name": "India" },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Starter Setup (1–5 users)",
+            "price": "4999",
+            "priceCurrency": "INR",
+            "description": "New Google Workspace setup or migration from Gmail / cPanel for up to 5 users.",
+          },
+          {
+            "@type": "Offer",
+            "name": "Business Setup (6–25 users)",
+            "price": "9999",
+            "priceCurrency": "INR",
+            "description": "Full migration and admin console handover for 6–25 users.",
+          },
+        ],
+      },
+      faqSchema([
+        {
+          question: "Do I keep my existing emails when migrating to Google Workspace?",
+          answer: "Yes. WebAdish migrates all existing emails, contacts, and calendar events to Google Workspace before switching over — nothing is lost.",
+        },
+        {
+          question: "How much does Google Workspace cost per month in India?",
+          answer: "Google charges approximately ₹125–₹672 per user per month depending on the plan (Business Starter to Business Plus). This subscription is paid directly to Google. WebAdish charges a one-time setup fee.",
+        },
+        {
+          question: "How long does Google Workspace setup take?",
+          answer: "New setups are completed the same day. Migrations with existing email history typically take 1–2 business days.",
+        },
+        {
+          question: "Is WebAdish an authorised Google Workspace partner?",
+          answer: "Yes. WebAdish LLP is an authorised Google Workspace reseller and setup partner serving Indian businesses.",
+        },
+        {
+          question: "What payment methods are accepted?",
+          answer: "UPI, bank transfer, and cards are all accepted. A GST invoice is provided for every setup.",
+        },
+      ]),
+    ],
   },
   "/maintenance-retainer-lp": {
     title: "WordPress Maintenance & Retainer Review — WebAdish",
