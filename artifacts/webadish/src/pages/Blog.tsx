@@ -7,6 +7,18 @@ import { useState } from "react";
 
 const posts = [
   {
+    tag: "Guides",
+    tagColor: "text-accent",
+    tagBg: "bg-accent/10",
+    title: "DPDP Act 2023 Checklist: 7 Changes Every Indian WordPress Site Must Make by August 2026",
+    excerpt:
+      "India's Digital Personal Data Protection Act (DPDP) implementation is approaching. Your WordPress site is a primary data collection point — here are the seven specific technical changes you need to make to remain compliant.",
+    date: "June 14, 2026",
+    read: "9 min",
+    img: "/blog/dpdp-act-wordpress-guide-banner.svg",
+    href: "/blog/dpdp-act-2023-checklist-wordpress-india",
+  },
+  {
     tag: "Buyer Intent",
     tagColor: "text-foreground",
     tagBg: "bg-foreground/10",

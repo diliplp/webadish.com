@@ -8,6 +8,71 @@ const posts: Record<string, {
   tag: string; tagColor: string; title: string; date: string; read: string;
   img: string; imgPosition?: string; content: React.ReactNode;
 }> = {
+  "dpdp-act-2023-checklist-wordpress-india": {
+    tag: "Guides", tagColor: "text-accent",
+    title: "DPDP Act 2023 Checklist: 7 Changes Every Indian WordPress Site Must Make by August 2026",
+    date: "June 14, 2026", read: "9 min",
+    img: "/blog/dpdp-act-wordpress-guide-banner.svg",
+    content: (
+      <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <p className="text-xl font-medium text-foreground">The Digital Personal Data Protection Act (DPDP) 2023 is no longer a "future" concern for Indian businesses. With the implementation deadline approaching in August 2026, the transition from informational awareness to technical execution is now a business priority. For most Indian SMEs, their WordPress website is their primary point of data collection and, consequently, their largest point of legal exposure.</p>
+        <p>The DPDP Act introduces significant penalties — up to ₹250 Crore for non-compliance. If your website collects leads, processes payments, or tracks visitor behaviour, you are a "Data Fiduciary" under the law. This checklist covers the seven essential technical changes required to bring a standard WordPress site into compliance.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">1. Implement a Consent Manager (Not just a Cookie Banner)</h2>
+        <p>The old "By using this site, you agree to cookies" banners are illegal under DPDP. The Act requires consent to be **free, specific, informed, unconditional, and unambiguous** with a clear affirmative action. On WordPress, this means:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Blocking all non-essential scripts (Analytics, Facebook Pixel, LinkedIn Insight) *before* the user clicks "Accept".</li>
+          <li>Providing a "Withdrawal" mechanism that is as easy to use as the "Acceptance" mechanism.</li>
+          <li>Logging the specific version of the Privacy Policy the user agreed to for audit purposes.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">2. Audit and Secure Your Lead Forms</h2>
+        <p>Every Contact Form 7, Gravity Form, or Ninja Form on your site is a data collection engine. Under DPDP, you must notify the "Data Principal" (the user) at the time of collection about what data is being collected and for what purpose. Technical requirements include:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Adding a mandatory "Consent Checkbox" that is NOT pre-ticked.</li>
+          <li>Linking directly to the specific section of your Privacy Policy from the form itself.</li>
+          <li>Ensuring form data is encrypted at rest if stored in the WordPress database (the default is plain text).</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">3. Address Data Localisation & Transfer</h2>
+        <p>While the DPDP Act is more flexible on localisation than earlier drafts, you still have an obligation to know where your data lives. Many WordPress sites use plugins that send data to servers in the US, EU, or China. You must:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Inventory every plugin that transmits data externally (Email marketing, CRM sync, Anti-spam).</li>
+          <li>Update your Data Processing Agreements (DPAs) with these third-party vendors.</li>
+          <li>Clearly state in your public notice if data is being transferred outside of India.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">4. Enable "Right to Erasure" Workflows</h2>
+        <p>Indian citizens now have the legal "Right to Correction and Erasure." If a user asks you to delete their data, you must be able to prove you have removed it from your WordPress database, your backups, and your synchronized CRM tools. We recommend implementing an automated workflow in WordPress to handle these requests systematically rather than manually searching the database.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">5. Secure the Hosting Environment</h2>
+        <p>DPDP Section 8(5) requires Data Fiduciaries to take "reasonable security safeguards" to prevent personal data breaches. If your WordPress site is hacked because you were running an outdated plugin or weak passwords, you have failed to take reasonable safeguards. In the eyes of the law, a malware infection is now a compliance failure. Minimum safeguards include:</p>
+        <ul className="list-disc list-inside space-y-2 pl-4">
+          <li>Mandatory 2FA for all Admin and Editor accounts.</li>
+          <li>Weekly (at minimum) managed patching of WordPress core and plugins.</li>
+          <li>A Web Application Firewall (WAF) to block SQL injection and cross-site scripting (XSS).</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">6. Appoint a Data Protection Officer (DPO) Notice</h2>
+        <p>You must publish the contact details of a person who can answer questions about data processing. This information should be easily accessible on your website. For many WordPress sites, this means adding a dedicated "Compliance" or "Grievance" section to the footer that is visible on every page.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">7. Breach Notification Logic (The 6-Hour Rule)</h2>
+        <p>In conjunction with CERT-In rules, the DPDP Act emphasizes timely reporting of breaches. You cannot report what you do not detect. Every Indian WordPress site should have **File Integrity Monitoring** and **Real-time Login Alerts** enabled. If an attacker gains access at 2 AM, your compliance clock starts ticking immediately.</p>
+
+        <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 my-8">
+          <p className="font-bold text-foreground text-lg mb-2">Is your WordPress site DPDP ready?</p>
+          <p className="text-sm mb-4">Self-compliance is a high-risk strategy when the penalties are this significant. We provide forensic-level DPDP audits and technical implementation for WordPress and WooCommerce environments. We ensure your forms, cookies, and database meet the August 2026 standard.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/india-dpdp" className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Get DPDP Audit →</Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 border border-primary text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/5 transition-colors">Consult an Expert</Link>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8">Summary</h2>
+        <p>Compliance is not a one-time project; it is an ongoing operational requirement. The DPDP Act transforms "Website Maintenance" from a technical chore into a legal mandate. By addressing these seven areas now, you protect your business from catastrophic fines and build trust with your Indian customer base.</p>
+      </div>
+    ),
+  },
   "wordpress-malware-removal": {
     tag: "Recovery", tagColor: "text-destructive",
     title: "How to Remove Malware from a WordPress Site (Without Missing the Backdoor)",
