@@ -241,15 +241,24 @@ export default function ContactForm({
       {/* Mobile-only contact card */}
       <div className="md:hidden space-y-6">
         <div className="bg-white rounded-3xl p-6 border border-border text-center shadow-sm">
-          <h3 className="text-xl font-bold mb-3">Emergency Support</h3>
+          <h3 className="text-xl font-bold mb-3">
+            {initialService === "Hacked Site Recovery (Emergency)" ? "Emergency Support" : "WhatsApp Support"}
+          </h3>
           <p className="text-muted-foreground text-sm mb-6">For fastest response, reach us directly via WhatsApp.</p>
           <a
-            href="https://wa.me/919998757045?text=My%20website%20has%20been%20hacked%2C%20I%20need%20emergency%20recovery"
+            href={`https://wa.me/919998757045?text=${encodeURIComponent(
+              initialService === "Hacked Site Recovery (Emergency)" 
+                ? "My website has been hacked, I need emergency recovery"
+                : initialService === "Free Security Score" || initialService === "WordPress Security"
+                ? "Hi, I would like a free 5-minute security snapshot for my website."
+                : `Hi, I am interested in ${initialService} services.`
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full py-4 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors"
           >
-            <MessageCircle size={20} /> WhatsApp Triage
+            <MessageCircle size={20} /> 
+            {initialService === "Hacked Site Recovery (Emergency)" ? "WhatsApp Triage" : "Chat on WhatsApp"}
           </a>
         </div>
       </div>
