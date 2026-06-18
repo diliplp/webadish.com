@@ -52,26 +52,42 @@ export default function HomePage() {
           </p>
 
           <div className="max-w-3xl mx-auto mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Start Here</p>
-            <p className="text-base md:text-lg text-foreground font-medium">
-              Free Security Audit for WordPress business sites.
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              We review visible risk, plugin exposure, backups, and obvious weak points, then recommend the right next step.
-            </p>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-left">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Start Here</p>
+                <p className="text-base md:text-lg text-foreground font-medium">
+                  Free Security Audit for WordPress business sites.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  We review visible risk, plugin exposure, backups, and obvious weak points, then recommend the right next step.
+                </p>
+              </div>
+              <div className="shrink-0 rounded-lg border border-border/60 bg-gray-50 px-4 py-3 text-center md:text-left">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Protection plans</p>
+                <p className="text-xl font-bold text-foreground">From $199/mo</p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col items-center justify-center gap-4 mb-8">
             <Link href="/contact">
               <Button variant="accent" size="lg" className="w-full sm:w-auto text-lg px-8">
-                Request Free Security Audit <ArrowRight size={18} className="ml-2" />
+                Get My Free Security Audit <ArrowRight size={18} className="ml-2" />
               </Button>
             </Link>
-            <Link href="/hacked-site-recovery">
-              <Button variant="outline-primary" size="lg" className="w-full sm:w-auto text-lg px-8 bg-white">
-                <Ambulance size={18} className="mr-2" /> Already Hacked? Emergency Help
-              </Button>
+            <Link
+              href="/hacked-site-recovery"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80"
+            >
+              <Ambulance size={16} /> Already hacked? Get emergency help
             </Link>
+          </div>
+
+          <div className="max-w-3xl mx-auto mb-12 rounded-lg border border-border/60 bg-white/75 px-5 py-4 text-left shadow-sm">
+            <p className="text-sm font-semibold text-foreground">Case-study proof: Verofax recovery</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              WebAdish handled spam redirects, Google warnings, incomplete previous cleanup, malware and backdoor removal, then moved the site into ongoing protection.
+            </p>
           </div>
 
           <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm font-medium text-muted-foreground">

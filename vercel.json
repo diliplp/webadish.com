@@ -465,16 +465,6 @@
       "permanent": true
     },
     {
-      "source": "/srh-vs-pbks-live-ipl-2025-match-updates-and-score",
-      "destination": "/blog",
-      "permanent": true
-    },
-    {
-      "source": "/srh-vs-pbks-live-ipl-2025-match-updates-and-score/",
-      "destination": "/blog",
-      "permanent": true
-    },
-    {
       "source": "/optimize-website-search-engine-visibility",
       "destination": "/blog",
       "permanent": true
