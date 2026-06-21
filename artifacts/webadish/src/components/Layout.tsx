@@ -236,6 +236,8 @@ export function Footer() {
               <li><Link href="/pricing" className="text-muted-foreground hover:text-accent text-sm transition-colors">Pricing</Link></li>
               <li><Link href="/security-score" className="text-muted-foreground hover:text-accent text-sm transition-colors">Free Security Score</Link></li>
               <li><Link href="/india" className="text-muted-foreground hover:text-accent text-sm transition-colors">India Services</Link></li>
+              <li><Link href="/google-workspace" className="text-muted-foreground hover:text-accent text-sm transition-colors">Google Workspace India</Link></li>
+              <li><Link href="/email-migration-india" className="text-muted-foreground hover:text-accent text-sm transition-colors">Email Migration</Link></li>
               <li><Link href="/india/dpdp-compliance-wordpress" className="text-muted-foreground hover:text-accent text-sm transition-colors">DPDP Implementation</Link></li>
               <li><Link href="/india/cert-in-incident-readiness" className="text-muted-foreground hover:text-accent text-sm transition-colors">CERT-In Readiness</Link></li>
               <li><Link href="/contact" className="text-muted-foreground hover:text-accent text-sm transition-colors">Contact Us</Link></li>
