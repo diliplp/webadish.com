@@ -1,56 +1,72 @@
-import { CheckCircle2, ArrowRight, MessageCircle, Phone, Mail, MoveRight, AlertCircle } from "lucide-react";
+import { CheckCircle2, ArrowRight, MessageCircle, Phone, Mail, AlertCircle } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 
-const fromPlatforms = [
-  { name: "cPanel Webmail", note: "Hostinger, Bluehost, GoDaddy, SiteGround, Namecheap etc." },
-  { name: "Old Gmail / Google Apps", note: "Personal Gmail or legacy Google Apps accounts" },
-  { name: "Outlook / Exchange", note: "On-premise Exchange or Microsoft 365" },
-  { name: "Zoho Mail", note: "All plans including free tier" },
-  { name: "Yahoo Mail Business", note: "Including Yahoo Small Business" },
-  { name: "Any IMAP/POP3 server", note: "Any email provider with IMAP access" },
+const platforms = [
+  "cPanel / Webmail",
+  "Google Workspace",
+  "Microsoft 365 / Outlook",
+  "Zoho Mail",
+  "Yahoo Mail Business",
+  "Rackspace Email",
+  "Hostinger / GoDaddy Mail",
+  "Any IMAP / POP3 server",
+];
+
+const commonPaths = [
+  { from: "cPanel / Webmail", to: "Google Workspace", note: "Most common — upgrade from hosting email to professional Workspace" },
+  { from: "Google Workspace", to: "Microsoft 365", note: "Switch between platforms without losing email history" },
+  { from: "Zoho Mail", to: "Google Workspace", note: "Move to Google ecosystem with full mailbox history" },
+  { from: "Outlook / Exchange", to: "Google Workspace", note: "On-prem or M365 to Google, contacts & calendar included" },
+  { from: "cPanel / Webmail", to: "Zoho Mail", note: "Cost-effective upgrade from hosting webmail" },
+  { from: "Any platform", to: "Any platform", note: "If it has IMAP access or an export option, we can migrate it" },
 ];
 
 const migrationSteps = [
-  { step: "01", title: "Audit your current email", desc: "We assess how many accounts, how much data, and any special requirements — aliases, shared mailboxes, forwarding rules." },
-  { step: "02", title: "Set up Google Workspace", desc: "Domain verification, MX records pointed to Google, SPF/DKIM/DMARC configured before the cutover." },
-  { step: "03", title: "Migrate email history", desc: "All emails, folders, contacts, and calendar events moved to the new account — users keep everything they had before." },
-  { step: "04", title: "Cutover & test", desc: "Switch MX records, verify delivery, test send/receive — all done in a maintenance window to minimise disruption." },
-  { step: "05", title: "Admin handover", desc: "Admin console walkthrough, user access confirmed, old server decommissioned on your schedule." },
+  { step: "01", title: "Audit your current setup", desc: "We assess user count, mailbox size, aliases, shared inboxes, forwarding rules, and any special requirements before quoting." },
+  { step: "02", title: "Prepare the destination", desc: "We set up the target platform — domain verification, MX records, SPF/DKIM/DMARC configured — before any data moves." },
+  { step: "03", title: "Migrate all data", desc: "All emails, folders, contacts, and calendar events moved to the new platform. Users keep everything they had before." },
+  { step: "04", title: "Cutover & verify", desc: "Switch MX records, verify delivery both ways, test send/receive — done in a maintenance window to minimise disruption." },
+  { step: "05", title: "Handover & decommission", desc: "Admin access confirmed, staff settings updated, old server decommissioned on your schedule." },
 ];
 
 const included = [
-  "All existing emails migrated (no data lost)",
-  "Contacts & calendar events moved",
-  "Folder/label structure preserved",
-  "SPF, DKIM & DMARC records set up",
+  "Full mailbox migration — emails, folders, contacts, calendar",
+  "Shared mailboxes & aliases migrated (info@, support@ etc.)",
+  "SPF, DKIM & DMARC records configured on destination",
   "MX record cutover with zero-downtime window",
+  "Old server kept live until you confirm everything is correct",
+  "Staff email client reconfiguration guide",
   "Old server decommission guidance",
-  "GST invoice + UPI / bank transfer",
-  "WhatsApp support throughout",
+  "GST invoice + UPI / bank transfer accepted",
+  "WhatsApp support throughout the migration",
 ];
 
 const faqs = [
   {
-    q: "Will my emails be lost during migration?",
-    a: "No. We migrate everything first, then switch the routing. Your old server stays live until you confirm everything is correct on the new one.",
+    q: "Can you migrate between any two email platforms?",
+    a: "Yes — if the source platform supports IMAP access or has an export option, we can migrate it. We handle Google Workspace, Microsoft 365, Zoho, cPanel webmail, Yahoo, Rackspace, and any standard IMAP/POP3 server.",
   },
   {
-    q: "How long does email migration take?",
-    a: "For most SMEs (up to 25 users), 1–2 business days. Larger mailboxes or complex setups may take longer — we'll give you an estimate upfront.",
+    q: "Will emails be lost during migration?",
+    a: "No. We migrate all data to the new platform first, then switch routing. The old server stays live until you confirm everything is correct — nothing gets lost in transit.",
+  },
+  {
+    q: "How long does migration take?",
+    a: "For most SMEs (up to 25 users), 1–2 business days. Larger or more complex setups take longer — we give you an estimate before starting.",
   },
   {
     q: "Can you migrate shared mailboxes and aliases?",
-    a: "Yes. We handle shared inboxes (e.g. info@, support@), email aliases, and distribution groups as part of the migration.",
+    a: "Yes. Shared inboxes (info@, support@), aliases, and distribution groups are all handled as part of the migration.",
   },
   {
-    q: "Do my staff need to do anything?",
-    a: "Minimal. We handle the technical side. Staff only need to update their email client settings at the end — we provide a simple guide or do it for them.",
+    q: "What do my staff need to do?",
+    a: "Minimal. We handle the technical side. At cutover, staff update their email client settings — we provide a simple guide or configure it for them.",
   },
   {
-    q: "What happens to emails sent to the old address during migration?",
-    a: "We keep both systems live during migration and only switch routing after your data is confirmed on Google Workspace — so nothing is missed.",
+    q: "Which platform should we migrate to?",
+    a: "Depends on your team size, budget, and workflow. Google Workspace suits most Indian SMEs well — collaborative, reliable, and easy to admin. Microsoft 365 makes sense if you're already in the Microsoft ecosystem. We'll advise based on your situation.",
   },
 ];
 
@@ -62,30 +78,20 @@ export default function IndiaEmailMigration() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(99,102,241,0.07),transparent_50%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-xl pl-2 pr-4 py-2 mb-6 shadow-sm">
-              <img
-                src="https://www.gstatic.com/cloud-partners/images/gcpn/badges/tiers/tier_gws_cosell_and_service_select.png"
-                alt="Google Workspace SELECT Partner"
-                width={40}
-                height={40}
-                className="rounded-lg"
-              />
-              <div className="text-sm leading-tight">
-                <div className="font-bold text-gray-800">Google Workspace SELECT Partner</div>
-                <div className="text-gray-500 text-xs">Migration specialists — India</div>
-              </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-700 text-sm font-semibold mb-6">
+              <Mail size={15} /> Email Migration Service — India
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Email Migration to<br />
-              <span className="text-blue-600">Google Workspace.</span>
+              Migrate Your Business Email.<br />
+              <span className="text-blue-600">Any Platform. Any Direction.</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Move from cPanel, Outlook, Zoho, or Gmail to Google Workspace — without losing a single email. We handle the full migration, cutover, and admin handover.
+              cPanel to Google Workspace. Zoho to Microsoft 365. Outlook to Gmail. Or any other combination — we migrate business email between any two platforms without losing a single message.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <a
-                href="https://wa.me/919998757045?text=I%20need%20help%20migrating%20my%20email%20to%20Google%20Workspace"
+                href="https://wa.me/919998757045?text=I%20need%20help%20migrating%20my%20business%20email"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -100,7 +106,7 @@ export default function IndiaEmailMigration() {
               </Link>
             </div>
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-              {["Zero data loss", "No downtime window", "INR pricing & GST invoice", "1–2 day turnaround"].map((t) => (
+              {["Zero data loss", "No downtime cutover", "INR pricing & GST invoice", "1–2 day turnaround"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
                   <CheckCircle2 size={14} className="text-green-500" /> {t}
                 </span>
@@ -110,33 +116,46 @@ export default function IndiaEmailMigration() {
         </div>
       </section>
 
-      {/* MIGRATE FROM */}
+      {/* ANY TO ANY VISUAL */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-3">We migrate from any platform</h2>
-            <p className="text-muted-foreground">If it supports IMAP or has an export option, we can move it to Google Workspace.</p>
+            <h2 className="text-3xl font-bold mb-3">Migrate from any platform to any platform</h2>
+            <p className="text-muted-foreground">If it has IMAP access or an export option, we can move it.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {fromPlatforms.map((p) => (
-              <div key={p.name} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4 border border-gray-100">
-                <div className="flex items-center gap-3 w-full">
-                  <Mail size={18} className="text-indigo-500 shrink-0" />
-                  <div>
-                    <div className="font-semibold text-sm">{p.name}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{p.note}</div>
-                  </div>
-                  <MoveRight size={16} className="text-blue-400 ml-auto shrink-0" />
-                </div>
-              </div>
+
+          {/* Platform bubbles */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12 max-w-3xl mx-auto">
+            {platforms.map((p) => (
+              <span key={p} className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm font-medium text-gray-700">
+                {p}
+              </span>
             ))}
           </div>
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Not sure if we can migrate your setup?{" "}
+
+          {/* Common migration paths */}
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-lg font-bold mb-6 text-center text-muted-foreground">Common migration paths we handle</h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {commonPaths.map((path) => (
+                <div key={path.from + path.to} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-sm font-semibold text-gray-800">{path.from}</span>
+                    <ArrowRight size={14} className="text-blue-400 shrink-0" />
+                    <span className="text-sm font-semibold text-blue-600">{path.to}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{path.note}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            Don't see your combination?{" "}
             <a href="https://wa.me/919998757045?text=I%20need%20email%20migration%20help" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold">
               WhatsApp us
             </a>{" "}
-            — we'll confirm within a few hours.
+            — we'll confirm if we can handle it within a few hours.
           </p>
         </div>
       </section>
@@ -146,7 +165,7 @@ export default function IndiaEmailMigration() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-3">How migration works</h2>
-            <p className="text-muted-foreground">A structured process so nothing gets lost and your team is never in the dark.</p>
+            <p className="text-muted-foreground">A structured process so nothing gets lost and your team stays productive throughout.</p>
           </div>
           <div className="max-w-3xl mx-auto space-y-6">
             {migrationSteps.map((s) => (
@@ -177,22 +196,22 @@ export default function IndiaEmailMigration() {
                 ))}
               </ul>
             </div>
-            <div>
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-6">
+            <div className="space-y-6">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
                 <div className="flex items-start gap-3">
                   <AlertCircle size={20} className="text-amber-600 shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-bold text-amber-800 mb-1">Don't try to migrate yourself</h3>
                     <p className="text-sm text-amber-700 leading-relaxed">
-                      DIY migrations commonly result in email loss, broken MX records, or SPF/DMARC misconfigs that land your outgoing email in spam. We've fixed many of these after the fact — it costs more than doing it right the first time.
+                      DIY migrations commonly result in email loss, broken MX records, or SPF/DMARC misconfigs that send your outgoing email straight to spam. We've fixed many of these after the fact — it costs more than doing it right the first time.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-                <h3 className="font-bold mb-2">Also need a full Workspace setup?</h3>
+                <h3 className="font-bold mb-2">Migrating to Google Workspace?</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  If you don't have Google Workspace yet, we handle the full setup and migration together — same one-time fee.
+                  We're a Google Workspace SELECT Partner — we handle the full setup and migration together as one engagement.
                 </p>
                 <Link href="/google-workspace">
                   <Button variant="outline" size="sm" className="border-blue-600 text-blue-700 hover:bg-blue-50">
@@ -211,13 +230,13 @@ export default function IndiaEmailMigration() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Migration pricing</h2>
             <p className="text-muted-foreground mb-10">
-              Pricing depends on user count, mailbox size, and source platform. Most migrations for up to 25 users fall in the ₹4,999–₹9,999 range (one-time).
+              Pricing depends on user count, mailbox size, source platform, and migration complexity. Most migrations for up to 25 users fall in the ₹4,999–₹12,999 range (one-time).
             </p>
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
               {[
-                { label: "1–5 users", price: "From ₹4,999", note: "Simple migration or new setup + migration" },
+                { label: "1–5 users", price: "From ₹4,999", note: "Simple platform-to-platform migration" },
                 { label: "6–25 users", price: "From ₹9,999", note: "Full migration with admin handover", highlight: true },
-                { label: "25+ users", price: "Custom", note: "Complex migrations, multiple domains, Exchange" },
+                { label: "25+ users / complex", price: "Custom", note: "Multi-domain, Exchange, or legacy servers" },
               ].map((p) => (
                 <div
                   key={p.label}
@@ -230,7 +249,7 @@ export default function IndiaEmailMigration() {
               ))}
             </div>
             <a
-              href="https://wa.me/919998757045?text=I%20need%20email%20migration%20to%20Google%20Workspace"
+              href="https://wa.me/919998757045?text=I%20need%20email%20migration%20for%20my%20business"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -262,9 +281,9 @@ export default function IndiaEmailMigration() {
         <div className="max-w-2xl mx-auto px-4">
           <Mail size={40} className="mx-auto mb-4 opacity-80" />
           <h2 className="text-3xl font-bold mb-4">Ready to migrate your business email?</h2>
-          <p className="text-blue-100 mb-8">Tell us your current provider and user count. We'll give you an exact quote and timeline on WhatsApp.</p>
+          <p className="text-blue-100 mb-8">Tell us your current platform, where you want to move, and how many users. We'll quote within a few hours.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/919998757045?text=I%20need%20email%20migration%20to%20Google%20Workspace" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/919998757045?text=I%20need%20email%20migration%20for%20my%20business" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 px-8 h-14 font-bold">
                 <MessageCircle size={20} className="mr-2" /> WhatsApp Now
               </Button>
