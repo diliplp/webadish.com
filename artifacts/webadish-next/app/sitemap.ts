@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 const baseUrl = 'https://www.webadish.com';
-const lastModified = new Date('2026-06-18');
+const lastModified = new Date('2026-06-22');
 
 const routes = [
   { path: '/', priority: 1 },

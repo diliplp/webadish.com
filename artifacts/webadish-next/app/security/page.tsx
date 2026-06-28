@@ -1,13 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { AlertTriangle, ArrowRight, BriefcaseBusiness, Eye, FileSearch, Globe, Shield, ShoppingCart, Zap } from 'lucide-react';
+import { AlertTriangle, ArrowRight, BriefcaseBusiness, CheckCircle2, Eye, FileSearch, Globe, Mail, MessageCircle, Phone, Shield, ShoppingCart, Zap } from 'lucide-react';
 import SiteLayout from '@/components/SiteLayout';
 import { Button } from '@/components/Button';
 
 export const metadata: Metadata = {
-  title: 'Managed WordPress Security | WebAdish',
-  description: 'Firewall management, malware scanning, hardening, and 24/7 monitoring for WordPress sites that cannot afford breach-driven revenue loss.',
+  title: 'WordPress Security Audit India & Managed Protection | WebAdish',
+  description:
+    'Request a free WordPress security audit for Indian businesses. WhatsApp WebAdish for vulnerability review, malware risk checks, hardening, and managed WordPress protection.',
+  alternates: {
+    canonical: '/security',
+  },
+  openGraph: {
+    title: 'WordPress Security Audit India & Managed Protection | WebAdish',
+    description:
+      'Free WordPress security audit route for Indian businesses that need vulnerability review, malware risk checks, hardening, and managed protection.',
+    url: '/security',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'WordPress Security Audit India & Managed Protection | WebAdish',
+    description:
+      'Free WordPress security audit route for Indian businesses that need vulnerability review, malware risk checks, hardening, and managed protection.',
+  },
 };
+
+const whatsappUrl =
+  'https://wa.me/919998757045?text=I%20need%20a%20WordPress%20security%20audit%20for%20my%20India%20business%20website.';
 
 const features = [
   { icon: <Shield size={24} className="text-accent" />, title: 'Web Application Firewall', desc: 'Block brute force attacks, SQL injections, XSS, and other common threats before they reach your WordPress stack.' },
@@ -25,25 +45,129 @@ const threats = [
   { pct: '<5min', label: 'average time for bots to find a vulnerable WordPress install' },
 ];
 
+const auditOutcomes = [
+  'Plugin, theme, and core version risk review',
+  'Admin access, roles, backups, and exposed surfaces check',
+  'Malware, blacklist, and suspicious file-change triage',
+  'Plain-English priority list before paid hardening work',
+];
+
+const faqItems = [
+  {
+    question: 'Is the WordPress security audit free for Indian businesses?',
+    answer:
+      'Yes. The first fit check is free. We review the website URL, obvious WordPress exposure, and current issue, then recommend whether you need hardening, managed protection, or emergency recovery.',
+  },
+  {
+    question: 'Can WebAdish help if the WordPress site is already hacked?',
+    answer:
+      'Yes. If the site is already hacked, blacklisted, redirecting, or suspended by hosting, we route the case into emergency recovery instead of treating it as a routine audit.',
+  },
+  {
+    question: 'What happens after the audit?',
+    answer:
+      'You receive a practical next-step recommendation. That may be a one-time hardening sprint, managed security and maintenance, a retained security plan, or no paid work if the risk is low.',
+  },
+  {
+    question: 'Do you only install a security plugin?',
+    answer:
+      'No. Plugins are only one layer. We review access, update discipline, backups, hosting controls, monitoring, blacklist risk, and incident readiness so the protection plan matches the business risk.',
+  },
+];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'WordPress Security Audit India',
+    description:
+      'Free WordPress security audit route for Indian businesses, covering vulnerability review, malware risk checks, hardening recommendations, and managed protection options.',
+    serviceType: 'WordPress security audit and managed protection',
+    provider: {
+      '@type': 'Organization',
+      name: 'WebAdish LLP',
+      url: 'https://www.webadish.com',
+      telephone: '+919998757045',
+      email: 'hello@webadish.com',
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'India',
+      },
+      {
+        '@type': 'Place',
+        name: 'Worldwide',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      name: 'Free WordPress Security Audit Fit Check',
+      price: '0',
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+      url: 'https://www.webadish.com/security',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+];
+
 export default function SecurityPage() {
   return (
     <SiteLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="pt-36 pb-20 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20">
-              <Shield size={14} /> Managed WordPress Security
+              <Shield size={14} /> Free WordPress Security Audit for India
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              WordPress Security for <span className="text-accent">Revenue-Critical Sites</span>
+              WordPress Security Audit for <span className="text-accent">Revenue-Critical Sites</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Firewall management, malware scanning, hardening, and 24/7 monitoring for businesses that cannot afford breach-driven revenue loss, brand damage, or emergency cleanup during key campaigns.
+              Firewall management, malware scanning, hardening, and 24/7 monitoring for India and global businesses that cannot afford breach-driven revenue loss, brand damage, or emergency cleanup during key campaigns.
             </p>
             <div className="mb-8 rounded-2xl border border-accent/20 bg-white/90 p-5 shadow-sm">
               <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Recommended First Step</p>
-              <p className="text-base text-foreground font-medium">Request a free security audit before choosing a monthly plan.</p>
-              <p className="text-sm text-muted-foreground mt-2">We will identify the obvious risks first, then recommend hardening, a protection plan, or emergency recovery.</p>
+              <p className="text-base text-foreground font-medium">Send your WordPress URL for a free audit fit check before choosing a monthly plan.</p>
+              <p className="text-sm text-muted-foreground mt-2">We identify obvious risks first, then recommend hardening, a protection plan, emergency recovery, or no paid work if the risk is low.</p>
+            </div>
+            <div className="mb-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-600/20 transition-all duration-300 hover:bg-green-500 hover:-translate-y-0.5"
+              >
+                <MessageCircle size={17} /> WhatsApp Audit
+              </a>
+              <a
+                href="tel:+919998757045"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-accent px-5 py-3 text-sm font-semibold text-accent transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+              >
+                <Phone size={17} /> Call India Team
+              </a>
+              <a
+                href="mailto:hello@webadish.com?subject=WordPress%20security%20audit%20request"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border bg-white px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent hover:text-accent"
+              >
+                <Mail size={17} /> Email Website URL
+              </a>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
@@ -94,6 +218,25 @@ export default function SecurityPage() {
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8 rounded-3xl border border-accent/20 bg-accent/5 p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.75fr] gap-8 items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent mb-3">Audit Output</p>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">What we check before recommending paid work</h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  The audit is designed for buyers searching for WordPress vulnerability scanners, malware checks, or security audits, but who need a human recommendation before paying for a full engagement.
+                </p>
+              </div>
+              <div className="grid gap-3">
+                {auditOutcomes.map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-white p-4 text-sm text-foreground">
+                    <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-accent" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -188,6 +331,26 @@ export default function SecurityPage() {
                 View Protection Pricing
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent mb-3">Security Audit FAQ</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Before You Request an Audit</h2>
+            <p className="text-muted-foreground">
+              These are the common questions from India WordPress security leads before they share a website URL.
+            </p>
+          </div>
+          <div className="space-y-4">
+            {faqItems.map((item) => (
+              <div key={item.question} className="rounded-2xl border border-border/50 bg-gray-50 p-6">
+                <h3 className="text-lg font-bold mb-2">{item.question}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.answer}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
