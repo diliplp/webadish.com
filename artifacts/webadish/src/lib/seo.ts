@@ -207,9 +207,9 @@ const breadcrumbs = (name: string, path: string) => [
 
 const pageSeo: Record<string, SeoData> = {
   "/": {
-    title: "WordPress Security & Protection Agency",
+    title: "WordPress Security Agency & Maintenance Services | WebAdish",
     description:
-      "WebAdish provides WordPress security, protection plans, hacked site recovery, and retainers for businesses that cannot afford downtime, breaches, or slow support.",
+      "WebAdish provides WordPress security, protection plans, hacked site recovery, and support retainers for businesses that cannot afford downtime, breaches, or slow support.",
     path: "/",
     type: "website",
     keywords: [
@@ -230,9 +230,9 @@ const pageSeo: Record<string, SeoData> = {
     ],
   },
   "/maintenance": {
-    title: "WordPress Maintenance Services",
+    title: "WordPress Maintenance Services & Support Plans | WebAdish",
     description:
-      "Premium WordPress maintenance services with safe updates, daily backups, uptime monitoring, reporting, and hardening for businesses that need a reliable website partner.",
+      "Proactive, security-led WordPress maintenance plans for growing business sites. safe updates, daily backups, 24/7 uptime monitoring & expert developer support.",
     path: "/maintenance",
     keywords: [
       "wordpress maintenance services",
@@ -253,9 +253,9 @@ const pageSeo: Record<string, SeoData> = {
     ],
   },
   "/security": {
-    title: "WordPress Security Services",
+    title: "WordPress Security Services & Website Hardening | WebAdish",
     description:
-      "Protect your WordPress site with firewall management, malware scanning, hardening, vulnerability patching, blacklist monitoring, and 24/7 security oversight.",
+      "Protect your website with firewall management, daily malware scans, patch automation, security audits, and 24/7 expert threat monitoring.",
     path: "/security",
     keywords: [
       "wordpress security service",
@@ -273,9 +273,9 @@ const pageSeo: Record<string, SeoData> = {
     ],
   },
   "/hacked-site-recovery": {
-    title: "WordPress Site Hacked? 24-Hour Emergency Recovery",
+    title: "Hacked WordPress Website Repair & Emergency Recovery",
     description:
-      "WordPress hacked? WebAdish removes malware, clears blacklists, and restores your site within 24 hours — 30-day re-infection guarantee, 800+ sites recovered.",
+      "Hacked WordPress site? WebAdish removes malware, eradicates backdoors, and clears Google blacklist warnings within 24 hours. 30-day reinfection guarantee.",
     path: "/hacked-site-recovery",
     keywords: [
       "my wordpress site was hacked",
